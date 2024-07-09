@@ -1,0 +1,7 @@
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.csproj.AssemblyReference.cache
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpedia2.FormLogin.resources
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.csproj.GenerateResource.cache
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.AssemblyInfoInputs.cache
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.AssemblyInfo.cs
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.csproj.CoreCompileInputs.cache
