@@ -40,7 +40,6 @@
             label11 = new Label();
             panel1 = new Panel();
             tBoxHarga = new TextBox();
-            domainUpDownQuantity = new DomainUpDown();
             cBoxPackaging = new ComboBox();
             cBoxNamaProduk = new ComboBox();
             cBoxJenisProduk = new ComboBox();
@@ -52,6 +51,10 @@
             panel3 = new Panel();
             label8 = new Label();
             panelProduk = new Panel();
+            cBoxKabupatenKota = new ComboBox();
+            cBoxProvinsi = new ComboBox();
+            label20 = new Label();
+            label16 = new Label();
             tBoxZipCode = new TextBox();
             tBoxAlamat = new TextBox();
             tBoxContact = new TextBox();
@@ -79,10 +82,7 @@
             btnCreatePDF = new Button();
             btnBack = new Button();
             label14 = new Label();
-            label16 = new Label();
-            label20 = new Label();
-            cBoxProvinsi = new ComboBox();
-            cBoxKabupatenKota = new ComboBox();
+            numericUpDown1 = new NumericUpDown();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
@@ -94,6 +94,7 @@
             panel8.SuspendLayout();
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // panel4
@@ -199,8 +200,8 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(numericUpDown1);
             panel1.Controls.Add(tBoxHarga);
-            panel1.Controls.Add(domainUpDownQuantity);
             panel1.Controls.Add(cBoxPackaging);
             panel1.Controls.Add(cBoxNamaProduk);
             panel1.Controls.Add(cBoxJenisProduk);
@@ -223,14 +224,6 @@
             tBoxHarga.Name = "tBoxHarga";
             tBoxHarga.Size = new Size(179, 25);
             tBoxHarga.TabIndex = 25;
-            // 
-            // domainUpDownQuantity
-            // 
-            domainUpDownQuantity.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            domainUpDownQuantity.Location = new Point(132, 173);
-            domainUpDownQuantity.Name = "domainUpDownQuantity";
-            domainUpDownQuantity.Size = new Size(179, 25);
-            domainUpDownQuantity.TabIndex = 23;
             // 
             // cBoxPackaging
             // 
@@ -351,6 +344,44 @@
             panelProduk.Name = "panelProduk";
             panelProduk.Size = new Size(316, 260);
             panelProduk.TabIndex = 21;
+            // 
+            // cBoxKabupatenKota
+            // 
+            cBoxKabupatenKota.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxKabupatenKota.FormattingEnabled = true;
+            cBoxKabupatenKota.Location = new Point(132, 163);
+            cBoxKabupatenKota.Name = "cBoxKabupatenKota";
+            cBoxKabupatenKota.Size = new Size(179, 25);
+            cBoxKabupatenKota.TabIndex = 27;
+            // 
+            // cBoxProvinsi
+            // 
+            cBoxProvinsi.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxProvinsi.FormattingEnabled = true;
+            cBoxProvinsi.Location = new Point(132, 193);
+            cBoxProvinsi.Name = "cBoxProvinsi";
+            cBoxProvinsi.Size = new Size(179, 25);
+            cBoxProvinsi.TabIndex = 26;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.Location = new Point(55, 224);
+            label20.Name = "label20";
+            label20.Size = new Size(71, 19);
+            label20.TabIndex = 26;
+            label20.Text = "Zip Code :";
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Location = new Point(62, 196);
+            label16.Name = "label16";
+            label16.Size = new Size(64, 19);
+            label16.TabIndex = 25;
+            label16.Text = "Provinsi :";
             // 
             // tBoxZipCode
             // 
@@ -621,43 +652,13 @@
             label14.TabIndex = 29;
             label14.Text = "( * ) Wajib di isi";
             // 
-            // label16
+            // numericUpDown1
             // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.Location = new Point(62, 196);
-            label16.Name = "label16";
-            label16.Size = new Size(64, 19);
-            label16.TabIndex = 25;
-            label16.Text = "Provinsi :";
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(55, 224);
-            label20.Name = "label20";
-            label20.Size = new Size(71, 19);
-            label20.TabIndex = 26;
-            label20.Text = "Zip Code :";
-            // 
-            // cBoxProvinsi
-            // 
-            cBoxProvinsi.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cBoxProvinsi.FormattingEnabled = true;
-            cBoxProvinsi.Location = new Point(132, 193);
-            cBoxProvinsi.Name = "cBoxProvinsi";
-            cBoxProvinsi.Size = new Size(179, 25);
-            cBoxProvinsi.TabIndex = 26;
-            // 
-            // cBoxKabupatenKota
-            // 
-            cBoxKabupatenKota.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cBoxKabupatenKota.FormattingEnabled = true;
-            cBoxKabupatenKota.Location = new Point(132, 163);
-            cBoxKabupatenKota.Name = "cBoxKabupatenKota";
-            cBoxKabupatenKota.Size = new Size(179, 25);
-            cBoxKabupatenKota.TabIndex = 27;
+            numericUpDown1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDown1.Location = new Point(132, 171);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(179, 25);
+            numericUpDown1.TabIndex = 38;
             // 
             // FormBuatInvoicePenjualan
             // 
@@ -698,6 +699,7 @@
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -742,7 +744,6 @@
         private Button btnCreatePDF;
         private Button btnBack;
         private TextBox tBoxHarga;
-        private DomainUpDown domainUpDownQuantity;
         private ComboBox cBoxPackaging;
         private ComboBox cBoxNamaProduk;
         private ComboBox cBoxJenisProduk;
@@ -759,5 +760,6 @@
         private Label label16;
         private ComboBox cBoxProvinsi;
         private ComboBox cBoxKabupatenKota;
+        private NumericUpDown numericUpDown1;
     }
 }

@@ -19,9 +19,6 @@
     <Compile Update="FormPilihDivisi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormProcureBakteri.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="FormTambahBakteri.cs">
       <SubType>Form</SubType>
     </Compile>
