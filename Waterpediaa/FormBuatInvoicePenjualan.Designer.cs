@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel4 = new Panel();
+            label13 = new Label();
             label15 = new Label();
             label17 = new Label();
             panel5 = new Panel();
@@ -50,29 +51,76 @@
             label12 = new Label();
             panel2 = new Panel();
             label19 = new Label();
+            panel6 = new Panel();
+            tBoxOtherComments = new TextBox();
+            panel7 = new Panel();
+            label21 = new Label();
+            panel8 = new Panel();
+            lblTotal = new Label();
+            lblSubTotal = new Label();
+            lblPPN = new Label();
+            panel9 = new Panel();
+            label22 = new Label();
+            dataGridView1 = new DataGridView();
+            btnInput = new Button();
+            btnCreatePDF = new Button();
+            btnBack = new Button();
+            tBoxNamaCust = new TextBox();
+            tBoxPerusahaan = new TextBox();
+            tBoxContact = new TextBox();
+            tBoxAlamat = new TextBox();
+            tBoxKabupatenKota = new TextBox();
+            cBoxJenisProduk = new ComboBox();
+            cBoxNamaProduk = new ComboBox();
+            cBoxPackaging = new ComboBox();
+            domainUpDownQuantity = new DomainUpDown();
+            tBoxHarga = new TextBox();
+            comboBox1 = new ComboBox();
+            dtpServiceOrder = new DateTimePicker();
+            dtpDueDate = new DateTimePicker();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panelProduk.SuspendLayout();
             panel2.SuspendLayout();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
+            panel8.SuspendLayout();
+            panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel4
             // 
+            panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(dtpDueDate);
+            panel4.Controls.Add(dtpServiceOrder);
+            panel4.Controls.Add(comboBox1);
+            panel4.Controls.Add(label13);
             panel4.Controls.Add(label15);
             panel4.Controls.Add(label17);
             panel4.Controls.Add(panel5);
-            panel4.Location = new Point(12, 506);
+            panel4.Location = new Point(334, 12);
             panel4.Name = "panel4";
-            panel4.Size = new Size(316, 144);
+            panel4.Size = new Size(1019, 97);
             panel4.TabIndex = 23;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Location = new Point(734, 52);
+            label13.Name = "label13";
+            label13.Size = new Size(74, 19);
+            label13.TabIndex = 18;
+            label13.Text = "Due Date :";
             // 
             // label15
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.Location = new Point(36, 49);
+            label15.Location = new Point(11, 52);
             label15.Name = "label15";
             label15.Size = new Size(143, 19);
             label15.TabIndex = 17;
@@ -82,11 +130,11 @@
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label17.Location = new Point(37, 68);
+            label17.Location = new Point(426, 52);
             label17.Name = "label17";
-            label17.Size = new Size(52, 19);
+            label17.Size = new Size(98, 19);
             label17.TabIndex = 15;
-            label17.Text = "Nama :";
+            label17.Text = "Service Order :";
             // 
             // panel5
             // 
@@ -94,7 +142,7 @@
             panel5.Controls.Add(label18);
             panel5.Location = new Point(0, 0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(316, 29);
+            panel5.Size = new Size(1018, 29);
             panel5.TabIndex = 14;
             // 
             // label18
@@ -104,15 +152,15 @@
             label18.ForeColor = Color.FromArgb(224, 224, 224);
             label18.Location = new Point(11, 4);
             label18.Name = "label18";
-            label18.Size = new Size(58, 19);
+            label18.Size = new Size(140, 19);
             label18.TabIndex = 13;
-            label18.Text = "Produk";
+            label18.Text = "Invoice Information";
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(23, 653);
+            label11.Location = new Point(532, 610);
             label11.Name = "label11";
             label11.Size = new Size(387, 57);
             label11.TabIndex = 24;
@@ -120,22 +168,28 @@
             // 
             // panel1
             // 
+            panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(tBoxHarga);
+            panel1.Controls.Add(domainUpDownQuantity);
+            panel1.Controls.Add(cBoxPackaging);
+            panel1.Controls.Add(cBoxNamaProduk);
+            panel1.Controls.Add(cBoxJenisProduk);
             panel1.Controls.Add(label10);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(panel3);
-            panel1.Location = new Point(12, 259);
+            panel1.Location = new Point(12, 278);
             panel1.Name = "panel1";
-            panel1.Size = new Size(316, 241);
+            panel1.Size = new Size(316, 260);
             panel1.TabIndex = 22;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(36, 191);
+            label10.Location = new Point(73, 214);
             label10.Name = "label10";
             label10.Size = new Size(53, 19);
             label10.TabIndex = 19;
@@ -145,7 +199,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(19, 156);
+            label4.Location = new Point(56, 173);
             label4.Name = "label4";
             label4.Size = new Size(70, 19);
             label4.TabIndex = 18;
@@ -155,7 +209,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(44, 49);
+            label5.Location = new Point(81, 51);
             label5.Name = "label5";
             label5.Size = new Size(45, 19);
             label5.TabIndex = 17;
@@ -165,7 +219,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(11, 125);
+            label6.Location = new Point(48, 133);
             label6.Name = "label6";
             label6.Size = new Size(78, 19);
             label6.TabIndex = 16;
@@ -175,7 +229,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(37, 92);
+            label7.Location = new Point(74, 91);
             label7.Name = "label7";
             label7.Size = new Size(52, 19);
             label7.TabIndex = 15;
@@ -203,6 +257,12 @@
             // 
             // panelProduk
             // 
+            panelProduk.BorderStyle = BorderStyle.FixedSingle;
+            panelProduk.Controls.Add(tBoxKabupatenKota);
+            panelProduk.Controls.Add(tBoxAlamat);
+            panelProduk.Controls.Add(tBoxContact);
+            panelProduk.Controls.Add(tBoxPerusahaan);
+            panelProduk.Controls.Add(tBoxNamaCust);
             panelProduk.Controls.Add(label9);
             panelProduk.Controls.Add(label3);
             panelProduk.Controls.Add(label2);
@@ -211,14 +271,14 @@
             panelProduk.Controls.Add(panel2);
             panelProduk.Location = new Point(12, 12);
             panelProduk.Name = "panelProduk";
-            panelProduk.Size = new Size(316, 241);
+            panelProduk.Size = new Size(316, 260);
             panelProduk.TabIndex = 21;
             // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(11, 171);
+            label9.Location = new Point(67, 177);
             label9.Name = "label9";
             label9.Size = new Size(59, 19);
             label9.TabIndex = 19;
@@ -228,7 +288,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(11, 204);
+            label3.Location = new Point(11, 223);
             label3.Name = "label3";
             label3.Size = new Size(115, 19);
             label3.TabIndex = 18;
@@ -238,7 +298,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(3, 90);
+            label2.Location = new Point(40, 86);
             label2.Name = "label2";
             label2.Size = new Size(86, 19);
             label2.TabIndex = 17;
@@ -248,7 +308,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(25, 137);
+            label1.Location = new Point(62, 129);
             label1.Name = "label1";
             label1.Size = new Size(64, 19);
             label1.TabIndex = 16;
@@ -258,7 +318,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(37, 43);
+            label12.Location = new Point(74, 40);
             label12.Name = "label12";
             label12.Size = new Size(52, 19);
             label12.TabIndex = 15;
@@ -284,11 +344,275 @@
             label19.TabIndex = 13;
             label19.Text = "Customer Information";
             // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Controls.Add(tBoxOtherComments);
+            panel6.Controls.Add(panel7);
+            panel6.Location = new Point(12, 544);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(316, 172);
+            panel6.TabIndex = 24;
+            // 
+            // tBoxOtherComments
+            // 
+            tBoxOtherComments.BorderStyle = BorderStyle.FixedSingle;
+            tBoxOtherComments.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxOtherComments.Location = new Point(3, 35);
+            tBoxOtherComments.Multiline = true;
+            tBoxOtherComments.Name = "tBoxOtherComments";
+            tBoxOtherComments.Size = new Size(308, 132);
+            tBoxOtherComments.TabIndex = 15;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.DarkBlue;
+            panel7.Controls.Add(label21);
+            panel7.Location = new Point(0, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(316, 29);
+            panel7.TabIndex = 14;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label21.ForeColor = Color.FromArgb(224, 224, 224);
+            label21.Location = new Point(11, 4);
+            label21.Name = "label21";
+            label21.Size = new Size(122, 19);
+            label21.TabIndex = 13;
+            label21.Text = "Other Comments";
+            // 
+            // panel8
+            // 
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Controls.Add(lblTotal);
+            panel8.Controls.Add(lblSubTotal);
+            panel8.Controls.Add(lblPPN);
+            panel8.Controls.Add(panel9);
+            panel8.Location = new Point(1037, 573);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(316, 144);
+            panel8.TabIndex = 24;
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTotal.Location = new Point(38, 106);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(45, 19);
+            lblTotal.TabIndex = 18;
+            lblTotal.Text = "Total :";
+            // 
+            // lblSubTotal
+            // 
+            lblSubTotal.AutoSize = true;
+            lblSubTotal.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSubTotal.Location = new Point(11, 44);
+            lblSubTotal.Name = "lblSubTotal";
+            lblSubTotal.Size = new Size(72, 19);
+            lblSubTotal.TabIndex = 17;
+            lblSubTotal.Text = "Sub Total :";
+            // 
+            // lblPPN
+            // 
+            lblPPN.AutoSize = true;
+            lblPPN.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPPN.Location = new Point(41, 74);
+            lblPPN.Name = "lblPPN";
+            lblPPN.Size = new Size(42, 19);
+            lblPPN.TabIndex = 15;
+            lblPPN.Text = "PPN :";
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.DarkBlue;
+            panel9.Controls.Add(label22);
+            panel9.Location = new Point(0, 0);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(316, 29);
+            panel9.TabIndex = 14;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label22.ForeColor = Color.FromArgb(224, 224, 224);
+            label22.Location = new Point(11, 4);
+            label22.Name = "label22";
+            label22.Size = new Size(102, 19);
+            label22.TabIndex = 13;
+            label22.Text = "Total Subtotal";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(334, 115);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(1019, 452);
+            dataGridView1.TabIndex = 25;
+            // 
+            // btnInput
+            // 
+            btnInput.BackColor = Color.FromArgb(192, 255, 192);
+            btnInput.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInput.Location = new Point(335, 574);
+            btnInput.Name = "btnInput";
+            btnInput.Size = new Size(119, 38);
+            btnInput.TabIndex = 26;
+            btnInput.Text = "Input";
+            btnInput.UseVisualStyleBackColor = false;
+            // 
+            // btnCreatePDF
+            // 
+            btnCreatePDF.BackColor = Color.FromArgb(192, 255, 192);
+            btnCreatePDF.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCreatePDF.Location = new Point(334, 618);
+            btnCreatePDF.Name = "btnCreatePDF";
+            btnCreatePDF.Size = new Size(119, 49);
+            btnCreatePDF.TabIndex = 27;
+            btnCreatePDF.Text = "Create\r\nInvoice";
+            btnCreatePDF.UseVisualStyleBackColor = false;
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.FromArgb(255, 128, 128);
+            btnBack.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(335, 678);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(119, 38);
+            btnBack.TabIndex = 28;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            // 
+            // tBoxNamaCust
+            // 
+            tBoxNamaCust.BorderStyle = BorderStyle.FixedSingle;
+            tBoxNamaCust.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxNamaCust.Location = new Point(132, 38);
+            tBoxNamaCust.Name = "tBoxNamaCust";
+            tBoxNamaCust.Size = new Size(179, 25);
+            tBoxNamaCust.TabIndex = 20;
+            // 
+            // tBoxPerusahaan
+            // 
+            tBoxPerusahaan.BorderStyle = BorderStyle.FixedSingle;
+            tBoxPerusahaan.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxPerusahaan.Location = new Point(132, 84);
+            tBoxPerusahaan.Name = "tBoxPerusahaan";
+            tBoxPerusahaan.Size = new Size(179, 25);
+            tBoxPerusahaan.TabIndex = 21;
+            // 
+            // tBoxContact
+            // 
+            tBoxContact.BorderStyle = BorderStyle.FixedSingle;
+            tBoxContact.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxContact.Location = new Point(132, 127);
+            tBoxContact.Name = "tBoxContact";
+            tBoxContact.Size = new Size(179, 25);
+            tBoxContact.TabIndex = 22;
+            // 
+            // tBoxAlamat
+            // 
+            tBoxAlamat.BorderStyle = BorderStyle.FixedSingle;
+            tBoxAlamat.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxAlamat.Location = new Point(132, 175);
+            tBoxAlamat.Name = "tBoxAlamat";
+            tBoxAlamat.Size = new Size(179, 25);
+            tBoxAlamat.TabIndex = 23;
+            // 
+            // tBoxKabupatenKota
+            // 
+            tBoxKabupatenKota.BorderStyle = BorderStyle.FixedSingle;
+            tBoxKabupatenKota.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxKabupatenKota.Location = new Point(132, 221);
+            tBoxKabupatenKota.Name = "tBoxKabupatenKota";
+            tBoxKabupatenKota.Size = new Size(179, 25);
+            tBoxKabupatenKota.TabIndex = 24;
+            // 
+            // cBoxJenisProduk
+            // 
+            cBoxJenisProduk.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxJenisProduk.FormattingEnabled = true;
+            cBoxJenisProduk.Location = new Point(132, 48);
+            cBoxJenisProduk.Name = "cBoxJenisProduk";
+            cBoxJenisProduk.Size = new Size(179, 25);
+            cBoxJenisProduk.TabIndex = 20;
+            // 
+            // cBoxNamaProduk
+            // 
+            cBoxNamaProduk.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxNamaProduk.FormattingEnabled = true;
+            cBoxNamaProduk.Location = new Point(132, 88);
+            cBoxNamaProduk.Name = "cBoxNamaProduk";
+            cBoxNamaProduk.Size = new Size(179, 25);
+            cBoxNamaProduk.TabIndex = 21;
+            // 
+            // cBoxPackaging
+            // 
+            cBoxPackaging.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxPackaging.FormattingEnabled = true;
+            cBoxPackaging.Location = new Point(132, 130);
+            cBoxPackaging.Name = "cBoxPackaging";
+            cBoxPackaging.Size = new Size(179, 25);
+            cBoxPackaging.TabIndex = 22;
+            // 
+            // domainUpDownQuantity
+            // 
+            domainUpDownQuantity.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            domainUpDownQuantity.Location = new Point(132, 173);
+            domainUpDownQuantity.Name = "domainUpDownQuantity";
+            domainUpDownQuantity.Size = new Size(179, 25);
+            domainUpDownQuantity.TabIndex = 23;
+            // 
+            // tBoxHarga
+            // 
+            tBoxHarga.BorderStyle = BorderStyle.FixedSingle;
+            tBoxHarga.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxHarga.Location = new Point(132, 212);
+            tBoxHarga.Name = "tBoxHarga";
+            tBoxHarga.Size = new Size(179, 25);
+            tBoxHarga.TabIndex = 25;
+            // 
+            // comboBox1
+            // 
+            comboBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(160, 49);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(260, 25);
+            comboBox1.TabIndex = 26;
+            // 
+            // dtpServiceOrder
+            // 
+            dtpServiceOrder.CalendarFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpServiceOrder.Location = new Point(530, 52);
+            dtpServiceOrder.Name = "dtpServiceOrder";
+            dtpServiceOrder.Size = new Size(198, 23);
+            dtpServiceOrder.TabIndex = 27;
+            // 
+            // dtpDueDate
+            // 
+            dtpDueDate.CalendarFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpDueDate.Location = new Point(814, 51);
+            dtpDueDate.Name = "dtpDueDate";
+            dtpDueDate.Size = new Size(191, 23);
+            dtpDueDate.TabIndex = 28;
+            // 
             // FormBuatInvoicePenjualan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1445, 728);
+            Controls.Add(btnBack);
+            Controls.Add(btnCreatePDF);
+            Controls.Add(btnInput);
+            Controls.Add(dataGridView1);
+            Controls.Add(panel8);
+            Controls.Add(panel6);
             Controls.Add(panel4);
             Controls.Add(label11);
             Controls.Add(panel1);
@@ -307,6 +631,15 @@
             panelProduk.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -335,5 +668,33 @@
         private Label label12;
         private Panel panel2;
         private Label label19;
+        private Label label13;
+        private Panel panel6;
+        private Panel panel7;
+        private Label label21;
+        private TextBox tBoxOtherComments;
+        private Panel panel8;
+        private Label lblTotal;
+        private Label lblSubTotal;
+        private Label lblPPN;
+        private Panel panel9;
+        private Label label22;
+        private DataGridView dataGridView1;
+        private Button btnInput;
+        private Button btnCreatePDF;
+        private Button btnBack;
+        private TextBox tBoxHarga;
+        private DomainUpDown domainUpDownQuantity;
+        private ComboBox cBoxPackaging;
+        private ComboBox cBoxNamaProduk;
+        private ComboBox cBoxJenisProduk;
+        private TextBox tBoxKabupatenKota;
+        private TextBox tBoxAlamat;
+        private TextBox tBoxContact;
+        private TextBox tBoxPerusahaan;
+        private TextBox tBoxNamaCust;
+        private DateTimePicker dtpDueDate;
+        private DateTimePicker dtpServiceOrder;
+        private ComboBox comboBox1;
     }
 }
