@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             lblWellcome = new Label();
-            btnViewUser = new Button();
             btnLogout = new Button();
             btnWTP = new Button();
             btnBakteri = new Button();
             panel1 = new Panel();
+            btnProcure = new Button();
+            btnQuotation = new Button();
+            button3 = new Button();
+            btnViewUser = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -47,29 +50,18 @@
             lblWellcome.TabIndex = 15;
             lblWellcome.Text = "Wellcome";
             // 
-            // btnViewUser
-            // 
-            btnViewUser.AutoSize = true;
-            btnViewUser.BackColor = Color.FromArgb(192, 255, 255);
-            btnViewUser.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnViewUser.Location = new Point(256, 265);
-            btnViewUser.Name = "btnViewUser";
-            btnViewUser.Size = new Size(180, 48);
-            btnViewUser.TabIndex = 14;
-            btnViewUser.Text = "View User";
-            btnViewUser.UseVisualStyleBackColor = false;
-            // 
             // btnLogout
             // 
             btnLogout.AutoSize = true;
             btnLogout.BackColor = Color.FromArgb(255, 128, 128);
             btnLogout.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLogout.Location = new Point(38, 282);
+            btnLogout.Location = new Point(38, 277);
             btnLogout.Name = "btnLogout";
             btnLogout.Size = new Size(72, 31);
             btnLogout.TabIndex = 13;
             btnLogout.Text = "LogOut";
             btnLogout.UseVisualStyleBackColor = false;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnWTP
             // 
@@ -101,22 +93,75 @@
             panel1.Controls.Add(lblWellcome);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(476, 65);
+            panel1.Size = new Size(669, 65);
             panel1.TabIndex = 16;
+            // 
+            // btnProcure
+            // 
+            btnProcure.AutoSize = true;
+            btnProcure.BackColor = Color.FromArgb(192, 255, 255);
+            btnProcure.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnProcure.Location = new Point(462, 95);
+            btnProcure.Name = "btnProcure";
+            btnProcure.Size = new Size(180, 48);
+            btnProcure.TabIndex = 17;
+            btnProcure.Text = "Procure";
+            btnProcure.UseVisualStyleBackColor = false;
+            // 
+            // btnQuotation
+            // 
+            btnQuotation.AutoSize = true;
+            btnQuotation.BackColor = Color.FromArgb(192, 255, 255);
+            btnQuotation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnQuotation.Location = new Point(462, 152);
+            btnQuotation.Name = "btnQuotation";
+            btnQuotation.Size = new Size(180, 48);
+            btnQuotation.TabIndex = 18;
+            btnQuotation.Text = "Quotation";
+            btnQuotation.UseVisualStyleBackColor = false;
+            // 
+            // button3
+            // 
+            button3.AutoSize = true;
+            button3.BackColor = Color.FromArgb(192, 255, 255);
+            button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.Location = new Point(462, 206);
+            button3.Name = "button3";
+            button3.Size = new Size(180, 48);
+            button3.TabIndex = 19;
+            button3.Text = "Mutasi";
+            button3.UseVisualStyleBackColor = false;
+            // 
+            // btnViewUser
+            // 
+            btnViewUser.AutoSize = true;
+            btnViewUser.BackColor = Color.FromArgb(192, 255, 255);
+            btnViewUser.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnViewUser.Location = new Point(462, 260);
+            btnViewUser.Name = "btnViewUser";
+            btnViewUser.Size = new Size(180, 48);
+            btnViewUser.TabIndex = 20;
+            btnViewUser.Text = "View User";
+            btnViewUser.UseVisualStyleBackColor = false;
+            btnViewUser.Click += btnViewUser_Click;
             // 
             // FormPilihDivisi
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(476, 350);
-            Controls.Add(panel1);
+            ClientSize = new Size(669, 332);
             Controls.Add(btnViewUser);
+            Controls.Add(button3);
+            Controls.Add(btnQuotation);
+            Controls.Add(btnProcure);
+            Controls.Add(panel1);
             Controls.Add(btnLogout);
             Controls.Add(btnWTP);
             Controls.Add(btnBakteri);
             Name = "FormPilihDivisi";
             Text = "FormPilihDivisi";
+            Load += FormPilihDivisi_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
@@ -126,10 +171,13 @@
         #endregion
 
         private Label lblWellcome;
-        private Button btnViewUser;
         private Button btnLogout;
         private Button btnWTP;
         private Button btnBakteri;
         private Panel panel1;
+        private Button btnProcure;
+        private Button btnQuotation;
+        private Button button3;
+        private Button btnViewUser;
     }
 }

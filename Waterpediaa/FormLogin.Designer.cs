@@ -50,6 +50,7 @@
             btnLogin.TabIndex = 15;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
+            btnLogin.Click += btnLogin_Click;
             // 
             // cBoxShowPass
             // 
@@ -60,6 +61,7 @@
             cBoxShowPass.TabIndex = 14;
             cBoxShowPass.Text = "Show Password";
             cBoxShowPass.UseVisualStyleBackColor = true;
+            cBoxShowPass.CheckedChanged += cBoxShowPass_CheckedChanged;
             // 
             // cBoxRememberUser
             // 
@@ -143,11 +145,12 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 408);
+            ClientSize = new Size(800, 531);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Name = "FormLogin";
             Text = "FormLogin";
+            Load += FormLogin_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

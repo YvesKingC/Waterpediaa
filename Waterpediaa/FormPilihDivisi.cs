@@ -19,7 +19,7 @@ namespace Waterpediaa
         private void FormPilihDivisi_Load(object sender, EventArgs e)
         {
             lblWellcome.Text = "Wellcome " + FormLogin.Nama;
-            if (FormLogin.Izin_Akses == "Admin")
+            if (FormLogin.Izin_Akses == "Admin_Utama")
             {
                 btnViewUser.Enabled = true;
             }
@@ -31,8 +31,15 @@ namespace Waterpediaa
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            Form formLogin = new FormLogin();
-            formLogin.Show();
+            Form FormLogout = new FormLogin();
+            FormLogout.Show();
+            this.Hide();
+        }
+
+        private void btnViewUser_Click(object sender, EventArgs e)
+        {
+            Form FormViewUser = new FormViewUser();
+            FormViewUser.Show();
             this.Hide();
         }
     }

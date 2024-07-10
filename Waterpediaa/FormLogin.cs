@@ -52,6 +52,7 @@ namespace Waterpediaa
                 tBoxPassword.UseSystemPasswordChar = true;
             }
         }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             sqlConnect.Open();
@@ -82,7 +83,13 @@ namespace Waterpediaa
             {
                 MessageBox.Show("User / Password Salah");
             }
-
+        }
+        private void FormLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnLogin_Click(sender, e);
+            }
         }
     }
 }

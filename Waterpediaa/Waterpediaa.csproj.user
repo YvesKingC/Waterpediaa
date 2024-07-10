@@ -22,5 +22,8 @@
     <Compile Update="FormTambahBakteri.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormViewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
