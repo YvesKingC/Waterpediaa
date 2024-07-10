@@ -145,7 +145,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(800, 531);
+            ClientSize = new Size(800, 506);
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Name = "FormLogin";
