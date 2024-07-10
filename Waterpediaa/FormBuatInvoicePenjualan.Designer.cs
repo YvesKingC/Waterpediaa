@@ -52,7 +52,7 @@
             panel3 = new Panel();
             label8 = new Label();
             panelProduk = new Panel();
-            tBoxKabupatenKota = new TextBox();
+            tBoxZipCode = new TextBox();
             tBoxAlamat = new TextBox();
             tBoxContact = new TextBox();
             tBoxPerusahaan = new TextBox();
@@ -79,6 +79,10 @@
             btnCreatePDF = new Button();
             btnBack = new Button();
             label14 = new Label();
+            label16 = new Label();
+            label20 = new Label();
+            cBoxProvinsi = new ComboBox();
+            cBoxKabupatenKota = new ComboBox();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
@@ -328,7 +332,11 @@
             // panelProduk
             // 
             panelProduk.BorderStyle = BorderStyle.FixedSingle;
-            panelProduk.Controls.Add(tBoxKabupatenKota);
+            panelProduk.Controls.Add(cBoxKabupatenKota);
+            panelProduk.Controls.Add(cBoxProvinsi);
+            panelProduk.Controls.Add(label20);
+            panelProduk.Controls.Add(label16);
+            panelProduk.Controls.Add(tBoxZipCode);
             panelProduk.Controls.Add(tBoxAlamat);
             panelProduk.Controls.Add(tBoxContact);
             panelProduk.Controls.Add(tBoxPerusahaan);
@@ -344,20 +352,20 @@
             panelProduk.Size = new Size(316, 260);
             panelProduk.TabIndex = 21;
             // 
-            // tBoxKabupatenKota
+            // tBoxZipCode
             // 
-            tBoxKabupatenKota.BorderStyle = BorderStyle.FixedSingle;
-            tBoxKabupatenKota.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxKabupatenKota.Location = new Point(132, 221);
-            tBoxKabupatenKota.Name = "tBoxKabupatenKota";
-            tBoxKabupatenKota.Size = new Size(179, 25);
-            tBoxKabupatenKota.TabIndex = 24;
+            tBoxZipCode.BorderStyle = BorderStyle.FixedSingle;
+            tBoxZipCode.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxZipCode.Location = new Point(132, 222);
+            tBoxZipCode.Name = "tBoxZipCode";
+            tBoxZipCode.Size = new Size(179, 25);
+            tBoxZipCode.TabIndex = 24;
             // 
             // tBoxAlamat
             // 
             tBoxAlamat.BorderStyle = BorderStyle.FixedSingle;
             tBoxAlamat.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxAlamat.Location = new Point(132, 175);
+            tBoxAlamat.Location = new Point(132, 133);
             tBoxAlamat.Name = "tBoxAlamat";
             tBoxAlamat.Size = new Size(179, 25);
             tBoxAlamat.TabIndex = 23;
@@ -366,7 +374,7 @@
             // 
             tBoxContact.BorderStyle = BorderStyle.FixedSingle;
             tBoxContact.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxContact.Location = new Point(132, 127);
+            tBoxContact.Location = new Point(132, 102);
             tBoxContact.Name = "tBoxContact";
             tBoxContact.Size = new Size(179, 25);
             tBoxContact.TabIndex = 22;
@@ -375,7 +383,7 @@
             // 
             tBoxPerusahaan.BorderStyle = BorderStyle.FixedSingle;
             tBoxPerusahaan.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxPerusahaan.Location = new Point(132, 84);
+            tBoxPerusahaan.Location = new Point(132, 69);
             tBoxPerusahaan.Name = "tBoxPerusahaan";
             tBoxPerusahaan.Size = new Size(179, 25);
             tBoxPerusahaan.TabIndex = 21;
@@ -393,7 +401,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(61, 177);
+            label9.Location = new Point(61, 135);
             label9.Name = "label9";
             label9.Size = new Size(65, 19);
             label9.TabIndex = 19;
@@ -403,7 +411,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(11, 223);
+            label3.Location = new Point(11, 166);
             label3.Name = "label3";
             label3.Size = new Size(115, 19);
             label3.TabIndex = 18;
@@ -413,7 +421,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(40, 86);
+            label2.Location = new Point(40, 71);
             label2.Name = "label2";
             label2.Size = new Size(86, 19);
             label2.TabIndex = 17;
@@ -423,7 +431,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(56, 129);
+            label1.Location = new Point(56, 104);
             label1.Name = "label1";
             label1.Size = new Size(70, 19);
             label1.TabIndex = 16;
@@ -613,6 +621,44 @@
             label14.TabIndex = 29;
             label14.Text = "( * ) Wajib di isi";
             // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Location = new Point(62, 196);
+            label16.Name = "label16";
+            label16.Size = new Size(64, 19);
+            label16.TabIndex = 25;
+            label16.Text = "Provinsi :";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.Location = new Point(55, 224);
+            label20.Name = "label20";
+            label20.Size = new Size(71, 19);
+            label20.TabIndex = 26;
+            label20.Text = "Zip Code :";
+            // 
+            // cBoxProvinsi
+            // 
+            cBoxProvinsi.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxProvinsi.FormattingEnabled = true;
+            cBoxProvinsi.Location = new Point(132, 193);
+            cBoxProvinsi.Name = "cBoxProvinsi";
+            cBoxProvinsi.Size = new Size(179, 25);
+            cBoxProvinsi.TabIndex = 26;
+            // 
+            // cBoxKabupatenKota
+            // 
+            cBoxKabupatenKota.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxKabupatenKota.FormattingEnabled = true;
+            cBoxKabupatenKota.Location = new Point(132, 163);
+            cBoxKabupatenKota.Name = "cBoxKabupatenKota";
+            cBoxKabupatenKota.Size = new Size(179, 25);
+            cBoxKabupatenKota.TabIndex = 27;
+            // 
             // FormBuatInvoicePenjualan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -700,7 +746,7 @@
         private ComboBox cBoxPackaging;
         private ComboBox cBoxNamaProduk;
         private ComboBox cBoxJenisProduk;
-        private TextBox tBoxKabupatenKota;
+        private TextBox tBoxZipCode;
         private TextBox tBoxAlamat;
         private TextBox tBoxContact;
         private TextBox tBoxPerusahaan;
@@ -709,5 +755,9 @@
         private DateTimePicker dtpServiceOrder;
         private ComboBox comboBox1;
         private Label label14;
+        private Label label20;
+        private Label label16;
+        private ComboBox cBoxProvinsi;
+        private ComboBox cBoxKabupatenKota;
     }
 }
