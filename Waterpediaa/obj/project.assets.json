@@ -1552,19 +1552,19 @@
   },
   "packageFolders": {
     "C:\\Users\\ASUS\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "D:\\Visual studio 3\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ASUS\\source\\repos\\Waterpediaa\\Waterpediaa\\Waterpediaa.csproj",
+      "projectUniqueName": "C:\\Users\\ASUS\\Source\\Repos\\Waterpediaa\\Waterpediaa\\Waterpediaa.csproj",
       "projectName": "Waterpediaa",
-      "projectPath": "C:\\Users\\ASUS\\source\\repos\\Waterpediaa\\Waterpediaa\\Waterpediaa.csproj",
+      "projectPath": "C:\\Users\\ASUS\\Source\\Repos\\Waterpediaa\\Waterpediaa\\Waterpediaa.csproj",
       "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ASUS\\source\\repos\\Waterpediaa\\Waterpediaa\\obj\\",
+      "outputPath": "C:\\Users\\ASUS\\Source\\Repos\\Waterpediaa\\Waterpediaa\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        "D:\\Visual studio 3\\NuGetPackages"
       ],
       "configFilePaths": [
         "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1576,6 +1576,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1588,6 +1589,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1618,7 +1624,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }
