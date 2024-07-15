@@ -39,6 +39,7 @@
             label18 = new Label();
             label11 = new Label();
             panel1 = new Panel();
+            numericUpDown1 = new NumericUpDown();
             tBoxHarga = new TextBox();
             cBoxPackaging = new ComboBox();
             cBoxNamaProduk = new ComboBox();
@@ -82,10 +83,10 @@
             btnCreatePDF = new Button();
             btnBack = new Button();
             label14 = new Label();
-            numericUpDown1 = new NumericUpDown();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             panel3.SuspendLayout();
             panelProduk.SuspendLayout();
             panel2.SuspendLayout();
@@ -94,7 +95,6 @@
             panel8.SuspendLayout();
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
             SuspendLayout();
             // 
             // panel4
@@ -215,6 +215,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(316, 260);
             panel1.TabIndex = 22;
+            // 
+            // numericUpDown1
+            // 
+            numericUpDown1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDown1.Location = new Point(132, 171);
+            numericUpDown1.Name = "numericUpDown1";
+            numericUpDown1.Size = new Size(179, 25);
+            numericUpDown1.TabIndex = 38;
             // 
             // tBoxHarga
             // 
@@ -652,19 +660,11 @@
             label14.TabIndex = 29;
             label14.Text = "( * ) Wajib di isi";
             // 
-            // numericUpDown1
-            // 
-            numericUpDown1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(132, 171);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(179, 25);
-            numericUpDown1.TabIndex = 38;
-            // 
             // FormBuatInvoicePenjualan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1445, 728);
+            ClientSize = new Size(1368, 728);
             Controls.Add(label14);
             Controls.Add(btnBack);
             Controls.Add(btnCreatePDF);
@@ -684,6 +684,7 @@
             panel5.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panelProduk.ResumeLayout(false);
@@ -699,7 +700,6 @@
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }

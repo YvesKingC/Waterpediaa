@@ -36,18 +36,15 @@
             panel1 = new Panel();
             btnInputBakteriBaru = new Button();
             numericUpDown2 = new NumericUpDown();
-            label5 = new Label();
             numericUpDown1 = new NumericUpDown();
             label3 = new Label();
             textBox1 = new TextBox();
-            label2 = new Label();
-            tBoxKodeBakteri = new TextBox();
-            label1 = new Label();
             label4 = new Label();
             label7 = new Label();
             panel3 = new Panel();
             label8 = new Label();
             panel2 = new Panel();
+            btnInputProcureBakteri = new Button();
             numericUpDown3 = new NumericUpDown();
             dateTimePicker1 = new DateTimePicker();
             label6 = new Label();
@@ -61,7 +58,6 @@
             panel8 = new Panel();
             label13 = new Label();
             dataGridView1 = new DataGridView();
-            btnInputProcureBakteri = new Button();
             panel9 = new Panel();
             dataGridView3 = new DataGridView();
             panel10 = new Panel();
@@ -142,13 +138,9 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(btnInputBakteriBaru);
             panel1.Controls.Add(numericUpDown2);
-            panel1.Controls.Add(label5);
             panel1.Controls.Add(numericUpDown1);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(textBox1);
-            panel1.Controls.Add(label2);
-            panel1.Controls.Add(tBoxKodeBakteri);
-            panel1.Controls.Add(label1);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(panel3);
@@ -172,25 +164,15 @@
             // numericUpDown2
             // 
             numericUpDown2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown2.Location = new Point(106, 128);
+            numericUpDown2.Location = new Point(106, 98);
             numericUpDown2.Name = "numericUpDown2";
             numericUpDown2.Size = new Size(173, 25);
             numericUpDown2.TabIndex = 39;
             // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(198, 37);
-            label5.Name = "label5";
-            label5.Size = new Size(35, 19);
-            label5.TabIndex = 38;
-            label5.Text = "- 00";
-            // 
             // numericUpDown1
             // 
             numericUpDown1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(106, 97);
+            numericUpDown1.Location = new Point(106, 67);
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(173, 25);
             numericUpDown1.TabIndex = 37;
@@ -199,7 +181,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(21, 99);
+            label3.Location = new Point(21, 69);
             label3.Name = "label3";
             label3.Size = new Size(82, 19);
             label3.TabIndex = 34;
@@ -209,47 +191,16 @@
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(106, 66);
+            textBox1.Location = new Point(106, 36);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(173, 25);
             textBox1.TabIndex = 33;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(106, 37);
-            label2.Name = "label2";
-            label2.Size = new Size(36, 19);
-            label2.TabIndex = 32;
-            label2.Text = "BA -";
-            // 
-            // tBoxKodeBakteri
-            // 
-            tBoxKodeBakteri.BorderStyle = BorderStyle.FixedSingle;
-            tBoxKodeBakteri.CharacterCasing = CharacterCasing.Upper;
-            tBoxKodeBakteri.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxKodeBakteri.Location = new Point(144, 35);
-            tBoxKodeBakteri.MaxLength = 3;
-            tBoxKodeBakteri.Name = "tBoxKodeBakteri";
-            tBoxKodeBakteri.Size = new Size(52, 25);
-            tBoxKodeBakteri.TabIndex = 31;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(10, 37);
-            label1.Name = "label1";
-            label1.Size = new Size(93, 19);
-            label1.TabIndex = 30;
-            label1.Text = "Kode Bakteri :";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(18, 130);
+            label4.Location = new Point(18, 100);
             label4.Name = "label4";
             label4.Size = new Size(85, 19);
             label4.TabIndex = 18;
@@ -259,7 +210,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(5, 68);
+            label7.Location = new Point(5, 38);
             label7.Name = "label7";
             label7.Size = new Size(98, 19);
             label7.TabIndex = 15;
@@ -301,6 +252,18 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(292, 183);
             panel2.TabIndex = 38;
+            // 
+            // btnInputProcureBakteri
+            // 
+            btnInputProcureBakteri.Anchor = AnchorStyles.None;
+            btnInputProcureBakteri.BackColor = Color.FromArgb(192, 255, 192);
+            btnInputProcureBakteri.Location = new Point(154, 147);
+            btnInputProcureBakteri.Margin = new Padding(3, 2, 3, 2);
+            btnInputProcureBakteri.Name = "btnInputProcureBakteri";
+            btnInputProcureBakteri.Size = new Size(125, 22);
+            btnInputProcureBakteri.TabIndex = 41;
+            btnInputProcureBakteri.Text = "Input";
+            btnInputProcureBakteri.UseVisualStyleBackColor = false;
             // 
             // numericUpDown3
             // 
@@ -428,18 +391,6 @@
             dataGridView1.Size = new Size(448, 143);
             dataGridView1.TabIndex = 0;
             // 
-            // btnInputProcureBakteri
-            // 
-            btnInputProcureBakteri.Anchor = AnchorStyles.None;
-            btnInputProcureBakteri.BackColor = Color.FromArgb(192, 255, 192);
-            btnInputProcureBakteri.Location = new Point(154, 147);
-            btnInputProcureBakteri.Margin = new Padding(3, 2, 3, 2);
-            btnInputProcureBakteri.Name = "btnInputProcureBakteri";
-            btnInputProcureBakteri.Size = new Size(125, 22);
-            btnInputProcureBakteri.TabIndex = 41;
-            btnInputProcureBakteri.Text = "Input";
-            btnInputProcureBakteri.UseVisualStyleBackColor = false;
-            // 
             // panel9
             // 
             panel9.BackColor = SystemColors.Control;
@@ -527,17 +478,13 @@
         private Panel panel6;
         private Label label9;
         private Panel panel1;
-        private Label label1;
         private Label label4;
         private Label label7;
         private Panel panel3;
         private Label label8;
-        private TextBox tBoxKodeBakteri;
         private TextBox textBox1;
-        private Label label2;
         private NumericUpDown numericUpDown1;
         private Label label3;
-        private Label label5;
         private NumericUpDown numericUpDown2;
         private Button btnInputBakteriBaru;
         private Panel panel2;
