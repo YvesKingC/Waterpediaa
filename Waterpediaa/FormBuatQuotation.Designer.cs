@@ -246,9 +246,9 @@
             label21.ForeColor = Color.FromArgb(224, 224, 224);
             label21.Location = new Point(11, 4);
             label21.Name = "label21";
-            label21.Size = new Size(122, 19);
+            label21.Size = new Size(147, 19);
             label21.TabIndex = 13;
-            label21.Text = "Other Comments";
+            label21.Text = "Terms and Condition";
             // 
             // panel4
             // 
