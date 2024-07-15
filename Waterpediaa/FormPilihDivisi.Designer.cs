@@ -48,9 +48,9 @@
             lblWellcome.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
             lblWellcome.Location = new Point(12, 13);
             lblWellcome.Name = "lblWellcome";
-            lblWellcome.Size = new Size(134, 37);
+            lblWellcome.Size = new Size(127, 37);
             lblWellcome.TabIndex = 15;
-            lblWellcome.Text = "Wellcome";
+            lblWellcome.Text = "Welcome";
             // 
             // btnLogout
             // 
@@ -105,9 +105,9 @@
             btnProcure.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             btnProcure.Location = new Point(446, 20);
             btnProcure.Name = "btnProcure";
-            btnProcure.Size = new Size(180, 48);
+            btnProcure.Size = new Size(180, 52);
             btnProcure.TabIndex = 17;
-            btnProcure.Text = "Procure";
+            btnProcure.Text = "Tambah dan Procure\r\nbakteri\r\n";
             btnProcure.UseVisualStyleBackColor = false;
             // 
             // btnQuotation
