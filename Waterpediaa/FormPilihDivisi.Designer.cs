@@ -35,7 +35,7 @@
             panel1 = new Panel();
             btnProcure = new Button();
             btnQuotation = new Button();
-            button3 = new Button();
+            btnInvoice = new Button();
             btnViewUser = new Button();
             panel2 = new Panel();
             panel1.SuspendLayout();
@@ -76,6 +76,7 @@
             btnWTP.TabIndex = 12;
             btnWTP.Text = "Divisi WTP";
             btnWTP.UseVisualStyleBackColor = false;
+            btnWTP.Click += btnWTP_Click;
             // 
             // btnBakteri
             // 
@@ -88,6 +89,7 @@
             btnBakteri.TabIndex = 11;
             btnBakteri.Text = "Divisi Bakteri";
             btnBakteri.UseVisualStyleBackColor = false;
+            btnBakteri.Click += btnBakteri_Click;
             // 
             // panel1
             // 
@@ -109,6 +111,7 @@
             btnProcure.TabIndex = 17;
             btnProcure.Text = "Tambah dan Procure\r\nbakteri\r\n";
             btnProcure.UseVisualStyleBackColor = false;
+            btnProcure.Click += btnProcure_Click;
             // 
             // btnQuotation
             // 
@@ -121,18 +124,20 @@
             btnQuotation.TabIndex = 18;
             btnQuotation.Text = "Quotation";
             btnQuotation.UseVisualStyleBackColor = false;
+            btnQuotation.Click += btnQuotation_Click;
             // 
-            // button3
+            // btnInvoice
             // 
-            button3.AutoSize = true;
-            button3.BackColor = Color.FromArgb(192, 255, 255);
-            button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(446, 131);
-            button3.Name = "button3";
-            button3.Size = new Size(180, 48);
-            button3.TabIndex = 19;
-            button3.Text = "Invoice";
-            button3.UseVisualStyleBackColor = false;
+            btnInvoice.AutoSize = true;
+            btnInvoice.BackColor = Color.FromArgb(192, 255, 255);
+            btnInvoice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInvoice.Location = new Point(446, 131);
+            btnInvoice.Name = "btnInvoice";
+            btnInvoice.Size = new Size(180, 48);
+            btnInvoice.TabIndex = 19;
+            btnInvoice.Text = "Invoice";
+            btnInvoice.UseVisualStyleBackColor = false;
+            btnInvoice.Click += btnInvoice_Click;
             // 
             // btnViewUser
             // 
@@ -153,7 +158,7 @@
             panel2.Controls.Add(btnWTP);
             panel2.Controls.Add(btnViewUser);
             panel2.Controls.Add(btnBakteri);
-            panel2.Controls.Add(button3);
+            panel2.Controls.Add(btnInvoice);
             panel2.Controls.Add(btnLogout);
             panel2.Controls.Add(btnQuotation);
             panel2.Controls.Add(btnProcure);
@@ -189,7 +194,7 @@
         private Panel panel1;
         private Button btnProcure;
         private Button btnQuotation;
-        private Button button3;
+        private Button btnInvoice;
         private Button btnViewUser;
         private Panel panel2;
     }

@@ -19,7 +19,7 @@ namespace Waterpediaa
         private void FormPilihDivisi_Load(object sender, EventArgs e)
         {
             lblWellcome.Text = "Wellcome " + FormLogin.Nama;
-            if (FormLogin.Izin_Akses == "Admin_Utama")
+            if (FormLogin.Izin_Akses == "Admin")
             {
                 btnViewUser.Enabled = true;
             }
@@ -40,6 +40,41 @@ namespace Waterpediaa
         {
             Form FormViewUser = new FormViewUser();
             FormViewUser.Show();
+            this.Hide();
+        }
+
+        private void btnProcure_Click(object sender, EventArgs e)
+        {
+            Form FormTambahBakteri = new FormTambahBakteri();
+            FormTambahBakteri.Show();
+            this.Hide();
+        }
+
+        private void btnQuotation_Click(object sender, EventArgs e)
+        {
+            Form FormBuatQuotation = new FormBuatQuotation();
+            FormBuatQuotation.Show();
+            this.Hide();
+        }
+
+        private void btnInvoice_Click(object sender, EventArgs e)
+        {
+            Form FormBuatInvoicePenjualan = new FormBuatInvoicePenjualan();
+            FormBuatInvoicePenjualan.Show();
+            this.Hide();
+        }
+
+        private void btnBakteri_Click(object sender, EventArgs e)
+        {
+            Form FormInventoryBakteri = new FormInventoryBakteri();
+            FormInventoryBakteri.Show();
+            this.Hide();
+        }
+
+        private void btnWTP_Click(object sender, EventArgs e)
+        {
+            Form ForminventoryWTP = new FormInventoryWTP();
+            ForminventoryWTP.Show();
             this.Hide();
         }
     }

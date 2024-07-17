@@ -31,13 +31,11 @@
             btnBack = new Button();
             buttonAddBakteri = new Button();
             buttonInvoice = new Button();
-            buttonApplyFilter = new Button();
             buttonEditItem = new Button();
             buttonSearch = new Button();
-            labelFilter = new Label();
-            comboBox1 = new ComboBox();
             dgvInventoryBakteri = new DataGridView();
             textBox1 = new TextBox();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvInventoryBakteri).BeginInit();
             SuspendLayout();
             // 
@@ -56,7 +54,7 @@
             // buttonAddBakteri
             // 
             buttonAddBakteri.Anchor = AnchorStyles.None;
-            buttonAddBakteri.Location = new Point(634, 184);
+            buttonAddBakteri.Location = new Point(634, 107);
             buttonAddBakteri.Margin = new Padding(3, 2, 3, 2);
             buttonAddBakteri.Name = "buttonAddBakteri";
             buttonAddBakteri.Size = new Size(125, 22);
@@ -76,21 +74,10 @@
             buttonInvoice.Text = "Invoice";
             buttonInvoice.UseVisualStyleBackColor = false;
             // 
-            // buttonApplyFilter
-            // 
-            buttonApplyFilter.Anchor = AnchorStyles.None;
-            buttonApplyFilter.Location = new Point(651, 113);
-            buttonApplyFilter.Margin = new Padding(3, 2, 3, 2);
-            buttonApplyFilter.Name = "buttonApplyFilter";
-            buttonApplyFilter.Size = new Size(82, 22);
-            buttonApplyFilter.TabIndex = 29;
-            buttonApplyFilter.Text = "Apply";
-            buttonApplyFilter.UseVisualStyleBackColor = true;
-            // 
             // buttonEditItem
             // 
             buttonEditItem.Anchor = AnchorStyles.None;
-            buttonEditItem.Location = new Point(634, 158);
+            buttonEditItem.Location = new Point(633, 81);
             buttonEditItem.Margin = new Padding(3, 2, 3, 2);
             buttonEditItem.Name = "buttonEditItem";
             buttonEditItem.Size = new Size(125, 22);
@@ -110,26 +97,6 @@
             buttonSearch.TabIndex = 27;
             buttonSearch.Text = "Search";
             buttonSearch.UseVisualStyleBackColor = false;
-            // 
-            // labelFilter
-            // 
-            labelFilter.Anchor = AnchorStyles.None;
-            labelFilter.AutoSize = true;
-            labelFilter.Location = new Point(626, 70);
-            labelFilter.Name = "labelFilter";
-            labelFilter.Size = new Size(42, 15);
-            labelFilter.TabIndex = 26;
-            labelFilter.Text = "Filter : ";
-            // 
-            // comboBox1
-            // 
-            comboBox1.Anchor = AnchorStyles.None;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(626, 88);
-            comboBox1.Margin = new Padding(3, 2, 3, 2);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(133, 23);
-            comboBox1.TabIndex = 25;
             // 
             // dgvInventoryBakteri
             // 
@@ -156,19 +123,28 @@
             textBox1.Size = new Size(569, 23);
             textBox1.TabIndex = 23;
             // 
+            // button1
+            // 
+            button1.Anchor = AnchorStyles.None;
+            button1.Location = new Point(633, 133);
+            button1.Margin = new Padding(3, 2, 3, 2);
+            button1.Name = "button1";
+            button1.Size = new Size(125, 22);
+            button1.TabIndex = 35;
+            button1.Text = "Paket Bakteri";
+            button1.UseVisualStyleBackColor = true;
+            // 
             // FormInventoryBakteri
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 361);
+            Controls.Add(button1);
             Controls.Add(btnBack);
             Controls.Add(buttonAddBakteri);
             Controls.Add(buttonInvoice);
-            Controls.Add(buttonApplyFilter);
             Controls.Add(buttonEditItem);
             Controls.Add(buttonSearch);
-            Controls.Add(labelFilter);
-            Controls.Add(comboBox1);
             Controls.Add(dgvInventoryBakteri);
             Controls.Add(textBox1);
             Name = "FormInventoryBakteri";
@@ -183,12 +159,10 @@
         private Button btnBack;
         private Button buttonAddBakteri;
         private Button buttonInvoice;
-        private Button buttonApplyFilter;
         private Button buttonEditItem;
         private Button buttonSearch;
-        private Label labelFilter;
-        private ComboBox comboBox1;
         private DataGridView dgvInventoryBakteri;
         private TextBox textBox1;
+        private Button button1;
     }
 }

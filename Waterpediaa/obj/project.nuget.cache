@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nDOsg4H+2l4=",
+  "dgSpecHash": "134B3Wmz/EsONE7yOxb6NSXkwAfYuA9W4IA9ruNv7OVLpQOk6D6fDdrYzLbi/WrMhE3GmnCYnDvyH5l6nsFCqQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ASUS\\Source\\Repos\\Waterpediaa\\Waterpediaa\\Waterpediaa.csproj",
+  "projectFilePath": "C:\\Users\\ASUS\\source\\repos\\Waterpediaa\\Waterpediaa\\Waterpediaa.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASUS\\.nuget\\packages\\bouncycastle.cryptography\\2.3.1\\bouncycastle.cryptography.2.3.1.nupkg.sha512",
     "C:\\Users\\ASUS\\.nuget\\packages\\google.protobuf\\3.26.1\\google.protobuf.3.26.1.nupkg.sha512",
