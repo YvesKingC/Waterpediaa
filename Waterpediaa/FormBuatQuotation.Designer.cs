@@ -1,6 +1,6 @@
 ﻿namespace Waterpediaa
 {
-    partial class FormBuatInvoicePenjualan
+    partial class FormBuatQuotation
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label14 = new Label();
+            btnBack = new Button();
+            btnCreatePDF = new Button();
+            btnInput = new Button();
+            dataGridView1 = new DataGridView();
+            panel8 = new Panel();
+            lblTotal = new Label();
+            lblSubTotal = new Label();
+            lblPPN = new Label();
+            panel9 = new Panel();
+            label22 = new Label();
+            panel6 = new Panel();
+            tBoxOtherComments = new TextBox();
+            panel7 = new Panel();
+            label21 = new Label();
             panel4 = new Panel();
             dtpDueDate = new DateTimePicker();
             dtpServiceOrder = new DateTimePicker();
@@ -37,7 +52,6 @@
             label17 = new Label();
             panel5 = new Panel();
             label18 = new Label();
-            label11 = new Label();
             panel1 = new Panel();
             numericUpDown1 = new NumericUpDown();
             tBoxHarga = new TextBox();
@@ -68,21 +82,11 @@
             label12 = new Label();
             panel2 = new Panel();
             label19 = new Label();
-            panel6 = new Panel();
-            tBoxOtherComments = new TextBox();
-            panel7 = new Panel();
-            label21 = new Label();
-            panel8 = new Panel();
-            lblTotal = new Label();
-            lblSubTotal = new Label();
-            lblPPN = new Label();
-            panel9 = new Panel();
-            label22 = new Label();
-            dataGridView1 = new DataGridView();
-            btnInput = new Button();
-            btnCreatePDF = new Button();
-            btnBack = new Button();
-            label14 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel8.SuspendLayout();
+            panel9.SuspendLayout();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
@@ -90,12 +94,161 @@
             panel3.SuspendLayout();
             panelProduk.SuspendLayout();
             panel2.SuspendLayout();
-            panel6.SuspendLayout();
-            panel7.SuspendLayout();
-            panel8.SuspendLayout();
-            panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(474, 580);
+            label14.Name = "label14";
+            label14.Size = new Size(99, 19);
+            label14.TabIndex = 40;
+            label14.Text = "( * ) Wajib di isi";
+            // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.FromArgb(255, 128, 128);
+            btnBack.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(337, 678);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(119, 38);
+            btnBack.TabIndex = 39;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            // 
+            // btnCreatePDF
+            // 
+            btnCreatePDF.BackColor = Color.FromArgb(192, 255, 192);
+            btnCreatePDF.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCreatePDF.Location = new Point(336, 618);
+            btnCreatePDF.Name = "btnCreatePDF";
+            btnCreatePDF.Size = new Size(119, 49);
+            btnCreatePDF.TabIndex = 38;
+            btnCreatePDF.Text = "Create \r\nQuotation";
+            btnCreatePDF.UseVisualStyleBackColor = false;
+            // 
+            // btnInput
+            // 
+            btnInput.BackColor = Color.FromArgb(192, 255, 192);
+            btnInput.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInput.Location = new Point(337, 574);
+            btnInput.Name = "btnInput";
+            btnInput.Size = new Size(119, 38);
+            btnInput.TabIndex = 37;
+            btnInput.Text = "Input";
+            btnInput.UseVisualStyleBackColor = false;
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(336, 115);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(1019, 452);
+            dataGridView1.TabIndex = 36;
+            // 
+            // panel8
+            // 
+            panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Controls.Add(lblTotal);
+            panel8.Controls.Add(lblSubTotal);
+            panel8.Controls.Add(lblPPN);
+            panel8.Controls.Add(panel9);
+            panel8.Location = new Point(1039, 573);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(316, 144);
+            panel8.TabIndex = 33;
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblTotal.Location = new Point(38, 106);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(45, 19);
+            lblTotal.TabIndex = 18;
+            lblTotal.Text = "Total :";
+            // 
+            // lblSubTotal
+            // 
+            lblSubTotal.AutoSize = true;
+            lblSubTotal.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblSubTotal.Location = new Point(11, 44);
+            lblSubTotal.Name = "lblSubTotal";
+            lblSubTotal.Size = new Size(72, 19);
+            lblSubTotal.TabIndex = 17;
+            lblSubTotal.Text = "Sub Total :";
+            // 
+            // lblPPN
+            // 
+            lblPPN.AutoSize = true;
+            lblPPN.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPPN.Location = new Point(41, 74);
+            lblPPN.Name = "lblPPN";
+            lblPPN.Size = new Size(42, 19);
+            lblPPN.TabIndex = 15;
+            lblPPN.Text = "PPN :";
+            // 
+            // panel9
+            // 
+            panel9.BackColor = Color.DarkBlue;
+            panel9.Controls.Add(label22);
+            panel9.Location = new Point(0, 0);
+            panel9.Name = "panel9";
+            panel9.Size = new Size(316, 29);
+            panel9.TabIndex = 14;
+            // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label22.ForeColor = Color.FromArgb(224, 224, 224);
+            label22.Location = new Point(11, 4);
+            label22.Name = "label22";
+            label22.Size = new Size(102, 19);
+            label22.TabIndex = 13;
+            label22.Text = "Total Subtotal";
+            // 
+            // panel6
+            // 
+            panel6.BorderStyle = BorderStyle.FixedSingle;
+            panel6.Controls.Add(tBoxOtherComments);
+            panel6.Controls.Add(panel7);
+            panel6.Location = new Point(14, 544);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(316, 172);
+            panel6.TabIndex = 34;
+            // 
+            // tBoxOtherComments
+            // 
+            tBoxOtherComments.BorderStyle = BorderStyle.FixedSingle;
+            tBoxOtherComments.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxOtherComments.Location = new Point(3, 35);
+            tBoxOtherComments.Multiline = true;
+            tBoxOtherComments.Name = "tBoxOtherComments";
+            tBoxOtherComments.Size = new Size(308, 132);
+            tBoxOtherComments.TabIndex = 15;
+            // 
+            // panel7
+            // 
+            panel7.BackColor = Color.DarkBlue;
+            panel7.Controls.Add(label21);
+            panel7.Location = new Point(0, 0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(316, 29);
+            panel7.TabIndex = 14;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label21.ForeColor = Color.FromArgb(224, 224, 224);
+            label21.Location = new Point(11, 4);
+            label21.Name = "label21";
+            label21.Size = new Size(147, 19);
+            label21.TabIndex = 13;
+            label21.Text = "Terms and Condition";
             // 
             // panel4
             // 
@@ -107,10 +260,10 @@
             panel4.Controls.Add(label15);
             panel4.Controls.Add(label17);
             panel4.Controls.Add(panel5);
-            panel4.Location = new Point(334, 12);
+            panel4.Location = new Point(336, 12);
             panel4.Name = "panel4";
             panel4.Size = new Size(1019, 97);
-            panel4.TabIndex = 23;
+            panel4.TabIndex = 32;
             // 
             // dtpDueDate
             // 
@@ -183,19 +336,9 @@
             label18.ForeColor = Color.FromArgb(224, 224, 224);
             label18.Location = new Point(11, 4);
             label18.Name = "label18";
-            label18.Size = new Size(140, 19);
+            label18.Size = new Size(159, 19);
             label18.TabIndex = 13;
-            label18.Text = "Invoice Information";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(472, 655);
-            label11.Name = "label11";
-            label11.Size = new Size(387, 57);
-            label11.TabIndex = 24;
-            label11.Text = "Note:\r\npada database nanti untuk harga itu akan di rubah jadi modal\r\njadi bukan harga jual karena harga jual itu bisa jadi beda2";
+            label18.Text = "Quotation Information";
             // 
             // panel1
             // 
@@ -211,10 +354,10 @@
             panel1.Controls.Add(label6);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(panel3);
-            panel1.Location = new Point(12, 278);
+            panel1.Location = new Point(14, 278);
             panel1.Name = "panel1";
             panel1.Size = new Size(316, 260);
-            panel1.TabIndex = 22;
+            panel1.TabIndex = 31;
             // 
             // numericUpDown1
             // 
@@ -348,10 +491,10 @@
             panelProduk.Controls.Add(label1);
             panelProduk.Controls.Add(label12);
             panelProduk.Controls.Add(panel2);
-            panelProduk.Location = new Point(12, 12);
+            panelProduk.Location = new Point(14, 12);
             panelProduk.Name = "panelProduk";
             panelProduk.Size = new Size(316, 260);
-            panelProduk.TabIndex = 21;
+            panelProduk.TabIndex = 30;
             // 
             // cBoxKabupatenKota
             // 
@@ -506,161 +649,7 @@
             label19.TabIndex = 13;
             label19.Text = "Customer Information";
             // 
-            // panel6
-            // 
-            panel6.BorderStyle = BorderStyle.FixedSingle;
-            panel6.Controls.Add(tBoxOtherComments);
-            panel6.Controls.Add(panel7);
-            panel6.Location = new Point(12, 544);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(316, 172);
-            panel6.TabIndex = 24;
-            // 
-            // tBoxOtherComments
-            // 
-            tBoxOtherComments.BorderStyle = BorderStyle.FixedSingle;
-            tBoxOtherComments.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxOtherComments.Location = new Point(3, 35);
-            tBoxOtherComments.Multiline = true;
-            tBoxOtherComments.Name = "tBoxOtherComments";
-            tBoxOtherComments.Size = new Size(308, 132);
-            tBoxOtherComments.TabIndex = 15;
-            // 
-            // panel7
-            // 
-            panel7.BackColor = Color.DarkBlue;
-            panel7.Controls.Add(label21);
-            panel7.Location = new Point(0, 0);
-            panel7.Name = "panel7";
-            panel7.Size = new Size(316, 29);
-            panel7.TabIndex = 14;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label21.ForeColor = Color.FromArgb(224, 224, 224);
-            label21.Location = new Point(11, 4);
-            label21.Name = "label21";
-            label21.Size = new Size(122, 19);
-            label21.TabIndex = 13;
-            label21.Text = "Other Comments";
-            // 
-            // panel8
-            // 
-            panel8.BorderStyle = BorderStyle.FixedSingle;
-            panel8.Controls.Add(lblTotal);
-            panel8.Controls.Add(lblSubTotal);
-            panel8.Controls.Add(lblPPN);
-            panel8.Controls.Add(panel9);
-            panel8.Location = new Point(1037, 573);
-            panel8.Name = "panel8";
-            panel8.Size = new Size(316, 144);
-            panel8.TabIndex = 24;
-            // 
-            // lblTotal
-            // 
-            lblTotal.AutoSize = true;
-            lblTotal.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblTotal.Location = new Point(38, 106);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(45, 19);
-            lblTotal.TabIndex = 18;
-            lblTotal.Text = "Total :";
-            // 
-            // lblSubTotal
-            // 
-            lblSubTotal.AutoSize = true;
-            lblSubTotal.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblSubTotal.Location = new Point(11, 44);
-            lblSubTotal.Name = "lblSubTotal";
-            lblSubTotal.Size = new Size(72, 19);
-            lblSubTotal.TabIndex = 17;
-            lblSubTotal.Text = "Sub Total :";
-            // 
-            // lblPPN
-            // 
-            lblPPN.AutoSize = true;
-            lblPPN.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPPN.Location = new Point(41, 74);
-            lblPPN.Name = "lblPPN";
-            lblPPN.Size = new Size(42, 19);
-            lblPPN.TabIndex = 15;
-            lblPPN.Text = "PPN :";
-            // 
-            // panel9
-            // 
-            panel9.BackColor = Color.DarkBlue;
-            panel9.Controls.Add(label22);
-            panel9.Location = new Point(0, 0);
-            panel9.Name = "panel9";
-            panel9.Size = new Size(316, 29);
-            panel9.TabIndex = 14;
-            // 
-            // label22
-            // 
-            label22.AutoSize = true;
-            label22.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label22.ForeColor = Color.FromArgb(224, 224, 224);
-            label22.Location = new Point(11, 4);
-            label22.Name = "label22";
-            label22.Size = new Size(102, 19);
-            label22.TabIndex = 13;
-            label22.Text = "Total Subtotal";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(334, 115);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1019, 452);
-            dataGridView1.TabIndex = 25;
-            // 
-            // btnInput
-            // 
-            btnInput.BackColor = Color.FromArgb(192, 255, 192);
-            btnInput.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            btnInput.Location = new Point(335, 574);
-            btnInput.Name = "btnInput";
-            btnInput.Size = new Size(119, 38);
-            btnInput.TabIndex = 26;
-            btnInput.Text = "Input";
-            btnInput.UseVisualStyleBackColor = false;
-            // 
-            // btnCreatePDF
-            // 
-            btnCreatePDF.BackColor = Color.FromArgb(192, 255, 192);
-            btnCreatePDF.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCreatePDF.Location = new Point(334, 618);
-            btnCreatePDF.Name = "btnCreatePDF";
-            btnCreatePDF.Size = new Size(119, 49);
-            btnCreatePDF.TabIndex = 27;
-            btnCreatePDF.Text = "Create\r\nInvoice";
-            btnCreatePDF.UseVisualStyleBackColor = false;
-            // 
-            // btnBack
-            // 
-            btnBack.BackColor = Color.FromArgb(255, 128, 128);
-            btnBack.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            btnBack.Location = new Point(335, 678);
-            btnBack.Name = "btnBack";
-            btnBack.Size = new Size(119, 38);
-            btnBack.TabIndex = 28;
-            btnBack.Text = "Back";
-            btnBack.UseVisualStyleBackColor = false;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(472, 580);
-            label14.Name = "label14";
-            label14.Size = new Size(99, 19);
-            label14.TabIndex = 29;
-            label14.Text = "( * ) Wajib di isi";
-            // 
-            // FormBuatInvoicePenjualan
+            // FormBuatQuotation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -673,11 +662,19 @@
             Controls.Add(panel8);
             Controls.Add(panel6);
             Controls.Add(panel4);
-            Controls.Add(label11);
             Controls.Add(panel1);
             Controls.Add(panelProduk);
-            Name = "FormBuatInvoicePenjualan";
-            Text = "FormBuatInvoicePenjualan";
+            Name = "FormBuatQuotation";
+            Text = "FormBuatQuotation";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
+            panel9.ResumeLayout(false);
+            panel9.PerformLayout();
+            panel6.ResumeLayout(false);
+            panel6.PerformLayout();
+            panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel5.ResumeLayout(false);
@@ -691,28 +688,42 @@
             panelProduk.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
-            panel7.ResumeLayout(false);
-            panel7.PerformLayout();
-            panel8.ResumeLayout(false);
-            panel8.PerformLayout();
-            panel9.ResumeLayout(false);
-            panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
+        private Label label14;
+        private Button btnBack;
+        private Button btnCreatePDF;
+        private Button btnInput;
+        private DataGridView dataGridView1;
+        private Panel panel8;
+        private Label lblTotal;
+        private Label lblSubTotal;
+        private Label lblPPN;
+        private Panel panel9;
+        private Label label22;
+        private Panel panel6;
+        private TextBox tBoxOtherComments;
+        private Panel panel7;
+        private Label label21;
         private Panel panel4;
+        private DateTimePicker dtpDueDate;
+        private DateTimePicker dtpServiceOrder;
+        private ComboBox comboBox1;
+        private Label label13;
         private Label label15;
         private Label label17;
         private Panel panel5;
         private Label label18;
-        private Label label11;
         private Panel panel1;
+        private NumericUpDown numericUpDown1;
+        private TextBox tBoxHarga;
+        private ComboBox cBoxPackaging;
+        private ComboBox cBoxNamaProduk;
+        private ComboBox cBoxJenisProduk;
         private Label label10;
         private Label label4;
         private Label label5;
@@ -721,6 +732,15 @@
         private Panel panel3;
         private Label label8;
         private Panel panelProduk;
+        private ComboBox cBoxKabupatenKota;
+        private ComboBox cBoxProvinsi;
+        private Label label20;
+        private Label label16;
+        private TextBox tBoxZipCode;
+        private TextBox tBoxAlamat;
+        private TextBox tBoxContact;
+        private TextBox tBoxPerusahaan;
+        private TextBox tBoxNamaCust;
         private Label label9;
         private Label label3;
         private Label label2;
@@ -728,38 +748,5 @@
         private Label label12;
         private Panel panel2;
         private Label label19;
-        private Label label13;
-        private Panel panel6;
-        private Panel panel7;
-        private Label label21;
-        private TextBox tBoxOtherComments;
-        private Panel panel8;
-        private Label lblTotal;
-        private Label lblSubTotal;
-        private Label lblPPN;
-        private Panel panel9;
-        private Label label22;
-        private DataGridView dataGridView1;
-        private Button btnInput;
-        private Button btnCreatePDF;
-        private Button btnBack;
-        private TextBox tBoxHarga;
-        private ComboBox cBoxPackaging;
-        private ComboBox cBoxNamaProduk;
-        private ComboBox cBoxJenisProduk;
-        private TextBox tBoxZipCode;
-        private TextBox tBoxAlamat;
-        private TextBox tBoxContact;
-        private TextBox tBoxPerusahaan;
-        private TextBox tBoxNamaCust;
-        private DateTimePicker dtpDueDate;
-        private DateTimePicker dtpServiceOrder;
-        private ComboBox comboBox1;
-        private Label label14;
-        private Label label20;
-        private Label label16;
-        private ComboBox cBoxProvinsi;
-        private ComboBox cBoxKabupatenKota;
-        private NumericUpDown numericUpDown1;
     }
 }
