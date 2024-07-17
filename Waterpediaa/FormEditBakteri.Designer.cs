@@ -105,11 +105,12 @@
             // 
             textBox1.BorderStyle = BorderStyle.FixedSingle;
             textBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(107, 41);
+            textBox1.Location = new Point(121, 41);
             textBox1.Margin = new Padding(3, 4, 3, 4);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(197, 30);
+            textBox1.Size = new Size(183, 30);
             textBox1.TabIndex = 33;
+            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
@@ -138,7 +139,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(798, 39);
+            panel2.Size = new Size(330, 39);
             panel2.TabIndex = 14;
             // 
             // label6

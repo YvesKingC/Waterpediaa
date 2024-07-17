@@ -1,6 +1,6 @@
 ﻿namespace Waterpediaa
 {
-    partial class FormTambahWTP
+    partial class FormTambahPackaging
     {
         /// <summary>
         /// Required designer variable.
@@ -78,17 +78,17 @@
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(panel2);
-            panel1.Location = new Point(0, 1);
+            panel1.Location = new Point(0, 2);
             panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(349, 254);
-            panel1.TabIndex = 38;
+            panel1.Size = new Size(370, 256);
+            panel1.TabIndex = 39;
             // 
             // btnInputBakteriBaru
             // 
             btnInputBakteriBaru.Anchor = AnchorStyles.None;
             btnInputBakteriBaru.BackColor = Color.FromArgb(192, 255, 192);
-            btnInputBakteriBaru.Location = new Point(176, 208);
+            btnInputBakteriBaru.Location = new Point(175, 208);
             btnInputBakteriBaru.Name = "btnInputBakteriBaru";
             btnInputBakteriBaru.Size = new Size(143, 29);
             btnInputBakteriBaru.TabIndex = 40;
@@ -170,9 +170,9 @@
             label6.ForeColor = Color.FromArgb(224, 224, 224);
             label6.Location = new Point(13, 5);
             label6.Name = "label6";
-            label6.Size = new Size(163, 23);
+            label6.Size = new Size(204, 23);
             label6.TabIndex = 13;
-            label6.Text = "Tambah Filter Baru";
+            label6.Text = "Tambah Packaging Baru";
             // 
             // panel5
             // 
@@ -181,11 +181,11 @@
             panel5.Controls.Add(panel3);
             panel5.Controls.Add(dataGridView2);
             panel5.Controls.Add(panel6);
-            panel5.Location = new Point(366, 2);
+            panel5.Location = new Point(376, 3);
             panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
             panel5.Size = new Size(521, 255);
-            panel5.TabIndex = 39;
+            panel5.TabIndex = 40;
             // 
             // panel3
             // 
@@ -227,9 +227,9 @@
             label8.ForeColor = Color.FromArgb(224, 224, 224);
             label8.Location = new Point(13, 5);
             label8.Name = "label8";
-            label8.Size = new Size(102, 23);
+            label8.Size = new Size(143, 23);
             label8.TabIndex = 13;
-            label8.Text = "Stock Filter";
+            label8.Text = "Stock Packaging";
             // 
             // dataGridView2
             // 
@@ -269,11 +269,11 @@
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(panel8);
             panel7.Controls.Add(dataGridView3);
-            panel7.Location = new Point(0, 274);
+            panel7.Location = new Point(1, 277);
             panel7.Margin = new Padding(3, 4, 3, 4);
             panel7.Name = "panel7";
             panel7.Size = new Size(900, 278);
-            panel7.TabIndex = 41;
+            panel7.TabIndex = 42;
             // 
             // panel8
             // 
@@ -292,9 +292,9 @@
             label13.ForeColor = Color.FromArgb(224, 224, 224);
             label13.Location = new Point(13, 5);
             label13.Name = "label13";
-            label13.Size = new Size(111, 23);
+            label13.Size = new Size(152, 23);
             label13.TabIndex = 13;
-            label13.Text = "Mutasi Filter";
+            label13.Text = "Mutasi Packaging";
             // 
             // dataGridView3
             // 
@@ -310,24 +310,24 @@
             // button1
             // 
             button1.BackColor = Color.FromArgb(255, 128, 128);
-            button1.Location = new Point(12, 559);
+            button1.Location = new Point(5, 562);
             button1.Name = "button1";
-            button1.Size = new Size(110, 29);
-            button1.TabIndex = 42;
+            button1.Size = new Size(120, 29);
+            button1.TabIndex = 43;
             button1.Text = "Back";
             button1.UseVisualStyleBackColor = false;
             // 
-            // FormTambahWTP
+            // FormTambahPackaging
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(899, 595);
+            ClientSize = new Size(902, 602);
             Controls.Add(button1);
             Controls.Add(panel7);
             Controls.Add(panel5);
             Controls.Add(panel1);
-            Name = "FormTambahWTP";
-            Text = "FormTambahWTP";
+            Name = "FormTambahPackaging";
+            Text = "FormTambahPackaging";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
@@ -362,13 +362,13 @@
         private Panel panel2;
         private Label label6;
         private Panel panel5;
-        private DataGridView dataGridView2;
-        private Panel panel6;
-        private Label label9;
         private Panel panel3;
         private DataGridView dataGridView1;
         private Panel panel4;
         private Label label8;
+        private DataGridView dataGridView2;
+        private Panel panel6;
+        private Label label9;
         private Panel panel7;
         private Panel panel8;
         private Label label13;

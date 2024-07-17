@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Waterpediaa
 {
-    public partial class FormEditBakteri : Form
+    public partial class FormInventoryPackaging : Form
     {
-        public FormEditBakteri()
+        public FormInventoryPackaging()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
