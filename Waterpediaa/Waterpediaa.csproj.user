@@ -4,7 +4,16 @@
     <Compile Update="FormBuatInvoicePenjualan.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FormEditBakteri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormEditWTP.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormInventoryBakteri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormInventoryPackaging.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormInventoryWTP.cs">
@@ -20,6 +29,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormTambahBakteri.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FormTambahPackaging.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="FormTambahWTP.cs">
