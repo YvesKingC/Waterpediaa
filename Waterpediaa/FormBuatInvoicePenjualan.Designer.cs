@@ -83,6 +83,7 @@
             btnCreatePDF = new Button();
             btnBack = new Button();
             label14 = new Label();
+            numericUpDown2 = new NumericUpDown();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
@@ -95,6 +96,7 @@
             panel8.SuspendLayout();
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
             SuspendLayout();
             // 
             // panel4
@@ -549,6 +551,7 @@
             // panel8
             // 
             panel8.BorderStyle = BorderStyle.FixedSingle;
+            panel8.Controls.Add(numericUpDown2);
             panel8.Controls.Add(lblTotal);
             panel8.Controls.Add(lblSubTotal);
             panel8.Controls.Add(lblPPN);
@@ -660,6 +663,14 @@
             label14.TabIndex = 29;
             label14.Text = "( * ) Wajib di isi";
             // 
+            // numericUpDown2
+            // 
+            numericUpDown2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDown2.Location = new Point(89, 72);
+            numericUpDown2.Name = "numericUpDown2";
+            numericUpDown2.Size = new Size(38, 25);
+            numericUpDown2.TabIndex = 39;
+            // 
             // FormBuatInvoicePenjualan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -700,6 +711,7 @@
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -761,5 +773,6 @@
         private ComboBox cBoxProvinsi;
         private ComboBox cBoxKabupatenKota;
         private NumericUpDown numericUpDown1;
+        private NumericUpDown numericUpDown2;
     }
 }

@@ -38,6 +38,7 @@
             btnInvoice = new Button();
             btnViewUser = new Button();
             panel2 = new Panel();
+            btnSales = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -144,7 +145,7 @@
             btnViewUser.AutoSize = true;
             btnViewUser.BackColor = Color.FromArgb(192, 255, 255);
             btnViewUser.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnViewUser.Location = new Point(446, 185);
+            btnViewUser.Location = new Point(240, 184);
             btnViewUser.Name = "btnViewUser";
             btnViewUser.Size = new Size(180, 48);
             btnViewUser.TabIndex = 20;
@@ -155,6 +156,7 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.Control;
+            panel2.Controls.Add(btnSales);
             panel2.Controls.Add(btnWTP);
             panel2.Controls.Add(btnViewUser);
             panel2.Controls.Add(btnBakteri);
@@ -166,6 +168,19 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(644, 251);
             panel2.TabIndex = 21;
+            // 
+            // btnSales
+            // 
+            btnSales.AutoSize = true;
+            btnSales.BackColor = Color.FromArgb(192, 255, 255);
+            btnSales.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnSales.Location = new Point(446, 185);
+            btnSales.Name = "btnSales";
+            btnSales.Size = new Size(180, 48);
+            btnSales.TabIndex = 21;
+            btnSales.Text = "Sales";
+            btnSales.UseVisualStyleBackColor = false;
+            btnSales.Click += btnSales_Click;
             // 
             // FormPilihDivisi
             // 
@@ -197,5 +212,6 @@
         private Button btnInvoice;
         private Button btnViewUser;
         private Panel panel2;
+        private Button btnSales;
     }
 }

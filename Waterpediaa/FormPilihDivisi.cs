@@ -22,10 +22,43 @@ namespace Waterpediaa
             if (FormLogin.Izin_Akses == "Admin")
             {
                 btnViewUser.Enabled = true;
+                btnBakteri.Enabled = true;
+                btnWTP.Enabled = true;
+                btnProcure.Enabled = true;
+                btnQuotation.Enabled = true;
+                btnInvoice.Enabled = true;
+                btnSales.Enabled = true;
             }
-            else
+            else if (FormLogin.Izin_Akses == "Finance")
+            { 
+                btnViewUser.Enabled = false;
+                btnBakteri.Enabled = false;
+                btnWTP.Enabled = false;
+                btnProcure.Enabled = false;
+            }
+            else if (FormLogin.Izin_Akses == "Bakteri")
             {
                 btnViewUser.Enabled = false;
+                btnWTP.Enabled = false;
+                btnInvoice.Enabled = false;
+                btnSales.Enabled = false;
+            }
+            else if (FormLogin.Izin_Akses == "WTP")
+            {
+                btnViewUser.Enabled = false;
+                btnBakteri.Enabled = false;
+                btnInvoice.Enabled = false;
+                btnSales.Enabled = false;
+            }
+            else if (FormLogin.Izin_Akses == "Training")
+            {
+                btnViewUser.Enabled = true;
+                btnBakteri.Enabled = true;
+                btnWTP.Enabled = true;
+                btnProcure.Enabled = true;
+                btnQuotation.Enabled = true;
+                btnInvoice.Enabled = true;
+                btnSales.Enabled = true;
             }
         }
 
@@ -76,6 +109,11 @@ namespace Waterpediaa
             Form ForminventoryWTP = new FormInventoryWTP();
             ForminventoryWTP.Show();
             this.Hide();
+        }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
