@@ -14,6 +14,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Waterpediaa
-build_property.ProjectDir = C:\Users\ASUS\Source\Repos\Waterpediaa\Waterpediaa\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\

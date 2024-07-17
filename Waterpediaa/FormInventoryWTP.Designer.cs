@@ -31,8 +31,6 @@
             labelFilter = new Label();
             btnBack = new Button();
             buttonNewfilter = new Button();
-            buttonNewpackaging = new Button();
-            buttonNewBakteri = new Button();
             comboBox1 = new ComboBox();
             buttonInvoice = new Button();
             buttonEditWTP = new Button();
@@ -67,33 +65,13 @@
             // 
             // buttonNewfilter
             // 
-            buttonNewfilter.Location = new Point(636, 236);
+            buttonNewfilter.Location = new Point(637, 184);
             buttonNewfilter.Margin = new Padding(3, 2, 3, 2);
             buttonNewfilter.Name = "buttonNewfilter";
             buttonNewfilter.Size = new Size(125, 22);
             buttonNewfilter.TabIndex = 34;
             buttonNewfilter.Text = "Filter Baru";
             buttonNewfilter.UseVisualStyleBackColor = true;
-            // 
-            // buttonNewpackaging
-            // 
-            buttonNewpackaging.Location = new Point(637, 210);
-            buttonNewpackaging.Margin = new Padding(3, 2, 3, 2);
-            buttonNewpackaging.Name = "buttonNewpackaging";
-            buttonNewpackaging.Size = new Size(125, 22);
-            buttonNewpackaging.TabIndex = 33;
-            buttonNewpackaging.Text = "Packaging Baru";
-            buttonNewpackaging.UseVisualStyleBackColor = true;
-            // 
-            // buttonNewBakteri
-            // 
-            buttonNewBakteri.Location = new Point(637, 184);
-            buttonNewBakteri.Margin = new Padding(3, 2, 3, 2);
-            buttonNewBakteri.Name = "buttonNewBakteri";
-            buttonNewBakteri.Size = new Size(125, 22);
-            buttonNewBakteri.TabIndex = 32;
-            buttonNewBakteri.Text = "Bakteri Baru";
-            buttonNewBakteri.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -108,7 +86,7 @@
             // 
             buttonInvoice.BackColor = Color.FromArgb(128, 255, 128);
             buttonInvoice.ForeColor = SystemColors.ControlText;
-            buttonInvoice.Location = new Point(637, 262);
+            buttonInvoice.Location = new Point(637, 294);
             buttonInvoice.Margin = new Padding(3, 2, 3, 2);
             buttonInvoice.Name = "buttonInvoice";
             buttonInvoice.Size = new Size(125, 22);
@@ -173,8 +151,6 @@
             Controls.Add(labelFilter);
             Controls.Add(btnBack);
             Controls.Add(buttonNewfilter);
-            Controls.Add(buttonNewpackaging);
-            Controls.Add(buttonNewBakteri);
             Controls.Add(comboBox1);
             Controls.Add(buttonInvoice);
             Controls.Add(buttonEditWTP);
@@ -194,8 +170,6 @@
         private Label labelFilter;
         private Button btnBack;
         private Button buttonNewfilter;
-        private Button buttonNewpackaging;
-        private Button buttonNewBakteri;
         private ComboBox comboBox1;
         private Button buttonInvoice;
         private Button buttonEditWTP;

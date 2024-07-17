@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             btnBack = new Button();
-            buttonAddfilter = new Button();
-            buttonAddPackaging = new Button();
             buttonAddBakteri = new Button();
             buttonInvoice = new Button();
             buttonApplyFilter = new Button();
@@ -55,28 +53,6 @@
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             // 
-            // buttonAddfilter
-            // 
-            buttonAddfilter.Anchor = AnchorStyles.None;
-            buttonAddfilter.Location = new Point(634, 236);
-            buttonAddfilter.Margin = new Padding(3, 2, 3, 2);
-            buttonAddfilter.Name = "buttonAddfilter";
-            buttonAddfilter.Size = new Size(125, 22);
-            buttonAddfilter.TabIndex = 33;
-            buttonAddfilter.Text = "Filter Baru";
-            buttonAddfilter.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddPackaging
-            // 
-            buttonAddPackaging.Anchor = AnchorStyles.None;
-            buttonAddPackaging.Location = new Point(634, 211);
-            buttonAddPackaging.Margin = new Padding(3, 2, 3, 2);
-            buttonAddPackaging.Name = "buttonAddPackaging";
-            buttonAddPackaging.Size = new Size(125, 22);
-            buttonAddPackaging.TabIndex = 32;
-            buttonAddPackaging.Text = "Packaging Baru";
-            buttonAddPackaging.UseVisualStyleBackColor = true;
-            // 
             // buttonAddBakteri
             // 
             buttonAddBakteri.Anchor = AnchorStyles.None;
@@ -92,7 +68,7 @@
             // 
             buttonInvoice.Anchor = AnchorStyles.None;
             buttonInvoice.BackColor = Color.FromArgb(128, 255, 128);
-            buttonInvoice.Location = new Point(634, 262);
+            buttonInvoice.Location = new Point(634, 293);
             buttonInvoice.Margin = new Padding(3, 2, 3, 2);
             buttonInvoice.Name = "buttonInvoice";
             buttonInvoice.Size = new Size(125, 22);
@@ -186,8 +162,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 361);
             Controls.Add(btnBack);
-            Controls.Add(buttonAddfilter);
-            Controls.Add(buttonAddPackaging);
             Controls.Add(buttonAddBakteri);
             Controls.Add(buttonInvoice);
             Controls.Add(buttonApplyFilter);
@@ -207,8 +181,6 @@
         #endregion
 
         private Button btnBack;
-        private Button buttonAddfilter;
-        private Button buttonAddPackaging;
         private Button buttonAddBakteri;
         private Button buttonInvoice;
         private Button buttonApplyFilter;

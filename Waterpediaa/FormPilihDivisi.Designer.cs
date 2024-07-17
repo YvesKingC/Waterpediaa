@@ -131,7 +131,7 @@
             button3.Name = "button3";
             button3.Size = new Size(180, 48);
             button3.TabIndex = 19;
-            button3.Text = "Mutasi";
+            button3.Text = "Invoice";
             button3.UseVisualStyleBackColor = false;
             // 
             // btnViewUser
