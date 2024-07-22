@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnInputBakteriBaru = new Button();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
+            btnInput = new Button();
+            nudHargaPerLiter = new NumericUpDown();
+            nudVolume = new NumericUpDown();
             label3 = new Label();
-            textBox1 = new TextBox();
+            txtNamaBakteri = new TextBox();
             label4 = new Label();
             label7 = new Label();
             panel2 = new Panel();
             label6 = new Label();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudHargaPerLiter).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudVolume).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,11 +48,11 @@
             // 
             panel1.BackColor = SystemColors.Control;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(btnInputBakteriBaru);
-            panel1.Controls.Add(numericUpDown2);
-            panel1.Controls.Add(numericUpDown1);
+            panel1.Controls.Add(btnInput);
+            panel1.Controls.Add(nudHargaPerLiter);
+            panel1.Controls.Add(nudVolume);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtNamaBakteri);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(panel2);
@@ -62,34 +62,37 @@
             panel1.Size = new Size(331, 228);
             panel1.TabIndex = 40;
             // 
-            // btnInputBakteriBaru
+            // btnInput
             // 
-            btnInputBakteriBaru.Anchor = AnchorStyles.None;
-            btnInputBakteriBaru.BackColor = Color.FromArgb(192, 255, 192);
-            btnInputBakteriBaru.Location = new Point(162, 174);
-            btnInputBakteriBaru.Name = "btnInputBakteriBaru";
-            btnInputBakteriBaru.Size = new Size(143, 29);
-            btnInputBakteriBaru.TabIndex = 40;
-            btnInputBakteriBaru.Text = "Input";
-            btnInputBakteriBaru.UseVisualStyleBackColor = false;
+            btnInput.Anchor = AnchorStyles.None;
+            btnInput.BackColor = Color.FromArgb(192, 255, 192);
+            btnInput.Location = new Point(162, 174);
+            btnInput.Name = "btnInput";
+            btnInput.Size = new Size(143, 29);
+            btnInput.TabIndex = 40;
+            btnInput.Text = "Input";
+            btnInput.UseVisualStyleBackColor = false;
+            btnInput.Click += new System.EventHandler(this.btnInput_Click);
             // 
-            // numericUpDown2
+            // nudHargaPerLiter
             // 
-            numericUpDown2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown2.Location = new Point(107, 124);
-            numericUpDown2.Margin = new Padding(3, 4, 3, 4);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(198, 30);
-            numericUpDown2.TabIndex = 39;
+            nudHargaPerLiter.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nudHargaPerLiter.Location = new Point(107, 124);
+            nudHargaPerLiter.Margin = new Padding(3, 4, 3, 4);
+            nudHargaPerLiter.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudHargaPerLiter.Name = "nudHargaPerLiter";
+            nudHargaPerLiter.Size = new Size(198, 30);
+            nudHargaPerLiter.TabIndex = 39;
             // 
-            // numericUpDown1
+            // nudVolume
             // 
-            numericUpDown1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(107, 82);
-            numericUpDown1.Margin = new Padding(3, 4, 3, 4);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(198, 30);
-            numericUpDown1.TabIndex = 37;
+            nudVolume.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nudVolume.Location = new Point(107, 82);
+            nudVolume.Margin = new Padding(3, 4, 3, 4);
+            nudVolume.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudVolume.Name = "nudVolume";
+            nudVolume.Size = new Size(198, 30);
+            nudVolume.TabIndex = 37;
             // 
             // label3
             // 
@@ -101,16 +104,16 @@
             label3.TabIndex = 34;
             label3.Text = "Stock Awal :";
             // 
-            // textBox1
+            // txtNamaBakteri
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(121, 41);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(183, 30);
-            textBox1.TabIndex = 33;
-            textBox1.TextChanged += textBox1_TextChanged;
+            txtNamaBakteri.BorderStyle = BorderStyle.FixedSingle;
+            txtNamaBakteri.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            txtNamaBakteri.Location = new Point(121, 41);
+            txtNamaBakteri.Margin = new Padding(3, 4, 3, 4);
+            txtNamaBakteri.Name = "txtNamaBakteri";
+            txtNamaBakteri.Size = new Size(183, 30);
+            txtNamaBakteri.TabIndex = 33;
+            txtNamaBakteri.TextChanged += textBox1_TextChanged;
             // 
             // label4
             // 
@@ -163,8 +166,8 @@
             Text = "FormEditBakteri";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudHargaPerLiter).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudVolume).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -173,14 +176,15 @@
         #endregion
 
         private Panel panel1;
-        private Button btnInputBakteriBaru;
-        private NumericUpDown numericUpDown2;
-        private NumericUpDown numericUpDown1;
+        private Button btnInput;
+        private NumericUpDown nudHargaPerLiter;
+        private NumericUpDown nudVolume;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox txtNamaBakteri;
         private Label label4;
         private Label label7;
         private Panel panel2;
         private Label label6;
+
     }
 }

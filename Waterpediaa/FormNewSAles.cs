@@ -13,7 +13,7 @@ namespace Waterpediaa
     public partial class FormNewSAles : Form
     {
         public FormNewSAles()
-        {
+        { 
             InitializeComponent();
         }
 
