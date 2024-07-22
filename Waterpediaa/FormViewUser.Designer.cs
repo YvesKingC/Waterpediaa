@@ -61,17 +61,17 @@
             dataGridViewUser.Location = new Point(12, 12);
             dataGridViewUser.Name = "dataGridViewUser";
             dataGridViewUser.RowTemplate.Height = 25;
-            dataGridViewUser.Size = new Size(231, 352);
+            dataGridViewUser.Size = new Size(446, 352);
             dataGridViewUser.TabIndex = 0;
             // 
             // btnBack
             // 
             btnBack.Anchor = AnchorStyles.None;
             btnBack.BackColor = Color.FromArgb(255, 128, 128);
-            btnBack.Location = new Point(655, 344);
+            btnBack.Location = new Point(763, 342);
             btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(125, 22);
+            btnBack.Size = new Size(115, 22);
             btnBack.TabIndex = 35;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
@@ -91,9 +91,9 @@
             panel2.Controls.Add(label1);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(panel4);
-            panel2.Location = new Point(249, 12);
+            panel2.Location = new Point(463, 12);
             panel2.Name = "panel2";
-            panel2.Size = new Size(539, 180);
+            panel2.Size = new Size(433, 180);
             panel2.TabIndex = 43;
             // 
             // cBoxIzinAkses
@@ -102,7 +102,7 @@
             cBoxIzinAkses.FormattingEnabled = true;
             cBoxIzinAkses.Location = new Point(92, 130);
             cBoxIzinAkses.Name = "cBoxIzinAkses";
-            cBoxIzinAkses.Size = new Size(233, 25);
+            cBoxIzinAkses.Size = new Size(201, 25);
             cBoxIzinAkses.TabIndex = 48;
             // 
             // label3
@@ -121,7 +121,7 @@
             tBoxPassword.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             tBoxPassword.Location = new Point(92, 99);
             tBoxPassword.Name = "tBoxPassword";
-            tBoxPassword.Size = new Size(233, 25);
+            tBoxPassword.Size = new Size(201, 25);
             tBoxPassword.TabIndex = 49;
             // 
             // tBoxUsername
@@ -130,7 +130,7 @@
             tBoxUsername.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             tBoxUsername.Location = new Point(92, 68);
             tBoxUsername.Name = "tBoxUsername";
-            tBoxUsername.Size = new Size(233, 25);
+            tBoxUsername.Size = new Size(201, 25);
             tBoxUsername.TabIndex = 48;
             // 
             // tBoxNama
@@ -139,7 +139,7 @@
             tBoxNama.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             tBoxNama.Location = new Point(92, 37);
             tBoxNama.Name = "tBoxNama";
-            tBoxNama.Size = new Size(233, 25);
+            tBoxNama.Size = new Size(201, 25);
             tBoxNama.TabIndex = 47;
             // 
             // label2
@@ -156,7 +156,7 @@
             // 
             btnInput.BackColor = Color.FromArgb(192, 255, 192);
             btnInput.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnInput.Location = new Point(405, 133);
+            btnInput.Location = new Point(299, 123);
             btnInput.Name = "btnInput";
             btnInput.Size = new Size(115, 32);
             btnInput.TabIndex = 43;
@@ -212,9 +212,9 @@
             panel1.Controls.Add(label7);
             panel1.Controls.Add(btnRemove);
             panel1.Controls.Add(panel3);
-            panel1.Location = new Point(249, 198);
+            panel1.Location = new Point(463, 198);
             panel1.Name = "panel1";
-            panel1.Size = new Size(539, 120);
+            panel1.Size = new Size(433, 120);
             panel1.TabIndex = 56;
             // 
             // cBoxRemoveUser
@@ -223,7 +223,7 @@
             cBoxRemoveUser.FormattingEnabled = true;
             cBoxRemoveUser.Location = new Point(92, 37);
             cBoxRemoveUser.Name = "cBoxRemoveUser";
-            cBoxRemoveUser.Size = new Size(408, 25);
+            cBoxRemoveUser.Size = new Size(201, 25);
             cBoxRemoveUser.TabIndex = 47;
             // 
             // label7
@@ -240,7 +240,7 @@
             // 
             btnRemove.BackColor = Color.FromArgb(255, 192, 192);
             btnRemove.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRemove.Location = new Point(405, 68);
+            btnRemove.Location = new Point(299, 68);
             btnRemove.Name = "btnRemove";
             btnRemove.Size = new Size(115, 32);
             btnRemove.TabIndex = 43;
@@ -272,7 +272,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 377);
+            ClientSize = new Size(908, 377);
             Controls.Add(panel1);
             Controls.Add(panel2);
             Controls.Add(btnBack);
