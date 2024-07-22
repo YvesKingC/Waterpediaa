@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuatInvoicePenjualan));
             panel4 = new Panel();
-            cBoxCust = new ComboBox();
+            cBoxCustomer = new ComboBox();
             label23 = new Label();
             dtpDueDate = new DateTimePicker();
             dtpServiceOrder = new DateTimePicker();
@@ -41,9 +41,9 @@
             panel5 = new Panel();
             label18 = new Label();
             panel1 = new Panel();
-            button2 = new Button();
-            numericUpDown1 = new NumericUpDown();
-            tBoxHarga = new TextBox();
+            btnAddProduk = new Button();
+            numericUpDownQTY = new NumericUpDown();
+            tBoxHargaJual = new TextBox();
             cBoxPackaging = new ComboBox();
             cBoxNamaProduk = new ComboBox();
             cBoxJenisProduk = new ComboBox();
@@ -55,7 +55,7 @@
             panel3 = new Panel();
             label8 = new Label();
             panelProduk = new Panel();
-            button1 = new Button();
+            btnAddNewCustomer = new Button();
             cBoxKabupatenKota = new ComboBox();
             cBoxProvinsi = new ComboBox();
             label20 = new Label();
@@ -78,7 +78,7 @@
             label21 = new Label();
             panel8 = new Panel();
             label24 = new Label();
-            numericUpDown2 = new NumericUpDown();
+            numericUpDownPPN = new NumericUpDown();
             lblTotal = new Label();
             lblSubTotal = new Label();
             lblPPN = new Label();
@@ -92,14 +92,14 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownQTY).BeginInit();
             panel3.SuspendLayout();
             panelProduk.SuspendLayout();
             panel2.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownPPN).BeginInit();
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInvoice).BeginInit();
             SuspendLayout();
@@ -107,7 +107,7 @@
             // panel4
             // 
             panel4.BorderStyle = BorderStyle.FixedSingle;
-            panel4.Controls.Add(cBoxCust);
+            panel4.Controls.Add(cBoxCustomer);
             panel4.Controls.Add(label23);
             panel4.Controls.Add(dtpDueDate);
             panel4.Controls.Add(dtpServiceOrder);
@@ -121,14 +121,14 @@
             panel4.Size = new Size(1019, 95);
             panel4.TabIndex = 23;
             // 
-            // cBoxCust
+            // cBoxCustomer
             // 
-            cBoxCust.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cBoxCust.FormattingEnabled = true;
-            cBoxCust.Location = new Point(133, 49);
-            cBoxCust.Name = "cBoxCust";
-            cBoxCust.Size = new Size(209, 25);
-            cBoxCust.TabIndex = 40;
+            cBoxCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxCustomer.FormattingEnabled = true;
+            cBoxCustomer.Location = new Point(133, 49);
+            cBoxCustomer.Name = "cBoxCustomer";
+            cBoxCustomer.Size = new Size(209, 25);
+            cBoxCustomer.TabIndex = 40;
             // 
             // label23
             // 
@@ -218,9 +218,9 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(numericUpDown1);
-            panel1.Controls.Add(tBoxHarga);
+            panel1.Controls.Add(btnAddProduk);
+            panel1.Controls.Add(numericUpDownQTY);
+            panel1.Controls.Add(tBoxHargaJual);
             panel1.Controls.Add(cBoxPackaging);
             panel1.Controls.Add(cBoxNamaProduk);
             panel1.Controls.Add(cBoxJenisProduk);
@@ -235,33 +235,34 @@
             panel1.Size = new Size(316, 227);
             panel1.TabIndex = 22;
             // 
-            // button2
+            // btnAddProduk
             // 
-            button2.BackColor = Color.FromArgb(192, 255, 192);
-            button2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(214, 194);
-            button2.Name = "button2";
-            button2.Size = new Size(97, 27);
-            button2.TabIndex = 31;
-            button2.Text = "Add";
-            button2.UseVisualStyleBackColor = false;
+            btnAddProduk.BackColor = Color.FromArgb(192, 255, 192);
+            btnAddProduk.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddProduk.Location = new Point(214, 194);
+            btnAddProduk.Name = "btnAddProduk";
+            btnAddProduk.Size = new Size(97, 27);
+            btnAddProduk.TabIndex = 31;
+            btnAddProduk.Text = "Add";
+            btnAddProduk.UseVisualStyleBackColor = false;
+            btnAddProduk.Click += btnAddProduk_Click;
             // 
-            // numericUpDown1
+            // numericUpDownQTY
             // 
-            numericUpDown1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(132, 132);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(179, 25);
-            numericUpDown1.TabIndex = 38;
+            numericUpDownQTY.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDownQTY.Location = new Point(132, 132);
+            numericUpDownQTY.Name = "numericUpDownQTY";
+            numericUpDownQTY.Size = new Size(179, 25);
+            numericUpDownQTY.TabIndex = 38;
             // 
-            // tBoxHarga
+            // tBoxHargaJual
             // 
-            tBoxHarga.BorderStyle = BorderStyle.FixedSingle;
-            tBoxHarga.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxHarga.Location = new Point(132, 163);
-            tBoxHarga.Name = "tBoxHarga";
-            tBoxHarga.Size = new Size(179, 25);
-            tBoxHarga.TabIndex = 25;
+            tBoxHargaJual.BorderStyle = BorderStyle.FixedSingle;
+            tBoxHargaJual.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxHargaJual.Location = new Point(132, 163);
+            tBoxHargaJual.Name = "tBoxHargaJual";
+            tBoxHargaJual.Size = new Size(179, 25);
+            tBoxHargaJual.TabIndex = 25;
             // 
             // cBoxPackaging
             // 
@@ -294,11 +295,11 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(73, 165);
+            label10.Location = new Point(46, 165);
             label10.Name = "label10";
-            label10.Size = new Size(53, 19);
+            label10.Size = new Size(80, 19);
             label10.TabIndex = 19;
-            label10.Text = "Harga :";
+            label10.Text = "Harga Jual :";
             // 
             // label4
             // 
@@ -363,7 +364,7 @@
             // panelProduk
             // 
             panelProduk.BorderStyle = BorderStyle.FixedSingle;
-            panelProduk.Controls.Add(button1);
+            panelProduk.Controls.Add(btnAddNewCustomer);
             panelProduk.Controls.Add(cBoxKabupatenKota);
             panelProduk.Controls.Add(cBoxProvinsi);
             panelProduk.Controls.Add(label20);
@@ -384,16 +385,17 @@
             panelProduk.Size = new Size(316, 286);
             panelProduk.TabIndex = 21;
             // 
-            // button1
+            // btnAddNewCustomer
             // 
-            button1.BackColor = Color.FromArgb(192, 255, 192);
-            button1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(214, 253);
-            button1.Name = "button1";
-            button1.Size = new Size(97, 27);
-            button1.TabIndex = 30;
-            button1.Text = "Add";
-            button1.UseVisualStyleBackColor = false;
+            btnAddNewCustomer.BackColor = Color.FromArgb(192, 255, 192);
+            btnAddNewCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAddNewCustomer.Location = new Point(214, 253);
+            btnAddNewCustomer.Name = "btnAddNewCustomer";
+            btnAddNewCustomer.Size = new Size(97, 27);
+            btnAddNewCustomer.TabIndex = 30;
+            btnAddNewCustomer.Text = "Add";
+            btnAddNewCustomer.UseVisualStyleBackColor = false;
+            btnAddNewCustomer.Click += btnAddNewCustomer_Click;
             // 
             // cBoxKabupatenKota
             // 
@@ -592,7 +594,7 @@
             // 
             panel8.BorderStyle = BorderStyle.FixedSingle;
             panel8.Controls.Add(label24);
-            panel8.Controls.Add(numericUpDown2);
+            panel8.Controls.Add(numericUpDownPPN);
             panel8.Controls.Add(lblTotal);
             panel8.Controls.Add(lblSubTotal);
             panel8.Controls.Add(lblPPN);
@@ -612,13 +614,13 @@
             label24.TabIndex = 40;
             label24.Text = "PPN";
             // 
-            // numericUpDown2
+            // numericUpDownPPN
             // 
-            numericUpDown2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown2.Location = new Point(53, 72);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(38, 25);
-            numericUpDown2.TabIndex = 39;
+            numericUpDownPPN.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDownPPN.Location = new Point(53, 72);
+            numericUpDownPPN.Name = "numericUpDownPPN";
+            numericUpDownPPN.Size = new Size(38, 25);
+            numericUpDownPPN.TabIndex = 39;
             // 
             // lblTotal
             // 
@@ -746,7 +748,7 @@
             panel5.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownQTY).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panelProduk.ResumeLayout(false);
@@ -759,7 +761,7 @@
             panel7.PerformLayout();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownPPN).EndInit();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewInvoice).EndInit();
@@ -804,7 +806,7 @@
         private DataGridView dataGridViewInvoice;
         private Button btnCreatePDF;
         private Button btnBack;
-        private TextBox tBoxHarga;
+        private TextBox tBoxHargaJual;
         private ComboBox cBoxPackaging;
         private ComboBox cBoxNamaProduk;
         private ComboBox cBoxJenisProduk;
@@ -821,13 +823,13 @@
         private Label label16;
         private ComboBox cBoxProvinsi;
         private ComboBox cBoxKabupatenKota;
-        private NumericUpDown numericUpDown1;
-        private NumericUpDown numericUpDown2;
-        private ComboBox cBoxCust;
+        private NumericUpDown numericUpDownQTY;
+        private NumericUpDown numericUpDownPPN;
+        private ComboBox cBoxCustomer;
         private Label label23;
-        private Button button1;
+        private Button btnAddNewCustomer;
         private Label label24;
-        private Button button2;
+        private Button btnAddProduk;
         private Button button3;
     }
 }
