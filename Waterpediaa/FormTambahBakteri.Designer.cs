@@ -167,27 +167,17 @@
             // 
             // nudStokNewBakteri
             // 
-            nudStokNewBakteri.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            nudStokNewBakteri.Location = new Point(121, 176);
-            nudStokNewBakteri.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
-            nudStokNewBakteri.Name = "nudStokNewBakteri";
-            nudStokNewBakteri.Size = new Size(198, 30);
-            nudStokNewBakteri.TabIndex = 39;
+
             // 
             // nudNewBakteri
             // 
-            nudNewBakteri.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            nudNewBakteri.Location = new Point(121, 140);
-            nudNewBakteri.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
-            nudNewBakteri.Name = "nudNewBakteri";
-            nudNewBakteri.Size = new Size(198, 30);
-            nudNewBakteri.TabIndex = 37;
+
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(18, 178);
+
             label3.Name = "label3";
             label3.Size = new Size(100, 23);
             label3.TabIndex = 34;
@@ -195,18 +185,13 @@
             // 
             // textBoxNewBakteri
             // 
-            textBoxNewBakteri.BorderStyle = BorderStyle.FixedSingle;
-            textBoxNewBakteri.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNewBakteri.Location = new Point(119, 104);
-            textBoxNewBakteri.Name = "textBoxNewBakteri";
-            textBoxNewBakteri.Size = new Size(197, 30);
-            textBoxNewBakteri.TabIndex = 33;
+
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(13, 142);
+
             label4.Name = "label4";
             label4.Size = new Size(105, 23);
             label4.TabIndex = 18;
@@ -216,7 +201,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(-4, 106);
+
             label7.Name = "label7";
             label7.Size = new Size(122, 23);
             label7.TabIndex = 15;
@@ -258,16 +243,14 @@
             panel2.Location = new Point(14, 280);
             panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(333, 243);
+            panel2.Size = new Size(335, 239);
             panel2.TabIndex = 38;
             // 
             // btnInputProcureBakteri
             // 
             btnInputProcureBakteri.Anchor = AnchorStyles.None;
             btnInputProcureBakteri.BackColor = Color.FromArgb(192, 255, 192);
-            btnInputProcureBakteri.Location = new Point(238, 174);
-            btnInputProcureBakteri.Name = "btnInputProcureBakteri";
-            btnInputProcureBakteri.Size = new Size(81, 34);
+
             btnInputProcureBakteri.TabIndex = 41;
             btnInputProcureBakteri.Text = "Input";
             btnInputProcureBakteri.UseVisualStyleBackColor = false;

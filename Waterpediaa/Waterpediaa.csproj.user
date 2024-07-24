@@ -10,9 +10,7 @@
     <Compile Update="FormEditBakteri.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormEditPackaging.cs">
-      <SubType>Form</SubType>
-    </Compile>
+
     <Compile Update="FormEditWTP.cs">
       <SubType>Form</SubType>
     </Compile>
