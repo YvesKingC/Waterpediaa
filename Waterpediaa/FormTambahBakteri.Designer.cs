@@ -30,15 +30,15 @@
         {
             btnBack = new Button();
             panel5 = new Panel();
-            dataGridView2 = new DataGridView();
+            dataGridViewStok = new DataGridView();
             panel6 = new Panel();
             label9 = new Label();
             panel1 = new Panel();
             btnInputBakteriBaru = new Button();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
+            nudStokNewBakteri = new NumericUpDown();
+            nudNewBakteri = new NumericUpDown();
             label3 = new Label();
-            textBox1 = new TextBox();
+            textBoxNewBakteri = new TextBox();
             label4 = new Label();
             label7 = new Label();
             panel3 = new Panel();
@@ -53,7 +53,6 @@
             label11 = new Label();
             panel4 = new Panel();
             label12 = new Label();
-            btnProcure = new Button();
             panel7 = new Panel();
             panel8 = new Panel();
             label13 = new Label();
@@ -63,11 +62,11 @@
             panel10 = new Panel();
             label14 = new Label();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewStok).BeginInit();
             panel6.SuspendLayout();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudStokNewBakteri).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudNewBakteri).BeginInit();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
@@ -90,12 +89,13 @@
             btnBack.TabIndex = 35;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // panel5
             // 
             panel5.BackColor = SystemColors.Control;
             panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Controls.Add(dataGridView2);
+            panel5.Controls.Add(dataGridViewStok);
             panel5.Controls.Add(panel6);
             panel5.Location = new Point(354, 16);
             panel5.Margin = new Padding(3, 4, 3, 4);
@@ -103,16 +103,16 @@
             panel5.Size = new Size(521, 255);
             panel5.TabIndex = 36;
             // 
-            // dataGridView2
+            // dataGridViewStok
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(3, 47);
-            dataGridView2.Margin = new Padding(3, 4, 3, 4);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 51;
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(512, 203);
-            dataGridView2.TabIndex = 15;
+            dataGridViewStok.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewStok.Location = new Point(3, 47);
+            dataGridViewStok.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewStok.Name = "dataGridViewStok";
+            dataGridViewStok.RowHeadersWidth = 51;
+            dataGridViewStok.RowTemplate.Height = 25;
+            dataGridViewStok.Size = new Size(512, 203);
+            dataGridViewStok.TabIndex = 15;
             // 
             // panel6
             // 
@@ -140,10 +140,10 @@
             panel1.BackColor = SystemColors.Control;
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(btnInputBakteriBaru);
-            panel1.Controls.Add(numericUpDown2);
-            panel1.Controls.Add(numericUpDown1);
+            panel1.Controls.Add(nudStokNewBakteri);
+            panel1.Controls.Add(nudNewBakteri);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(textBoxNewBakteri);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(panel3);
@@ -163,22 +163,25 @@
             btnInputBakteriBaru.TabIndex = 40;
             btnInputBakteriBaru.Text = "Input";
             btnInputBakteriBaru.UseVisualStyleBackColor = false;
+            btnInputBakteriBaru.Click += btnInputBakteriBaru_Click;
             // 
-            // numericUpDown2
+            // nudStokNewBakteri
             // 
-            numericUpDown2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown2.Location = new Point(121, 176);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(198, 30);
-            numericUpDown2.TabIndex = 39;
+            nudStokNewBakteri.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nudStokNewBakteri.Location = new Point(121, 176);
+            nudStokNewBakteri.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudStokNewBakteri.Name = "nudStokNewBakteri";
+            nudStokNewBakteri.Size = new Size(198, 30);
+            nudStokNewBakteri.TabIndex = 39;
             // 
-            // numericUpDown1
+            // nudNewBakteri
             // 
-            numericUpDown1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(121, 140);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(198, 30);
-            numericUpDown1.TabIndex = 37;
+            nudNewBakteri.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nudNewBakteri.Location = new Point(121, 140);
+            nudNewBakteri.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudNewBakteri.Name = "nudNewBakteri";
+            nudNewBakteri.Size = new Size(198, 30);
+            nudNewBakteri.TabIndex = 37;
             // 
             // label3
             // 
@@ -190,14 +193,14 @@
             label3.TabIndex = 34;
             label3.Text = "Stock Awal :";
             // 
-            // textBox1
+            // textBoxNewBakteri
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(119, 104);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(197, 30);
-            textBox1.TabIndex = 33;
+            textBoxNewBakteri.BorderStyle = BorderStyle.FixedSingle;
+            textBoxNewBakteri.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNewBakteri.Location = new Point(119, 104);
+            textBoxNewBakteri.Name = "textBoxNewBakteri";
+            textBoxNewBakteri.Size = new Size(197, 30);
+            textBoxNewBakteri.TabIndex = 33;
             // 
             // label4
             // 
@@ -262,9 +265,9 @@
             // 
             btnInputProcureBakteri.Anchor = AnchorStyles.None;
             btnInputProcureBakteri.BackColor = Color.FromArgb(192, 255, 192);
-            btnInputProcureBakteri.Location = new Point(244, 174);
+            btnInputProcureBakteri.Location = new Point(238, 174);
             btnInputProcureBakteri.Name = "btnInputProcureBakteri";
-            btnInputProcureBakteri.Size = new Size(75, 23);
+            btnInputProcureBakteri.Size = new Size(81, 34);
             btnInputProcureBakteri.TabIndex = 41;
             btnInputProcureBakteri.Text = "Input";
             btnInputProcureBakteri.UseVisualStyleBackColor = false;
@@ -347,24 +350,11 @@
             label12.TabIndex = 13;
             label12.Text = "Procurement Bakteri";
             // 
-            // btnProcure
-            // 
-            btnProcure.BackColor = Color.FromArgb(192, 255, 192);
-            btnProcure.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            btnProcure.Location = new Point(379, 245);
-            btnProcure.Margin = new Padding(3, 4, 3, 4);
-            btnProcure.Name = "btnProcure";
-            btnProcure.Size = new Size(136, 51);
-            btnProcure.TabIndex = 39;
-            btnProcure.Text = "Procure";
-            btnProcure.UseVisualStyleBackColor = false;
-            // 
             // panel7
             // 
             panel7.BackColor = SystemColors.Control;
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(panel8);
-            panel7.Controls.Add(btnProcure);
             panel7.Controls.Add(dataGridView1);
             panel7.Location = new Point(354, 280);
             panel7.Margin = new Padding(3, 4, 3, 4);
@@ -464,13 +454,13 @@
             Name = "FormTambahBakteri";
             Text = "FormTambahBakteri";
             panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewStok).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudStokNewBakteri).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudNewBakteri).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
@@ -492,7 +482,7 @@
         #endregion
         private Button btnBack;
         private Panel panel5;
-        private DataGridView dataGridView2;
+        private DataGridView dataGridViewStok;
         private Panel panel6;
         private Label label9;
         private Panel panel1;
@@ -500,10 +490,10 @@
         private Label label7;
         private Panel panel3;
         private Label label8;
-        private TextBox textBox1;
-        private NumericUpDown numericUpDown1;
+        private TextBox textBoxNewBakteri;
+        private NumericUpDown nudNewBakteri;
         private Label label3;
-        private NumericUpDown numericUpDown2;
+        private NumericUpDown nudStokNewBakteri;
         private Button btnInputBakteriBaru;
         private Panel panel2;
         private NumericUpDown numericUpDown3;
@@ -514,7 +504,6 @@
         private Label label11;
         private Panel panel4;
         private Label label12;
-        private Button btnProcure;
         private Panel panel7;
         private Panel panel8;
         private Label label13;

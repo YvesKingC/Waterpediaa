@@ -66,8 +66,8 @@ namespace Waterpediaa
 
         private void buttonAddBakteri_Click(object sender, EventArgs e)
         {
-            // Create an instance of FormTambahBakteri
-            FormTambahBakteri formTambahBakteri = new FormTambahBakteri();
+            // Create an instance of FormTambahBakteri and pass the current form as a parameter
+            FormTambahBakteri formTambahBakteri = new FormTambahBakteri(this);
 
             // Show the FormTambahBakteri form as a modal dialog
             formTambahBakteri.ShowDialog();
@@ -110,6 +110,11 @@ namespace Waterpediaa
             FormBuatInvoicePenjualan formBuatInvoicePenjualan = new FormBuatInvoicePenjualan();
             formBuatInvoicePenjualan.ShowDialog();
         }
+        public void UpdateDataGridView()
+        {
+            LoadStockBakteriData();
+        }
+
     }
 
 
