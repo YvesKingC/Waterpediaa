@@ -45,8 +45,8 @@
             label8 = new Label();
             panel2 = new Panel();
             btnInputProcureBakteri = new Button();
-            numericUpDown3 = new NumericUpDown();
-            dateTimePicker1 = new DateTimePicker();
+            nudVolume = new NumericUpDown();
+            dateTimePickerbakteri = new DateTimePicker();
             label6 = new Label();
             cBoxNamaBakteri = new ComboBox();
             label10 = new Label();
@@ -56,7 +56,7 @@
             panel7 = new Panel();
             panel8 = new Panel();
             label13 = new Label();
-            dataGridView1 = new DataGridView();
+            dataGridViewProcure = new DataGridView();
             panel9 = new Panel();
             dataGridView3 = new DataGridView();
             panel10 = new Panel();
@@ -69,11 +69,11 @@
             ((System.ComponentModel.ISupportInitialize)nudNewBakteri).BeginInit();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudVolume).BeginInit();
             panel4.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProcure).BeginInit();
             panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             panel10.SuspendLayout();
@@ -248,8 +248,8 @@
             panel2.BackColor = SystemColors.Control;
             panel2.BorderStyle = BorderStyle.FixedSingle;
             panel2.Controls.Add(btnInputProcureBakteri);
-            panel2.Controls.Add(numericUpDown3);
-            panel2.Controls.Add(dateTimePicker1);
+            panel2.Controls.Add(nudVolume);
+            panel2.Controls.Add(dateTimePickerbakteri);
             panel2.Controls.Add(label6);
             panel2.Controls.Add(cBoxNamaBakteri);
             panel2.Controls.Add(label10);
@@ -271,23 +271,25 @@
             btnInputProcureBakteri.TabIndex = 41;
             btnInputProcureBakteri.Text = "Input";
             btnInputProcureBakteri.UseVisualStyleBackColor = false;
+            btnInputProcureBakteri.Click += btnInputProcureBakteri_Click;
             // 
-            // numericUpDown3
+            // nudVolume
             // 
-            numericUpDown3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown3.Location = new Point(121, 137);
-            numericUpDown3.Margin = new Padding(3, 4, 3, 4);
-            numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(198, 30);
-            numericUpDown3.TabIndex = 38;
+            nudVolume.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nudVolume.Location = new Point(121, 137);
+            nudVolume.Margin = new Padding(3, 4, 3, 4);
+            nudVolume.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudVolume.Name = "nudVolume";
+            nudVolume.Size = new Size(198, 30);
+            nudVolume.TabIndex = 38;
             // 
-            // dateTimePicker1
+            // dateTimePickerbakteri
             // 
-            dateTimePicker1.Location = new Point(121, 57);
-            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(197, 27);
-            dateTimePicker1.TabIndex = 31;
+            dateTimePickerbakteri.Location = new Point(121, 57);
+            dateTimePickerbakteri.Margin = new Padding(3, 4, 3, 4);
+            dateTimePickerbakteri.Name = "dateTimePickerbakteri";
+            dateTimePickerbakteri.Size = new Size(197, 27);
+            dateTimePickerbakteri.TabIndex = 31;
             // 
             // label6
             // 
@@ -355,7 +357,7 @@
             panel7.BackColor = SystemColors.Control;
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(panel8);
-            panel7.Controls.Add(dataGridView1);
+            panel7.Controls.Add(dataGridViewProcure);
             panel7.Location = new Point(354, 280);
             panel7.Margin = new Padding(3, 4, 3, 4);
             panel7.Name = "panel7";
@@ -383,16 +385,16 @@
             label13.TabIndex = 13;
             label13.Text = "Procurement List";
             // 
-            // dataGridView1
+            // dataGridViewProcure
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 47);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(512, 191);
-            dataGridView1.TabIndex = 0;
+            dataGridViewProcure.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProcure.Location = new Point(3, 47);
+            dataGridViewProcure.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewProcure.Name = "dataGridViewProcure";
+            dataGridViewProcure.RowHeadersWidth = 51;
+            dataGridViewProcure.RowTemplate.Height = 25;
+            dataGridViewProcure.Size = new Size(512, 191);
+            dataGridViewProcure.TabIndex = 0;
             // 
             // panel9
             // 
@@ -465,13 +467,13 @@
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudVolume).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel7.ResumeLayout(false);
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewProcure).EndInit();
             panel9.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             panel10.ResumeLayout(false);
@@ -496,8 +498,8 @@
         private NumericUpDown nudStokNewBakteri;
         private Button btnInputBakteriBaru;
         private Panel panel2;
-        private NumericUpDown numericUpDown3;
-        private DateTimePicker dateTimePicker1;
+        private NumericUpDown nudVolume;
+        private DateTimePicker dateTimePickerbakteri;
         private Label label6;
         private ComboBox cBoxNamaBakteri;
         private Label label10;
@@ -507,7 +509,7 @@
         private Panel panel7;
         private Panel panel8;
         private Label label13;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewProcure;
         private Button btnInputProcureBakteri;
         private Panel panel9;
         private DataGridView dataGridView3;
