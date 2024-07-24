@@ -56,10 +56,10 @@
             label8 = new Label();
             panelProduk = new Panel();
             btnAddNewCustomer = new Button();
+            label16 = new Label();
             cBoxKabupatenKota = new ComboBox();
             cBoxProvinsi = new ComboBox();
             label20 = new Label();
-            label16 = new Label();
             tBoxZipCode = new TextBox();
             tBoxAlamat = new TextBox();
             tBoxContact = new TextBox();
@@ -251,6 +251,7 @@
             // 
             numericUpDownQTY.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             numericUpDownQTY.Location = new Point(132, 132);
+            numericUpDownQTY.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numericUpDownQTY.Name = "numericUpDownQTY";
             numericUpDownQTY.Size = new Size(179, 25);
             numericUpDownQTY.TabIndex = 38;
@@ -365,10 +366,10 @@
             // 
             panelProduk.BorderStyle = BorderStyle.FixedSingle;
             panelProduk.Controls.Add(btnAddNewCustomer);
+            panelProduk.Controls.Add(label16);
             panelProduk.Controls.Add(cBoxKabupatenKota);
             panelProduk.Controls.Add(cBoxProvinsi);
             panelProduk.Controls.Add(label20);
-            panelProduk.Controls.Add(label16);
             panelProduk.Controls.Add(tBoxZipCode);
             panelProduk.Controls.Add(tBoxAlamat);
             panelProduk.Controls.Add(tBoxContact);
@@ -397,11 +398,21 @@
             btnAddNewCustomer.UseVisualStyleBackColor = false;
             btnAddNewCustomer.Click += btnAddNewCustomer_Click;
             // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Location = new Point(62, 166);
+            label16.Name = "label16";
+            label16.Size = new Size(64, 19);
+            label16.TabIndex = 25;
+            label16.Text = "Provinsi :";
+            // 
             // cBoxKabupatenKota
             // 
             cBoxKabupatenKota.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cBoxKabupatenKota.FormattingEnabled = true;
-            cBoxKabupatenKota.Location = new Point(132, 163);
+            cBoxKabupatenKota.Location = new Point(132, 193);
             cBoxKabupatenKota.Name = "cBoxKabupatenKota";
             cBoxKabupatenKota.Size = new Size(179, 25);
             cBoxKabupatenKota.TabIndex = 27;
@@ -410,10 +421,11 @@
             // 
             cBoxProvinsi.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cBoxProvinsi.FormattingEnabled = true;
-            cBoxProvinsi.Location = new Point(132, 193);
+            cBoxProvinsi.Location = new Point(132, 163);
             cBoxProvinsi.Name = "cBoxProvinsi";
             cBoxProvinsi.Size = new Size(179, 25);
             cBoxProvinsi.TabIndex = 26;
+            cBoxProvinsi.SelectedIndexChanged += cBoxProvinsi_SelectedIndexChanged;
             // 
             // label20
             // 
@@ -424,16 +436,6 @@
             label20.Size = new Size(71, 19);
             label20.TabIndex = 26;
             label20.Text = "Zip Code :";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.Location = new Point(62, 196);
-            label16.Name = "label16";
-            label16.Size = new Size(64, 19);
-            label16.TabIndex = 25;
-            label16.Text = "Provinsi :";
             // 
             // tBoxZipCode
             // 
@@ -494,7 +496,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(11, 166);
+            label3.Location = new Point(11, 196);
             label3.Name = "label3";
             label3.Size = new Size(115, 19);
             label3.TabIndex = 18;
@@ -618,6 +620,7 @@
             // 
             numericUpDownPPN.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             numericUpDownPPN.Location = new Point(53, 72);
+            numericUpDownPPN.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             numericUpDownPPN.Name = "numericUpDownPPN";
             numericUpDownPPN.Size = new Size(38, 25);
             numericUpDownPPN.TabIndex = 39;
@@ -691,6 +694,7 @@
             btnCreatePDF.TabIndex = 27;
             btnCreatePDF.Text = "Create\r\nInvoice";
             btnCreatePDF.UseVisualStyleBackColor = false;
+            btnCreatePDF.Click += btnCreatePDF_Click;
             // 
             // btnBack
             // 
