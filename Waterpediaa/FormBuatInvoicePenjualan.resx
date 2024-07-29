@@ -117,4 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label14.Text" xml:space="preserve">
+    <value>New Customer Untuk Customer Baru. setelah di add
+Pilih nama customer di Invoice Information
+Lengkapi invoice information.Untuk input item di invoice
+Pilih item di produk dan click Add.
+Untuk PPN Tinggal pilih. nanti hitung otomatis
+
+</value>
+  </data>
 </root>
