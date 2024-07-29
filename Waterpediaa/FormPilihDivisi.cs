@@ -76,13 +76,6 @@ namespace Waterpediaa
             this.Hide();
         }
 
-        private void btnProcure_Click(object sender, EventArgs e)
-        {
-            Form FormTambahBakteri = new FormTambahBakteri();
-            FormTambahBakteri.Show();
-            this.Hide();
-        }
-
         private void btnQuotation_Click(object sender, EventArgs e)
         {
             Form FormBuatQuotation = new FormBuatQuotation();

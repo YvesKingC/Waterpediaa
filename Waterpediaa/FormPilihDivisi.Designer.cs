@@ -101,18 +101,6 @@
             panel1.Size = new Size(669, 65);
             panel1.TabIndex = 16;
             // 
-            // btnProcure
-            // 
-            btnProcure.AutoSize = true;
-            btnProcure.BackColor = Color.FromArgb(192, 255, 255);
-            btnProcure.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnProcure.Location = new Point(446, 20);
-            btnProcure.Name = "btnProcure";
-            btnProcure.Size = new Size(180, 52);
-            btnProcure.TabIndex = 17;
-            btnProcure.Text = "Tambah dan Procure\r\nbakteri\r\n";
-            btnProcure.UseVisualStyleBackColor = false;
-            btnProcure.Click += btnProcure_Click;
             // 
             // btnQuotation
             // 

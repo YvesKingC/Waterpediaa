@@ -33,7 +33,7 @@ namespace Waterpediaa
             connection = new MySqlConnection(connectionString);
 
             DataTable dataTable = new DataTable();
-            string query = "SELECT * FROM Stock_Bakteri";
+            string query = "select Jenis_Bakteri, Volume, Harga_Per_Liter from Stock_Bakteri";
 
             using (MySqlCommand cmd = new MySqlCommand(query, connection))
             {
@@ -67,7 +67,7 @@ namespace Waterpediaa
         private void buttonAddBakteri_Click(object sender, EventArgs e)
         {
             // Create an instance of FormTambahBakteri and pass the current form as a parameter
-            FormTambahBakteri formTambahBakteri = new FormTambahBakteri(this);
+            FormTambahProcureBakteri formTambahBakteri = new FormTambahProcureBakteri(this);
 
             // Show the FormTambahBakteri form as a modal dialog
             formTambahBakteri.ShowDialog();
