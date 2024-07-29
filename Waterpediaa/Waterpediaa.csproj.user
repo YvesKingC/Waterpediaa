@@ -43,9 +43,6 @@
     <Compile Update="FormSales.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormTambahBakteri.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="FormTambahPackaging.cs">
       <SubType>Form</SubType>
     </Compile>

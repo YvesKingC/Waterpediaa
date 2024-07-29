@@ -44,6 +44,12 @@ namespace Waterpediaa
         public int PPNPercentage = 0;
         public long PPN = 0;
         public long Total = 0;
+        public static string MetodePembayaran = "";
+        public static string NamaCustomer = "";
+        public static string Perusahaan = "";
+        public static string Alamat = "";
+        public static string ServiceOrder = "";
+        public static string DueDate = "";
 
         private void FormBuatInvoicePenjualan_Load(object sender, EventArgs e)
         {
@@ -250,7 +256,34 @@ namespace Waterpediaa
         }
         private void btnCreatePDF_Click(object sender, EventArgs e)
         {
+            MetodePembayaran = cBoxMetodePembayaran.Text;
+            NamaCustomer = cBoxCustomer.Text;
+            /*Alamat, Contact, service order, due date, other comment,*/
+            Form FormInvoice = new FormInvoice();
+            FormInvoice.Show();
+            this.Hide();
+        }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
+            this.Hide();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewInvoice.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridViewInvoice.SelectedRows)
+                {
+                    sqlQuery = "DELETE FROM TempInvoice WHERE ID = '" + row.Cells[0].Value + "'";
+                    sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                    sqlCommand.ExecuteNonQuery();
+                }
+                LoadData();
+                HitungTotalSubtotal();
+            }
         }
     }
 }
