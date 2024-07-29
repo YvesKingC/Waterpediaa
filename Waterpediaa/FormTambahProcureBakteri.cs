@@ -14,14 +14,15 @@ namespace Waterpediaa
     public partial class FormTambahProcureBakteri : Form
     {
         private FormInventoryBakteri mainForm;
+
         public FormTambahProcureBakteri(FormInventoryBakteri form)
         {
             InitializeComponent();
-            this.Load += new EventHandler(FormTambahBakteri_Load);
-            mainForm = form;
-            this.mainForm = mainForm;
+            this.Load += new EventHandler(FormTambahProcureBakteri_Load);
+            mainForm = form; // Corrected assignment
         }
-        private void FormTambahBakteri_Load(object sender, EventArgs e)
+
+        private void FormTambahProcureBakteri_Load(object sender, EventArgs e)
         {
             LoadStockBakteriData();
             LoadBakteriNames();
@@ -33,19 +34,20 @@ namespace Waterpediaa
             DataTable dataTable = GetStockBakteri();
             dataGridViewStok.DataSource = dataTable;
         }
+
         private void LoadBakteriNames()
         {
             DataTable dataTable = GetStockBakteri();
             cBoxNamaBakteri.DataSource = dataTable;
-            cBoxNamaBakteri.DisplayMember = "Jenis_Bakteri";/*
-            cBoxNamaBakteri.ValueMember = "ID"; // Assuming ID is the primary key*/
+            cBoxNamaBakteri.DisplayMember = "Jenis_Bakteri";
+            cBoxNamaBakteri.ValueMember = "ID"; // Set ValueMember to ID
         }
 
         public DataTable GetStockBakteri()
         {
             DataTable dataTable = new DataTable();
             string connectionString = "server=localhost;database=waterpedia;user=root;";
-            string query = "select Jenis_Bakteri, Volume, Harga_Per_Liter from Stock_Bakteri;";
+            string query = "SELECT ID, Jenis_Bakteri, Volume, Harga_Per_Liter FROM Stock_Bakteri;"; // Include ID
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -104,14 +106,21 @@ namespace Waterpediaa
 
         private void btnInputProcureBakteri_Click(object sender, EventArgs e)
         {
-            int selectedBakteriId = (int)cBoxNamaBakteri.SelectedValue;
-            int volumeToAdd = (int)nudVolume.Value;
-            DateTime selectedDate = dateTimePickerbakteri.Value;
+            DataRowView selectedRow = cBoxNamaBakteri.SelectedItem as DataRowView;
+            if (selectedRow != null && selectedRow["ID"] != DBNull.Value)
+            {
+                int selectedBakteriId = Convert.ToInt32(selectedRow["ID"]);
+                int volumeToAdd = (int)nudVolume.Value;
+                DateTime selectedDate = dateTimePickerbakteri.Value;
 
-            // Update the volume of the selected Bakteri and insert into Procure table
-            UpdateBakteriVolume(selectedBakteriId, volumeToAdd, selectedDate);
+                // Update the volume of the selected Bakteri and insert into Procure table
+                UpdateBakteriVolume(selectedBakteriId, volumeToAdd, selectedDate);
+            }
+            else
+            {
+                MessageBox.Show("Please select a valid Bakteri.");
+            }
         }
-
 
         private void UpdateBakteriVolume(int bakteriId, int volumeToAdd, DateTime tanggal)
         {
@@ -143,11 +152,14 @@ namespace Waterpediaa
             LoadStockBakteriData();
             LoadProcureData();
         }
+
         private void LoadProcureData()
         {
             DataTable dataTable = new DataTable();
             string connectionString = "server=localhost;database=waterpedia;user=root;";
-            string query = "SELECT * FROM Procure";
+            string query = @"SELECT p.ID, s.Jenis_Bakteri AS Nama_Bakteri, p.Tanggal, p.Volume 
+                             FROM Procure p
+                             JOIN Stock_Bakteri s ON p.Stock_BakteriID = s.ID";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
