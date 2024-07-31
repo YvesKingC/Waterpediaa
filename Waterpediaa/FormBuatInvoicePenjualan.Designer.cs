@@ -88,7 +88,9 @@
             btnCreatePDF = new Button();
             btnBack = new Button();
             label14 = new Label();
-            button3 = new Button();
+            btnRemove = new Button();
+            label11 = new Label();
+            tBoxConfirmPayment = new TextBox();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
@@ -107,6 +109,8 @@
             // panel4
             // 
             panel4.BorderStyle = BorderStyle.FixedSingle;
+            panel4.Controls.Add(tBoxConfirmPayment);
+            panel4.Controls.Add(label11);
             panel4.Controls.Add(cBoxCustomer);
             panel4.Controls.Add(label23);
             panel4.Controls.Add(dtpDueDate);
@@ -160,7 +164,7 @@
             // 
             cBoxMetodePembayaran.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cBoxMetodePembayaran.FormattingEnabled = true;
-            cBoxMetodePembayaran.Location = new Point(497, 49);
+            cBoxMetodePembayaran.Location = new Point(497, 34);
             cBoxMetodePembayaran.Name = "cBoxMetodePembayaran";
             cBoxMetodePembayaran.Size = new Size(209, 25);
             cBoxMetodePembayaran.TabIndex = 26;
@@ -179,7 +183,7 @@
             // 
             label15.AutoSize = true;
             label15.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.Location = new Point(348, 52);
+            label15.Location = new Point(348, 37);
             label15.Name = "label15";
             label15.Size = new Size(143, 19);
             label15.TabIndex = 17;
@@ -706,6 +710,7 @@
             btnBack.TabIndex = 28;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // label14
             // 
@@ -717,23 +722,43 @@
             label14.TabIndex = 29;
             label14.Text = resources.GetString("label14.Text");
             // 
-            // button3
+            // btnRemove
             // 
-            button3.BackColor = Color.FromArgb(255, 192, 192);
-            button3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(934, 578);
-            button3.Name = "button3";
-            button3.Size = new Size(97, 27);
-            button3.TabIndex = 39;
-            button3.Text = "Remove";
-            button3.UseVisualStyleBackColor = false;
+            btnRemove.BackColor = Color.FromArgb(255, 192, 192);
+            btnRemove.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRemove.Location = new Point(934, 578);
+            btnRemove.Name = "btnRemove";
+            btnRemove.Size = new Size(97, 27);
+            btnRemove.TabIndex = 39;
+            btnRemove.Text = "Remove";
+            btnRemove.UseVisualStyleBackColor = false;
+            btnRemove.Click += btnRemove_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(347, 65);
+            label11.Name = "label11";
+            label11.Size = new Size(144, 19);
+            label11.TabIndex = 41;
+            label11.Text = "Confirm for Payment :";
+            // 
+            // tBoxConfirmPayment
+            // 
+            tBoxConfirmPayment.BorderStyle = BorderStyle.FixedSingle;
+            tBoxConfirmPayment.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxConfirmPayment.Location = new Point(497, 63);
+            tBoxConfirmPayment.Name = "tBoxConfirmPayment";
+            tBoxConfirmPayment.Size = new Size(209, 25);
+            tBoxConfirmPayment.TabIndex = 31;
             // 
             // FormBuatInvoicePenjualan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1368, 728);
-            Controls.Add(button3);
+            Controls.Add(btnRemove);
             Controls.Add(label14);
             Controls.Add(btnBack);
             Controls.Add(btnCreatePDF);
@@ -834,6 +859,8 @@
         private Button btnAddNewCustomer;
         private Label label24;
         private Button btnAddProduk;
-        private Button button3;
+        private Button btnRemove;
+        private TextBox tBoxConfirmPayment;
+        private Label label11;
     }
 }

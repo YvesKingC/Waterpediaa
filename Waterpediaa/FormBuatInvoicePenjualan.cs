@@ -44,6 +44,15 @@ namespace Waterpediaa
         public int PPNPercentage = 0;
         public long PPN = 0;
         public long Total = 0;
+        public static string MetodePembayaran = "";
+        public static string NamaCustomer = "";
+        public static string Perusahaan = "";
+        public static string Alamat = "";
+        public static string ServiceOrder = "";
+        public static string DueDate = "";
+        public static string OtherComment = "";
+        public static string StringPPN = "";
+        public static string StringTotal = "";
 
         private void FormBuatInvoicePenjualan_Load(object sender, EventArgs e)
         {
@@ -61,10 +70,11 @@ namespace Waterpediaa
         }
         private void formBuatInvoicePenjualan_Closed(object sender, FormClosedEventArgs e)
         {
-            sqlConnect.Close();
+            /*sqlConnect.Close();*/
         }
-        private void LoadData()
+        public void LoadData()
         {
+            dt.Clear();
             sqlQuery = @"
                 CREATE TEMPORARY TABLE IF NOT EXISTS TempInvoice (
                     ID INT AUTO_INCREMENT PRIMARY KEY,
@@ -175,7 +185,11 @@ namespace Waterpediaa
         private void btnAddNewCustomer_Click(object sender, EventArgs e)
         {
             Regex numberRegex = new Regex(@"^\d+$");
-
+            if (string.IsNullOrWhiteSpace(tBoxNamaCust.Text) || string.IsNullOrWhiteSpace(tBoxPerusahaan.Text) || string.IsNullOrWhiteSpace(tBoxContact.Text) || string.IsNullOrWhiteSpace(tBoxAlamat.Text) || string.IsNullOrWhiteSpace(tBoxZipCode.Text))
+            {
+                MessageBox.Show("All fields must not be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (!numberRegex.IsMatch(tBoxContact.Text))
             {
                 MessageBox.Show("Contact field must contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -223,14 +237,20 @@ namespace Waterpediaa
         }
         private void btnAddProduk_Click(object sender, EventArgs e)
         {
+            if (int.TryParse(tBoxHargaJual.Text, out _) == false || string.IsNullOrWhiteSpace(tBoxHargaJual.Text))
+            {
+                MessageBox.Show("Harga Jual must not be empty and must contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             sqlQuery = "INSERT INTO TempInvoice (Nama_Barang, Packaging, Quantity, Harga_Jual) VALUES ('" + cBoxNamaProduk.Text + "', '" + cBoxPackaging.Text + "', '" + numericUpDownQTY.Text + "', '" + tBoxHargaJual.Text + "')";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlCommand.ExecuteNonQuery();
             LoadData();
             HitungTotalSubtotal();
         }
-        private void HitungTotalSubtotal()
+        public void HitungTotalSubtotal()
         {
+            Subtotal = 0;
             foreach (DataRow row in dt.Rows)
             {
                 Subtotal += Convert.ToInt64(row["Harga_Jual"]);
@@ -240,9 +260,11 @@ namespace Waterpediaa
             int PPNPercentage = Convert.ToInt32(numericUpDownPPN.Text);
             long PPN = Subtotal * PPNPercentage / 100;
             lblPPN.Text = "  : " + PPN.ToString();
+            string stringPPN = PPN.ToString();
 
             long Total = Subtotal + PPN;
             lblTotal.Text = "Total  : " + Total.ToString();
+            string stringTotal = Total.ToString();
         }
         private void cBoxProvinsi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -250,7 +272,70 @@ namespace Waterpediaa
         }
         private void btnCreatePDF_Click(object sender, EventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(cBoxMetodePembayaran.Text) || string.IsNullOrWhiteSpace(cBoxCustomer.Text))
+            {
+                MessageBox.Show("All fields must not be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            MetodePembayaran = cBoxMetodePembayaran.Text;
+            NamaCustomer = cBoxCustomer.Text;
 
+            sqlQuery = "SELECT Perusahaan, Alamat FROM Customer WHERE Nama = '" + NamaCustomer + "'";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            MySqlDataReader reader = sqlCommand.ExecuteReader();
+            while (reader.Read())
+            {
+                Perusahaan = reader["Perusahaan"].ToString();
+                Alamat = reader["Alamat"].ToString();
+            }
+            reader.Close();
+
+            ServiceOrder = dtpServiceOrder.Value.ToString("yyyy-MM-dd");
+            DueDate = dtpDueDate.Value.ToString("yyyy-MM-dd");
+            OtherComment = tBoxOtherComments.Text;
+
+            DataTable invoiceTable = dt.Clone();
+            foreach (DataRow row in dt.Rows)
+            {
+                invoiceTable.ImportRow(row);
+            }
+            FormInvoice FormInvoice = new FormInvoice
+            {
+                MetodePembayaran = MetodePembayaran,
+                NamaCustomer = NamaCustomer,
+                Perusahaan = Perusahaan,
+                Alamat = Alamat,
+                ServiceOrder = ServiceOrder,
+                DueDate = DueDate,
+                OtherComment = OtherComment,
+                Subtotal = Subtotal,
+                StringPPN = StringPPN,
+                StringTotal = StringTotal,
+                DataTable = invoiceTable
+            };
+            FormInvoice.Show();
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
+            this.Hide();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewInvoice.SelectedRows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridViewInvoice.SelectedRows)
+                {
+                    sqlQuery = "DELETE FROM TempInvoice WHERE ID = '" + row.Cells[0].Value + "'";
+                    sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                    sqlCommand.ExecuteNonQuery();
+                }
+                LoadData();
+                HitungTotalSubtotal();
+            }
         }
     }
 }

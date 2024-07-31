@@ -24,17 +24,15 @@ namespace Waterpediaa
                 btnViewUser.Enabled = true;
                 btnBakteri.Enabled = true;
                 btnWTP.Enabled = true;
-                btnProcure.Enabled = true;
                 btnQuotation.Enabled = true;
                 btnInvoice.Enabled = true;
                 btnSales.Enabled = true;
             }
             else if (FormLogin.Izin_Akses == "Finance")
-            { 
+            {
                 btnViewUser.Enabled = false;
                 btnBakteri.Enabled = false;
                 btnWTP.Enabled = false;
-                btnProcure.Enabled = false;
             }
             else if (FormLogin.Izin_Akses == "Bakteri")
             {
@@ -55,7 +53,6 @@ namespace Waterpediaa
                 btnViewUser.Enabled = true;
                 btnBakteri.Enabled = true;
                 btnWTP.Enabled = true;
-                btnProcure.Enabled = true;
                 btnQuotation.Enabled = true;
                 btnInvoice.Enabled = true;
                 btnSales.Enabled = true;
