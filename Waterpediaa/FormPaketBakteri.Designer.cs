@@ -29,41 +29,41 @@
         private void InitializeComponent()
         {
             panel5 = new Panel();
-            dataGridView2 = new DataGridView();
+            dataGridViewPaket = new DataGridView();
             panel6 = new Panel();
             label9 = new Label();
             panel1 = new Panel();
-            textBox1 = new TextBox();
-            label7 = new Label();
-            panel3 = new Panel();
-            label8 = new Label();
-            dataGridView1 = new DataGridView();
-            button1 = new Button();
+            buttonNewPaket = new Button();
             panel2 = new Panel();
+            comboBoxPilihPaket = new ComboBox();
+            label2 = new Label();
+            comboBoxPackaging = new ComboBox();
+            comboBoxBakteri = new ComboBox();
+            buttonAdd = new Button();
             label1 = new Label();
             label5 = new Label();
             panel4 = new Panel();
             label6 = new Label();
-            button2 = new Button();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            comboBox3 = new ComboBox();
-            label2 = new Label();
-            button3 = new Button();
+            buttonBuat = new Button();
+            dataGridViewTemp = new DataGridView();
+            textBoxNamaPaket = new TextBox();
+            label7 = new Label();
+            panel3 = new Panel();
+            label8 = new Label();
             panel7 = new Panel();
-            comboBox4 = new ComboBox();
+            comboBoxDelete = new ComboBox();
             label3 = new Label();
-            button4 = new Button();
+            buttonDelete = new Button();
             panel8 = new Panel();
             label11 = new Label();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPaket).BeginInit();
             panel6.SuspendLayout();
             panel1.SuspendLayout();
-            panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTemp).BeginInit();
+            panel3.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
             SuspendLayout();
@@ -72,29 +72,33 @@
             // 
             panel5.BackColor = SystemColors.Control;
             panel5.BorderStyle = BorderStyle.FixedSingle;
-            panel5.Controls.Add(dataGridView2);
+            panel5.Controls.Add(dataGridViewPaket);
             panel5.Controls.Add(panel6);
-            panel5.Location = new Point(12, 12);
+            panel5.Location = new Point(14, 16);
+            panel5.Margin = new Padding(3, 4, 3, 4);
             panel5.Name = "panel5";
-            panel5.Size = new Size(264, 461);
+            panel5.Size = new Size(301, 614);
             panel5.TabIndex = 37;
             // 
-            // dataGridView2
+            // dataGridViewPaket
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(3, 35);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(255, 421);
-            dataGridView2.TabIndex = 15;
+            dataGridViewPaket.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewPaket.Location = new Point(3, 47);
+            dataGridViewPaket.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewPaket.Name = "dataGridViewPaket";
+            dataGridViewPaket.RowHeadersWidth = 51;
+            dataGridViewPaket.RowTemplate.Height = 25;
+            dataGridViewPaket.Size = new Size(291, 561);
+            dataGridViewPaket.TabIndex = 15;
             // 
             // panel6
             // 
             panel6.BackColor = Color.DarkBlue;
             panel6.Controls.Add(label9);
             panel6.Location = new Point(0, 0);
+            panel6.Margin = new Padding(3, 4, 3, 4);
             panel6.Name = "panel6";
-            panel6.Size = new Size(455, 29);
+            panel6.Size = new Size(520, 39);
             panel6.TabIndex = 14;
             // 
             // label9
@@ -102,9 +106,9 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = Color.FromArgb(224, 224, 224);
-            label9.Location = new Point(11, 4);
+            label9.Location = new Point(13, 5);
             label9.Name = "label9";
-            label9.Size = new Size(99, 19);
+            label9.Size = new Size(118, 23);
             label9.TabIndex = 13;
             label9.Text = "Paket Bakteri";
             // 
@@ -112,100 +116,109 @@
             // 
             panel1.BackColor = SystemColors.Control;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(button3);
+            panel1.Controls.Add(buttonNewPaket);
             panel1.Controls.Add(panel2);
-            panel1.Controls.Add(button1);
-            panel1.Controls.Add(dataGridView1);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(buttonBuat);
+            panel1.Controls.Add(dataGridViewTemp);
+            panel1.Controls.Add(textBoxNamaPaket);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(panel3);
-            panel1.Location = new Point(282, 12);
+            panel1.Location = new Point(322, 16);
+            panel1.Margin = new Padding(3, 4, 3, 4);
             panel1.Name = "panel1";
-            panel1.Size = new Size(573, 352);
+            panel1.Size = new Size(655, 469);
             panel1.TabIndex = 38;
             // 
-            // textBox1
+            // buttonNewPaket
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(106, 35);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(173, 25);
-            textBox1.TabIndex = 33;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(5, 37);
-            label7.Name = "label7";
-            label7.Size = new Size(90, 19);
-            label7.TabIndex = 15;
-            label7.Text = "Nama Paket :";
-            // 
-            // panel3
-            // 
-            panel3.BackColor = Color.DarkBlue;
-            panel3.Controls.Add(label8);
-            panel3.Location = new Point(0, 0);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(571, 29);
-            panel3.TabIndex = 14;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.ForeColor = Color.FromArgb(224, 224, 224);
-            label8.Location = new Point(11, 4);
-            label8.Name = "label8";
-            label8.Size = new Size(139, 19);
-            label8.TabIndex = 13;
-            label8.Text = "Tambah Paket Baru";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(313, 35);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(255, 273);
-            dataGridView1.TabIndex = 40;
-            // 
-            // button1
-            // 
-            button1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(193, 66);
-            button1.Name = "button1";
-            button1.Size = new Size(86, 32);
-            button1.TabIndex = 41;
-            button1.Text = "Buat Paket";
-            button1.UseVisualStyleBackColor = true;
+            buttonNewPaket.BackColor = Color.FromArgb(192, 255, 192);
+            buttonNewPaket.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonNewPaket.Location = new Point(520, 419);
+            buttonNewPaket.Margin = new Padding(3, 4, 3, 4);
+            buttonNewPaket.Name = "buttonNewPaket";
+            buttonNewPaket.Size = new Size(129, 43);
+            buttonNewPaket.TabIndex = 43;
+            buttonNewPaket.Text = "Input Paket";
+            buttonNewPaket.UseVisualStyleBackColor = false;
+            buttonNewPaket.Click += buttonNewPaket_Click;
             // 
             // panel2
             // 
             panel2.BackColor = SystemColors.Control;
             panel2.BorderStyle = BorderStyle.FixedSingle;
-            panel2.Controls.Add(comboBox3);
+            panel2.Controls.Add(comboBoxPilihPaket);
             panel2.Controls.Add(label2);
-            panel2.Controls.Add(comboBox2);
-            panel2.Controls.Add(comboBox1);
-            panel2.Controls.Add(button2);
+            panel2.Controls.Add(comboBoxPackaging);
+            panel2.Controls.Add(comboBoxBakteri);
+            panel2.Controls.Add(buttonAdd);
             panel2.Controls.Add(label1);
             panel2.Controls.Add(label5);
             panel2.Controls.Add(panel4);
-            panel2.Location = new Point(5, 116);
+            panel2.Location = new Point(6, 155);
+            panel2.Margin = new Padding(3, 4, 3, 4);
             panel2.Name = "panel2";
-            panel2.Size = new Size(292, 192);
+            panel2.Size = new Size(333, 255);
             panel2.TabIndex = 42;
+            // 
+            // comboBoxPilihPaket
+            // 
+            comboBoxPilihPaket.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxPilihPaket.FormattingEnabled = true;
+            comboBoxPilihPaket.Location = new Point(114, 47);
+            comboBoxPilihPaket.Margin = new Padding(3, 4, 3, 4);
+            comboBoxPilihPaket.Name = "comboBoxPilihPaket";
+            comboBoxPilihPaket.Size = new Size(197, 31);
+            comboBoxPilihPaket.TabIndex = 47;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(11, 51);
+            label2.Name = "label2";
+            label2.Size = new Size(97, 23);
+            label2.TabIndex = 46;
+            label2.Text = "Pilih Paket :";
+            // 
+            // comboBoxPackaging
+            // 
+            comboBoxPackaging.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxPackaging.FormattingEnabled = true;
+            comboBoxPackaging.Location = new Point(114, 129);
+            comboBoxPackaging.Margin = new Padding(3, 4, 3, 4);
+            comboBoxPackaging.Name = "comboBoxPackaging";
+            comboBoxPackaging.Size = new Size(197, 31);
+            comboBoxPackaging.TabIndex = 45;
+            // 
+            // comboBoxBakteri
+            // 
+            comboBoxBakteri.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxBakteri.FormattingEnabled = true;
+            comboBoxBakteri.Location = new Point(114, 88);
+            comboBoxBakteri.Margin = new Padding(3, 4, 3, 4);
+            comboBoxBakteri.Name = "comboBoxBakteri";
+            comboBoxBakteri.Size = new Size(197, 31);
+            comboBoxBakteri.TabIndex = 44;
+            // 
+            // buttonAdd
+            // 
+            buttonAdd.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonAdd.Location = new Point(181, 188);
+            buttonAdd.Margin = new Padding(3, 4, 3, 4);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(131, 43);
+            buttonAdd.TabIndex = 43;
+            buttonAdd.Text = "Tambah Bakteri";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += buttonAdd_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(11, 100);
+            label1.Location = new Point(13, 133);
             label1.Name = "label1";
-            label1.Size = new Size(78, 19);
+            label1.Size = new Size(96, 23);
             label1.TabIndex = 34;
             label1.Text = "Packaging :";
             // 
@@ -213,9 +226,9 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(31, 69);
+            label5.Location = new Point(35, 92);
             label5.Name = "label5";
-            label5.Size = new Size(58, 19);
+            label5.Size = new Size(71, 23);
             label5.TabIndex = 15;
             label5.Text = "Bakteri :";
             // 
@@ -224,8 +237,9 @@
             panel4.BackColor = Color.DarkBlue;
             panel4.Controls.Add(label6);
             panel4.Location = new Point(0, 0);
+            panel4.Margin = new Padding(3, 4, 3, 4);
             panel4.Name = "panel4";
-            panel4.Size = new Size(425, 29);
+            panel4.Size = new Size(486, 39);
             panel4.TabIndex = 14;
             // 
             // label6
@@ -233,120 +247,130 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.FromArgb(224, 224, 224);
-            label6.Location = new Point(11, 4);
+            label6.Location = new Point(13, 5);
             label6.Name = "label6";
-            label6.Size = new Size(65, 19);
+            label6.Size = new Size(77, 23);
             label6.TabIndex = 13;
             label6.Text = "Isi Paket";
             // 
-            // button2
+            // buttonBuat
             // 
-            button2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(158, 141);
-            button2.Name = "button2";
-            button2.Size = new Size(115, 32);
-            button2.TabIndex = 43;
-            button2.Text = "Tambah Bakteri";
-            button2.UseVisualStyleBackColor = true;
+            buttonBuat.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonBuat.Location = new Point(221, 88);
+            buttonBuat.Margin = new Padding(3, 4, 3, 4);
+            buttonBuat.Name = "buttonBuat";
+            buttonBuat.Size = new Size(98, 43);
+            buttonBuat.TabIndex = 41;
+            buttonBuat.Text = "Buat Paket";
+            buttonBuat.UseVisualStyleBackColor = true;
+            buttonBuat.Click += buttonBuat_Click;
             // 
-            // comboBox1
+            // dataGridViewTemp
             // 
-            comboBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(100, 66);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(173, 25);
-            comboBox1.TabIndex = 44;
+            dataGridViewTemp.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTemp.Location = new Point(358, 47);
+            dataGridViewTemp.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewTemp.Name = "dataGridViewTemp";
+            dataGridViewTemp.RowHeadersWidth = 51;
+            dataGridViewTemp.RowTemplate.Height = 25;
+            dataGridViewTemp.Size = new Size(291, 364);
+            dataGridViewTemp.TabIndex = 40;
             // 
-            // comboBox2
+            // textBoxNamaPaket
             // 
-            comboBox2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(100, 97);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(173, 25);
-            comboBox2.TabIndex = 45;
+            textBoxNamaPaket.BorderStyle = BorderStyle.FixedSingle;
+            textBoxNamaPaket.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNamaPaket.Location = new Point(121, 47);
+            textBoxNamaPaket.Margin = new Padding(3, 4, 3, 4);
+            textBoxNamaPaket.Name = "textBoxNamaPaket";
+            textBoxNamaPaket.Size = new Size(197, 30);
+            textBoxNamaPaket.TabIndex = 33;
             // 
-            // comboBox3
+            // label7
             // 
-            comboBox3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(100, 35);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(173, 25);
-            comboBox3.TabIndex = 47;
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(6, 49);
+            label7.Name = "label7";
+            label7.Size = new Size(111, 23);
+            label7.TabIndex = 15;
+            label7.Text = "Nama Paket :";
             // 
-            // label2
+            // panel3
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(10, 38);
-            label2.Name = "label2";
-            label2.Size = new Size(79, 19);
-            label2.TabIndex = 46;
-            label2.Text = "Pilih Paket :";
+            panel3.BackColor = Color.DarkBlue;
+            panel3.Controls.Add(label8);
+            panel3.Location = new Point(0, 0);
+            panel3.Margin = new Padding(3, 4, 3, 4);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(653, 39);
+            panel3.TabIndex = 14;
             // 
-            // button3
+            // label8
             // 
-            button3.BackColor = Color.FromArgb(192, 255, 192);
-            button3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button3.Location = new Point(455, 314);
-            button3.Name = "button3";
-            button3.Size = new Size(113, 32);
-            button3.TabIndex = 43;
-            button3.Text = "Input Paket";
-            button3.UseVisualStyleBackColor = false;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.FromArgb(224, 224, 224);
+            label8.Location = new Point(13, 5);
+            label8.Name = "label8";
+            label8.Size = new Size(166, 23);
+            label8.TabIndex = 13;
+            label8.Text = "Tambah Paket Baru";
             // 
             // panel7
             // 
             panel7.BackColor = SystemColors.Control;
             panel7.BorderStyle = BorderStyle.FixedSingle;
-            panel7.Controls.Add(comboBox4);
+            panel7.Controls.Add(comboBoxDelete);
             panel7.Controls.Add(label3);
-            panel7.Controls.Add(button4);
+            panel7.Controls.Add(buttonDelete);
             panel7.Controls.Add(panel8);
-            panel7.Location = new Point(282, 370);
+            panel7.Location = new Point(322, 493);
+            panel7.Margin = new Padding(3, 4, 3, 4);
             panel7.Name = "panel7";
-            panel7.Size = new Size(573, 103);
+            panel7.Size = new Size(655, 137);
             panel7.TabIndex = 48;
             // 
-            // comboBox4
+            // comboBoxDelete
             // 
-            comboBox4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(100, 35);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(468, 25);
-            comboBox4.TabIndex = 47;
+            comboBoxDelete.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxDelete.FormattingEnabled = true;
+            comboBoxDelete.Location = new Point(114, 47);
+            comboBoxDelete.Margin = new Padding(3, 4, 3, 4);
+            comboBoxDelete.Name = "comboBoxDelete";
+            comboBoxDelete.Size = new Size(534, 31);
+            comboBoxDelete.TabIndex = 47;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(10, 38);
+            label3.Location = new Point(11, 51);
             label3.Name = "label3";
-            label3.Size = new Size(79, 19);
+            label3.Size = new Size(97, 23);
             label3.TabIndex = 46;
             label3.Text = "Pilih Paket :";
             // 
-            // button4
+            // buttonDelete
             // 
-            button4.BackColor = Color.FromArgb(255, 192, 192);
-            button4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.Location = new Point(453, 66);
-            button4.Name = "button4";
-            button4.Size = new Size(115, 32);
-            button4.TabIndex = 43;
-            button4.Text = "Hapus Paket";
-            button4.UseVisualStyleBackColor = false;
+            buttonDelete.BackColor = Color.FromArgb(255, 192, 192);
+            buttonDelete.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonDelete.Location = new Point(518, 88);
+            buttonDelete.Margin = new Padding(3, 4, 3, 4);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(131, 43);
+            buttonDelete.TabIndex = 43;
+            buttonDelete.Text = "Hapus Paket";
+            buttonDelete.UseVisualStyleBackColor = false;
             // 
             // panel8
             // 
             panel8.BackColor = Color.DarkBlue;
             panel8.Controls.Add(label11);
             panel8.Location = new Point(0, 0);
+            panel8.Margin = new Padding(3, 4, 3, 4);
             panel8.Name = "panel8";
-            panel8.Size = new Size(572, 29);
+            panel8.Size = new Size(654, 39);
             panel8.TabIndex = 14;
             // 
             // label11
@@ -354,35 +378,36 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = Color.FromArgb(224, 224, 224);
-            label11.Location = new Point(11, 4);
+            label11.Location = new Point(13, 5);
             label11.Name = "label11";
-            label11.Size = new Size(93, 19);
+            label11.Size = new Size(110, 23);
             label11.TabIndex = 13;
             label11.Text = "Hapus Paket";
             // 
             // FormPaketBakteri
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(869, 488);
+            ClientSize = new Size(993, 651);
             Controls.Add(panel7);
             Controls.Add(panel1);
             Controls.Add(panel5);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormPaketBakteri";
             Text = "FormPaketBakteri";
             panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPaket).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTemp).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
             panel8.ResumeLayout(false);
@@ -393,31 +418,31 @@
         #endregion
 
         private Panel panel5;
-        private DataGridView dataGridView2;
+        private DataGridView dataGridViewPaket;
         private Panel panel6;
         private Label label9;
         private Panel panel1;
-        private TextBox textBox1;
+        private TextBox textBoxNamaPaket;
         private Label label7;
         private Panel panel3;
         private Label label8;
-        private DataGridView dataGridView1;
-        private Button button1;
+        private DataGridView dataGridViewTemp;
+        private Button buttonBuat;
         private Panel panel2;
-        private ComboBox comboBox2;
-        private ComboBox comboBox1;
-        private Button button2;
+        private ComboBox comboBoxPackaging;
+        private ComboBox comboBoxBakteri;
+        private Button buttonAdd;
         private Label label1;
         private Label label5;
         private Panel panel4;
         private Label label6;
-        private Button button3;
-        private ComboBox comboBox3;
+        private Button buttonNewPaket;
+        private ComboBox comboBoxPilihPaket;
         private Label label2;
         private Panel panel7;
-        private ComboBox comboBox4;
+        private ComboBox comboBoxDelete;
         private Label label3;
-        private Button button4;
+        private Button buttonDelete;
         private Panel panel8;
         private Label label11;
     }
