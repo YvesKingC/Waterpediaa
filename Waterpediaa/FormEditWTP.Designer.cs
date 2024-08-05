@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnInputBakteriBaru = new Button();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
+            btnSave = new Button();
+            numericUpDownHarga = new NumericUpDown();
+            numericUpDownStok = new NumericUpDown();
             label3 = new Label();
-            textBox1 = new TextBox();
+            textBoxNamaFilter = new TextBox();
             label4 = new Label();
             label7 = new Label();
             panel2 = new Panel();
             label6 = new Label();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownHarga).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownStok).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,11 +48,11 @@
             // 
             panel1.BackColor = SystemColors.Control;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(btnInputBakteriBaru);
-            panel1.Controls.Add(numericUpDown2);
-            panel1.Controls.Add(numericUpDown1);
+            panel1.Controls.Add(btnSave);
+            panel1.Controls.Add(numericUpDownHarga);
+            panel1.Controls.Add(numericUpDownStok);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(textBoxNamaFilter);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(panel2);
@@ -62,34 +62,37 @@
             panel1.Size = new Size(377, 242);
             panel1.TabIndex = 39;
             // 
-            // btnInputBakteriBaru
+            // btnSave
             // 
-            btnInputBakteriBaru.Anchor = AnchorStyles.None;
-            btnInputBakteriBaru.BackColor = Color.FromArgb(192, 255, 192);
-            btnInputBakteriBaru.Location = new Point(211, 190);
-            btnInputBakteriBaru.Name = "btnInputBakteriBaru";
-            btnInputBakteriBaru.Size = new Size(143, 29);
-            btnInputBakteriBaru.TabIndex = 40;
-            btnInputBakteriBaru.Text = "Input";
-            btnInputBakteriBaru.UseVisualStyleBackColor = false;
+            btnSave.Anchor = AnchorStyles.None;
+            btnSave.BackColor = Color.FromArgb(192, 255, 192);
+            btnSave.Location = new Point(211, 190);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(143, 29);
+            btnSave.TabIndex = 40;
+            btnSave.Text = "Input";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
-            // numericUpDown2
+            // numericUpDownHarga
             // 
-            numericUpDown2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown2.Location = new Point(107, 124);
-            numericUpDown2.Margin = new Padding(3, 4, 3, 4);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(198, 30);
-            numericUpDown2.TabIndex = 39;
+            numericUpDownHarga.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDownHarga.Location = new Point(107, 124);
+            numericUpDownHarga.Margin = new Padding(3, 4, 3, 4);
+            numericUpDownHarga.Name = "numericUpDownHarga";
+            numericUpDownHarga.Size = new Size(198, 30);
+            numericUpDownHarga.TabIndex = 39;
+            numericUpDownHarga.Maximum = 1000000;
             // 
-            // numericUpDown1
+            // numericUpDownStok
             // 
-            numericUpDown1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(107, 82);
-            numericUpDown1.Margin = new Padding(3, 4, 3, 4);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(198, 30);
-            numericUpDown1.TabIndex = 37;
+            numericUpDownStok.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            numericUpDownStok.Location = new Point(107, 82);
+            numericUpDownStok.Margin = new Padding(3, 4, 3, 4);
+            numericUpDownStok.Name = "numericUpDownStok";
+            numericUpDownStok.Size = new Size(198, 30);
+            numericUpDownStok.TabIndex = 37;
+            numericUpDownStok.Maximum = 1000000;
             // 
             // label3
             // 
@@ -101,15 +104,15 @@
             label3.TabIndex = 34;
             label3.Text = "Stock Awal :";
             // 
-            // textBox1
+            // textBoxNamaFilter
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(107, 41);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(197, 30);
-            textBox1.TabIndex = 33;
+            textBoxNamaFilter.BorderStyle = BorderStyle.FixedSingle;
+            textBoxNamaFilter.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNamaFilter.Location = new Point(107, 41);
+            textBoxNamaFilter.Margin = new Padding(3, 4, 3, 4);
+            textBoxNamaFilter.Name = "textBoxNamaFilter";
+            textBoxNamaFilter.Size = new Size(197, 30);
+            textBoxNamaFilter.TabIndex = 33;
             // 
             // label4
             // 
@@ -162,8 +165,8 @@
             Text = "FormEditWTP";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownHarga).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownStok).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ResumeLayout(false);
@@ -172,11 +175,11 @@
         #endregion
 
         private Panel panel1;
-        private Button btnInputBakteriBaru;
-        private NumericUpDown numericUpDown2;
-        private NumericUpDown numericUpDown1;
+        private Button btnSave;
+        private NumericUpDown numericUpDownHarga;
+        private NumericUpDown numericUpDownStok;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox textBoxNamaFilter;
         private Label label4;
         private Label label7;
         private Panel panel2;

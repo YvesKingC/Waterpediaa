@@ -29,18 +29,20 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            btnInputBakteriBaru = new Button();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown1 = new NumericUpDown();
+            nudBerat = new NumericUpDown();
+            labelBerat = new Label();
+            btnInput = new Button();
+            nudHarga = new NumericUpDown();
+            nudStok = new NumericUpDown();
             label3 = new Label();
-            textBox1 = new TextBox();
+            textBoxNama = new TextBox();
             label4 = new Label();
             label7 = new Label();
             panel2 = new Panel();
             label6 = new Label();
             panel5 = new Panel();
             panel3 = new Panel();
-            dataGridView1 = new DataGridView();
+            dataGridViewStock = new DataGridView();
             panel4 = new Panel();
             label8 = new Label();
             dataGridView2 = new DataGridView();
@@ -49,32 +51,35 @@
             panel7 = new Panel();
             panel8 = new Panel();
             label13 = new Label();
-            dataGridView3 = new DataGridView();
-            button1 = new Button();
+            dataGridViewMutasi = new DataGridView();
+            btnBack = new Button();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudBerat).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudHarga).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudStok).BeginInit();
             panel2.SuspendLayout();
             panel5.SuspendLayout();
             panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewStock).BeginInit();
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMutasi).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.Control;
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(btnInputBakteriBaru);
-            panel1.Controls.Add(numericUpDown2);
-            panel1.Controls.Add(numericUpDown1);
+            panel1.Controls.Add(nudBerat);
+            panel1.Controls.Add(labelBerat);
+            panel1.Controls.Add(btnInput);
+            panel1.Controls.Add(nudHarga);
+            panel1.Controls.Add(nudStok);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(textBoxNama);
             panel1.Controls.Add(label4);
             panel1.Controls.Add(label7);
             panel1.Controls.Add(panel2);
@@ -84,34 +89,55 @@
             panel1.Size = new Size(349, 254);
             panel1.TabIndex = 38;
             // 
-            // btnInputBakteriBaru
+            // nudBerat
             // 
-            btnInputBakteriBaru.Anchor = AnchorStyles.None;
-            btnInputBakteriBaru.BackColor = Color.FromArgb(192, 255, 192);
-            btnInputBakteriBaru.Location = new Point(176, 208);
-            btnInputBakteriBaru.Name = "btnInputBakteriBaru";
-            btnInputBakteriBaru.Size = new Size(143, 29);
-            btnInputBakteriBaru.TabIndex = 40;
-            btnInputBakteriBaru.Text = "Input";
-            btnInputBakteriBaru.UseVisualStyleBackColor = false;
+            nudBerat.Location = new Point(121, 88);
+            nudBerat.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudBerat.Name = "nudBerat";
+            nudBerat.Size = new Size(198, 27);
+            nudBerat.TabIndex = 43;
             // 
-            // numericUpDown2
+            // labelBerat
             // 
-            numericUpDown2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown2.Location = new Point(121, 171);
-            numericUpDown2.Margin = new Padding(3, 4, 3, 4);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(198, 30);
-            numericUpDown2.TabIndex = 39;
+            labelBerat.AutoSize = true;
+            labelBerat.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            labelBerat.Location = new Point(59, 88);
+            labelBerat.Name = "labelBerat";
+            labelBerat.Size = new Size(59, 23);
+            labelBerat.TabIndex = 42;
+            labelBerat.Text = "Berat :";
             // 
-            // numericUpDown1
+            // btnInput
             // 
-            numericUpDown1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDown1.Location = new Point(121, 129);
-            numericUpDown1.Margin = new Padding(3, 4, 3, 4);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(198, 30);
-            numericUpDown1.TabIndex = 37;
+            btnInput.Anchor = AnchorStyles.None;
+            btnInput.BackColor = Color.FromArgb(192, 255, 192);
+            btnInput.Location = new Point(176, 208);
+            btnInput.Name = "btnInput";
+            btnInput.Size = new Size(143, 29);
+            btnInput.TabIndex = 40;
+            btnInput.Text = "Input";
+            btnInput.UseVisualStyleBackColor = false;
+            btnInput.Click += btnInput_Click;
+            // 
+            // nudHarga
+            // 
+            nudHarga.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nudHarga.Location = new Point(121, 171);
+            nudHarga.Margin = new Padding(3, 4, 3, 4);
+            nudHarga.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudHarga.Name = "nudHarga";
+            nudHarga.Size = new Size(198, 30);
+            nudHarga.TabIndex = 39;
+            // 
+            // nudStok
+            // 
+            nudStok.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            nudStok.Location = new Point(121, 129);
+            nudStok.Margin = new Padding(3, 4, 3, 4);
+            nudStok.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
+            nudStok.Name = "nudStok";
+            nudStok.Size = new Size(198, 30);
+            nudStok.TabIndex = 37;
             // 
             // label3
             // 
@@ -123,15 +149,15 @@
             label3.TabIndex = 34;
             label3.Text = "Stock Awal :";
             // 
-            // textBox1
+            // textBoxNama
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(121, 88);
-            textBox1.Margin = new Padding(3, 4, 3, 4);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(197, 30);
-            textBox1.TabIndex = 33;
+            textBoxNama.BorderStyle = BorderStyle.FixedSingle;
+            textBoxNama.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNama.Location = new Point(124, 47);
+            textBoxNama.Margin = new Padding(3, 4, 3, 4);
+            textBoxNama.Name = "textBoxNama";
+            textBoxNama.Size = new Size(197, 30);
+            textBoxNama.TabIndex = 33;
             // 
             // label4
             // 
@@ -147,7 +173,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(17, 90);
+            label7.Location = new Point(11, 48);
             label7.Name = "label7";
             label7.Size = new Size(107, 23);
             label7.TabIndex = 15;
@@ -191,7 +217,7 @@
             // 
             panel3.BackColor = SystemColors.Control;
             panel3.BorderStyle = BorderStyle.FixedSingle;
-            panel3.Controls.Add(dataGridView1);
+            panel3.Controls.Add(dataGridViewStock);
             panel3.Controls.Add(panel4);
             panel3.Location = new Point(-1, -1);
             panel3.Margin = new Padding(3, 4, 3, 4);
@@ -199,16 +225,16 @@
             panel3.Size = new Size(521, 255);
             panel3.TabIndex = 40;
             // 
-            // dataGridView1
+            // dataGridViewStock
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 47);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(517, 203);
-            dataGridView1.TabIndex = 15;
+            dataGridViewStock.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewStock.Location = new Point(3, 47);
+            dataGridViewStock.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewStock.Name = "dataGridViewStock";
+            dataGridViewStock.RowHeadersWidth = 51;
+            dataGridViewStock.RowTemplate.Height = 25;
+            dataGridViewStock.Size = new Size(517, 203);
+            dataGridViewStock.TabIndex = 15;
             // 
             // panel4
             // 
@@ -268,7 +294,7 @@
             panel7.BackColor = SystemColors.Control;
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(panel8);
-            panel7.Controls.Add(dataGridView3);
+            panel7.Controls.Add(dataGridViewMutasi);
             panel7.Location = new Point(0, 274);
             panel7.Margin = new Padding(3, 4, 3, 4);
             panel7.Name = "panel7";
@@ -296,33 +322,34 @@
             label13.TabIndex = 13;
             label13.Text = "Mutasi Filter";
             // 
-            // dataGridView3
+            // dataGridViewMutasi
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(3, 47);
-            dataGridView3.Margin = new Padding(3, 4, 3, 4);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 51;
-            dataGridView3.RowTemplate.Height = 25;
-            dataGridView3.Size = new Size(892, 230);
-            dataGridView3.TabIndex = 0;
+            dataGridViewMutasi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewMutasi.Location = new Point(3, 47);
+            dataGridViewMutasi.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewMutasi.Name = "dataGridViewMutasi";
+            dataGridViewMutasi.RowHeadersWidth = 51;
+            dataGridViewMutasi.RowTemplate.Height = 25;
+            dataGridViewMutasi.Size = new Size(892, 230);
+            dataGridViewMutasi.TabIndex = 0;
             // 
-            // button1
+            // btnBack
             // 
-            button1.BackColor = Color.FromArgb(255, 128, 128);
-            button1.Location = new Point(12, 559);
-            button1.Name = "button1";
-            button1.Size = new Size(110, 29);
-            button1.TabIndex = 42;
-            button1.Text = "Back";
-            button1.UseVisualStyleBackColor = false;
+            btnBack.BackColor = Color.FromArgb(255, 128, 128);
+            btnBack.Location = new Point(12, 559);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(110, 29);
+            btnBack.TabIndex = 42;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // FormTambahWTP
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(899, 595);
-            Controls.Add(button1);
+            Controls.Add(btnBack);
             Controls.Add(panel7);
             Controls.Add(panel5);
             Controls.Add(panel1);
@@ -330,13 +357,14 @@
             Text = "FormTambahWTP";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudBerat).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudHarga).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudStok).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel5.ResumeLayout(false);
             panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewStock).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
@@ -345,18 +373,18 @@
             panel7.ResumeLayout(false);
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMutasi).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private Button btnInputBakteriBaru;
-        private NumericUpDown numericUpDown2;
-        private NumericUpDown numericUpDown1;
+        private Button btnInput;
+        private NumericUpDown nudHarga;
+        private NumericUpDown nudStok;
         private Label label3;
-        private TextBox textBox1;
+        private TextBox textBoxNama;
         private Label label4;
         private Label label7;
         private Panel panel2;
@@ -366,13 +394,15 @@
         private Panel panel6;
         private Label label9;
         private Panel panel3;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewStock;
         private Panel panel4;
         private Label label8;
         private Panel panel7;
         private Panel panel8;
         private Label label13;
-        private DataGridView dataGridView3;
-        private Button button1;
+        private DataGridView dataGridViewMutasi;
+        private Button btnBack;
+        private NumericUpDown nudBerat;
+        private Label labelBerat;
     }
 }
