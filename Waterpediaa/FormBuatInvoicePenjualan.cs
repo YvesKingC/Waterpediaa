@@ -299,6 +299,7 @@ namespace Waterpediaa
             {
                 invoiceTable.ImportRow(row);
             }
+            AddAllToInvoiceDT();
             FormInvoice FormInvoice = new FormInvoice
             {
                 MetodePembayaran = MetodePembayaran,
@@ -337,5 +338,113 @@ namespace Waterpediaa
                 HitungTotalSubtotal();
             }
         }
+
+        /*dibuat gpt semoga works*/
+        private void AddAllToInvoiceDT()
+        {
+            try
+            {
+                sqlConnect.Open();
+
+                // Generate ParentInvID
+                string parentInvID = DateTime.Now.ToString("yyMMdd") + "01";
+
+                // Retrieve PembeliID based on customer name
+                int pembeliID = 0;
+                sqlQuery = "SELECT ID FROM Customer WHERE Nama = @NamaCustomer";
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                sqlCommand.Parameters.AddWithValue("@NamaCustomer", cBoxCustomer.Text);
+                var result = sqlCommand.ExecuteScalar();
+                if (result != null)
+                {
+                    pembeliID = Convert.ToInt32(result);
+                }
+
+                // Retrieve Metode_PembayaranID based on payment method
+                int metodePembayaranID = 0;
+                sqlQuery = "SELECT ID FROM Metode_Pembayaran WHERE Metode = @MetodePembayaran";
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                sqlCommand.Parameters.AddWithValue("@MetodePembayaran", cBoxMetodePembayaran.Text);
+                result = sqlCommand.ExecuteScalar();
+                if (result != null)
+                {
+                    metodePembayaranID = Convert.ToInt32(result);
+                }
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int? stockBakteriID = GetStockBakteriID(row["Nama_Barang"].ToString());
+                    int? paketBakteriID = GetPaketBakteriID(row["Nama_Barang"].ToString());
+                    int? stockFilterID = GetStockFilterID(row["Nama_Barang"].ToString());
+                    int? stockPackagingID = GetStockPackagingID(row["Packaging"].ToString());
+
+                    sqlQuery = @"
+                INSERT INTO Invoice (ParentInvID, Stock_BakteriID, Paket_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Keluar, Harga_Jual, Metode_PembayaranID, PPN, Ongkir, Other_Comments)
+                VALUES (@ParentInvID, @Stock_BakteriID, @PaketBakteriID, @StockFilterID, @StockPackagingID, @PembeliID, @ServiceOrder, @DueDate, @JumlahKeluar, @HargaJual, @MetodePembayaranID, @PPN, @OtherComments)";
+
+                    sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                    sqlCommand.Parameters.AddWithValue("@ParentInvID", parentInvID);
+                    sqlCommand.Parameters.AddWithValue("@Stock_BakteriID", stockBakteriID.HasValue ? (object)stockBakteriID.Value : DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@PaketBakteriID", paketBakteriID.HasValue ? (object)paketBakteriID.Value : DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@StockFilterID", stockFilterID.HasValue ? (object)stockFilterID.Value : DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@StockPackagingID", stockPackagingID.HasValue ? (object)stockPackagingID.Value : DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@PembeliID", pembeliID);
+                    sqlCommand.Parameters.AddWithValue("@ServiceOrder", dtpServiceOrder.Value.ToString("yyyy-MM-dd"));
+                    sqlCommand.Parameters.AddWithValue("@DueDate", dtpDueDate.Value.ToString("yyyy-MM-dd"));
+                    sqlCommand.Parameters.AddWithValue("@JumlahKeluar", row["Quantity"]);
+                    sqlCommand.Parameters.AddWithValue("@HargaJual", row["Harga_Jual"]);
+                    sqlCommand.Parameters.AddWithValue("@MetodePembayaranID", metodePembayaranID);
+                    sqlCommand.Parameters.AddWithValue("@PPN", Convert.ToInt32(lblPPN.Text));
+                    sqlCommand.Parameters.AddWithValue("@OtherComments", OtherComment);
+
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while adding the invoice: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
+        }
+
+        private int? GetStockBakteriID(string namaBakteri)
+        {
+            sqlQuery = "SELECT ID FROM Stock_Bakteri WHERE Jenis_Bakteri = @NamaBakteri";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@NamaBakteri", namaBakteri);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : (int?)null;
+        }
+
+        private int? GetPaketBakteriID(string namaPaket)
+        {
+            sqlQuery = "SELECT ID FROM Paket_Bakteri WHERE Nama_Paket = @NamaPaket";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@NamaPaket", namaPaket);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : (int?)null;
+        }
+
+        private int? GetStockFilterID(string jenisFilter)
+        {
+            sqlQuery = "SELECT ID FROM Stock_Filter WHERE Jenis_Filter = @JenisFilter";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@JenisFilter", jenisFilter);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : (int?)null;
+        }
+
+        private int? GetStockPackagingID(string namaBarang)
+        {
+            sqlQuery = "SELECT ID FROM Stock_Packaging WHERE Nama_Barang = @NamaBarang";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@NamaBarang", namaBarang);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : (int?)null;
+        }
+
     }
 }
