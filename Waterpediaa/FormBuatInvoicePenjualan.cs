@@ -53,6 +53,7 @@ namespace Waterpediaa
         public static string OtherComment = "";
         public static string StringPPN = "";
         public static string StringTotal = "";
+        public string parentInvID = "";
 
         private void FormBuatInvoicePenjualan_Load(object sender, EventArgs e)
         {
@@ -312,7 +313,8 @@ namespace Waterpediaa
                 Subtotal = Subtotal,
                 StringPPN = StringPPN,
                 StringTotal = StringTotal,
-                DataTable = invoiceTable
+                DataTable = invoiceTable,
+                parentInvID = parentInvID
             };
             FormInvoice.Show();
         }
@@ -347,7 +349,8 @@ namespace Waterpediaa
                 sqlConnect.Open();
 
                 // Generate ParentInvID
-                string parentInvID = DateTime.Now.ToString("yyMMdd") + "01";
+                string todayDate = DateTime.Now.ToString("yyMMdd");
+                string parentInvID = GetNextParentInvID(todayDate);
 
                 // Retrieve PembeliID based on customer name
                 int pembeliID = 0;
@@ -408,6 +411,25 @@ namespace Waterpediaa
             {
                 sqlConnect.Close();
             }
+        }
+        private string GetNextParentInvID(string todayDate)
+        {
+            string lastInvID = "";
+            int nextInvNumber = 1;
+
+            sqlQuery = "SELECT ParentInvID FROM Invoice WHERE ParentInvID LIKE @TodayDate ORDER BY ParentInvID DESC LIMIT 1";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@TodayDate", todayDate + "%");
+            var result = sqlCommand.ExecuteScalar();
+            if (result != null)
+            {
+                lastInvID = result.ToString();
+                string lastInvNumberStr = lastInvID.Substring(6); // Get the last 2 digits
+                int lastInvNumber = int.Parse(lastInvNumberStr);
+                nextInvNumber = lastInvNumber + 1;
+            }
+
+            return todayDate + nextInvNumber.ToString("D2"); // Format to ensure two digits, e.g., 01, 02, etc.
         }
 
         private int? GetStockBakteriID(string namaBakteri)
