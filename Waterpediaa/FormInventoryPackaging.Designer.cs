@@ -31,8 +31,8 @@
             textBox1 = new TextBox();
             button1 = new Button();
             dataGridView1 = new DataGridView();
-            button3 = new Button();
-            button4 = new Button();
+            buttonEditInventory = new Button();
+            buttonItemPack = new Button();
             button7 = new Button();
             button8 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -51,7 +51,7 @@
             button1.Name = "button1";
             button1.Size = new Size(151, 29);
             button1.TabIndex = 1;
-            button1.Text = "button1";
+            button1.Text = "Search";
             button1.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
@@ -64,23 +64,23 @@
             dataGridView1.Size = new Size(669, 402);
             dataGridView1.TabIndex = 2;
             // 
-            // button3
+            // buttonEditInventory
             // 
-            button3.Location = new Point(676, 159);
-            button3.Name = "button3";
-            button3.Size = new Size(151, 29);
-            button3.TabIndex = 6;
-            button3.Text = "Edit Item";
-            button3.UseVisualStyleBackColor = true;
+            buttonEditInventory.Location = new Point(676, 159);
+            buttonEditInventory.Name = "buttonEditInventory";
+            buttonEditInventory.Size = new Size(151, 29);
+            buttonEditInventory.TabIndex = 6;
+            buttonEditInventory.Text = "Edit Item";
+            buttonEditInventory.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // buttonItemPack
             // 
-            button4.Location = new Point(676, 194);
-            button4.Name = "button4";
-            button4.Size = new Size(151, 29);
-            button4.TabIndex = 7;
-            button4.Text = "Item Baru";
-            button4.UseVisualStyleBackColor = true;
+            buttonItemPack.Location = new Point(676, 194);
+            buttonItemPack.Name = "buttonItemPack";
+            buttonItemPack.Size = new Size(151, 29);
+            buttonItemPack.TabIndex = 7;
+            buttonItemPack.Text = "Item Baru";
+            buttonItemPack.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
@@ -109,8 +109,8 @@
             ClientSize = new Size(838, 450);
             Controls.Add(button8);
             Controls.Add(button7);
-            Controls.Add(button4);
-            Controls.Add(button3);
+            Controls.Add(buttonItemPack);
+            Controls.Add(buttonEditInventory);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
             Controls.Add(textBox1);
@@ -126,8 +126,8 @@
         private TextBox textBox1;
         private Button button1;
         private DataGridView dataGridView1;
-        private Button button3;
-        private Button button4;
+        private Button buttonEditInventory;
+        private Button buttonItemPack;
         private Button button7;
         private Button button8;
     }

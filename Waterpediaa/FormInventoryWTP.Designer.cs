@@ -32,100 +32,96 @@
             buttonNewfilter = new Button();
             buttonInvoice = new Button();
             buttonEditWTP = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridViewWTP = new DataGridView();
             buttonSearchWTP = new Button();
             textBoxWTP = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewWTP).BeginInit();
             SuspendLayout();
             // 
             // btnBack
             // 
             btnBack.Anchor = AnchorStyles.None;
             btnBack.BackColor = Color.FromArgb(255, 128, 128);
-            btnBack.Location = new Point(637, 320);
-            btnBack.Margin = new Padding(3, 2, 3, 2);
+            btnBack.Location = new Point(728, 427);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(125, 22);
+            btnBack.Size = new Size(143, 29);
             btnBack.TabIndex = 35;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             // 
             // buttonNewfilter
             // 
-            buttonNewfilter.Location = new Point(637, 119);
-            buttonNewfilter.Margin = new Padding(3, 2, 3, 2);
+            buttonNewfilter.Location = new Point(728, 159);
             buttonNewfilter.Name = "buttonNewfilter";
-            buttonNewfilter.Size = new Size(125, 22);
+            buttonNewfilter.Size = new Size(143, 29);
             buttonNewfilter.TabIndex = 34;
             buttonNewfilter.Text = "Filter Baru";
             buttonNewfilter.UseVisualStyleBackColor = true;
+            buttonNewfilter.Click += buttonNewfilter_Click;
             // 
             // buttonInvoice
             // 
             buttonInvoice.BackColor = Color.FromArgb(128, 255, 128);
             buttonInvoice.ForeColor = SystemColors.ControlText;
-            buttonInvoice.Location = new Point(637, 294);
-            buttonInvoice.Margin = new Padding(3, 2, 3, 2);
+            buttonInvoice.Location = new Point(728, 392);
             buttonInvoice.Name = "buttonInvoice";
-            buttonInvoice.Size = new Size(125, 22);
+            buttonInvoice.Size = new Size(143, 29);
             buttonInvoice.TabIndex = 30;
             buttonInvoice.Text = "Invoice";
             buttonInvoice.UseVisualStyleBackColor = false;
             // 
             // buttonEditWTP
             // 
-            buttonEditWTP.Location = new Point(637, 93);
-            buttonEditWTP.Margin = new Padding(3, 2, 3, 2);
+            buttonEditWTP.Location = new Point(728, 124);
             buttonEditWTP.Name = "buttonEditWTP";
-            buttonEditWTP.Size = new Size(125, 22);
+            buttonEditWTP.Size = new Size(143, 29);
             buttonEditWTP.TabIndex = 29;
             buttonEditWTP.Text = "Edit Item";
             buttonEditWTP.UseVisualStyleBackColor = true;
+            buttonEditWTP.Click += buttonEditWTP_Click;
             // 
-            // dataGridView1
+            // dataGridViewWTP
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(39, 47);
-            dataGridView1.Margin = new Padding(3, 2, 3, 2);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(584, 295);
-            dataGridView1.TabIndex = 27;
+            dataGridViewWTP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewWTP.Location = new Point(45, 63);
+            dataGridViewWTP.Name = "dataGridViewWTP";
+            dataGridViewWTP.RowHeadersWidth = 51;
+            dataGridViewWTP.RowTemplate.Height = 29;
+            dataGridViewWTP.Size = new Size(667, 393);
+            dataGridViewWTP.TabIndex = 27;
             // 
             // buttonSearchWTP
             // 
-            buttonSearchWTP.Location = new Point(637, 21);
-            buttonSearchWTP.Margin = new Padding(3, 2, 3, 2);
+            buttonSearchWTP.Location = new Point(728, 28);
             buttonSearchWTP.Name = "buttonSearchWTP";
-            buttonSearchWTP.Size = new Size(125, 22);
+            buttonSearchWTP.Size = new Size(143, 29);
             buttonSearchWTP.TabIndex = 26;
             buttonSearchWTP.Text = "Search";
             buttonSearchWTP.UseVisualStyleBackColor = true;
             // 
             // textBoxWTP
             // 
-            textBoxWTP.Location = new Point(39, 20);
-            textBoxWTP.Margin = new Padding(3, 2, 3, 2);
+            textBoxWTP.Location = new Point(45, 27);
             textBoxWTP.Name = "textBoxWTP";
-            textBoxWTP.Size = new Size(585, 23);
+            textBoxWTP.Size = new Size(668, 27);
             textBoxWTP.TabIndex = 25;
             // 
             // FormInventoryWTP
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 361);
+            ClientSize = new Size(914, 481);
             Controls.Add(btnBack);
             Controls.Add(buttonNewfilter);
             Controls.Add(buttonInvoice);
             Controls.Add(buttonEditWTP);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewWTP);
             Controls.Add(buttonSearchWTP);
             Controls.Add(textBoxWTP);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "FormInventoryWTP";
             Text = "FormInventoryWTP";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewWTP).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -135,7 +131,7 @@
         private Button buttonNewfilter;
         private Button buttonInvoice;
         private Button buttonEditWTP;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewWTP;
         private Button buttonSearchWTP;
         private TextBox textBoxWTP;
     }
