@@ -30,12 +30,11 @@
         {
             textBox1 = new TextBox();
             button1 = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridViewPackaging = new DataGridView();
             buttonEditInventory = new Button();
             buttonItemPack = new Button();
             button7 = new Button();
-            button8 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPackaging).BeginInit();
             SuspendLayout();
             // 
             // textBox1
@@ -54,15 +53,15 @@
             button1.Text = "Search";
             button1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataGridViewPackaging
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(1, 36);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(669, 402);
-            dataGridView1.TabIndex = 2;
+            dataGridViewPackaging.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewPackaging.Location = new Point(1, 36);
+            dataGridViewPackaging.Name = "dataGridViewPackaging";
+            dataGridViewPackaging.RowHeadersWidth = 51;
+            dataGridViewPackaging.RowTemplate.Height = 29;
+            dataGridViewPackaging.Size = new Size(669, 402);
+            dataGridViewPackaging.TabIndex = 2;
             // 
             // buttonEditInventory
             // 
@@ -72,6 +71,7 @@
             buttonEditInventory.TabIndex = 6;
             buttonEditInventory.Text = "Edit Item";
             buttonEditInventory.UseVisualStyleBackColor = true;
+            buttonEditInventory.Click += buttonEditInventory_Click;
             // 
             // buttonItemPack
             // 
@@ -81,6 +81,7 @@
             buttonItemPack.TabIndex = 7;
             buttonItemPack.Text = "Item Baru";
             buttonItemPack.UseVisualStyleBackColor = true;
+            buttonItemPack.Click += buttonItemPack_Click;
             // 
             // button7
             // 
@@ -92,31 +93,20 @@
             button7.Text = "Back";
             button7.UseVisualStyleBackColor = false;
             // 
-            // button8
-            // 
-            button8.BackColor = Color.FromArgb(128, 255, 128);
-            button8.Location = new Point(676, 229);
-            button8.Name = "button8";
-            button8.Size = new Size(151, 29);
-            button8.TabIndex = 11;
-            button8.Text = "Item Keluar";
-            button8.UseVisualStyleBackColor = false;
-            // 
             // FormInventoryPackaging
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(838, 450);
-            Controls.Add(button8);
             Controls.Add(button7);
             Controls.Add(buttonItemPack);
             Controls.Add(buttonEditInventory);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewPackaging);
             Controls.Add(button1);
             Controls.Add(textBox1);
             Name = "FormInventoryPackaging";
             Text = "FormInventoryPackaging";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewPackaging).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -125,10 +115,9 @@
 
         private TextBox textBox1;
         private Button button1;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewPackaging;
         private Button buttonEditInventory;
         private Button buttonItemPack;
         private Button button7;
-        private Button button8;
     }
 }
