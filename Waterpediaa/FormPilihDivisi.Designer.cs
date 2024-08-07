@@ -33,7 +33,6 @@
             btnWTP = new Button();
             btnBakteri = new Button();
             panel1 = new Panel();
-            btnProcure = new Button();
             btnQuotation = new Button();
             btnInvoice = new Button();
             btnViewUser = new Button();
@@ -101,7 +100,6 @@
             panel1.Size = new Size(669, 65);
             panel1.TabIndex = 16;
             // 
-            // 
             // btnQuotation
             // 
             btnQuotation.AutoSize = true;
@@ -133,7 +131,7 @@
             btnViewUser.AutoSize = true;
             btnViewUser.BackColor = Color.FromArgb(192, 255, 255);
             btnViewUser.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnViewUser.Location = new Point(240, 184);
+            btnViewUser.Location = new Point(446, 20);
             btnViewUser.Name = "btnViewUser";
             btnViewUser.Size = new Size(180, 48);
             btnViewUser.TabIndex = 20;
@@ -151,7 +149,6 @@
             panel2.Controls.Add(btnInvoice);
             panel2.Controls.Add(btnLogout);
             panel2.Controls.Add(btnQuotation);
-            panel2.Controls.Add(btnProcure);
             panel2.Location = new Point(13, 77);
             panel2.Name = "panel2";
             panel2.Size = new Size(644, 251);
@@ -195,7 +192,6 @@
         private Button btnWTP;
         private Button btnBakteri;
         private Panel panel1;
-        private Button btnProcure;
         private Button btnQuotation;
         private Button btnInvoice;
         private Button btnViewUser;
