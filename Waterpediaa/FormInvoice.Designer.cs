@@ -115,7 +115,6 @@
             panelInvoice.Controls.Add(label23);
             panelInvoice.Controls.Add(label21);
             panelInvoice.Controls.Add(label14);
-            panelInvoice.Controls.Add(panel4);
             panelInvoice.Controls.Add(panel8);
             panelInvoice.Controls.Add(panel1);
             panelInvoice.Controls.Add(panelProduk);
@@ -196,7 +195,7 @@
             // 
             panel4.BackColor = Color.DarkBlue;
             panel4.Controls.Add(lblTotal);
-            panel4.Location = new Point(455, 871);
+            panel4.Location = new Point(0, 70);
             panel4.Name = "panel4";
             panel4.Size = new Size(302, 29);
             panel4.TabIndex = 15;
@@ -217,9 +216,10 @@
             panel8.BorderStyle = BorderStyle.FixedSingle;
             panel8.Controls.Add(panel5);
             panel8.Controls.Add(panel9);
+            panel8.Controls.Add(panel4);
             panel8.Location = new Point(455, 800);
             panel8.Name = "panel8";
-            panel8.Size = new Size(302, 100);
+            panel8.Size = new Size(302, 102);
             panel8.TabIndex = 46;
             // 
             // panel5
@@ -582,6 +582,7 @@
             btnCreatePDF.TabIndex = 31;
             btnCreatePDF.Text = "Create PDF";
             btnCreatePDF.UseVisualStyleBackColor = false;
+            btnCreatePDF.Click += btnCreatePDF_Click;
             // 
             // FormInvoice
             // 
