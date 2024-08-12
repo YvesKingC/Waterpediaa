@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Waterpediaa")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a2f60573de7889ec300279233d63cceb048c29a2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9b847593b87c4f66ff97b0110f21d93b563ad55d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Waterpediaa")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Waterpediaa")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
