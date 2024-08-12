@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelInvoice = new Panel();
-            tBoxInvoiceID = new TextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQuotation));
+            panelQuotation = new Panel();
+            tBoxQuoteID = new TextBox();
             tBoxDueDate = new TextBox();
             tBoxServiceOrder = new TextBox();
             label23 = new Label();
@@ -43,7 +44,7 @@
             panel4 = new Panel();
             lblTotal = new Label();
             panel1 = new Panel();
-            tBoxTMS = new TextBox();
+            tBoxTNC = new TextBox();
             panel3 = new Panel();
             label16 = new Label();
             panelProduk = new Panel();
@@ -67,7 +68,10 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             btnCreatePDF = new Button();
-            panelInvoice.SuspendLayout();
+            printDialog1 = new PrintDialog();
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
+            printPreviewDialog1 = new PrintPreviewDialog();
+            panelQuotation.SuspendLayout();
             panel8.SuspendLayout();
             panel5.SuspendLayout();
             panel9.SuspendLayout();
@@ -82,44 +86,44 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // panelInvoice
+            // panelQuotation
             // 
-            panelInvoice.BackColor = Color.White;
-            panelInvoice.Controls.Add(tBoxInvoiceID);
-            panelInvoice.Controls.Add(tBoxDueDate);
-            panelInvoice.Controls.Add(tBoxServiceOrder);
-            panelInvoice.Controls.Add(label23);
-            panelInvoice.Controls.Add(label21);
-            panelInvoice.Controls.Add(label14);
-            panelInvoice.Controls.Add(panel8);
-            panelInvoice.Controls.Add(panel1);
-            panelInvoice.Controls.Add(panelProduk);
-            panelInvoice.Controls.Add(panelBillTo);
-            panelInvoice.Controls.Add(linkLblWaterpedia);
-            panelInvoice.Controls.Add(label10);
-            panelInvoice.Controls.Add(label9);
-            panelInvoice.Controls.Add(label8);
-            panelInvoice.Controls.Add(label7);
-            panelInvoice.Controls.Add(label6);
-            panelInvoice.Controls.Add(label5);
-            panelInvoice.Controls.Add(label4);
-            panelInvoice.Controls.Add(label3);
-            panelInvoice.Controls.Add(label2);
-            panelInvoice.Controls.Add(pictureBox1);
-            panelInvoice.Controls.Add(label1);
-            panelInvoice.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            panelInvoice.Location = new Point(1, 0);
-            panelInvoice.Name = "panelInvoice";
-            panelInvoice.Size = new Size(794, 1100);
-            panelInvoice.TabIndex = 31;
+            panelQuotation.BackColor = Color.White;
+            panelQuotation.Controls.Add(tBoxQuoteID);
+            panelQuotation.Controls.Add(tBoxDueDate);
+            panelQuotation.Controls.Add(tBoxServiceOrder);
+            panelQuotation.Controls.Add(label23);
+            panelQuotation.Controls.Add(label21);
+            panelQuotation.Controls.Add(label14);
+            panelQuotation.Controls.Add(panel8);
+            panelQuotation.Controls.Add(panel1);
+            panelQuotation.Controls.Add(panelProduk);
+            panelQuotation.Controls.Add(panelBillTo);
+            panelQuotation.Controls.Add(linkLblWaterpedia);
+            panelQuotation.Controls.Add(label10);
+            panelQuotation.Controls.Add(label9);
+            panelQuotation.Controls.Add(label8);
+            panelQuotation.Controls.Add(label7);
+            panelQuotation.Controls.Add(label6);
+            panelQuotation.Controls.Add(label5);
+            panelQuotation.Controls.Add(label4);
+            panelQuotation.Controls.Add(label3);
+            panelQuotation.Controls.Add(label2);
+            panelQuotation.Controls.Add(pictureBox1);
+            panelQuotation.Controls.Add(label1);
+            panelQuotation.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            panelQuotation.Location = new Point(1, 0);
+            panelQuotation.Name = "panelQuotation";
+            panelQuotation.Size = new Size(794, 1100);
+            panelQuotation.TabIndex = 31;
             // 
-            // tBoxInvoiceID
+            // tBoxQuoteID
             // 
-            tBoxInvoiceID.BorderStyle = BorderStyle.FixedSingle;
-            tBoxInvoiceID.Location = new Point(581, 241);
-            tBoxInvoiceID.Name = "tBoxInvoiceID";
-            tBoxInvoiceID.Size = new Size(172, 25);
-            tBoxInvoiceID.TabIndex = 52;
+            tBoxQuoteID.BorderStyle = BorderStyle.FixedSingle;
+            tBoxQuoteID.Location = new Point(581, 241);
+            tBoxQuoteID.Name = "tBoxQuoteID";
+            tBoxQuoteID.Size = new Size(172, 25);
+            tBoxQuoteID.TabIndex = 52;
             // 
             // tBoxDueDate
             // 
@@ -241,22 +245,22 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(tBoxTMS);
+            panel1.Controls.Add(tBoxTNC);
             panel1.Controls.Add(panel3);
             panel1.Location = new Point(36, 800);
             panel1.Name = "panel1";
             panel1.Size = new Size(414, 200);
             panel1.TabIndex = 45;
             // 
-            // tBoxTMS
+            // tBoxTNC
             // 
-            tBoxTMS.BorderStyle = BorderStyle.FixedSingle;
-            tBoxTMS.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxTMS.Location = new Point(3, 35);
-            tBoxTMS.Multiline = true;
-            tBoxTMS.Name = "tBoxTMS";
-            tBoxTMS.Size = new Size(406, 160);
-            tBoxTMS.TabIndex = 16;
+            tBoxTNC.BorderStyle = BorderStyle.FixedSingle;
+            tBoxTNC.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxTNC.Location = new Point(3, 35);
+            tBoxTNC.Multiline = true;
+            tBoxTNC.Name = "tBoxTNC";
+            tBoxTNC.Size = new Size(406, 160);
+            tBoxTNC.TabIndex = 16;
             // 
             // panel3
             // 
@@ -494,18 +498,32 @@
             btnCreatePDF.Text = "Create PDF";
             btnCreatePDF.UseVisualStyleBackColor = false;
             // 
+            // printDialog1
+            // 
+            printDialog1.UseEXDialog = true;
+            // 
+            // printPreviewDialog1
+            // 
+            printPreviewDialog1.AutoScrollMargin = new Size(0, 0);
+            printPreviewDialog1.AutoScrollMinSize = new Size(0, 0);
+            printPreviewDialog1.ClientSize = new Size(400, 300);
+            printPreviewDialog1.Enabled = true;
+            printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
+            printPreviewDialog1.Name = "printPreviewDialog1";
+            printPreviewDialog1.Visible = false;
+            // 
             // FormQuotation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(948, 1061);
             Controls.Add(btnCreatePDF);
-            Controls.Add(panelInvoice);
+            Controls.Add(panelQuotation);
             Name = "FormQuotation";
             Text = "FormQuotation";
             Load += FormQuotation_Load;
-            panelInvoice.ResumeLayout(false);
-            panelInvoice.PerformLayout();
+            panelQuotation.ResumeLayout(false);
+            panelQuotation.PerformLayout();
             panel8.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -531,8 +549,8 @@
 
         #endregion
 
-        private Panel panelInvoice;
-        private TextBox tBoxInvoiceID;
+        private Panel panelQuotation;
+        private TextBox tBoxQuoteID;
         private TextBox tBoxDueDate;
         private TextBox tBoxServiceOrder;
         private Label label23;
@@ -546,7 +564,7 @@
         private Panel panel4;
         private Label lblTotal;
         private Panel panel1;
-        private TextBox tBoxTMS;
+        private TextBox tBoxTNC;
         private Panel panel3;
         private Label label16;
         private Panel panelProduk;
@@ -570,5 +588,8 @@
         private PictureBox pictureBox1;
         private Label label1;
         private Button btnCreatePDF;
+        private PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private PrintPreviewDialog printPreviewDialog1;
     }
 }
