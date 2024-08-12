@@ -30,12 +30,14 @@
         {
             btnBack = new Button();
             btnCreatePDF = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridViewQuote = new DataGridView();
             panel6 = new Panel();
             tBoxOtherComments = new TextBox();
             panel7 = new Panel();
             label21 = new Label();
             panel4 = new Panel();
+            cBoxCustomer = new ComboBox();
+            label23 = new Label();
             dtpDueDate = new DateTimePicker();
             dtpServiceOrder = new DateTimePicker();
             label13 = new Label();
@@ -82,9 +84,7 @@
             lblPPN = new Label();
             panel9 = new Panel();
             label22 = new Label();
-            cBoxCustomer = new ComboBox();
-            label23 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewQuote).BeginInit();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel4.SuspendLayout();
@@ -121,14 +121,14 @@
             btnCreatePDF.Text = "Create \r\nQuotation";
             btnCreatePDF.UseVisualStyleBackColor = false;
             // 
-            // dataGridView1
+            // dataGridViewQuote
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(336, 115);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(1019, 452);
-            dataGridView1.TabIndex = 36;
+            dataGridViewQuote.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewQuote.Location = new Point(336, 115);
+            dataGridViewQuote.Name = "dataGridViewQuote";
+            dataGridViewQuote.RowTemplate.Height = 25;
+            dataGridViewQuote.Size = new Size(1019, 452);
+            dataGridViewQuote.TabIndex = 36;
             // 
             // panel6
             // 
@@ -184,6 +184,25 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(1019, 97);
             panel4.TabIndex = 32;
+            // 
+            // cBoxCustomer
+            // 
+            cBoxCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxCustomer.FormattingEnabled = true;
+            cBoxCustomer.Location = new Point(140, 49);
+            cBoxCustomer.Name = "cBoxCustomer";
+            cBoxCustomer.Size = new Size(280, 25);
+            cBoxCustomer.TabIndex = 45;
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label23.Location = new Point(18, 52);
+            label23.Name = "label23";
+            label23.Size = new Size(116, 19);
+            label23.TabIndex = 44;
+            label23.Text = "Customer Name :";
             // 
             // dtpDueDate
             // 
@@ -658,25 +677,6 @@
             label22.TabIndex = 13;
             label22.Text = "Total Subtotal";
             // 
-            // cBoxCustomer
-            // 
-            cBoxCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cBoxCustomer.FormattingEnabled = true;
-            cBoxCustomer.Location = new Point(140, 49);
-            cBoxCustomer.Name = "cBoxCustomer";
-            cBoxCustomer.Size = new Size(280, 25);
-            cBoxCustomer.TabIndex = 45;
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label23.Location = new Point(18, 52);
-            label23.Name = "label23";
-            label23.Size = new Size(116, 19);
-            label23.TabIndex = 44;
-            label23.Text = "Customer Name :";
-            // 
             // FormBuatQuotation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -687,12 +687,13 @@
             Controls.Add(panelProduk);
             Controls.Add(btnBack);
             Controls.Add(btnCreatePDF);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewQuote);
             Controls.Add(panel6);
             Controls.Add(panel4);
             Name = "FormBuatQuotation";
             Text = "FormBuatQuotation";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            Load += FormBuatQuotation_Load;
+            ((System.ComponentModel.ISupportInitialize)dataGridViewQuote).EndInit();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel7.ResumeLayout(false);
@@ -721,7 +722,7 @@
         #endregion
         private Button btnBack;
         private Button btnCreatePDF;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewQuote;
         private Panel panel6;
         private TextBox tBoxOtherComments;
         private Panel panel7;

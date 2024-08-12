@@ -71,7 +71,7 @@ namespace Waterpediaa
         }
         private void formBuatInvoicePenjualan_Closed(object sender, FormClosedEventArgs e)
         {
-            /*sqlConnect.Close();*/
+            sqlConnect.Close();
         }
         public void LoadData()
         {
