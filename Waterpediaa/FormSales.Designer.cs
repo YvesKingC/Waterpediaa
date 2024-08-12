@@ -28,23 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
             button1 = new Button();
             dataGridView1 = new DataGridView();
-            button2 = new Button();
+            dateTimePicker1 = new DateTimePicker();
+            dateTimePicker2 = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(-3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(746, 27);
-            textBox1.TabIndex = 0;
-            // 
             // button1
             // 
-            button1.Location = new Point(749, 0);
+            button1.Location = new Point(555, 0);
             button1.Name = "button1";
             button1.Size = new Size(113, 29);
             button1.TabIndex = 1;
@@ -58,39 +51,42 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(746, 458);
+            dataGridView1.Size = new Size(865, 458);
             dataGridView1.TabIndex = 2;
             // 
-            // button2
+            // dateTimePicker1
             // 
-            button2.Location = new Point(749, 240);
-            button2.Name = "button2";
-            button2.Size = new Size(121, 29);
-            button2.TabIndex = 3;
-            button2.Text = "Invoice baru";
-            button2.UseVisualStyleBackColor = true;
+            dateTimePicker1.Location = new Point(-3, 2);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(250, 27);
+            dateTimePicker1.TabIndex = 3;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(290, 2);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(250, 27);
+            dateTimePicker2.TabIndex = 4;
             // 
             // FormSales
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(874, 505);
-            Controls.Add(button2);
+            Controls.Add(dateTimePicker2);
+            Controls.Add(dateTimePicker1);
             Controls.Add(dataGridView1);
             Controls.Add(button1);
-            Controls.Add(textBox1);
             Name = "FormSales";
             Text = "FormSales";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox textBox1;
         private Button button1;
         private DataGridView dataGridView1;
-        private Button button2;
+        private DateTimePicker dateTimePicker1;
+        private DateTimePicker dateTimePicker2;
     }
 }
