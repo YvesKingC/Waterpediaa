@@ -28,31 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            dataGridView1 = new DataGridView();
+            buttonApply = new Button();
+            dataGridViewSales = new DataGridView();
             dateTimePicker1 = new DateTimePicker();
             dateTimePicker2 = new DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            buttonReset = new Button();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSales).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // buttonApply
             // 
-            button1.Location = new Point(555, 0);
-            button1.Name = "button1";
-            button1.Size = new Size(113, 29);
-            button1.TabIndex = 1;
-            button1.Text = "Search";
-            button1.UseVisualStyleBackColor = true;
+            buttonApply.Location = new Point(555, 0);
+            buttonApply.Name = "buttonApply";
+            buttonApply.Size = new Size(113, 29);
+            buttonApply.TabIndex = 1;
+            buttonApply.Text = "Apply";
+            buttonApply.UseVisualStyleBackColor = true;
+            buttonApply.Click += buttonApply_Click;
             // 
-            // dataGridView1
+            // dataGridViewSales
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(-3, 35);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(865, 458);
-            dataGridView1.TabIndex = 2;
+            dataGridViewSales.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSales.Location = new Point(-3, 35);
+            dataGridViewSales.Name = "dataGridViewSales";
+            dataGridViewSales.RowHeadersWidth = 51;
+            dataGridViewSales.RowTemplate.Height = 29;
+            dataGridViewSales.Size = new Size(865, 458);
+            dataGridViewSales.TabIndex = 2;
             // 
             // dateTimePicker1
             // 
@@ -68,25 +70,37 @@
             dateTimePicker2.Size = new Size(250, 27);
             dateTimePicker2.TabIndex = 4;
             // 
+            // buttonReset
+            // 
+            buttonReset.Location = new Point(674, 0);
+            buttonReset.Name = "buttonReset";
+            buttonReset.Size = new Size(105, 29);
+            buttonReset.TabIndex = 5;
+            buttonReset.Text = "Reset";
+            buttonReset.UseVisualStyleBackColor = true;
+            buttonReset.Click += buttonReset_Click;
+            // 
             // FormSales
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(874, 505);
+            Controls.Add(buttonReset);
             Controls.Add(dateTimePicker2);
             Controls.Add(dateTimePicker1);
-            Controls.Add(dataGridView1);
-            Controls.Add(button1);
+            Controls.Add(dataGridViewSales);
+            Controls.Add(buttonApply);
             Name = "FormSales";
             Text = "FormSales";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSales).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Button button1;
-        private DataGridView dataGridView1;
+        private Button buttonApply;
+        private DataGridView dataGridViewSales;
         private DateTimePicker dateTimePicker1;
         private DateTimePicker dateTimePicker2;
+        private Button buttonReset;
     }
 }
