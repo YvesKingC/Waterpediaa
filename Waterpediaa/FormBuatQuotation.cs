@@ -17,6 +17,15 @@ namespace Waterpediaa
         public FormBuatQuotation()
         {
             InitializeComponent();
+            LoadData();
+            LoadcBoxProvinsi();
+            LoadcBoxKabupatenKota();
+            LoadcBoxCustomer();
+            LoadcBoxJenisProduct();
+            LoadcBoxNamaBarang();
+            LoadcBoxPackaging();
+
+            numericUpDownPPN.Value = 11;
         }
         static string connectionString = "server=localhost;uid=root;pwd=;database=Waterpedia;";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
@@ -156,20 +165,9 @@ namespace Waterpediaa
         private void btnAddNewCustomer_Click(object sender, EventArgs e)
         {
             Regex numberRegex = new Regex(@"^\d+$");
-            if (string.IsNullOrWhiteSpace(tBoxNamaCust.Text) || string.IsNullOrWhiteSpace(tBoxPerusahaan.Text) || string.IsNullOrWhiteSpace(tBoxContact.Text) || string.IsNullOrWhiteSpace(tBoxAlamat.Text) || string.IsNullOrWhiteSpace(tBoxZipCode.Text))
+            if (string.IsNullOrWhiteSpace(tBoxNamaCust.Text) || string.IsNullOrWhiteSpace(tBoxPerusahaan.Text) || string.IsNullOrWhiteSpace(tBoxContact.Text) || string.IsNullOrWhiteSpace(tBoxAlamat.Text))
             {
                 MessageBox.Show("All fields must not be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (!numberRegex.IsMatch(tBoxContact.Text))
-            {
-                MessageBox.Show("Contact field must contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!numberRegex.IsMatch(tBoxZipCode.Text))
-            {
-                MessageBox.Show("Zipcode field must contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -208,12 +206,12 @@ namespace Waterpediaa
         }
         private void btnAddProduk_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(tBoxHargaJual.Text, out _) == false || string.IsNullOrWhiteSpace(tBoxHargaJual.Text))
+            if (int.TryParse(tBoxHargaBeli.Text, out _) == false || string.IsNullOrWhiteSpace(tBoxHargaBeli.Text))
             {
                 MessageBox.Show("Harga Jual must not be empty and must contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            sqlQuery = "INSERT INTO TempInvoice (Nama_Barang, Packaging, Quantity, Harga_Jual) VALUES ('" + cBoxNamaProduk.Text + "', '" + cBoxPackaging.Text + "', '" + numericUpDownQTY.Text + "', '" + tBoxHargaJual.Text + "')";
+            sqlQuery = "INSERT INTO TempQuotation (Nama_Barang, Packaging, Quantity, Harga_Beli) VALUES ('" + cBoxNamaProduk.Text + "', '" + cBoxPackaging.Text + "', '" + numericUpDownQTY.Text + "', '" + tBoxHargaBeli.Text + "')";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlCommand.ExecuteNonQuery();
             LoadData();
@@ -224,7 +222,7 @@ namespace Waterpediaa
             Subtotal = 0;
             foreach (DataRow row in dt.Rows)
             {
-                Subtotal += Convert.ToInt64(row["Harga_Jual"]);
+                Subtotal += Convert.ToInt64(row["Harga_Beli"]);
             }
             lblSubTotal.Text = "SubTotal  : " + Subtotal.ToString();
 
@@ -262,7 +260,7 @@ namespace Waterpediaa
 
             ServiceOrder = dtpServiceOrder.Value.ToString("yyyy-MM-dd");
             DueDate = dtpDueDate.Value.ToString("yyyy-MM-dd");
-            TermsAndConds = tBoxOtherComments.Text;
+            TermsAndConds = tBoxTNC.Text;
 
             DataTable invoiceTable = dt.Clone();
             foreach (DataRow row in dt.Rows)
@@ -277,7 +275,7 @@ namespace Waterpediaa
                 Alamat = Alamat,
                 ServiceOrder = ServiceOrder,
                 DueDate = DueDate,
-                OtherComment = TermsAndConds,
+                TermsConds = TermsAndConds,
                 Subtotal = Subtotal,
                 StringPPN = StringPPN,
                 StringTotal = StringTotal,
@@ -309,7 +307,112 @@ namespace Waterpediaa
         }
         private void AddAllToQuotationDT()
         {
+            try
+            {
+                sqlConnect.Open();
 
+                // Generate ParentQuoID
+                string todayDate = DateTime.Now.ToString("yyMMdd");
+                string parentQuoID = GetNextParentQuoID(todayDate);
+
+                // Retrieve PembeliID based on customer name
+                int pembeliID = 0;
+                sqlQuery = "SELECT ID FROM Customer WHERE Nama = @NamaCustomer";
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                sqlCommand.Parameters.AddWithValue("@NamaCustomer", cBoxCustomer.Text);
+                var result = sqlCommand.ExecuteScalar();
+                if (result != null)
+                {
+                    pembeliID = Convert.ToInt32(result);
+                }
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    int? stockBakteriID = GetStockBakteriID(row["Nama_Barang"].ToString());
+                    int? paketBakteriID = GetPaketBakteriID(row["Nama_Barang"].ToString());
+                    int? stockFilterID = GetStockFilterID(row["Nama_Barang"].ToString());
+                    int? stockPackagingID = GetStockPackagingID(row["Packaging"].ToString());
+                    sqlQuery = @"
+                    INSERT INTO Quotation (ParentQuoID, Stock_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Masuk, Harga_Beli, PPN, Terms_Condition)
+                    VALUES (@ParentQuoID, @Stock_BakteriID, @Stock_FilterID, @Stock_PackagingID, @PembeliID, @Service_Order, @Due_Date, @Jumlah_Masuk, @Harga_Beli, @PPN, @Terms_Condition)";
+                    sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                    sqlCommand.Parameters.AddWithValue("@ParentQuoID", parentQuoID);
+                    sqlCommand.Parameters.AddWithValue("@Stock_BakteriID", stockBakteriID.HasValue ? (object)stockBakteriID.Value : DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@Stock_FilterID", stockFilterID.HasValue ? (object)stockFilterID.Value : DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@Stock_PackagingID", stockPackagingID.HasValue ? (object)stockPackagingID.Value : DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@PembeliID", pembeliID);
+                    sqlCommand.Parameters.AddWithValue("@Service_Order", dtpServiceOrder.Value.ToString("yyyy-MM-dd"));
+                    sqlCommand.Parameters.AddWithValue("@Due_Date", dtpDueDate.Value.ToString("yyyy-MM-dd"));
+                    sqlCommand.Parameters.AddWithValue("@Jumlah_Masuk", row["Quantity"]);
+                    sqlCommand.Parameters.AddWithValue("@Harga_Beli", row["Harga_Beli"]);
+                    sqlCommand.Parameters.AddWithValue("@PPN", Convert.ToInt32(PPN));
+                    sqlCommand.Parameters.AddWithValue("@Terms_Condition", TermsAndConds);
+
+                    sqlCommand.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while adding the invoice: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                sqlConnect.Close();
+            }
+        }
+        private string GetNextParentQuoID(string todayDate)
+        {
+            string lastInvID = "";
+            int nextInvNumber = 1;
+
+            sqlQuery = "SELECT ParentQuoID FROM Quotation WHERE ParentQuoID LIKE @TodayDate ORDER BY ParentQuoID DESC LIMIT 1";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@TodayDate", todayDate + "%");
+            var result = sqlCommand.ExecuteScalar();
+            if (result != null)
+            {
+                lastInvID = result.ToString();
+                string lastInvNumberStr = lastInvID.Substring(6); // Get the last 2 digits
+                int lastInvNumber = int.Parse(lastInvNumberStr);
+                nextInvNumber = lastInvNumber + 1;
+            }
+
+            return todayDate + nextInvNumber.ToString("D2"); // Format to ensure two digits, e.g., 01, 02, etc.
+        }
+        private int? GetStockBakteriID(string namaBakteri)
+        {
+            sqlQuery = "SELECT ID FROM Stock_Bakteri WHERE Jenis_Bakteri = @NamaBakteri";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@NamaBakteri", namaBakteri);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : (int?)null;
+        }
+
+        private int? GetPaketBakteriID(string namaPaket)
+        {
+            sqlQuery = "SELECT ID FROM Paket_Bakteri WHERE Nama_Paket = @NamaPaket";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@NamaPaket", namaPaket);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : (int?)null;
+        }
+
+        private int? GetStockFilterID(string jenisFilter)
+        {
+            sqlQuery = "SELECT ID FROM Stock_Filter WHERE Jenis_Filter = @JenisFilter";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@JenisFilter", jenisFilter);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : (int?)null;
+        }
+
+        private int? GetStockPackagingID(string namaBarang)
+        {
+            sqlQuery = "SELECT ID FROM Stock_Packaging WHERE Nama_Barang = @NamaBarang";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@NamaBarang", namaBarang);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : (int?)null;
         }
     }
 }

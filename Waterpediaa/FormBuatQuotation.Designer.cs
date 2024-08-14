@@ -32,7 +32,7 @@
             btnCreatePDF = new Button();
             dataGridViewQuote = new DataGridView();
             panel6 = new Panel();
-            tBoxOtherComments = new TextBox();
+            tBoxTNC = new TextBox();
             panel7 = new Panel();
             label21 = new Label();
             panel4 = new Panel();
@@ -65,7 +65,7 @@
             panel1 = new Panel();
             btnAddProduk = new Button();
             numericUpDownQTY = new NumericUpDown();
-            tBoxHargaJual = new TextBox();
+            tBoxHargaBeli = new TextBox();
             cBoxPackaging = new ComboBox();
             cBoxNamaProduk = new ComboBox();
             cBoxJenisProduk = new ComboBox();
@@ -133,22 +133,22 @@
             // panel6
             // 
             panel6.BorderStyle = BorderStyle.FixedSingle;
-            panel6.Controls.Add(tBoxOtherComments);
+            panel6.Controls.Add(tBoxTNC);
             panel6.Controls.Add(panel7);
             panel6.Location = new Point(14, 537);
             panel6.Name = "panel6";
             panel6.Size = new Size(316, 179);
             panel6.TabIndex = 34;
             // 
-            // tBoxOtherComments
+            // tBoxTNC
             // 
-            tBoxOtherComments.BorderStyle = BorderStyle.FixedSingle;
-            tBoxOtherComments.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxOtherComments.Location = new Point(3, 35);
-            tBoxOtherComments.Multiline = true;
-            tBoxOtherComments.Name = "tBoxOtherComments";
-            tBoxOtherComments.Size = new Size(308, 139);
-            tBoxOtherComments.TabIndex = 15;
+            tBoxTNC.BorderStyle = BorderStyle.FixedSingle;
+            tBoxTNC.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxTNC.Location = new Point(3, 35);
+            tBoxTNC.Multiline = true;
+            tBoxTNC.Name = "tBoxTNC";
+            tBoxTNC.Size = new Size(308, 139);
+            tBoxTNC.TabIndex = 15;
             // 
             // panel7
             // 
@@ -453,7 +453,7 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(btnAddProduk);
             panel1.Controls.Add(numericUpDownQTY);
-            panel1.Controls.Add(tBoxHargaJual);
+            panel1.Controls.Add(tBoxHargaBeli);
             panel1.Controls.Add(cBoxPackaging);
             panel1.Controls.Add(cBoxNamaProduk);
             panel1.Controls.Add(cBoxJenisProduk);
@@ -488,14 +488,14 @@
             numericUpDownQTY.Size = new Size(179, 25);
             numericUpDownQTY.TabIndex = 38;
             // 
-            // tBoxHargaJual
+            // tBoxHargaBeli
             // 
-            tBoxHargaJual.BorderStyle = BorderStyle.FixedSingle;
-            tBoxHargaJual.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxHargaJual.Location = new Point(132, 163);
-            tBoxHargaJual.Name = "tBoxHargaJual";
-            tBoxHargaJual.Size = new Size(179, 25);
-            tBoxHargaJual.TabIndex = 25;
+            tBoxHargaBeli.BorderStyle = BorderStyle.FixedSingle;
+            tBoxHargaBeli.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxHargaBeli.Location = new Point(132, 163);
+            tBoxHargaBeli.Name = "tBoxHargaBeli";
+            tBoxHargaBeli.Size = new Size(179, 25);
+            tBoxHargaBeli.TabIndex = 25;
             // 
             // cBoxPackaging
             // 
@@ -530,9 +530,9 @@
             label10.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label10.Location = new Point(46, 165);
             label10.Name = "label10";
-            label10.Size = new Size(80, 19);
+            label10.Size = new Size(78, 19);
             label10.TabIndex = 19;
-            label10.Text = "Harga Jual :";
+            label10.Text = "Harga Beli :";
             // 
             // label4
             // 
@@ -724,7 +724,7 @@
         private Button btnCreatePDF;
         private DataGridView dataGridViewQuote;
         private Panel panel6;
-        private TextBox tBoxOtherComments;
+        private TextBox tBoxTNC;
         private Panel panel7;
         private Label label21;
         private Panel panel4;
@@ -755,7 +755,7 @@
         private Panel panel1;
         private Button btnAddProduk;
         private NumericUpDown numericUpDownQTY;
-        private TextBox tBoxHargaJual;
+        private TextBox tBoxHargaBeli;
         private ComboBox cBoxPackaging;
         private ComboBox cBoxNamaProduk;
         private ComboBox cBoxJenisProduk;
