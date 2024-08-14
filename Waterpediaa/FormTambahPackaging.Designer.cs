@@ -51,7 +51,7 @@
             panel7 = new Panel();
             panel8 = new Panel();
             label13 = new Label();
-            dataGridView3 = new DataGridView();
+            dataGridViewMutasiPackaging = new DataGridView();
             button1 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nudVolume).BeginInit();
@@ -66,7 +66,7 @@
             panel6.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMutasiPackaging).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -101,10 +101,10 @@
             // nudVolume
             // 
             nudVolume.Location = new Point(121, 175);
+            nudVolume.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             nudVolume.Name = "nudVolume";
             nudVolume.Size = new Size(198, 27);
             nudVolume.TabIndex = 41;
-            nudVolume.Maximum = 1000000;
             // 
             // btnInputBakteriBaru
             // 
@@ -123,20 +123,20 @@
             nudHarga.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             nudHarga.Location = new Point(121, 137);
             nudHarga.Margin = new Padding(3, 4, 3, 4);
+            nudHarga.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             nudHarga.Name = "nudHarga";
             nudHarga.Size = new Size(198, 30);
             nudHarga.TabIndex = 39;
-            nudHarga.Maximum = 1000000;
             // 
             // nudJumlah
             // 
             nudJumlah.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             nudJumlah.Location = new Point(120, 99);
             nudJumlah.Margin = new Padding(3, 4, 3, 4);
+            nudJumlah.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
             nudJumlah.Name = "nudJumlah";
             nudJumlah.Size = new Size(198, 30);
             nudJumlah.TabIndex = 37;
-            nudJumlah.Maximum = 1000000;
             // 
             // label3
             // 
@@ -293,7 +293,7 @@
             panel7.BackColor = SystemColors.Control;
             panel7.BorderStyle = BorderStyle.FixedSingle;
             panel7.Controls.Add(panel8);
-            panel7.Controls.Add(dataGridView3);
+            panel7.Controls.Add(dataGridViewMutasiPackaging);
             panel7.Location = new Point(1, 277);
             panel7.Margin = new Padding(3, 4, 3, 4);
             panel7.Name = "panel7";
@@ -321,16 +321,16 @@
             label13.TabIndex = 13;
             label13.Text = "Mutasi Packaging";
             // 
-            // dataGridView3
+            // dataGridViewMutasiPackaging
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(3, 47);
-            dataGridView3.Margin = new Padding(3, 4, 3, 4);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 51;
-            dataGridView3.RowTemplate.Height = 25;
-            dataGridView3.Size = new Size(892, 230);
-            dataGridView3.TabIndex = 0;
+            dataGridViewMutasiPackaging.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewMutasiPackaging.Location = new Point(3, 47);
+            dataGridViewMutasiPackaging.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewMutasiPackaging.Name = "dataGridViewMutasiPackaging";
+            dataGridViewMutasiPackaging.RowHeadersWidth = 51;
+            dataGridViewMutasiPackaging.RowTemplate.Height = 25;
+            dataGridViewMutasiPackaging.Size = new Size(892, 230);
+            dataGridViewMutasiPackaging.TabIndex = 0;
             // 
             // button1
             // 
@@ -372,7 +372,7 @@
             panel7.ResumeLayout(false);
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMutasiPackaging).EndInit();
             ResumeLayout(false);
         }
 
@@ -399,7 +399,7 @@
         private Panel panel7;
         private Panel panel8;
         private Label label13;
-        private DataGridView dataGridView3;
+        private DataGridView dataGridViewMutasiPackaging;
         private Button button1;
         private Label label1;
         private NumericUpDown nudVolume;

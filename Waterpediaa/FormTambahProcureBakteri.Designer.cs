@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             panel9 = new Panel();
-            dataGridView3 = new DataGridView();
+            dataGridViewMutasiBakteri = new DataGridView();
             panel10 = new Panel();
             label14 = new Label();
             panel7 = new Panel();
@@ -63,7 +63,7 @@
             panel3 = new Panel();
             label4 = new Label();
             panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMutasiBakteri).BeginInit();
             panel10.SuspendLayout();
             panel7.SuspendLayout();
             panel8.SuspendLayout();
@@ -83,7 +83,7 @@
             // 
             panel9.BackColor = SystemColors.Control;
             panel9.BorderStyle = BorderStyle.FixedSingle;
-            panel9.Controls.Add(dataGridView3);
+            panel9.Controls.Add(dataGridViewMutasiBakteri);
             panel9.Controls.Add(panel10);
             panel9.Location = new Point(881, 17);
             panel9.Margin = new Padding(3, 4, 3, 4);
@@ -91,16 +91,16 @@
             panel9.Size = new Size(276, 567);
             panel9.TabIndex = 42;
             // 
-            // dataGridView3
+            // dataGridViewMutasiBakteri
             // 
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Location = new Point(3, 47);
-            dataGridView3.Margin = new Padding(3, 4, 3, 4);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.RowHeadersWidth = 51;
-            dataGridView3.RowTemplate.Height = 25;
-            dataGridView3.Size = new Size(267, 512);
-            dataGridView3.TabIndex = 15;
+            dataGridViewMutasiBakteri.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewMutasiBakteri.Location = new Point(3, 47);
+            dataGridViewMutasiBakteri.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewMutasiBakteri.Name = "dataGridViewMutasiBakteri";
+            dataGridViewMutasiBakteri.RowHeadersWidth = 51;
+            dataGridViewMutasiBakteri.RowTemplate.Height = 25;
+            dataGridViewMutasiBakteri.Size = new Size(267, 512);
+            dataGridViewMutasiBakteri.TabIndex = 15;
             // 
             // panel10
             // 
@@ -470,7 +470,7 @@
             Name = "FormTambahProcureBakteri";
             Text = "FormTambahProcureBakteri";
             panel9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewMutasiBakteri).EndInit();
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
             panel7.ResumeLayout(false);
@@ -497,7 +497,7 @@
         #endregion
 
         private Panel panel9;
-        private DataGridView dataGridView3;
+        private DataGridView dataGridViewMutasiBakteri;
         private Panel panel10;
         private Label label14;
         private Panel panel7;
