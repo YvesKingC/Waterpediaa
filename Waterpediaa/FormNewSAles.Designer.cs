@@ -51,11 +51,11 @@
             comboBox5 = new ComboBox();
             label12 = new Label();
             button1 = new Button();
-            dataGridView1 = new DataGridView();
+            dataGridViewCart = new DataGridView();
             label11 = new Label();
             label13 = new Label();
             button2 = new Button();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCart).BeginInit();
             SuspendLayout();
             // 
             // comboBox1
@@ -249,15 +249,15 @@
             button1.Text = "Input";
             button1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataGridViewCart
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(406, 29);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(515, 316);
-            dataGridView1.TabIndex = 25;
+            dataGridViewCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCart.Location = new Point(406, 29);
+            dataGridViewCart.Name = "dataGridViewCart";
+            dataGridViewCart.RowHeadersWidth = 51;
+            dataGridViewCart.RowTemplate.Height = 29;
+            dataGridViewCart.Size = new Size(515, 316);
+            dataGridViewCart.TabIndex = 25;
             // 
             // label11
             // 
@@ -294,7 +294,7 @@
             Controls.Add(button2);
             Controls.Add(label13);
             Controls.Add(label11);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewCart);
             Controls.Add(button1);
             Controls.Add(label12);
             Controls.Add(comboBox5);
@@ -320,7 +320,7 @@
             Controls.Add(comboBox1);
             Name = "FormNewSAles";
             Text = "FormNewSAles";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewCart).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -350,7 +350,7 @@
         private ComboBox comboBox5;
         private Label label12;
         private Button button1;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewCart;
         private Label label11;
         private Label label13;
         private Button button2;

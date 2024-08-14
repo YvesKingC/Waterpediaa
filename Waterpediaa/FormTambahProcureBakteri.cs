@@ -27,6 +27,7 @@ namespace Waterpediaa
             LoadStockBakteriData();
             LoadBakteriNames();
             LoadProcureData();
+            LoadMutasiBakteriData();
         }
 
         private void LoadStockBakteriData()
@@ -127,6 +128,7 @@ namespace Waterpediaa
             string connectionString = "server=localhost;database=waterpedia;user=root;";
             string updateQuery = "UPDATE Stock_Bakteri SET Volume = Volume + @volumeToAdd WHERE ID = @id";
             string insertProcureQuery = "INSERT INTO Procure (Stock_BakteriID, Tanggal, Volume) VALUES (@bakteriId, @tanggal, @volumeToAdd)";
+            string insertMutasiQuery = "INSERT INTO mutasi_produk (Stock_BakteriID, Masuk, Keluar, Keterangan) VALUES (@bakteriId, @masuk, @keluar, @keterangan)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -146,12 +148,23 @@ namespace Waterpediaa
                     insertCmd.Parameters.AddWithValue("@volumeToAdd", volumeToAdd);
                     insertCmd.ExecuteNonQuery();
                 }
+
+                using (MySqlCommand insertMutasiCmd = new MySqlCommand(insertMutasiQuery, connection))
+                {
+                    insertMutasiCmd.Parameters.AddWithValue("@bakteriId", bakteriId);
+                    insertMutasiCmd.Parameters.AddWithValue("@masuk", volumeToAdd);
+                    insertMutasiCmd.Parameters.AddWithValue("@keluar", 0); // Assuming this is an incoming stock, so 'Keluar' is 0
+                    insertMutasiCmd.Parameters.AddWithValue("@keterangan", "Procurement"); // Description for the operation
+                    insertMutasiCmd.ExecuteNonQuery();
+                }
             }
 
-            // Reload the data in dataGridViewStok and dataGridViewProcure
+            // Reload the data in dataGridViewStok, dataGridViewProcure, and dataGridViewMutasiBakteri
             LoadStockBakteriData();
             LoadProcureData();
+            LoadMutasiBakteriData();
         }
+
 
         private void LoadProcureData()
         {
@@ -175,5 +188,31 @@ namespace Waterpediaa
 
             dataGridViewProcure.DataSource = dataTable;
         }
+
+        private void LoadMutasiBakteriData()
+        {
+            DataTable dataTable = new DataTable();
+            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string query = @"SELECT m.ID, s.Jenis_Bakteri AS Produk, m.Masuk, m.Keluar, m.Keterangan 
+                     FROM mutasi_produk m
+                     JOIN Stock_Bakteri s ON m.Stock_BakteriID = s.ID
+                     WHERE m.Stock_BakteriID IS NOT NULL";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                }
+            }
+
+            dataGridViewMutasiBakteri.DataSource = dataTable;
+        }
+
+
     }
 }
