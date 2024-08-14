@@ -165,20 +165,9 @@ namespace Waterpediaa
         private void btnAddNewCustomer_Click(object sender, EventArgs e)
         {
             Regex numberRegex = new Regex(@"^\d+$");
-            if (string.IsNullOrWhiteSpace(tBoxNamaCust.Text) || string.IsNullOrWhiteSpace(tBoxPerusahaan.Text) || string.IsNullOrWhiteSpace(tBoxContact.Text) || string.IsNullOrWhiteSpace(tBoxAlamat.Text) || string.IsNullOrWhiteSpace(tBoxZipCode.Text))
+            if (string.IsNullOrWhiteSpace(tBoxNamaCust.Text) || string.IsNullOrWhiteSpace(tBoxPerusahaan.Text) || string.IsNullOrWhiteSpace(tBoxContact.Text) || string.IsNullOrWhiteSpace(tBoxAlamat.Text))
             {
                 MessageBox.Show("All fields must not be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (!numberRegex.IsMatch(tBoxContact.Text))
-            {
-                MessageBox.Show("Contact field must contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (!numberRegex.IsMatch(tBoxZipCode.Text))
-            {
-                MessageBox.Show("Zipcode field must contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -356,7 +345,7 @@ namespace Waterpediaa
                     sqlCommand.Parameters.AddWithValue("@Due_Date", dtpDueDate.Value.ToString("yyyy-MM-dd"));
                     sqlCommand.Parameters.AddWithValue("@Jumlah_Masuk", row["Quantity"]);
                     sqlCommand.Parameters.AddWithValue("@Harga_Beli", row["Harga_Beli"]);
-                    sqlCommand.Parameters.AddWithValue("@PPN", Convert.ToInt32(lblPPN.Text));
+                    sqlCommand.Parameters.AddWithValue("@PPN", Convert.ToInt32(PPN));
                     sqlCommand.Parameters.AddWithValue("@Terms_Condition", TermsAndConds);
 
                     sqlCommand.ExecuteNonQuery();
