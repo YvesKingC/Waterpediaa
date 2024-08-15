@@ -1,6 +1,6 @@
 ﻿namespace Waterpediaa
 {
-    partial class FormInvoice
+    partial class FormRecepit
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormInvoice));
-            printDialog1 = new PrintDialog();
-            printDocument1 = new System.Drawing.Printing.PrintDocument();
-            printPreviewDialog1 = new PrintPreviewDialog();
             panelInvoice = new Panel();
             tBoxInvoiceID = new TextBox();
-            tBoxDueDate = new TextBox();
-            tBoxServiceOrder = new TextBox();
+            tBoxDate = new TextBox();
             label23 = new Label();
             label21 = new Label();
-            label14 = new Label();
             panel8 = new Panel();
             panel5 = new Panel();
             lblPPN = new Label();
@@ -51,17 +45,11 @@
             panel3 = new Panel();
             label16 = new Label();
             panelProduk = new Panel();
-            dataGridViewInvoice = new DataGridView();
+            dataGridViewReceipt = new DataGridView();
             panel2 = new Panel();
             label19 = new Label();
             panelBillTo = new Panel();
-            tBoxMetodePembayaran = new TextBox();
-            tBoxContact = new TextBox();
             tBoxDetailCustomer = new TextBox();
-            label18 = new Label();
-            label15 = new Label();
-            label13 = new Label();
-            label12 = new Label();
             panelHeader1 = new Panel();
             label11 = new Label();
             linkLblWaterpedia = new LinkLabel();
@@ -77,7 +65,9 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             btnCreatePDF = new Button();
-            vScrollBar1 = new VScrollBar();
+            label12 = new Label();
+            label13 = new Label();
+            tBoxNamaUser = new TextBox();
             panelInvoice.SuspendLayout();
             panel8.SuspendLayout();
             panel5.SuspendLayout();
@@ -86,36 +76,23 @@
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panelProduk.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewInvoice).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt).BeginInit();
             panel2.SuspendLayout();
             panelBillTo.SuspendLayout();
             panelHeader1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // printDialog1
-            // 
-            printDialog1.UseEXDialog = true;
-            // 
-            // printPreviewDialog1
-            // 
-            printPreviewDialog1.AutoScrollMargin = new Size(0, 0);
-            printPreviewDialog1.AutoScrollMinSize = new Size(0, 0);
-            printPreviewDialog1.ClientSize = new Size(400, 300);
-            printPreviewDialog1.Enabled = true;
-            printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
-            printPreviewDialog1.Name = "printPreviewDialog1";
-            printPreviewDialog1.Visible = false;
-            // 
             // panelInvoice
             // 
             panelInvoice.BackColor = Color.White;
+            panelInvoice.Controls.Add(tBoxNamaUser);
+            panelInvoice.Controls.Add(label13);
+            panelInvoice.Controls.Add(label12);
             panelInvoice.Controls.Add(tBoxInvoiceID);
-            panelInvoice.Controls.Add(tBoxDueDate);
-            panelInvoice.Controls.Add(tBoxServiceOrder);
+            panelInvoice.Controls.Add(tBoxDate);
             panelInvoice.Controls.Add(label23);
             panelInvoice.Controls.Add(label21);
-            panelInvoice.Controls.Add(label14);
             panelInvoice.Controls.Add(panel8);
             panelInvoice.Controls.Add(panel1);
             panelInvoice.Controls.Add(panelProduk);
@@ -136,37 +113,29 @@
             panelInvoice.Location = new Point(0, 0);
             panelInvoice.Name = "panelInvoice";
             panelInvoice.Size = new Size(794, 1100);
-            panelInvoice.TabIndex = 30;
+            panelInvoice.TabIndex = 31;
             // 
             // tBoxInvoiceID
             // 
             tBoxInvoiceID.BorderStyle = BorderStyle.FixedSingle;
-            tBoxInvoiceID.Location = new Point(581, 241);
+            tBoxInvoiceID.Location = new Point(581, 179);
             tBoxInvoiceID.Name = "tBoxInvoiceID";
             tBoxInvoiceID.Size = new Size(172, 25);
             tBoxInvoiceID.TabIndex = 52;
             // 
-            // tBoxDueDate
+            // tBoxDate
             // 
-            tBoxDueDate.BorderStyle = BorderStyle.FixedSingle;
-            tBoxDueDate.Location = new Point(581, 210);
-            tBoxDueDate.Name = "tBoxDueDate";
-            tBoxDueDate.Size = new Size(172, 25);
-            tBoxDueDate.TabIndex = 51;
-            // 
-            // tBoxServiceOrder
-            // 
-            tBoxServiceOrder.BorderStyle = BorderStyle.FixedSingle;
-            tBoxServiceOrder.Location = new Point(581, 179);
-            tBoxServiceOrder.Name = "tBoxServiceOrder";
-            tBoxServiceOrder.Size = new Size(172, 25);
-            tBoxServiceOrder.TabIndex = 50;
+            tBoxDate.BorderStyle = BorderStyle.FixedSingle;
+            tBoxDate.Location = new Point(581, 210);
+            tBoxDate.Name = "tBoxDate";
+            tBoxDate.Size = new Size(172, 25);
+            tBoxDate.TabIndex = 51;
             // 
             // label23
             // 
             label23.AutoSize = true;
             label23.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label23.Location = new Point(516, 243);
+            label23.Location = new Point(516, 181);
             label23.Name = "label23";
             label23.Size = new Size(59, 19);
             label23.TabIndex = 49;
@@ -176,21 +145,11 @@
             // 
             label21.AutoSize = true;
             label21.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label21.Location = new Point(501, 212);
+            label21.Location = new Point(530, 212);
             label21.Name = "label21";
-            label21.Size = new Size(74, 19);
+            label21.Size = new Size(45, 19);
             label21.TabIndex = 48;
-            label21.Text = "Due Date :";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(477, 181);
-            label14.Name = "label14";
-            label14.Size = new Size(98, 19);
-            label14.TabIndex = 47;
-            label14.Text = "Service Order :";
+            label21.Text = "Date :";
             // 
             // panel8
             // 
@@ -306,21 +265,21 @@
             // panelProduk
             // 
             panelProduk.BorderStyle = BorderStyle.FixedSingle;
-            panelProduk.Controls.Add(dataGridViewInvoice);
+            panelProduk.Controls.Add(dataGridViewReceipt);
             panelProduk.Controls.Add(panel2);
             panelProduk.Location = new Point(37, 520);
             panelProduk.Name = "panelProduk";
             panelProduk.Size = new Size(720, 274);
             panelProduk.TabIndex = 44;
             // 
-            // dataGridViewInvoice
+            // dataGridViewReceipt
             // 
-            dataGridViewInvoice.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewInvoice.Location = new Point(3, 35);
-            dataGridViewInvoice.Name = "dataGridViewInvoice";
-            dataGridViewInvoice.RowTemplate.Height = 25;
-            dataGridViewInvoice.Size = new Size(712, 234);
-            dataGridViewInvoice.TabIndex = 15;
+            dataGridViewReceipt.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewReceipt.Location = new Point(3, 35);
+            dataGridViewReceipt.Name = "dataGridViewReceipt";
+            dataGridViewReceipt.RowTemplate.Height = 25;
+            dataGridViewReceipt.Size = new Size(712, 234);
+            dataGridViewReceipt.TabIndex = 15;
             // 
             // panel2
             // 
@@ -346,87 +305,22 @@
             // 
             panelBillTo.BackColor = Color.White;
             panelBillTo.BorderStyle = BorderStyle.FixedSingle;
-            panelBillTo.Controls.Add(tBoxMetodePembayaran);
-            panelBillTo.Controls.Add(tBoxContact);
             panelBillTo.Controls.Add(tBoxDetailCustomer);
-            panelBillTo.Controls.Add(label18);
-            panelBillTo.Controls.Add(label15);
-            panelBillTo.Controls.Add(label13);
-            panelBillTo.Controls.Add(label12);
             panelBillTo.Controls.Add(panelHeader1);
             panelBillTo.Location = new Point(36, 312);
             panelBillTo.Name = "panelBillTo";
             panelBillTo.Size = new Size(721, 202);
             panelBillTo.TabIndex = 42;
             // 
-            // tBoxMetodePembayaran
-            // 
-            tBoxMetodePembayaran.BorderStyle = BorderStyle.FixedSingle;
-            tBoxMetodePembayaran.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxMetodePembayaran.Location = new Point(449, 89);
-            tBoxMetodePembayaran.Multiline = true;
-            tBoxMetodePembayaran.Name = "tBoxMetodePembayaran";
-            tBoxMetodePembayaran.Size = new Size(241, 49);
-            tBoxMetodePembayaran.TabIndex = 22;
-            // 
-            // tBoxContact
-            // 
-            tBoxContact.BorderStyle = BorderStyle.None;
-            tBoxContact.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxContact.Location = new Point(449, 159);
-            tBoxContact.Name = "tBoxContact";
-            tBoxContact.Size = new Size(241, 18);
-            tBoxContact.TabIndex = 21;
-            // 
             // tBoxDetailCustomer
             // 
             tBoxDetailCustomer.BorderStyle = BorderStyle.FixedSingle;
             tBoxDetailCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxDetailCustomer.Location = new Point(75, 42);
+            tBoxDetailCustomer.Location = new Point(3, 35);
             tBoxDetailCustomer.Multiline = true;
             tBoxDetailCustomer.Name = "tBoxDetailCustomer";
-            tBoxDetailCustomer.Size = new Size(351, 139);
+            tBoxDetailCustomer.Size = new Size(713, 162);
             tBoxDetailCustomer.TabIndex = 20;
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label18.Location = new Point(449, 141);
-            label18.Name = "label18";
-            label18.Size = new Size(158, 15);
-            label18.TabIndex = 19;
-            label18.Text = "Confirmation after payment:";
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.Location = new Point(449, 72);
-            label15.Name = "label15";
-            label15.Size = new Size(191, 15);
-            label15.TabIndex = 16;
-            label15.Text = "Pembayaran bisa melalui Rekening";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.Location = new Point(449, 42);
-            label13.Name = "label13";
-            label13.Size = new Size(142, 30);
-            label13.TabIndex = 15;
-            label13.Text = "Payment by transfer bank\r\nTransfer to Waterpedia\r\n";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(24, 44);
-            label12.Name = "label12";
-            label12.Size = new Size(45, 19);
-            label12.TabIndex = 13;
-            label12.Text = "Dear :";
             // 
             // panelHeader1
             // 
@@ -569,40 +463,60 @@
             label1.ForeColor = Color.FromArgb(128, 128, 255);
             label1.Location = new Point(558, 34);
             label1.Name = "label1";
-            label1.Size = new Size(199, 59);
+            label1.Size = new Size(175, 59);
             label1.TabIndex = 30;
-            label1.Text = "INVOICE";
+            label1.Text = "Receipt";
             // 
             // btnCreatePDF
             // 
             btnCreatePDF.BackColor = Color.FromArgb(192, 255, 192);
             btnCreatePDF.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCreatePDF.Location = new Point(824, 999);
+            btnCreatePDF.Location = new Point(840, 1014);
             btnCreatePDF.Name = "btnCreatePDF";
             btnCreatePDF.Size = new Size(96, 35);
-            btnCreatePDF.TabIndex = 31;
+            btnCreatePDF.TabIndex = 32;
             btnCreatePDF.Text = "Create PDF";
             btnCreatePDF.UseVisualStyleBackColor = false;
-            btnCreatePDF.Click += btnCreatePDF_Click;
             // 
-            // vScrollBar1
+            // label12
             // 
-            vScrollBar1.Location = new Point(931, 0);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(17, 1062);
-            vScrollBar1.TabIndex = 32;
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(456, 914);
+            label12.Name = "label12";
+            label12.Size = new Size(217, 19);
+            label12.TabIndex = 53;
+            label12.Text = "PT WATERPEDIA REJEKI LANGIT";
             // 
-            // FormInvoice
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.White;
+            label13.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.ForeColor = Color.CornflowerBlue;
+            label13.Location = new Point(456, 933);
+            label13.Name = "label13";
+            label13.Size = new Size(110, 13);
+            label13.TabIndex = 54;
+            label13.Text = "Finance Waterpedia";
+            // 
+            // tBoxNamaUser
+            // 
+            tBoxNamaUser.BorderStyle = BorderStyle.FixedSingle;
+            tBoxNamaUser.Location = new Point(456, 1024);
+            tBoxNamaUser.Name = "tBoxNamaUser";
+            tBoxNamaUser.Size = new Size(217, 25);
+            tBoxNamaUser.TabIndex = 55;
+            // 
+            // FormRecepit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(948, 1061);
-            Controls.Add(vScrollBar1);
             Controls.Add(btnCreatePDF);
             Controls.Add(panelInvoice);
-            Name = "FormInvoice";
-            Text = "FormInvoice";
-            Load += FormInvoice_Load;
+            Name = "FormRecepit";
+            Text = "FormRecepit";
             panelInvoice.ResumeLayout(false);
             panelInvoice.PerformLayout();
             panel8.ResumeLayout(false);
@@ -617,7 +531,7 @@
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panelProduk.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewInvoice).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panelBillTo.ResumeLayout(false);
@@ -629,21 +543,29 @@
         }
 
         #endregion
-        private PrintDialog printDialog1;
-        private System.Drawing.Printing.PrintDocument printDocument1;
-        private PrintPreviewDialog printPreviewDialog1;
+
         private Panel panelInvoice;
+        private TextBox tBoxInvoiceID;
+        private TextBox tBoxDate;
+        private Label label23;
+        private Label label21;
+        private Panel panel8;
+        private Panel panel5;
+        private Label lblPPN;
+        private Panel panel9;
+        private Label lblSubTotal;
+        private Panel panel4;
+        private Label lblTotal;
+        private Panel panel1;
+        private TextBox tBoxOtherComments;
+        private Panel panel3;
+        private Label label16;
         private Panel panelProduk;
+        private DataGridView dataGridViewReceipt;
         private Panel panel2;
         private Label label19;
         private Panel panelBillTo;
-        private TextBox tBoxMetodePembayaran;
-        private TextBox tBoxContact;
         private TextBox tBoxDetailCustomer;
-        private Label label18;
-        private Label label15;
-        private Label label13;
-        private Label label12;
         private Panel panelHeader1;
         private Label label11;
         private LinkLabel linkLblWaterpedia;
@@ -659,24 +581,8 @@
         private PictureBox pictureBox1;
         private Label label1;
         private Button btnCreatePDF;
-        private Panel panel1;
-        private Panel panel3;
-        private Label label16;
-        private Panel panel4;
-        private Label lblTotal;
-        private Panel panel8;
-        private Panel panel5;
-        private Label lblPPN;
-        private Panel panel9;
-        private Label lblSubTotal;
-        private TextBox tBoxOtherComments;
-        private DataGridView dataGridViewInvoice;
-        private Label label23;
-        private Label label21;
-        private Label label14;
-        private TextBox tBoxServiceOrder;
-        private TextBox tBoxInvoiceID;
-        private TextBox tBoxDueDate;
-        private VScrollBar vScrollBar1;
+        private TextBox tBoxNamaUser;
+        private Label label13;
+        private Label label12;
     }
 }

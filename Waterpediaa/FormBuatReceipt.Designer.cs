@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             panel4 = new Panel();
-            comboBox1 = new ComboBox();
+            cBoxInvoiceID = new ComboBox();
             label1 = new Label();
             dtpServiceOrder = new DateTimePicker();
             label17 = new Label();
             panel5 = new Panel();
             label18 = new Label();
-            dataGridViewQuote = new DataGridView();
+            dataGridViewReceipt = new DataGridView();
             panel8 = new Panel();
             label24 = new Label();
             numericUpDownPPN = new NumericUpDown();
@@ -67,7 +67,7 @@
             panel2 = new Panel();
             label19 = new Label();
             panel1 = new Panel();
-            comboBox2 = new ComboBox();
+            cBoxCustomer = new ComboBox();
             label5 = new Label();
             panel3 = new Panel();
             label7 = new Label();
@@ -75,7 +75,7 @@
             btnBack = new Button();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewQuote).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt).BeginInit();
             panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownPPN).BeginInit();
             panel9.SuspendLayout();
@@ -90,30 +90,30 @@
             // panel4
             // 
             panel4.BorderStyle = BorderStyle.FixedSingle;
-            panel4.Controls.Add(comboBox1);
+            panel4.Controls.Add(cBoxInvoiceID);
             panel4.Controls.Add(label1);
             panel4.Controls.Add(dtpServiceOrder);
             panel4.Controls.Add(label17);
             panel4.Controls.Add(panel5);
             panel4.Location = new Point(12, 12);
             panel4.Name = "panel4";
-            panel4.Size = new Size(1345, 97);
+            panel4.Size = new Size(317, 125);
             panel4.TabIndex = 33;
             // 
-            // comboBox1
+            // cBoxInvoiceID
             // 
-            comboBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(76, 50);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(235, 25);
-            comboBox1.TabIndex = 47;
+            cBoxInvoiceID.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxInvoiceID.FormattingEnabled = true;
+            cBoxInvoiceID.Location = new Point(132, 37);
+            cBoxInvoiceID.Name = "cBoxInvoiceID";
+            cBoxInvoiceID.Size = new Size(179, 25);
+            cBoxInvoiceID.TabIndex = 47;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(11, 51);
+            label1.Location = new Point(67, 40);
             label1.Name = "label1";
             label1.Size = new Size(59, 19);
             label1.TabIndex = 46;
@@ -122,16 +122,16 @@
             // dtpServiceOrder
             // 
             dtpServiceOrder.CalendarFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpServiceOrder.Location = new Point(398, 52);
+            dtpServiceOrder.Location = new Point(132, 68);
             dtpServiceOrder.Name = "dtpServiceOrder";
-            dtpServiceOrder.Size = new Size(198, 23);
+            dtpServiceOrder.Size = new Size(179, 23);
             dtpServiceOrder.TabIndex = 27;
             // 
             // label17
             // 
             label17.AutoSize = true;
             label17.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label17.Location = new Point(347, 51);
+            label17.Location = new Point(81, 68);
             label17.Name = "label17";
             label17.Size = new Size(45, 19);
             label17.TabIndex = 15;
@@ -157,14 +157,14 @@
             label18.TabIndex = 13;
             label18.Text = "Receipt Information";
             // 
-            // dataGridViewQuote
+            // dataGridViewReceipt
             // 
-            dataGridViewQuote.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewQuote.Location = new Point(335, 116);
-            dataGridViewQuote.Name = "dataGridViewQuote";
-            dataGridViewQuote.RowTemplate.Height = 25;
-            dataGridViewQuote.Size = new Size(1021, 416);
-            dataGridViewQuote.TabIndex = 37;
+            dataGridViewReceipt.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewReceipt.Location = new Point(335, 12);
+            dataGridViewReceipt.Name = "dataGridViewReceipt";
+            dataGridViewReceipt.RowTemplate.Height = 25;
+            dataGridViewReceipt.Size = new Size(1021, 520);
+            dataGridViewReceipt.TabIndex = 37;
             // 
             // panel8
             // 
@@ -308,16 +308,16 @@
             panelProduk.Controls.Add(label4);
             panelProduk.Controls.Add(label12);
             panelProduk.Controls.Add(panel2);
-            panelProduk.Location = new Point(12, 115);
+            panelProduk.Location = new Point(12, 143);
             panelProduk.Name = "panelProduk";
-            panelProduk.Size = new Size(316, 313);
+            panelProduk.Size = new Size(316, 285);
             panelProduk.TabIndex = 46;
             // 
             // btnAddNewCustomer
             // 
             btnAddNewCustomer.BackColor = Color.FromArgb(192, 255, 192);
             btnAddNewCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddNewCustomer.Location = new Point(214, 281);
+            btnAddNewCustomer.Location = new Point(214, 253);
             btnAddNewCustomer.Name = "btnAddNewCustomer";
             btnAddNewCustomer.Size = new Size(97, 27);
             btnAddNewCustomer.TabIndex = 30;
@@ -480,7 +480,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(comboBox2);
+            panel1.Controls.Add(cBoxCustomer);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(panel3);
             panel1.Location = new Point(12, 434);
@@ -488,14 +488,14 @@
             panel1.Size = new Size(316, 97);
             panel1.TabIndex = 48;
             // 
-            // comboBox2
+            // cBoxCustomer
             // 
-            comboBox2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(132, 48);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(179, 25);
-            comboBox2.TabIndex = 47;
+            cBoxCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxCustomer.FormattingEnabled = true;
+            cBoxCustomer.Location = new Point(132, 48);
+            cBoxCustomer.Name = "cBoxCustomer";
+            cBoxCustomer.Size = new Size(179, 25);
+            cBoxCustomer.TabIndex = 47;
             // 
             // label5
             // 
@@ -560,15 +560,16 @@
             Controls.Add(panelProduk);
             Controls.Add(panel6);
             Controls.Add(panel8);
-            Controls.Add(dataGridViewQuote);
+            Controls.Add(dataGridViewReceipt);
             Controls.Add(panel4);
             Name = "FormBuatReceipt";
             Text = "FormBuatReceipt";
+            Load += FormBuatReceipt_Load;
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewQuote).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt).EndInit();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownPPN).EndInit();
@@ -596,9 +597,9 @@
         private Label label17;
         private Panel panel5;
         private Label label18;
-        private ComboBox comboBox1;
+        private ComboBox cBoxInvoiceID;
         private Label label1;
-        private DataGridView dataGridViewQuote;
+        private DataGridView dataGridViewReceipt;
         private Panel panel8;
         private Label label24;
         private NumericUpDown numericUpDownPPN;
@@ -630,7 +631,7 @@
         private Panel panel2;
         private Label label19;
         private Panel panel1;
-        private ComboBox comboBox2;
+        private ComboBox cBoxCustomer;
         private Label label5;
         private Panel panel3;
         private Label label7;
