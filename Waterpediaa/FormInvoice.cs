@@ -50,8 +50,8 @@ namespace Waterpediaa
             tBoxOtherComments.Text = OtherComment;
 
             lblSubTotal.Text = "Sub Total : " + $"Rp {Subtotal}";
-            lblPPN.Text = $"PPN : " + $"Rp {StringPPN}";
-            lblTotal.Text = "Total : " + $"Rp {StringTotal}";
+            lblPPN.Text = $"PPN : " + $"Rp " + StringPPN;
+            lblTotal.Text = "Total : " + $"Rp " + StringTotal;
 
             tBoxInvoiceID.Text = parentInvID;
             loadInfoMetodePembayaran();

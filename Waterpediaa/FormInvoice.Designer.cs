@@ -39,13 +39,13 @@
             label23 = new Label();
             label21 = new Label();
             label14 = new Label();
+            panel4 = new Panel();
+            lblTotal = new Label();
             panel8 = new Panel();
             panel5 = new Panel();
             lblPPN = new Label();
             panel9 = new Panel();
             lblSubTotal = new Label();
-            panel4 = new Panel();
-            lblTotal = new Label();
             panel1 = new Panel();
             tBoxOtherComments = new TextBox();
             panel3 = new Panel();
@@ -77,12 +77,11 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             btnCreatePDF = new Button();
-            vScrollBar1 = new VScrollBar();
             panelInvoice.SuspendLayout();
+            panel4.SuspendLayout();
             panel8.SuspendLayout();
             panel5.SuspendLayout();
             panel9.SuspendLayout();
-            panel4.SuspendLayout();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
             panelProduk.SuspendLayout();
@@ -192,6 +191,26 @@
             label14.TabIndex = 47;
             label14.Text = "Service Order :";
             // 
+            // panel4
+            // 
+            panel4.BackColor = Color.DarkBlue;
+            panel4.Controls.Add(lblTotal);
+            panel4.Location = new Point(0, 70);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(302, 29);
+            panel4.TabIndex = 15;
+            // 
+            // lblTotal
+            // 
+            lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTotal.ForeColor = Color.FromArgb(224, 224, 224);
+            lblTotal.Location = new Point(41, 5);
+            lblTotal.Name = "lblTotal";
+            lblTotal.Size = new Size(50, 19);
+            lblTotal.TabIndex = 13;
+            lblTotal.Text = "Total :";
+            // 
             // panel8
             // 
             panel8.BorderStyle = BorderStyle.FixedSingle;
@@ -242,26 +261,6 @@
             lblSubTotal.Size = new Size(79, 19);
             lblSubTotal.TabIndex = 13;
             lblSubTotal.Text = "Sub Total :";
-            // 
-            // panel4
-            // 
-            panel4.BackColor = Color.DarkBlue;
-            panel4.Controls.Add(lblTotal);
-            panel4.Location = new Point(0, 70);
-            panel4.Name = "panel4";
-            panel4.Size = new Size(302, 29);
-            panel4.TabIndex = 15;
-            // 
-            // lblTotal
-            // 
-            lblTotal.AutoSize = true;
-            lblTotal.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTotal.ForeColor = Color.FromArgb(224, 224, 224);
-            lblTotal.Location = new Point(41, 5);
-            lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(50, 19);
-            lblTotal.TabIndex = 13;
-            lblTotal.Text = "Total :";
             // 
             // panel1
             // 
@@ -585,19 +584,11 @@
             btnCreatePDF.UseVisualStyleBackColor = false;
             btnCreatePDF.Click += btnCreatePDF_Click;
             // 
-            // vScrollBar1
-            // 
-            vScrollBar1.Location = new Point(931, 0);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(17, 1062);
-            vScrollBar1.TabIndex = 32;
-            // 
             // FormInvoice
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(948, 1061);
-            Controls.Add(vScrollBar1);
             Controls.Add(btnCreatePDF);
             Controls.Add(panelInvoice);
             Name = "FormInvoice";
@@ -605,13 +596,13 @@
             Load += FormInvoice_Load;
             panelInvoice.ResumeLayout(false);
             panelInvoice.PerformLayout();
+            panel4.ResumeLayout(false);
+            panel4.PerformLayout();
             panel8.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
-            panel4.ResumeLayout(false);
-            panel4.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panel3.ResumeLayout(false);
@@ -677,6 +668,5 @@
         private TextBox tBoxServiceOrder;
         private TextBox tBoxInvoiceID;
         private TextBox tBoxDueDate;
-        private VScrollBar vScrollBar1;
     }
 }
