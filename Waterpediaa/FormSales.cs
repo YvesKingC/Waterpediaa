@@ -25,7 +25,7 @@ namespace Waterpediaa
             LoadSalesData(); // Load all sales data initially
         }
 
-        private void LoadSalesData(string query = "SELECT * FROM sales_biasa")
+        private void LoadSalesData(string query = "SELECT * FROM invoice")
         {
             DataTable dataTable = new DataTable();
             string connectionString = "server=localhost;database=waterpedia;user=root;";

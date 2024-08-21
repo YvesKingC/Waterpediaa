@@ -33,7 +33,7 @@ namespace Waterpediaa
             connection = new MySqlConnection(connectionString);
 
             DataTable dataTable = new DataTable();
-            string query = "select Jenis_Bakteri, Volume, Harga_Per_Liter from Stock_Bakteri";
+            string query = "SELECT ID, Jenis_Bakteri, Volume, Harga_Per_Liter FROM Stock_Bakteri"; // Include the ID column
 
             using (MySqlCommand cmd = new MySqlCommand(query, connection))
             {
@@ -46,7 +46,11 @@ namespace Waterpediaa
             }
 
             dgvInventoryBakteri.DataSource = dataTable;
+
+            // Hide the ID column in the DataGridView
+            dgvInventoryBakteri.Columns["ID"].Visible = false;
         }
+
 
         private void OpenConnection()
         {
@@ -78,7 +82,7 @@ namespace Waterpediaa
             if (dgvInventoryBakteri.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = dgvInventoryBakteri.SelectedRows[0];
-                int id = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+                int id = Convert.ToInt32(selectedRow.Cells["ID"].Value); // ID is now accessible
                 string name = selectedRow.Cells["Jenis_Bakteri"].Value.ToString();
                 int volume = Convert.ToInt32(selectedRow.Cells["Volume"].Value);
                 long harga = Convert.ToInt64(selectedRow.Cells["Harga_Per_Liter"].Value);
@@ -97,6 +101,7 @@ namespace Waterpediaa
                 MessageBox.Show("Please select a row to edit.");
             }
         }
+
 
 
         private void buttonAddPackaging_Click(object sender, EventArgs e)
