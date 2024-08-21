@@ -31,7 +31,7 @@
             panel4 = new Panel();
             cBoxInvoiceID = new ComboBox();
             label1 = new Label();
-            dtpServiceOrder = new DateTimePicker();
+            dtpReceiptDate = new DateTimePicker();
             label17 = new Label();
             panel5 = new Panel();
             label18 = new Label();
@@ -67,12 +67,14 @@
             panel2 = new Panel();
             label19 = new Label();
             panel1 = new Panel();
+            label6 = new Label();
             cBoxCustomer = new ComboBox();
             label5 = new Label();
             panel3 = new Panel();
             label7 = new Label();
             btnCreatePDF = new Button();
             btnBack = new Button();
+            tBoxTTD = new TextBox();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt).BeginInit();
@@ -92,7 +94,7 @@
             panel4.BorderStyle = BorderStyle.FixedSingle;
             panel4.Controls.Add(cBoxInvoiceID);
             panel4.Controls.Add(label1);
-            panel4.Controls.Add(dtpServiceOrder);
+            panel4.Controls.Add(dtpReceiptDate);
             panel4.Controls.Add(label17);
             panel4.Controls.Add(panel5);
             panel4.Location = new Point(12, 12);
@@ -119,13 +121,13 @@
             label1.TabIndex = 46;
             label1.Text = "Invoice :";
             // 
-            // dtpServiceOrder
+            // dtpReceiptDate
             // 
-            dtpServiceOrder.CalendarFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpServiceOrder.Location = new Point(132, 68);
-            dtpServiceOrder.Name = "dtpServiceOrder";
-            dtpServiceOrder.Size = new Size(179, 23);
-            dtpServiceOrder.TabIndex = 27;
+            dtpReceiptDate.CalendarFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpReceiptDate.Location = new Point(132, 68);
+            dtpReceiptDate.Name = "dtpReceiptDate";
+            dtpReceiptDate.Size = new Size(179, 23);
+            dtpReceiptDate.TabIndex = 27;
             // 
             // label17
             // 
@@ -480,6 +482,8 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(tBoxTTD);
+            panel1.Controls.Add(label6);
             panel1.Controls.Add(cBoxCustomer);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(panel3);
@@ -488,11 +492,21 @@
             panel1.Size = new Size(316, 97);
             panel1.TabIndex = 48;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(62, 69);
+            label6.Name = "label6";
+            label6.Size = new Size(64, 19);
+            label6.TabIndex = 48;
+            label6.Text = "Ber TTD :";
+            // 
             // cBoxCustomer
             // 
             cBoxCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cBoxCustomer.FormattingEnabled = true;
-            cBoxCustomer.Location = new Point(132, 48);
+            cBoxCustomer.Location = new Point(132, 35);
             cBoxCustomer.Name = "cBoxCustomer";
             cBoxCustomer.Size = new Size(179, 25);
             cBoxCustomer.TabIndex = 47;
@@ -501,7 +515,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(75, 51);
+            label5.Location = new Point(75, 38);
             label5.Name = "label5";
             label5.Size = new Size(51, 19);
             label5.TabIndex = 46;
@@ -549,6 +563,15 @@
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             // 
+            // tBoxTTD
+            // 
+            tBoxTTD.BorderStyle = BorderStyle.FixedSingle;
+            tBoxTTD.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxTTD.Location = new Point(132, 66);
+            tBoxTTD.Name = "tBoxTTD";
+            tBoxTTD.Size = new Size(179, 25);
+            tBoxTTD.TabIndex = 31;
+            // 
             // FormBuatReceipt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -593,7 +616,7 @@
         #endregion
 
         private Panel panel4;
-        private DateTimePicker dtpServiceOrder;
+        private DateTimePicker dtpReceiptDate;
         private Label label17;
         private Panel panel5;
         private Label label18;
@@ -637,5 +660,7 @@
         private Label label7;
         private Button btnCreatePDF;
         private Button btnBack;
+        private Label label6;
+        private TextBox tBoxTTD;
     }
 }

@@ -36,6 +36,13 @@ namespace Waterpediaa
         public int PPNPercentage = 0;
         public long PPN = 0;
         public long Total = 0;
+        public string namaCustomer;
+        public string perusahaan;
+        public string alamat;
+
+        public DateTime receiptDate;
+        public string OtherComments;
+        public string NamaTTd;
 
         private void FormBuatReceipt_Load(object sender, EventArgs e)
         {
@@ -181,5 +188,65 @@ namespace Waterpediaa
             FormPilihDivisi.Show();
             this.Hide();
         }
+
+        private void btnCreatePDF_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(cBoxInvoiceID.Text))
+            {
+                MessageBox.Show("Please select an Invoice ID.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Get the selected Invoice ID
+            int selectedInvoiceID = Convert.ToInt32(cBoxInvoiceID.Text);
+
+            // Get the Receipt Date and Remarks from the form
+            DateTime receiptDate = dtpReceiptDate.Value;
+            string OtherComments = tBoxOtherComments.Text;
+
+            // get the name of the person who signed the receipt
+            string NamaTTd = tBoxTTD.Text;
+            string namaCustomer = cBoxCustomer.Text;
+            string perusahaan = tBoxPerusahaan.Text;
+            string alamat = tBoxAlamat.Text;
+
+            // SQL Query to insert data into the Receipt table
+            sqlQuery = "INSERT INTO Receipt (InvoiceID, Receipt_Date, Other_Comments) VALUES (@InvoiceID, @Receipt_Date, @Other_Comments)";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+
+            // Add parameters to the SQL Command
+            sqlCommand.Parameters.AddWithValue("@InvoiceID", selectedInvoiceID);
+            sqlCommand.Parameters.AddWithValue("@Receipt_Date", receiptDate);
+            sqlCommand.Parameters.AddWithValue("@Other_Comments", OtherComments);
+
+            //save data to use in FormReceipt
+            FormReceipt formReceipt = new FormReceipt();
+            {
+                //save all public string and long to be used in FormReceipt
+                formReceipt.Subtotal = Subtotal;
+                formReceipt.PPNPercentage = PPNPercentage;
+                formReceipt.PPN = PPN;
+                formReceipt.Total = Total;
+                formReceipt.DataTable = dt;
+                formReceipt.parentInvID = cBoxInvoiceID.Text;
+                formReceipt.receiptDate = receiptDate;
+                formReceipt.OtherComment = OtherComments;
+                formReceipt.NamaTTd = NamaTTd;
+                formReceipt.NamaCustomer = namaCustomer;
+                formReceipt.Perusahaan = perusahaan;
+                formReceipt.Alamat = alamat;
+            }
+
+            try
+            {
+                sqlCommand.ExecuteNonQuery();
+                MessageBox.Show("Receipt saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while saving the receipt: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }

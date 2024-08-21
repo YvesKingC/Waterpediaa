@@ -1,6 +1,6 @@
 ﻿namespace Waterpediaa
 {
-    partial class FormRecepit
+    partial class FormReceipt
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panelInvoice = new Panel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormReceipt));
+            panelReceipt = new Panel();
+            tBoxNamaTTD = new TextBox();
+            label13 = new Label();
+            label12 = new Label();
             tBoxInvoiceID = new TextBox();
             tBoxDate = new TextBox();
             label23 = new Label();
@@ -65,10 +69,10 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             btnCreatePDF = new Button();
-            label12 = new Label();
-            label13 = new Label();
-            tBoxNamaUser = new TextBox();
-            panelInvoice.SuspendLayout();
+            printDialog1 = new PrintDialog();
+            printDocument1 = new System.Drawing.Printing.PrintDocument();
+            printPreviewDialog1 = new PrintPreviewDialog();
+            panelReceipt.SuspendLayout();
             panel8.SuspendLayout();
             panel5.SuspendLayout();
             panel9.SuspendLayout();
@@ -83,37 +87,67 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // panelInvoice
+            // panelReceipt
             // 
-            panelInvoice.BackColor = Color.White;
-            panelInvoice.Controls.Add(tBoxNamaUser);
-            panelInvoice.Controls.Add(label13);
-            panelInvoice.Controls.Add(label12);
-            panelInvoice.Controls.Add(tBoxInvoiceID);
-            panelInvoice.Controls.Add(tBoxDate);
-            panelInvoice.Controls.Add(label23);
-            panelInvoice.Controls.Add(label21);
-            panelInvoice.Controls.Add(panel8);
-            panelInvoice.Controls.Add(panel1);
-            panelInvoice.Controls.Add(panelProduk);
-            panelInvoice.Controls.Add(panelBillTo);
-            panelInvoice.Controls.Add(linkLblWaterpedia);
-            panelInvoice.Controls.Add(label10);
-            panelInvoice.Controls.Add(label9);
-            panelInvoice.Controls.Add(label8);
-            panelInvoice.Controls.Add(label7);
-            panelInvoice.Controls.Add(label6);
-            panelInvoice.Controls.Add(label5);
-            panelInvoice.Controls.Add(label4);
-            panelInvoice.Controls.Add(label3);
-            panelInvoice.Controls.Add(label2);
-            panelInvoice.Controls.Add(pictureBox1);
-            panelInvoice.Controls.Add(label1);
-            panelInvoice.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            panelInvoice.Location = new Point(0, 0);
-            panelInvoice.Name = "panelInvoice";
-            panelInvoice.Size = new Size(794, 1100);
-            panelInvoice.TabIndex = 31;
+            panelReceipt.BackColor = Color.White;
+            panelReceipt.Controls.Add(tBoxNamaTTD);
+            panelReceipt.Controls.Add(label13);
+            panelReceipt.Controls.Add(label12);
+            panelReceipt.Controls.Add(tBoxInvoiceID);
+            panelReceipt.Controls.Add(tBoxDate);
+            panelReceipt.Controls.Add(label23);
+            panelReceipt.Controls.Add(label21);
+            panelReceipt.Controls.Add(panel8);
+            panelReceipt.Controls.Add(panel1);
+            panelReceipt.Controls.Add(panelProduk);
+            panelReceipt.Controls.Add(panelBillTo);
+            panelReceipt.Controls.Add(linkLblWaterpedia);
+            panelReceipt.Controls.Add(label10);
+            panelReceipt.Controls.Add(label9);
+            panelReceipt.Controls.Add(label8);
+            panelReceipt.Controls.Add(label7);
+            panelReceipt.Controls.Add(label6);
+            panelReceipt.Controls.Add(label5);
+            panelReceipt.Controls.Add(label4);
+            panelReceipt.Controls.Add(label3);
+            panelReceipt.Controls.Add(label2);
+            panelReceipt.Controls.Add(pictureBox1);
+            panelReceipt.Controls.Add(label1);
+            panelReceipt.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            panelReceipt.Location = new Point(0, 0);
+            panelReceipt.Name = "panelReceipt";
+            panelReceipt.Size = new Size(794, 1100);
+            panelReceipt.TabIndex = 31;
+            // 
+            // tBoxNamaTTD
+            // 
+            tBoxNamaTTD.BorderStyle = BorderStyle.FixedSingle;
+            tBoxNamaTTD.Location = new Point(456, 1024);
+            tBoxNamaTTD.Name = "tBoxNamaTTD";
+            tBoxNamaTTD.Size = new Size(217, 25);
+            tBoxNamaTTD.TabIndex = 55;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.BackColor = Color.White;
+            label13.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.ForeColor = Color.CornflowerBlue;
+            label13.Location = new Point(456, 933);
+            label13.Name = "label13";
+            label13.Size = new Size(110, 13);
+            label13.TabIndex = 54;
+            label13.Text = "Finance Waterpedia";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label12.Location = new Point(456, 914);
+            label12.Name = "label12";
+            label12.Size = new Size(217, 19);
+            label12.TabIndex = 53;
+            label12.Text = "PT WATERPEDIA REJEKI LANGIT";
             // 
             // tBoxInvoiceID
             // 
@@ -478,47 +512,32 @@
             btnCreatePDF.Text = "Create PDF";
             btnCreatePDF.UseVisualStyleBackColor = false;
             // 
-            // label12
+            // printDialog1
             // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(456, 914);
-            label12.Name = "label12";
-            label12.Size = new Size(217, 19);
-            label12.TabIndex = 53;
-            label12.Text = "PT WATERPEDIA REJEKI LANGIT";
+            printDialog1.UseEXDialog = true;
             // 
-            // label13
+            // printPreviewDialog1
             // 
-            label13.AutoSize = true;
-            label13.BackColor = Color.White;
-            label13.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.ForeColor = Color.CornflowerBlue;
-            label13.Location = new Point(456, 933);
-            label13.Name = "label13";
-            label13.Size = new Size(110, 13);
-            label13.TabIndex = 54;
-            label13.Text = "Finance Waterpedia";
+            printPreviewDialog1.AutoScrollMargin = new Size(0, 0);
+            printPreviewDialog1.AutoScrollMinSize = new Size(0, 0);
+            printPreviewDialog1.ClientSize = new Size(400, 300);
+            printPreviewDialog1.Enabled = true;
+            printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
+            printPreviewDialog1.Name = "printPreviewDialog1";
+            printPreviewDialog1.Visible = false;
             // 
-            // tBoxNamaUser
-            // 
-            tBoxNamaUser.BorderStyle = BorderStyle.FixedSingle;
-            tBoxNamaUser.Location = new Point(456, 1024);
-            tBoxNamaUser.Name = "tBoxNamaUser";
-            tBoxNamaUser.Size = new Size(217, 25);
-            tBoxNamaUser.TabIndex = 55;
-            // 
-            // FormRecepit
+            // FormReceipt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(948, 1061);
             Controls.Add(btnCreatePDF);
-            Controls.Add(panelInvoice);
-            Name = "FormRecepit";
-            Text = "FormRecepit";
-            panelInvoice.ResumeLayout(false);
-            panelInvoice.PerformLayout();
+            Controls.Add(panelReceipt);
+            Name = "FormReceipt";
+            Text = "FormReceipt";
+            Load += FormReceipt_Load;
+            panelReceipt.ResumeLayout(false);
+            panelReceipt.PerformLayout();
             panel8.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
@@ -544,7 +563,7 @@
 
         #endregion
 
-        private Panel panelInvoice;
+        private Panel panelReceipt;
         private TextBox tBoxInvoiceID;
         private TextBox tBoxDate;
         private Label label23;
@@ -581,8 +600,11 @@
         private PictureBox pictureBox1;
         private Label label1;
         private Button btnCreatePDF;
-        private TextBox tBoxNamaUser;
+        private TextBox tBoxNamaTTD;
         private Label label13;
         private Label label12;
+        private PrintDialog printDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private PrintPreviewDialog printPreviewDialog1;
     }
 }
