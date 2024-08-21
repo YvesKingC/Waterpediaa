@@ -38,8 +38,8 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
+            labelOmset = new Label();
+            labelProfit = new Label();
             SuspendLayout();
             // 
             // button1
@@ -51,6 +51,7 @@
             button1.TabIndex = 0;
             button1.Text = "Sales Report";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // button2
             // 
@@ -61,6 +62,7 @@
             button2.TabIndex = 1;
             button2.Text = "Buat Invoice";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // dateTimePicker1
             // 
@@ -135,33 +137,32 @@
             label5.TabIndex = 9;
             label5.Text = "Rp.";
             // 
-            // label6
+            // labelOmset
             // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label6.Location = new Point(289, 150);
-            label6.Name = "label6";
-            label6.Size = new Size(69, 81);
-            label6.TabIndex = 10;
-            label6.Text = "0";
+            labelOmset.AutoSize = true;
+            labelOmset.Font = new Font("Segoe UI Semibold", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            labelOmset.Location = new Point(289, 150);
+            labelOmset.Name = "labelOmset";
+            labelOmset.Size = new Size(0, 81);
+            labelOmset.TabIndex = 10;
             // 
-            // label7
+            // labelProfit
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Semibold", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            label7.Location = new Point(289, 395);
-            label7.Name = "label7";
-            label7.Size = new Size(69, 81);
-            label7.TabIndex = 11;
-            label7.Text = "0";
+            labelProfit.AutoSize = true;
+            labelProfit.Font = new Font("Segoe UI Semibold", 36F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            labelProfit.Location = new Point(289, 395);
+            labelProfit.Name = "labelProfit";
+            labelProfit.Size = new Size(69, 81);
+            labelProfit.TabIndex = 11;
+            labelProfit.Text = "0";
             // 
             // FormDashboardSales
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(919, 548);
-            Controls.Add(label7);
-            Controls.Add(label6);
+            Controls.Add(labelProfit);
+            Controls.Add(labelOmset);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -190,7 +191,7 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private Label label6;
-        private Label label7;
+        private Label labelOmset;
+        private Label labelProfit;
     }
 }
