@@ -80,3 +80,7 @@ C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Wate
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.genruntimeconfig.cache
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\ref\Waterpediaa.dll
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.csproj.CopyComplete
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormBuatReceipt.resources
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormDashboardSales.resources
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormQuotation.resources
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormRecepit.resources
