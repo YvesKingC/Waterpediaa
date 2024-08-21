@@ -58,7 +58,7 @@ namespace Waterpediaa
         private long InsertNewFilter(string jenisFilter, int berat, int stokAwal, long harga)
         {
             string connectionString = "server=localhost;database=waterpedia;user=root;";
-            string query = "INSERT INTO Stock_Filter (Jenis_Filter, Berat, Jumlah, Harga_Per_Barang) VALUES (@jenisFilter, @berat, @stokAwal, @harga)";
+            string query = "INSERT INTO Stock_Filter (Jenis_ProdukID, Jenis_Filter, Berat, Jumlah, Harga_Per_Barang) VALUES (@jenisProdukID, @jenisFilter, @berat, @stokAwal, @harga)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -66,6 +66,7 @@ namespace Waterpediaa
 
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
+                    cmd.Parameters.AddWithValue("@jenisProdukID", 3); // Set Jenis_ProdukID to 3 for filters
                     cmd.Parameters.AddWithValue("@jenisFilter", jenisFilter);
                     cmd.Parameters.AddWithValue("@berat", berat);
                     cmd.Parameters.AddWithValue("@stokAwal", stokAwal);
@@ -78,6 +79,7 @@ namespace Waterpediaa
                 }
             }
         }
+
 
 
 

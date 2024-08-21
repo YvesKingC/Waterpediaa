@@ -83,7 +83,7 @@ namespace Waterpediaa
         private void InsertNewBakteri(string namaBakteri, int hargaPerLiter, int stockAwal)
         {
             string connectionString = "server=localhost;database=waterpedia;user=root;";
-            string query = "INSERT INTO Stock_Bakteri (Jenis_Bakteri, Volume, Harga_Per_Liter) VALUES (@nama, @volume, @harga)";
+            string query = "INSERT INTO Stock_Bakteri (Jenis_Bakteri, Volume, Harga_Per_Liter, Jenis_ProdukID) VALUES (@nama, @volume, @harga, @jenisProdukID)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -92,12 +92,14 @@ namespace Waterpediaa
                     cmd.Parameters.AddWithValue("@nama", namaBakteri);
                     cmd.Parameters.AddWithValue("@volume", stockAwal);
                     cmd.Parameters.AddWithValue("@harga", hargaPerLiter);
+                    cmd.Parameters.AddWithValue("@jenisProdukID", 1); // Set Jenis_ProdukID to 1
 
                     connection.Open();
                     cmd.ExecuteNonQuery();
                 }
             }
         }
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -164,6 +166,7 @@ namespace Waterpediaa
             LoadProcureData();
             LoadMutasiBakteriData();
         }
+
 
 
         private void LoadProcureData()

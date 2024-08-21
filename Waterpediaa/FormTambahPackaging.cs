@@ -9,17 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-
 namespace Waterpediaa
 {
     public partial class FormTambahPackaging : Form
@@ -69,7 +58,7 @@ namespace Waterpediaa
         private void InsertNewPackaging(string namaBarang, int jumlah, int volume, long harga)
         {
             string connectionString = "server=localhost;database=waterpedia;user=root;";
-            string query = "INSERT INTO Stock_Packaging (Nama_Barang, Jumlah, Volume, Harga_Per_Barang) VALUES (@namaBarang, @jumlah, @volume, @harga)";
+            string query = "INSERT INTO Stock_Packaging (Jenis_ProdukID, Nama_Barang, Jumlah, Volume, Harga_Per_Barang) VALUES (@jenisProdukID, @namaBarang, @jumlah, @volume, @harga)";
             string insertMutasiQuery = "INSERT INTO mutasi_produk (Stock_PackagingID, Masuk, Keluar, Keterangan) VALUES (@packagingId, @masuk, @keluar, @keterangan)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -79,6 +68,7 @@ namespace Waterpediaa
                 // Insert the new packaging item
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {
+                    cmd.Parameters.AddWithValue("@jenisProdukID", 2); // Set Jenis_ProdukID to 2 for packaging
                     cmd.Parameters.AddWithValue("@namaBarang", namaBarang);
                     cmd.Parameters.AddWithValue("@jumlah", jumlah);
                     cmd.Parameters.AddWithValue("@volume", volume);
@@ -109,6 +99,7 @@ namespace Waterpediaa
                 }
             }
         }
+
 
         private void btnInputBakteriBaru_Click(object sender, EventArgs e)
         {
