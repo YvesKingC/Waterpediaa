@@ -62,6 +62,7 @@ namespace Waterpediaa
         private void FormBuatQuotation_Load(object sender, EventArgs e)
         {
             sqlConnect.Open();
+            LoadData();
         }
         public void LoadData()
         {
