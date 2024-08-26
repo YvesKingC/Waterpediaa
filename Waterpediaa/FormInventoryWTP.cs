@@ -112,6 +112,7 @@ namespace Waterpediaa
             FormPilihDivisi formPilihDivisi = new FormPilihDivisi();
             formPilihDivisi.ShowDialog();
             this.Close();
+            this.Hide();
         }
 
         private void buttonInvoice_Click(object sender, EventArgs e)
@@ -119,6 +120,7 @@ namespace Waterpediaa
             FormBuatInvoicePenjualan formBuatInvoicePenjualan = new FormBuatInvoicePenjualan();
             formBuatInvoicePenjualan.ShowDialog();
             this.Close();
+            this.Hide();
         }
 
         private void buttonPackaging_Click(object sender, EventArgs e)
@@ -126,6 +128,7 @@ namespace Waterpediaa
             FormInventoryPackaging formInventoryPackaging = new FormInventoryPackaging();
             formInventoryPackaging.ShowDialog();
             this.Close();
+            this.Hide();
         }
     }
 }

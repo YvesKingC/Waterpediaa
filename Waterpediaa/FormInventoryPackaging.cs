@@ -113,6 +113,7 @@ namespace Waterpediaa
             FormPilihDivisi formPilihDivisi = new FormPilihDivisi();
             formPilihDivisi.ShowDialog();
             this.Close();
+            this.Hide();
         }
     }
 }
