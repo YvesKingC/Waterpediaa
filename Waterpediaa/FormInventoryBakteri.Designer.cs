@@ -33,9 +33,7 @@
             buttonAddBakteri = new Button();
             buttonInvoice = new Button();
             buttonEditItem = new Button();
-            buttonSearch = new Button();
             dgvInventoryBakteri = new DataGridView();
-            textBoxSbBakteri = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dgvInventoryBakteri).BeginInit();
             SuspendLayout();
             // 
@@ -49,6 +47,7 @@
             btnBack.TabIndex = 34;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // buttonAddPackaging
             // 
@@ -95,18 +94,6 @@
             buttonEditItem.UseVisualStyleBackColor = true;
             buttonEditItem.Click += buttonEditItem_Click;
             // 
-            // buttonSearch
-            // 
-            buttonSearch.Anchor = AnchorStyles.None;
-            buttonSearch.BackColor = Color.White;
-            buttonSearch.ForeColor = SystemColors.ControlText;
-            buttonSearch.Location = new Point(723, 27);
-            buttonSearch.Name = "buttonSearch";
-            buttonSearch.Size = new Size(143, 29);
-            buttonSearch.TabIndex = 27;
-            buttonSearch.Text = "Search";
-            buttonSearch.UseVisualStyleBackColor = false;
-            // 
             // dgvInventoryBakteri
             // 
             dgvInventoryBakteri.AllowUserToAddRows = false;
@@ -114,21 +101,13 @@
             dgvInventoryBakteri.Anchor = AnchorStyles.None;
             dgvInventoryBakteri.BackgroundColor = SystemColors.ScrollBar;
             dgvInventoryBakteri.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInventoryBakteri.Location = new Point(48, 67);
+            dgvInventoryBakteri.Location = new Point(12, 12);
             dgvInventoryBakteri.Name = "dgvInventoryBakteri";
             dgvInventoryBakteri.ReadOnly = true;
             dgvInventoryBakteri.RowHeadersWidth = 51;
             dgvInventoryBakteri.RowTemplate.Height = 29;
-            dgvInventoryBakteri.Size = new Size(650, 388);
+            dgvInventoryBakteri.Size = new Size(679, 457);
             dgvInventoryBakteri.TabIndex = 24;
-            // 
-            // textBoxSbBakteri
-            // 
-            textBoxSbBakteri.Anchor = AnchorStyles.None;
-            textBoxSbBakteri.Location = new Point(48, 28);
-            textBoxSbBakteri.Name = "textBoxSbBakteri";
-            textBoxSbBakteri.Size = new Size(650, 27);
-            textBoxSbBakteri.TabIndex = 23;
             // 
             // FormInventoryBakteri
             // 
@@ -140,15 +119,12 @@
             Controls.Add(buttonAddBakteri);
             Controls.Add(buttonInvoice);
             Controls.Add(buttonEditItem);
-            Controls.Add(buttonSearch);
             Controls.Add(dgvInventoryBakteri);
-            Controls.Add(textBoxSbBakteri);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FormInventoryBakteri";
             Text = "FormInventoryBakteri";
             ((System.ComponentModel.ISupportInitialize)dgvInventoryBakteri).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -158,8 +134,6 @@
         private Button buttonAddBakteri;
         private Button buttonInvoice;
         private Button buttonEditItem;
-        private Button buttonSearch;
         private DataGridView dgvInventoryBakteri;
-        private TextBox textBoxSbBakteri;
     }
 }

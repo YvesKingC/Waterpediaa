@@ -106,6 +106,12 @@ namespace Waterpediaa
             // Reload data in dataGridViewWTP if needed
             LoadWTPData();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            FormPilihDivisi formPilihDivisi = new FormPilihDivisi();
+            formPilihDivisi.ShowDialog();
+        }
     }
 }
 

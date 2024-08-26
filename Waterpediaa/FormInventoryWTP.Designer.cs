@@ -33,8 +33,6 @@
             buttonInvoice = new Button();
             buttonEditWTP = new Button();
             dataGridViewWTP = new DataGridView();
-            buttonSearchWTP = new Button();
-            textBoxWTP = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridViewWTP).BeginInit();
             SuspendLayout();
             // 
@@ -48,6 +46,7 @@
             btnBack.TabIndex = 35;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // buttonNewfilter
             // 
@@ -83,28 +82,12 @@
             // dataGridViewWTP
             // 
             dataGridViewWTP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewWTP.Location = new Point(45, 63);
+            dataGridViewWTP.Location = new Point(12, 12);
             dataGridViewWTP.Name = "dataGridViewWTP";
             dataGridViewWTP.RowHeadersWidth = 51;
             dataGridViewWTP.RowTemplate.Height = 29;
-            dataGridViewWTP.Size = new Size(667, 393);
+            dataGridViewWTP.Size = new Size(700, 444);
             dataGridViewWTP.TabIndex = 27;
-            // 
-            // buttonSearchWTP
-            // 
-            buttonSearchWTP.Location = new Point(728, 28);
-            buttonSearchWTP.Name = "buttonSearchWTP";
-            buttonSearchWTP.Size = new Size(143, 29);
-            buttonSearchWTP.TabIndex = 26;
-            buttonSearchWTP.Text = "Search";
-            buttonSearchWTP.UseVisualStyleBackColor = true;
-            // 
-            // textBoxWTP
-            // 
-            textBoxWTP.Location = new Point(45, 27);
-            textBoxWTP.Name = "textBoxWTP";
-            textBoxWTP.Size = new Size(668, 27);
-            textBoxWTP.TabIndex = 25;
             // 
             // FormInventoryWTP
             // 
@@ -116,14 +99,11 @@
             Controls.Add(buttonInvoice);
             Controls.Add(buttonEditWTP);
             Controls.Add(dataGridViewWTP);
-            Controls.Add(buttonSearchWTP);
-            Controls.Add(textBoxWTP);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FormInventoryWTP";
             Text = "FormInventoryWTP";
             ((System.ComponentModel.ISupportInitialize)dataGridViewWTP).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -132,7 +112,5 @@
         private Button buttonInvoice;
         private Button buttonEditWTP;
         private DataGridView dataGridViewWTP;
-        private Button buttonSearchWTP;
-        private TextBox textBoxWTP;
     }
 }

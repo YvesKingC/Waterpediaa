@@ -120,6 +120,11 @@ namespace Waterpediaa
             LoadStockBakteriData();
         }
 
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            FormPilihDivisi formPilihDivisi = new FormPilihDivisi();
+            formPilihDivisi.ShowDialog();
+        }
     }
 
 
