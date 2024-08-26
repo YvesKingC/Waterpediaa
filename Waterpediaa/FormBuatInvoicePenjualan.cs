@@ -51,8 +51,6 @@ namespace Waterpediaa
         public static string ServiceOrder = "";
         public static string DueDate = "";
         public static string OtherComment = "";
-        public static string StringPPN = "";
-        public static string StringTotal = "";
         public string parentInvID = "";
 
         private void FormBuatInvoicePenjualan_Load(object sender, EventArgs e)
@@ -102,7 +100,7 @@ namespace Waterpediaa
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
 
             sqlAdapter.Fill(Metode);
-            cBoxMetodePembayaran.DataSource = Customer;
+            cBoxMetodePembayaran.DataSource = Metode;
             cBoxMetodePembayaran.DisplayMember = "Metode";
         }
         private void LoadcBoxProvinsi()
@@ -248,13 +246,11 @@ namespace Waterpediaa
             lblSubTotal.Text = "SubTotal  : " + Subtotal.ToString();
 
             int PPNPercentage = Convert.ToInt32(numericUpDownPPN.Text);
-            long PPN = Subtotal * PPNPercentage / 100;
+            PPN = Subtotal * PPNPercentage / 100;
             lblPPN.Text = "  : " + PPN.ToString();
-            string stringPPN = PPN.ToString();
 
-            long Total = Subtotal + PPN;
+            Total = Subtotal + PPN;
             lblTotal.Text = "Total  : " + Total.ToString();
-            string stringTotal = Total.ToString();
         }
         private void cBoxProvinsi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -262,51 +258,60 @@ namespace Waterpediaa
         }
         private void btnCreatePDF_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(cBoxMetodePembayaran.Text) || string.IsNullOrWhiteSpace(cBoxCustomer.Text))
+            try
             {
-                MessageBox.Show("All fields must not be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            MetodePembayaran = cBoxMetodePembayaran.Text;
-            NamaCustomer = cBoxCustomer.Text;
+                if (string.IsNullOrWhiteSpace(cBoxMetodePembayaran.Text) || string.IsNullOrWhiteSpace(cBoxCustomer.Text))
+                {
+                    MessageBox.Show("All fields must not be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                MetodePembayaran = cBoxMetodePembayaran.Text;
+                NamaCustomer = cBoxCustomer.Text;
 
-            sqlQuery = "SELECT Perusahaan, Alamat FROM Customer WHERE Nama = '" + NamaCustomer + "'";
-            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-            MySqlDataReader reader = sqlCommand.ExecuteReader();
-            while (reader.Read())
-            {
-                Perusahaan = reader["Perusahaan"].ToString();
-                Alamat = reader["Alamat"].ToString();
-            }
-            reader.Close();
+                sqlQuery = "SELECT Perusahaan, Alamat FROM Customer WHERE Nama = '" + NamaCustomer + "'";
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                MySqlDataReader reader = sqlCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Perusahaan = reader["Perusahaan"].ToString();
+                    Alamat = reader["Alamat"].ToString();
+                }
+                reader.Close();
 
-            ServiceOrder = dtpServiceOrder.Value.ToString("yyyy-MM-dd");
-            DueDate = dtpDueDate.Value.ToString("yyyy-MM-dd");
-            OtherComment = tBoxOtherComments.Text;
+                ServiceOrder = dtpServiceOrder.Value.ToString("yyyy-MM-dd");
+                DueDate = dtpDueDate.Value.ToString("yyyy-MM-dd");
+                OtherComment = tBoxOtherComments.Text;
 
-            DataTable invoiceTable = dt.Clone();
-            foreach (DataRow row in dt.Rows)
-            {
-                invoiceTable.ImportRow(row);
+                DataTable invoiceTable = dt.Clone();
+                foreach (DataRow row in dt.Rows)
+                {
+                    invoiceTable.ImportRow(row);
+                }
+                AddAllToInvoiceDT();
+                FormInvoice FormInvoice = new FormInvoice
+                {
+                    confimPayment = tBoxConfirmPayment.Text,
+                    MetodePembayaran = MetodePembayaran,
+                    NamaCustomer = NamaCustomer,
+                    Perusahaan = Perusahaan,
+                    Alamat = Alamat,
+                    ServiceOrder = ServiceOrder,
+                    DueDate = DueDate,
+                    OtherComment = OtherComment,
+                    Subtotal = Subtotal,
+                    StringPPN = PPN,
+                    StringTotal = Total,
+                    DataTable = invoiceTable,
+                    parentInvID = parentInvID
+                };
+                FormInvoice.Show();
             }
-            AddAllToInvoiceDT();
-            FormInvoice FormInvoice = new FormInvoice
+            catch (Exception ex)
             {
-                MetodePembayaran = MetodePembayaran,
-                NamaCustomer = NamaCustomer,
-                Perusahaan = Perusahaan,
-                Alamat = Alamat,
-                ServiceOrder = ServiceOrder,
-                DueDate = DueDate,
-                OtherComment = OtherComment,
-                Subtotal = Subtotal,
-                StringPPN = StringPPN,
-                StringTotal = StringTotal,
-                DataTable = invoiceTable,
-                parentInvID = parentInvID
-            };
-            FormInvoice.Show();
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -335,33 +340,16 @@ namespace Waterpediaa
         {
             try
             {
-                sqlConnect.Open();
 
                 // Generate ParentInvID
                 string todayDate = DateTime.Now.ToString("yyMMdd");
-                string parentInvID = GetNextParentInvID(todayDate);
+                parentInvID = GetNextParentInvID(todayDate);
 
                 // Retrieve PembeliID based on customer name
-                int pembeliID = 0;
-                sqlQuery = "SELECT ID FROM Customer WHERE Nama = @NamaCustomer";
-                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                sqlCommand.Parameters.AddWithValue("@NamaCustomer", cBoxCustomer.Text);
-                var result = sqlCommand.ExecuteScalar();
-                if (result != null)
-                {
-                    pembeliID = Convert.ToInt32(result);
-                }
+                int pembeliID = GetCustomerID(cBoxCustomer.Text);
 
                 // Retrieve Metode_PembayaranID based on payment method
-                int metodePembayaranID = 0;
-                sqlQuery = "SELECT ID FROM Metode_Pembayaran WHERE Metode = @MetodePembayaran";
-                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                sqlCommand.Parameters.AddWithValue("@MetodePembayaran", cBoxMetodePembayaran.Text);
-                result = sqlCommand.ExecuteScalar();
-                if (result != null)
-                {
-                    metodePembayaranID = Convert.ToInt32(result);
-                }
+                int metodePembayaranID = GetMetodePembayaranID(cBoxMetodePembayaran.Text);
 
                 foreach (DataRow row in dt.Rows)
                 {
@@ -371,7 +359,7 @@ namespace Waterpediaa
                     int? stockPackagingID = GetStockPackagingID(row["Packaging"].ToString());
 
                     sqlQuery = @"
-                INSERT INTO Invoice (ParentInvID, Stock_BakteriID, Paket_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Keluar, Harga_Jual, Metode_PembayaranID, PPN, Ongkir, Other_Comments)
+                INSERT INTO Invoice (ParentInvID, Stock_BakteriID, Paket_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Keluar, Harga_Jual, Metode_PembayaranID, PPN, Other_Comments)
                 VALUES (@ParentInvID, @Stock_BakteriID, @PaketBakteriID, @StockFilterID, @StockPackagingID, @PembeliID, @ServiceOrder, @DueDate, @JumlahKeluar, @HargaJual, @MetodePembayaranID, @PPN, @OtherComments)";
 
                     sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
@@ -383,11 +371,11 @@ namespace Waterpediaa
                     sqlCommand.Parameters.AddWithValue("@PembeliID", pembeliID);
                     sqlCommand.Parameters.AddWithValue("@ServiceOrder", dtpServiceOrder.Value.ToString("yyyy-MM-dd"));
                     sqlCommand.Parameters.AddWithValue("@DueDate", dtpDueDate.Value.ToString("yyyy-MM-dd"));
-                    sqlCommand.Parameters.AddWithValue("@JumlahKeluar", row["Quantity"]);
-                    sqlCommand.Parameters.AddWithValue("@HargaJual", row["Harga_Jual"]);
+                    sqlCommand.Parameters.AddWithValue("@JumlahKeluar", Convert.ToInt32(row["Quantity"]));
+                    sqlCommand.Parameters.AddWithValue("@HargaJual", Convert.ToInt64(row["Harga_Jual"]));
                     sqlCommand.Parameters.AddWithValue("@MetodePembayaranID", metodePembayaranID);
                     sqlCommand.Parameters.AddWithValue("@PPN", Convert.ToInt32(PPN));
-                    sqlCommand.Parameters.AddWithValue("@OtherComments", OtherComment);
+                    sqlCommand.Parameters.AddWithValue("@OtherComments", OtherComment ?? (object)DBNull.Value);
 
                     sqlCommand.ExecuteNonQuery();
                 }
@@ -401,6 +389,24 @@ namespace Waterpediaa
                 sqlConnect.Close();
             }
         }
+        private int GetCustomerID(string customerName)
+        {
+            sqlQuery = "SELECT ID FROM Customer WHERE Nama = @NamaCustomer";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@NamaCustomer", customerName);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : 0;
+        }
+
+        private int GetMetodePembayaranID(string metodePembayaran)
+        {
+            sqlQuery = "SELECT ID FROM Metode_Pembayaran WHERE Metode = @MetodePembayaran";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@MetodePembayaran", metodePembayaran);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : 0;
+        }
+
         private string GetNextParentInvID(string todayDate)
         {
             string lastInvID = "";
@@ -456,6 +462,5 @@ namespace Waterpediaa
             var result = sqlCommand.ExecuteScalar();
             return result != null ? Convert.ToInt32(result) : (int?)null;
         }
-
     }
 }
