@@ -29,10 +29,11 @@ namespace Waterpediaa
         public string DueDate { get; set; }
         public string OtherComment { get; set; }
         public long Subtotal { get; set; }
-        public string StringPPN { get; set; }
-        public string StringTotal { get; set; }
+        public long StringPPN { get; set; }
+        public long StringTotal { get; set; }
         public DataTable DataTable { get; set; }
         public string parentInvID { get; set; }
+        public string confimPayment { get; set; }
 
         static string connectionString = "server=localhost;uid=root;pwd=;database=Waterpedia;";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
@@ -54,6 +55,7 @@ namespace Waterpediaa
             lblTotal.Text = "Total : " + $"Rp {StringTotal}";
 
             tBoxInvoiceID.Text = parentInvID;
+            tBoxContact.Text = confimPayment;
             loadInfoMetodePembayaran();
         }
         private void loadInfoMetodePembayaran()
@@ -107,6 +109,18 @@ namespace Waterpediaa
         {
             // Draw the bitmap on the print document
             e.Graphics.DrawImage(panelInvoiceBitmap, 0, 0);
+        }
+        private void FormInvoice_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Close formBuatInvoicePenjualan
+            if (Application.OpenForms["FormBuatInvoicePenjualan"] != null)
+            {
+                Application.OpenForms["FormBuatInvoicePenjualan"].Close();
+            }
+
+            // Open formPilihDivisi
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
         }
     }
 }

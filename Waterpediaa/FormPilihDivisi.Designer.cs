@@ -37,6 +37,7 @@
             btnInvoice = new Button();
             btnViewUser = new Button();
             panel2 = new Panel();
+            btnReceipt = new Button();
             btnSales = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
@@ -142,6 +143,7 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.Control;
+            panel2.Controls.Add(btnReceipt);
             panel2.Controls.Add(btnSales);
             panel2.Controls.Add(btnWTP);
             panel2.Controls.Add(btnViewUser);
@@ -154,12 +156,25 @@
             panel2.Size = new Size(644, 251);
             panel2.TabIndex = 21;
             // 
+            // btnReceipt
+            // 
+            btnReceipt.AutoSize = true;
+            btnReceipt.BackColor = Color.FromArgb(192, 255, 255);
+            btnReceipt.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReceipt.Location = new Point(446, 193);
+            btnReceipt.Name = "btnReceipt";
+            btnReceipt.Size = new Size(180, 48);
+            btnReceipt.TabIndex = 22;
+            btnReceipt.Text = "Receipt";
+            btnReceipt.UseVisualStyleBackColor = false;
+            btnReceipt.Click += btnReceipt_Click;
+            // 
             // btnSales
             // 
             btnSales.AutoSize = true;
             btnSales.BackColor = Color.FromArgb(192, 255, 255);
             btnSales.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnSales.Location = new Point(446, 185);
+            btnSales.Location = new Point(240, 193);
             btnSales.Name = "btnSales";
             btnSales.Size = new Size(180, 48);
             btnSales.TabIndex = 21;
@@ -197,5 +212,6 @@
         private Button btnViewUser;
         private Panel panel2;
         private Button btnSales;
+        private Button btnReceipt;
     }
 }

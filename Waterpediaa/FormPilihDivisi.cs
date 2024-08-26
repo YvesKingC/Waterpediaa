@@ -103,7 +103,16 @@ namespace Waterpediaa
 
         private void btnSales_Click(object sender, EventArgs e)
         {
+            Form FormSales = new FormSales();
+            FormSales.Show();
+            this.Hide();
+        }
 
+        private void btnReceipt_Click(object sender, EventArgs e)
+        {
+            Form FormReceipt = new FormBuatReceipt();
+            FormReceipt.Show();
+            this.Hide();
         }
     }
 }
