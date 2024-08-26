@@ -107,6 +107,12 @@ namespace Waterpediaa
         {
             LoadPackagingData();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            FormPilihDivisi formPilihDivisi = new FormPilihDivisi();
+            formPilihDivisi.ShowDialog();
+        }
     }
 }
 
