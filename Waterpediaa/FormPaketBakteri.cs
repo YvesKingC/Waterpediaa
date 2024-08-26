@@ -26,6 +26,7 @@ namespace Waterpediaa
             LoadBakteriNames();
             LoadPackagingNames();
             LoadPilihPaket();
+            LoadDeletePaket(); // Add this line to load data into comboBoxDelete
             InitializeTempTable();
         }
 
@@ -124,6 +125,28 @@ namespace Waterpediaa
             }
         }
 
+        private void LoadDeletePaket()
+        {
+            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string query = "SELECT ID, Nama_Paket FROM Paket_Bakteri";
+
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    connection.Open();
+                    DataTable dataTable = new DataTable();
+                    using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dataTable);
+                    }
+                    comboBoxDelete.DataSource = dataTable;
+                    comboBoxDelete.DisplayMember = "Nama_Paket";
+                    comboBoxDelete.ValueMember = "ID";
+                }
+            }
+        }
+
         private void InitializeTempTable()
         {
             tempTable = new DataTable();
@@ -154,6 +177,7 @@ namespace Waterpediaa
 
             LoadPaketData();
             LoadPilihPaket(); // Load the new package into comboBoxPilihPaket
+            LoadDeletePaket(); // Load the new package into comboBoxDelete
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -199,5 +223,33 @@ namespace Waterpediaa
             LoadPaketData();
             tempTable.Clear();
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            DataRowView selectedPaket = comboBoxDelete.SelectedItem as DataRowView;
+
+            if (selectedPaket != null)
+            {
+                string namaPaket = selectedPaket["Nama_Paket"].ToString();
+                string connectionString = "server=localhost;database=waterpedia;user=root;";
+                string query = "DELETE FROM Paket_Bakteri WHERE Nama_Paket = @namaPaket";
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@namaPaket", namaPaket);
+
+                        connection.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                LoadPaketData();      // Refresh the data in dataGridViewPaket
+                LoadDeletePaket();    // Refresh the data in comboBoxDelete
+                LoadPilihPaket();     // Refresh the data in comboBoxPilihPaket if needed
+            }
+        }
+
     }
 }

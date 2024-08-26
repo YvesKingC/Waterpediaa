@@ -33,6 +33,7 @@
             buttonInvoice = new Button();
             buttonEditWTP = new Button();
             dataGridViewWTP = new DataGridView();
+            buttonPackaging = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewWTP).BeginInit();
             SuspendLayout();
             // 
@@ -68,6 +69,7 @@
             buttonInvoice.TabIndex = 30;
             buttonInvoice.Text = "Invoice";
             buttonInvoice.UseVisualStyleBackColor = false;
+            buttonInvoice.Click += buttonInvoice_Click;
             // 
             // buttonEditWTP
             // 
@@ -89,11 +91,22 @@
             dataGridViewWTP.Size = new Size(700, 444);
             dataGridViewWTP.TabIndex = 27;
             // 
+            // buttonPackaging
+            // 
+            buttonPackaging.Location = new Point(728, 194);
+            buttonPackaging.Name = "buttonPackaging";
+            buttonPackaging.Size = new Size(143, 29);
+            buttonPackaging.TabIndex = 36;
+            buttonPackaging.Text = "Packaging";
+            buttonPackaging.UseVisualStyleBackColor = true;
+            buttonPackaging.Click += buttonPackaging_Click;
+            // 
             // FormInventoryWTP
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 481);
+            Controls.Add(buttonPackaging);
             Controls.Add(btnBack);
             Controls.Add(buttonNewfilter);
             Controls.Add(buttonInvoice);
@@ -112,5 +125,6 @@
         private Button buttonInvoice;
         private Button buttonEditWTP;
         private DataGridView dataGridViewWTP;
+        private Button buttonPackaging;
     }
 }

@@ -114,6 +114,7 @@ namespace Waterpediaa
         {
             FormBuatInvoicePenjualan formBuatInvoicePenjualan = new FormBuatInvoicePenjualan();
             formBuatInvoicePenjualan.ShowDialog();
+            this.Close();
         }
         public void UpdateDataGridView()
         {
@@ -124,6 +125,14 @@ namespace Waterpediaa
         {
             FormPilihDivisi formPilihDivisi = new FormPilihDivisi();
             formPilihDivisi.ShowDialog();
+            this.Close();
+        }
+
+        private void buttonPackaging_Click(object sender, EventArgs e)
+        {
+            FormInventoryPackaging formInventoryPackaging = new FormInventoryPackaging();
+            formInventoryPackaging.ShowDialog();
+            this.Close();
         }
     }
 

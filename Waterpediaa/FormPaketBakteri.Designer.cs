@@ -362,6 +362,7 @@
             buttonDelete.TabIndex = 43;
             buttonDelete.Text = "Hapus Paket";
             buttonDelete.UseVisualStyleBackColor = false;
+            buttonDelete.Click += buttonDelete_Click;
             // 
             // panel8
             // 

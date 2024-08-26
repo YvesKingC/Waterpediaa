@@ -34,6 +34,7 @@
             buttonInvoice = new Button();
             buttonEditItem = new Button();
             dgvInventoryBakteri = new DataGridView();
+            buttonPackaging = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvInventoryBakteri).BeginInit();
             SuspendLayout();
             // 
@@ -109,11 +110,22 @@
             dgvInventoryBakteri.Size = new Size(679, 457);
             dgvInventoryBakteri.TabIndex = 24;
             // 
+            // buttonPackaging
+            // 
+            buttonPackaging.Location = new Point(725, 257);
+            buttonPackaging.Name = "buttonPackaging";
+            buttonPackaging.Size = new Size(143, 29);
+            buttonPackaging.TabIndex = 35;
+            buttonPackaging.Text = "Packaging";
+            buttonPackaging.UseVisualStyleBackColor = true;
+            buttonPackaging.Click += buttonPackaging_Click;
+            // 
             // FormInventoryBakteri
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(914, 481);
+            Controls.Add(buttonPackaging);
             Controls.Add(btnBack);
             Controls.Add(buttonAddPackaging);
             Controls.Add(buttonAddBakteri);
@@ -135,5 +147,6 @@
         private Button buttonInvoice;
         private Button buttonEditItem;
         private DataGridView dgvInventoryBakteri;
+        private Button buttonPackaging;
     }
 }
