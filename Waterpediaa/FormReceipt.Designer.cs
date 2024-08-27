@@ -72,6 +72,7 @@
             printDialog1 = new PrintDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             printPreviewDialog1 = new PrintPreviewDialog();
+            btnBack = new Button();
             panelReceipt.SuspendLayout();
             panel8.SuspendLayout();
             panel5.SuspendLayout();
@@ -505,7 +506,7 @@
             // 
             btnCreatePDF.BackColor = Color.FromArgb(192, 255, 192);
             btnCreatePDF.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCreatePDF.Location = new Point(840, 1014);
+            btnCreatePDF.Location = new Point(814, 446);
             btnCreatePDF.Name = "btnCreatePDF";
             btnCreatePDF.Size = new Size(96, 35);
             btnCreatePDF.TabIndex = 32;
@@ -526,11 +527,25 @@
             printPreviewDialog1.Name = "printPreviewDialog1";
             printPreviewDialog1.Visible = false;
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.FromArgb(255, 128, 128);
+            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(813, 487);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(97, 27);
+            btnBack.TabIndex = 33;
+            btnBack.Text = "Calcel";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // FormReceipt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(948, 1061);
+            Controls.Add(btnBack);
             Controls.Add(btnCreatePDF);
             Controls.Add(panelReceipt);
             Name = "FormReceipt";
@@ -606,5 +621,6 @@
         private PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private PrintPreviewDialog printPreviewDialog1;
+        private Button btnBack;
     }
 }

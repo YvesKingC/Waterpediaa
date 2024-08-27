@@ -52,6 +52,7 @@ namespace Waterpediaa
             LoadcBoxProvinsi();
             LoadcBoxKabupatenKota();
             LoadInvoiceList();
+
             numericUpDownPPN.Value = 11;
         }
         private void LoadData()
@@ -67,7 +68,7 @@ namespace Waterpediaa
         }
         private void LoadInvoiceList()
         {
-            sqlQuery = "SELECT parentInvID FROM Invoice";
+            sqlQuery = "SELECT Distinct parentInvID FROM Invoice";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
 
@@ -164,7 +165,6 @@ namespace Waterpediaa
 
         public void HitungTotalSubtotal()
         {
-            /*masih bug termasuk di quotation dan invoice. harga jual lupa dikalikan quantity*/
             Subtotal = 0;
             foreach (DataRow row in dt.Rows)
             {
@@ -173,13 +173,11 @@ namespace Waterpediaa
             lblSubTotal.Text = "SubTotal  : " + Subtotal.ToString();
 
             int PPNPercentage = Convert.ToInt32(numericUpDownPPN.Text);
-            long PPN = Subtotal * PPNPercentage / 100;
+            PPN = Subtotal * PPNPercentage / 100;
             lblPPN.Text = "  : " + PPN.ToString();
-            string stringPPN = PPN.ToString();
 
-            long Total = Subtotal + PPN;
+            Total = Subtotal + PPN;
             lblTotal.Text = "Total  : " + Total.ToString();
-            string stringTotal = Total.ToString();
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -211,7 +209,8 @@ namespace Waterpediaa
             string alamat = tBoxAlamat.Text;
 
             // SQL Query to insert data into the Receipt table
-            sqlQuery = "INSERT INTO Receipt (InvoiceID, Receipt_Date, Other_Comments) VALUES (@InvoiceID, @Receipt_Date, @Other_Comments)";
+            sqlQuery = "INSERT INTO Receipt (InvoiceID, Receipt_Date, Other_Comments) " +
+                        "VALUES (@InvoiceID, @Receipt_Date, @Other_Comments)";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
 
             // Add parameters to the SQL Command

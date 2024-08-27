@@ -362,7 +362,7 @@
             // 
             // tBoxMetodePembayaran
             // 
-            tBoxMetodePembayaran.BorderStyle = BorderStyle.FixedSingle;
+            tBoxMetodePembayaran.BorderStyle = BorderStyle.None;
             tBoxMetodePembayaran.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             tBoxMetodePembayaran.Location = new Point(449, 89);
             tBoxMetodePembayaran.Multiline = true;

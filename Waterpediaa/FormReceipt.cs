@@ -74,76 +74,63 @@ namespace Waterpediaa
         }
         private void ReduceStock()
         {
+            if (string.IsNullOrEmpty(parentInvID))
+            {
+                MessageBox.Show("Invalid Invoice ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             try
             {
-                // Reduce Stock_Bakteri
-                if (!string.IsNullOrEmpty(parentInvID))
+                // Start transaction
+                using (var transaction = sqlConnect.BeginTransaction())
                 {
-                    sqlQuery = "UPDATE Stock_Bakteri SB " +
-                               "JOIN Invoice I ON SB.ID = I.Stock_BakteriID " +
-                               "SET SB.Volume = SB.Volume - I.Jumlah_Keluar " +
-                               "WHERE I.ParentInvID = @ParentInvID AND I.Stock_BakteriID IS NOT NULL";
-                    sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                    sqlCommand.Parameters.AddWithValue("@ParentInvID", parentInvID);
-                    sqlCommand.ExecuteNonQuery();
+                    // Reduce Stock_Bakteri
+                    UpdateStock("UPDATE Stock_Bakteri SB JOIN Invoice I ON SB.ID = I.Stock_BakteriID " +
+                                "SET SB.Volume = SB.Volume - I.Jumlah_Keluar WHERE I.ParentInvID = @ParentInvID AND I.Stock_BakteriID IS NOT NULL", transaction);
+
+                    // Reduce Stock_Filter
+                    UpdateStock("UPDATE Stock_Filter SF JOIN Invoice I ON SF.ID = I.Stock_FilterID " +
+                                "SET SF.Jumlah = SF.Jumlah - I.Jumlah_Keluar WHERE I.ParentInvID = @ParentInvID AND I.Stock_FilterID IS NOT NULL", transaction);
+
+                    // Reduce Stock_Packaging
+                    UpdateStock("UPDATE Stock_Packaging SP JOIN Invoice I ON SP.ID = I.Stock_PackagingID " +
+                                "SET SP.Jumlah = SP.Jumlah - I.Jumlah_Keluar WHERE I.ParentInvID = @ParentInvID AND I.Stock_PackagingID IS NOT NULL", transaction);
+
+                    // Reduce Paket_Bakteri
+                    UpdateStock("UPDATE Stock_Bakteri SB JOIN Paket_Bakteri PB ON SB.ID = PB.Stock_BakteriID " +
+                                "JOIN Invoice I ON PB.ID = I.Paket_BakteriID " +
+                                "SET SB.Volume = SB.Volume - I.Jumlah_Keluar WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL", transaction);
+
+                    UpdateStock("UPDATE Stock_Packaging SP JOIN Paket_Bakteri PB ON SP.ID = PB.Stock_PackagingID " +
+                                "JOIN Invoice I ON PB.ID = I.Paket_BakteriID " +
+                                "SET SP.Jumlah = SP.Jumlah - I.Jumlah_Keluar WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL", transaction);
+
+                    // Commit transaction
+                    transaction.Commit();
+                    MessageBox.Show("Stock has been successfully reduced!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                // Reduce Stock_Filter
-                if (!string.IsNullOrEmpty(parentInvID))
-                {
-                    sqlQuery = "UPDATE Stock_Filter SF " +
-                               "JOIN Invoice I ON SF.ID = I.Stock_FilterID " +
-                               "SET SF.Jumlah = SF.Jumlah - I.Jumlah_Keluar " +
-                               "WHERE I.ParentInvID = @ParentInvID AND I.Stock_FilterID IS NOT NULL";
-                    sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                    sqlCommand.Parameters.AddWithValue("@ParentInvID", parentInvID);
-                    sqlCommand.ExecuteNonQuery();
-                }
-
-                // Reduce Stock_Packaging
-                if (!string.IsNullOrEmpty(parentInvID))
-                {
-                    sqlQuery = "UPDATE Stock_Packaging SP " +
-                               "JOIN Invoice I ON SP.ID = I.Stock_PackagingID " +
-                               "SET SP.Jumlah = SP.Jumlah - I.Jumlah_Keluar " +
-                               "WHERE I.ParentInvID = @ParentInvID AND I.Stock_PackagingID IS NOT NULL";
-                    sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                    sqlCommand.Parameters.AddWithValue("@ParentInvID", parentInvID);
-                    sqlCommand.ExecuteNonQuery();
-                }
-
-                // Reduce Paket_Bakteri (if it contains multiple items, those stocks need to be reduced as well)
-                if (!string.IsNullOrEmpty(parentInvID))
-                {
-                    sqlQuery = "UPDATE Stock_Bakteri SB " +
-                               "JOIN Paket_Bakteri PB ON SB.ID = PB.Stock_BakteriID " +
-                               "JOIN Invoice I ON PB.ID = I.Paket_BakteriID " +
-                               "SET SB.Volume = SB.Volume - I.Jumlah_Keluar " +
-                               "WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL";
-                    sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                    sqlCommand.Parameters.AddWithValue("@ParentInvID", parentInvID);
-                    sqlCommand.ExecuteNonQuery();
-
-                    sqlQuery = "UPDATE Stock_Packaging SP " +
-                               "JOIN Paket_Bakteri PB ON SP.ID = PB.Stock_PackagingID " +
-                               "JOIN Invoice I ON PB.ID = I.Paket_BakteriID " +
-                               "SET SP.Jumlah = SP.Jumlah - I.Jumlah_Keluar " +
-                               "WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL";
-                    sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                    sqlCommand.Parameters.AddWithValue("@ParentInvID", parentInvID);
-                    sqlCommand.ExecuteNonQuery();
-                }
-
-                MessageBox.Show("Stock has been successfully reduced!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("An error occurred while reducing the stock: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void FormReceipt_FormClosing(object sender, FormClosingEventArgs e)
+
+        private void UpdateStock(string query, MySqlTransaction transaction)
         {
-            sqlConnect.Close();
+            using (var cmd = new MySqlCommand(query, sqlConnect, transaction))
+            {
+                cmd.Parameters.AddWithValue("@ParentInvID", parentInvID);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
+            this.Hide();
         }
     }
 }
