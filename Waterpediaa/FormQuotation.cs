@@ -26,8 +26,8 @@ namespace Waterpediaa
         public string DueDate { get; set; }
         public string TermsConds { get; set; }
         public long Subtotal { get; set; }
-        public string StringPPN { get; set; }
-        public string StringTotal { get; set; }
+        public long StringPPN { get; set; }
+        public long StringTotal { get; set; }
         public DataTable DataTable { get; set; }
         public string parentQuoteID { get; set; }
 
@@ -47,8 +47,8 @@ namespace Waterpediaa
             tBoxTNC.Text = TermsConds;
 
             lblSubTotal.Text = "Sub Total : " + $"Rp {Subtotal}";
-            lblPPN.Text = $"PPN : " + $"Rp " + StringPPN;
-            lblTotal.Text = "Total : " + $"Rp " + StringTotal;
+            lblPPN.Text = $"PPN : " + $"Rp {StringPPN}";
+            lblTotal.Text = "Total : " + $"Rp {StringTotal}";
 
             tBoxQuoteID.Text = parentQuoteID;
         }
@@ -67,6 +67,9 @@ namespace Waterpediaa
                 printPreviewDialog1.WindowState = FormWindowState.Maximized;
                 printPreviewDialog1.ShowDialog();
             }
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
+            this.Hide();
         }
         private void CapturePanel(Panel panel)
         {
@@ -77,6 +80,20 @@ namespace Waterpediaa
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(panelQuotationBitmap, 0, 0);
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string email = "info@waterpedia.co.id";
+            string mailto = $"mailto:{email}";
+            System.Diagnostics.Process.Start(mailto);
+        }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
+            this.Hide();
         }
     }
 }

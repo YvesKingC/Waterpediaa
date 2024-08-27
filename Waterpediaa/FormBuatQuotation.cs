@@ -34,7 +34,6 @@ namespace Waterpediaa
         public string sqlQuery;
 
         DataTable dt = new DataTable();
-        DataTable Metode = new DataTable();
         DataTable Customer = new DataTable();
         DataTable Product = new DataTable();
         DataTable NamaProduct = new DataTable();
@@ -55,14 +54,19 @@ namespace Waterpediaa
         public static string ServiceOrder = "";
         public static string DueDate = "";
         public static string TermsAndConds = "";
-        public static string StringPPN = "";
-        public static string StringTotal = "";
         public string parentQuoteID = "";
 
         private void FormBuatQuotation_Load(object sender, EventArgs e)
         {
-            sqlConnect.Open();
             LoadData();
+            LoadcBoxProvinsi();
+            LoadcBoxKabupatenKota();
+            LoadcBoxCustomer();
+            LoadcBoxJenisProduct();
+            LoadcBoxNamaBarang();
+            LoadcBoxPackaging();
+
+            numericUpDownPPN.Value = 11;
         }
         public void LoadData()
         {
@@ -153,6 +157,15 @@ namespace Waterpediaa
                 cBoxNamaProduk.DataSource = NamaProduct;
                 cBoxNamaProduk.DisplayMember = "Jenis_Filter";
             }
+            else if (cBoxJenisProduk.Text == "Paket Bakteri")
+            {
+                sqlQuery = "SELECT Nama_Paket FROM Paket_Bakteri";
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                sqlAdapter = new MySqlDataAdapter(sqlCommand);
+                sqlAdapter.Fill(NamaProduct);
+                cBoxNamaProduk.DataSource = NamaProduct;
+                cBoxNamaProduk.DisplayMember = "Nama_Paket";
+            }
         }
         private void LoadcBoxPackaging()
         {
@@ -223,18 +236,16 @@ namespace Waterpediaa
             Subtotal = 0;
             foreach (DataRow row in dt.Rows)
             {
-                Subtotal += Convert.ToInt64(row["Harga_Beli"]);
+                Subtotal += Convert.ToInt64(row["Harga_Jual"]);
             }
             lblSubTotal.Text = "SubTotal  : " + Subtotal.ToString();
 
             int PPNPercentage = Convert.ToInt32(numericUpDownPPN.Text);
-            long PPN = Subtotal * PPNPercentage / 100;
+            PPN = Subtotal * PPNPercentage / 100;
             lblPPN.Text = "  : " + PPN.ToString();
-            string stringPPN = PPN.ToString();
 
-            long Total = Subtotal + PPN;
+            Total = Subtotal + PPN;
             lblTotal.Text = "Total  : " + Total.ToString();
-            string stringTotal = Total.ToString();
         }
         private void cBoxProvinsi_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -242,48 +253,56 @@ namespace Waterpediaa
         }
         private void btnCreatePDF_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(cBoxCustomer.Text))
+            try
             {
-                MessageBox.Show("All fields must not be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            NamaCustomer = cBoxCustomer.Text;
+                if (string.IsNullOrWhiteSpace(cBoxCustomer.Text))
+                {
+                    MessageBox.Show("All fields must not be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                NamaCustomer = cBoxCustomer.Text;
 
-            sqlQuery = "SELECT Perusahaan, Alamat FROM Customer WHERE Nama = '" + NamaCustomer + "'";
-            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-            MySqlDataReader reader = sqlCommand.ExecuteReader();
-            while (reader.Read())
-            {
-                Perusahaan = reader["Perusahaan"].ToString();
-                Alamat = reader["Alamat"].ToString();
-            }
-            reader.Close();
+                sqlQuery = "SELECT Perusahaan, Alamat FROM Customer WHERE Nama = '" + NamaCustomer + "'";
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                MySqlDataReader reader = sqlCommand.ExecuteReader();
+                while (reader.Read())
+                {
+                    Perusahaan = reader["Perusahaan"].ToString();
+                    Alamat = reader["Alamat"].ToString();
+                }
+                reader.Close();
 
-            ServiceOrder = dtpServiceOrder.Value.ToString("yyyy-MM-dd");
-            DueDate = dtpDueDate.Value.ToString("yyyy-MM-dd");
-            TermsAndConds = tBoxTNC.Text;
+                ServiceOrder = dtpServiceOrder.Value.ToString("yyyy-MM-dd");
+                DueDate = dtpDueDate.Value.ToString("yyyy-MM-dd");
+                TermsAndConds = tBoxTNC.Text;
 
-            DataTable invoiceTable = dt.Clone();
-            foreach (DataRow row in dt.Rows)
-            {
-                invoiceTable.ImportRow(row);
+                DataTable quotationTable = dt.Clone();
+                foreach (DataRow row in dt.Rows)
+                {
+                    quotationTable.ImportRow(row);
+                }
+                AddAllToQuotationDT();
+                FormQuotation FormQuotation = new FormQuotation
+                {
+                    NamaCustomer = NamaCustomer,
+                    Perusahaan = Perusahaan,
+                    Alamat = Alamat,
+                    ServiceOrder = ServiceOrder,
+                    DueDate = DueDate,
+                    TermsConds = TermsAndConds,
+                    Subtotal = Subtotal,
+                    StringPPN = PPN,
+                    StringTotal = Total,
+                    DataTable = quotationTable,
+                    parentQuoteID = parentQuoteID
+                };
+                FormQuotation.Show();
+                this.Hide();
             }
-            AddAllToQuotationDT();
-            FormQuotation FormQuotation = new FormQuotation
+            catch (Exception ex)
             {
-                NamaCustomer = NamaCustomer,
-                Perusahaan = Perusahaan,
-                Alamat = Alamat,
-                ServiceOrder = ServiceOrder,
-                DueDate = DueDate,
-                TermsConds = TermsAndConds,
-                Subtotal = Subtotal,
-                StringPPN = StringPPN,
-                StringTotal = StringTotal,
-                DataTable = invoiceTable,
-                parentQuoteID = parentQuoteID
-            };
-            FormQuotation.Show();
+                MessageBox.Show("An error occurred while creating the quotation: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void btnBack_Click(object sender, EventArgs e)
         {
@@ -298,7 +317,7 @@ namespace Waterpediaa
             {
                 foreach (DataGridViewRow row in dataGridViewQuote.SelectedRows)
                 {
-                    sqlQuery = "DELETE FROM TempInvoice WHERE ID = '" + row.Cells[0].Value + "'";
+                    sqlQuery = "DELETE FROM TempQuotation WHERE ID = '" + row.Cells[0].Value + "'";
                     sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
                     sqlCommand.ExecuteNonQuery();
                 }
@@ -314,18 +333,10 @@ namespace Waterpediaa
 
                 // Generate ParentQuoID
                 string todayDate = DateTime.Now.ToString("yyMMdd");
-                string parentQuoID = GetNextParentQuoID(todayDate);
+                parentQuoteID = GetNextParentQuoID(todayDate);
 
                 // Retrieve PembeliID based on customer name
-                int pembeliID = 0;
-                sqlQuery = "SELECT ID FROM Customer WHERE Nama = @NamaCustomer";
-                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                sqlCommand.Parameters.AddWithValue("@NamaCustomer", cBoxCustomer.Text);
-                var result = sqlCommand.ExecuteScalar();
-                if (result != null)
-                {
-                    pembeliID = Convert.ToInt32(result);
-                }
+                int pembeliID = GetCustomerID(cBoxCustomer.Text);
 
                 foreach (DataRow row in dt.Rows)
                 {
@@ -333,12 +344,14 @@ namespace Waterpediaa
                     int? paketBakteriID = GetPaketBakteriID(row["Nama_Barang"].ToString());
                     int? stockFilterID = GetStockFilterID(row["Nama_Barang"].ToString());
                     int? stockPackagingID = GetStockPackagingID(row["Packaging"].ToString());
+
                     sqlQuery = @"
-                    INSERT INTO Quotation (ParentQuoID, Stock_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Masuk, Harga_Beli, PPN, Terms_Condition)
-                    VALUES (@ParentQuoID, @Stock_BakteriID, @Stock_FilterID, @Stock_PackagingID, @PembeliID, @Service_Order, @Due_Date, @Jumlah_Masuk, @Harga_Beli, @PPN, @Terms_Condition)";
+                    INSERT INTO Quotation (ParentQuoID, Stock_BakteriID ,Paket_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Masuk, Harga_Beli, PPN, Terms_Condition)
+                    VALUES (@ParentQuoID, @Stock_BakteriID, @PaketBakteriID, @Stock_FilterID, @Stock_PackagingID, @PembeliID, @Service_Order, @Due_Date, @Jumlah_Masuk, @Harga_Beli, @PPN, @Terms_Condition)";
                     sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                    sqlCommand.Parameters.AddWithValue("@ParentQuoID", parentQuoID);
+                    sqlCommand.Parameters.AddWithValue("@ParentQuoID", parentQuoteID);
                     sqlCommand.Parameters.AddWithValue("@Stock_BakteriID", stockBakteriID.HasValue ? (object)stockBakteriID.Value : DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@PaketBakteriID", paketBakteriID.HasValue ? (object)paketBakteriID.Value : DBNull.Value);
                     sqlCommand.Parameters.AddWithValue("@Stock_FilterID", stockFilterID.HasValue ? (object)stockFilterID.Value : DBNull.Value);
                     sqlCommand.Parameters.AddWithValue("@Stock_PackagingID", stockPackagingID.HasValue ? (object)stockPackagingID.Value : DBNull.Value);
                     sqlCommand.Parameters.AddWithValue("@PembeliID", pembeliID);
@@ -347,7 +360,7 @@ namespace Waterpediaa
                     sqlCommand.Parameters.AddWithValue("@Jumlah_Masuk", row["Quantity"]);
                     sqlCommand.Parameters.AddWithValue("@Harga_Beli", row["Harga_Beli"]);
                     sqlCommand.Parameters.AddWithValue("@PPN", Convert.ToInt32(PPN));
-                    sqlCommand.Parameters.AddWithValue("@Terms_Condition", TermsAndConds);
+                    sqlCommand.Parameters.AddWithValue("@Terms_Condition", TermsAndConds ?? (object)DBNull.Value);
 
                     sqlCommand.ExecuteNonQuery();
                 }
@@ -360,6 +373,14 @@ namespace Waterpediaa
             {
                 sqlConnect.Close();
             }
+        }
+        private int GetCustomerID(string customerName)
+        {
+            sqlQuery = "SELECT ID FROM Customer WHERE Nama = @NamaCustomer";
+            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@NamaCustomer", customerName);
+            var result = sqlCommand.ExecuteScalar();
+            return result != null ? Convert.ToInt32(result) : 0;
         }
         private string GetNextParentQuoID(string todayDate)
         {

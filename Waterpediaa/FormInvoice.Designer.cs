@@ -77,7 +77,7 @@
             pictureBox1 = new PictureBox();
             label1 = new Label();
             btnCreatePDF = new Button();
-            vScrollBar1 = new VScrollBar();
+            btnBack = new Button();
             panelInvoice.SuspendLayout();
             panel8.SuspendLayout();
             panel5.SuspendLayout();
@@ -109,6 +109,7 @@
             // 
             // panelInvoice
             // 
+            panelInvoice.AutoSize = true;
             panelInvoice.BackColor = Color.White;
             panelInvoice.Controls.Add(tBoxInvoiceID);
             panelInvoice.Controls.Add(tBoxDueDate);
@@ -381,7 +382,7 @@
             // tBoxDetailCustomer
             // 
             tBoxDetailCustomer.BorderStyle = BorderStyle.FixedSingle;
-            tBoxDetailCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxDetailCustomer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             tBoxDetailCustomer.Location = new Point(75, 42);
             tBoxDetailCustomer.Multiline = true;
             tBoxDetailCustomer.Name = "tBoxDetailCustomer";
@@ -577,7 +578,7 @@
             // 
             btnCreatePDF.BackColor = Color.FromArgb(192, 255, 192);
             btnCreatePDF.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCreatePDF.Location = new Point(824, 999);
+            btnCreatePDF.Location = new Point(822, 446);
             btnCreatePDF.Name = "btnCreatePDF";
             btnCreatePDF.Size = new Size(96, 35);
             btnCreatePDF.TabIndex = 31;
@@ -585,19 +586,25 @@
             btnCreatePDF.UseVisualStyleBackColor = false;
             btnCreatePDF.Click += btnCreatePDF_Click;
             // 
-            // vScrollBar1
+            // btnBack
             // 
-            vScrollBar1.Location = new Point(931, 0);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(17, 1062);
-            vScrollBar1.TabIndex = 32;
+            btnBack.BackColor = Color.FromArgb(255, 128, 128);
+            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(821, 487);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(97, 27);
+            btnBack.TabIndex = 32;
+            btnBack.Text = "Calcel";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
             // 
             // FormInvoice
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(948, 1061);
-            Controls.Add(vScrollBar1);
+            Controls.Add(btnBack);
             Controls.Add(btnCreatePDF);
             Controls.Add(panelInvoice);
             Name = "FormInvoice";
@@ -626,6 +633,7 @@
             panelHeader1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -677,6 +685,6 @@
         private TextBox tBoxServiceOrder;
         private TextBox tBoxInvoiceID;
         private TextBox tBoxDueDate;
-        private VScrollBar vScrollBar1;
+        private Button btnBack;
     }
 }

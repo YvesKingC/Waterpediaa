@@ -30,9 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormQuotation));
             panelQuotation = new Panel();
+            label13 = new Label();
             tBoxQuoteID = new TextBox();
+            linkLabel1 = new LinkLabel();
             tBoxDueDate = new TextBox();
             tBoxServiceOrder = new TextBox();
+            label12 = new Label();
             label23 = new Label();
             label21 = new Label();
             label14 = new Label();
@@ -71,6 +74,7 @@
             printDialog1 = new PrintDialog();
             printDocument1 = new System.Drawing.Printing.PrintDocument();
             printPreviewDialog1 = new PrintPreviewDialog();
+            btnBack = new Button();
             panelQuotation.SuspendLayout();
             panel8.SuspendLayout();
             panel5.SuspendLayout();
@@ -89,9 +93,12 @@
             // panelQuotation
             // 
             panelQuotation.BackColor = Color.White;
+            panelQuotation.Controls.Add(label13);
             panelQuotation.Controls.Add(tBoxQuoteID);
+            panelQuotation.Controls.Add(linkLabel1);
             panelQuotation.Controls.Add(tBoxDueDate);
             panelQuotation.Controls.Add(tBoxServiceOrder);
+            panelQuotation.Controls.Add(label12);
             panelQuotation.Controls.Add(label23);
             panelQuotation.Controls.Add(label21);
             panelQuotation.Controls.Add(label14);
@@ -117,6 +124,16 @@
             panelQuotation.Size = new Size(794, 1100);
             panelQuotation.TabIndex = 31;
             // 
+            // label13
+            // 
+            label13.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.Location = new Point(350, 1027);
+            label13.Name = "label13";
+            label13.Size = new Size(100, 27);
+            label13.TabIndex = 55;
+            label13.Text = "Thank You\r\n\r\n";
+            label13.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // tBoxQuoteID
             // 
             tBoxQuoteID.BorderStyle = BorderStyle.FixedSingle;
@@ -124,6 +141,18 @@
             tBoxQuoteID.Name = "tBoxQuoteID";
             tBoxQuoteID.Size = new Size(172, 25);
             tBoxQuoteID.TabIndex = 52;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            linkLabel1.Location = new Point(336, 1008);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(143, 19);
+            linkLabel1.TabIndex = 54;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "info@waterpedia.co.id";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // tBoxDueDate
             // 
@@ -140,6 +169,16 @@
             tBoxServiceOrder.Name = "tBoxServiceOrder";
             tBoxServiceOrder.Size = new Size(172, 25);
             tBoxServiceOrder.TabIndex = 50;
+            // 
+            // label12
+            // 
+            label12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(256, 970);
+            label12.Name = "label12";
+            label12.Size = new Size(308, 38);
+            label12.TabIndex = 53;
+            label12.Text = "If you have any questions about this price quote,\r\nPlease contact\r\n";
+            label12.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label23
             // 
@@ -249,7 +288,7 @@
             panel1.Controls.Add(panel3);
             panel1.Location = new Point(36, 800);
             panel1.Name = "panel1";
-            panel1.Size = new Size(414, 200);
+            panel1.Size = new Size(414, 167);
             panel1.TabIndex = 45;
             // 
             // tBoxTNC
@@ -259,7 +298,7 @@
             tBoxTNC.Location = new Point(3, 35);
             tBoxTNC.Multiline = true;
             tBoxTNC.Name = "tBoxTNC";
-            tBoxTNC.Size = new Size(406, 160);
+            tBoxTNC.Size = new Size(406, 127);
             tBoxTNC.TabIndex = 16;
             // 
             // panel3
@@ -491,7 +530,7 @@
             // 
             btnCreatePDF.BackColor = Color.FromArgb(192, 255, 192);
             btnCreatePDF.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCreatePDF.Location = new Point(821, 1002);
+            btnCreatePDF.Location = new Point(824, 446);
             btnCreatePDF.Name = "btnCreatePDF";
             btnCreatePDF.Size = new Size(96, 35);
             btnCreatePDF.TabIndex = 32;
@@ -512,11 +551,25 @@
             printPreviewDialog1.Name = "printPreviewDialog1";
             printPreviewDialog1.Visible = false;
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.FromArgb(255, 128, 128);
+            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(823, 487);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(97, 27);
+            btnBack.TabIndex = 33;
+            btnBack.Text = "Cancel";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // FormQuotation
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             ClientSize = new Size(948, 1061);
+            Controls.Add(btnBack);
             Controls.Add(btnCreatePDF);
             Controls.Add(panelQuotation);
             Name = "FormQuotation";
@@ -591,5 +644,9 @@
         private PrintDialog printDialog1;
         private System.Drawing.Printing.PrintDocument printDocument1;
         private PrintPreviewDialog printPreviewDialog1;
+        private Button btnBack;
+        private Label label12;
+        private LinkLabel linkLabel1;
+        private Label label13;
     }
 }

@@ -171,6 +171,15 @@ namespace Waterpediaa
                 cBoxNamaProduk.DataSource = NamaProduct;
                 cBoxNamaProduk.DisplayMember = "Jenis_Filter";
             }
+            else if (cBoxJenisProduk.Text == "Paket Bakteri")
+            {
+                sqlQuery = "SELECT Nama_Paket FROM Paket_Bakteri";
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                sqlAdapter = new MySqlDataAdapter(sqlCommand);
+                sqlAdapter.Fill(NamaProduct);
+                cBoxNamaProduk.DataSource = NamaProduct;
+                cBoxNamaProduk.DisplayMember = "Nama_Paket";
+            }
         }
         private void LoadcBoxPackaging()
         {
@@ -305,6 +314,7 @@ namespace Waterpediaa
                     parentInvID = parentInvID
                 };
                 FormInvoice.Show();
+                this.Hide();
             }
             catch (Exception ex)
             {
@@ -340,7 +350,6 @@ namespace Waterpediaa
         {
             try
             {
-
                 // Generate ParentInvID
                 string todayDate = DateTime.Now.ToString("yyMMdd");
                 parentInvID = GetNextParentInvID(todayDate);

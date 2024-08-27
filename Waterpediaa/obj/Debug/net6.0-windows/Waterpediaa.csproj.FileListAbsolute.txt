@@ -83,5 +83,4 @@ C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Wate
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormDashboardSales.resources
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormQuotation.resources
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormReceipt.resources
-C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.sourcelink.json
-C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterped.D15CBBAB.Up2Date
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.csproj.CopyComplete

@@ -96,6 +96,9 @@ namespace Waterpediaa
                 printPreviewDialog1.WindowState = FormWindowState.Maximized;
                 printPreviewDialog1.ShowDialog();
             }
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
+            this.Hide();
         }
 
         private void CapturePanel(Panel panel)
@@ -110,17 +113,12 @@ namespace Waterpediaa
             // Draw the bitmap on the print document
             e.Graphics.DrawImage(panelInvoiceBitmap, 0, 0);
         }
-        private void FormInvoice_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // Close formBuatInvoicePenjualan
-            if (Application.OpenForms["FormBuatInvoicePenjualan"] != null)
-            {
-                Application.OpenForms["FormBuatInvoicePenjualan"].Close();
-            }
 
-            // Open formPilihDivisi
+        private void btnBack_Click(object sender, EventArgs e)
+        {
             Form FormPilihDivisi = new FormPilihDivisi();
             FormPilihDivisi.Show();
+            this.Hide();
         }
     }
 }
