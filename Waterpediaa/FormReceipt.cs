@@ -62,6 +62,12 @@ namespace Waterpediaa
                 panelReceiptBitmap.Save("Receipt.png", System.Drawing.Imaging.ImageFormat.Png);
             }
             ReduceStock();
+
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
+            this.Hide();
+
+            sqlConnect.Close();
         }
         private void CapturePanel(Panel panel)
         {

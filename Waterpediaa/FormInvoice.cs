@@ -99,6 +99,8 @@ namespace Waterpediaa
             Form FormPilihDivisi = new FormPilihDivisi();
             FormPilihDivisi.Show();
             this.Hide();
+
+            sqlConnect.Close();
         }
 
         private void CapturePanel(Panel panel)
