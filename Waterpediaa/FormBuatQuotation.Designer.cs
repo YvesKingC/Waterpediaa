@@ -120,6 +120,7 @@
             btnCreatePDF.TabIndex = 38;
             btnCreatePDF.Text = "Create \r\nQuotation";
             btnCreatePDF.UseVisualStyleBackColor = false;
+            btnCreatePDF.Click += btnCreatePDF_Click_1;
             // 
             // dataGridViewQuote
             // 
@@ -294,6 +295,7 @@
             btnAddNewCustomer.TabIndex = 30;
             btnAddNewCustomer.Text = "Add";
             btnAddNewCustomer.UseVisualStyleBackColor = false;
+            btnAddNewCustomer.Click += btnAddNewCustomer_Click_1;
             // 
             // label16
             // 
@@ -478,6 +480,7 @@
             btnAddProduk.TabIndex = 31;
             btnAddProduk.Text = "Add";
             btnAddProduk.UseVisualStyleBackColor = false;
+            btnAddProduk.Click += btnAddProduk_Click_1;
             // 
             // numericUpDownQTY
             // 

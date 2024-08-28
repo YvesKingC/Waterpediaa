@@ -18,6 +18,7 @@ namespace Waterpediaa
         public FormQuotation()
         {
             InitializeComponent();
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
         }
         public string NamaCustomer { get; set; }
         public string Perusahaan { get; set; }
@@ -52,8 +53,7 @@ namespace Waterpediaa
 
             tBoxQuoteID.Text = parentQuoteID;
         }
-
-        private void btnCreatePDF_Click(object sender, EventArgs e)
+        private void btnCreatePDF_Click_1(object sender, EventArgs e)
         {
             // Capture the panelInvoice content
             CapturePanel(panelQuotation);
@@ -75,9 +75,8 @@ namespace Waterpediaa
         }
         private void CapturePanel(Panel panel)
         {
-            panelQuotation = panel;
-            panelQuotationBitmap = new Bitmap(panelQuotation.Width, panelQuotation.Height);
-            panelQuotation.DrawToBitmap(panelQuotationBitmap, new Rectangle(0, 0, panelQuotation.Width, panelQuotation.Height));
+            panelQuotationBitmap = new Bitmap(panel.Width, panel.Height);
+            panel.DrawToBitmap(panelQuotationBitmap, new Rectangle(0, 0, panel.Width, panel.Height));
         }
         private void printDocument1_PrintPage(object sender, PrintPageEventArgs e)
         {

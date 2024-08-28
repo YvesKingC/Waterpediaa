@@ -17,15 +17,6 @@ namespace Waterpediaa
         public FormBuatQuotation()
         {
             InitializeComponent();
-            LoadData();
-            LoadcBoxProvinsi();
-            LoadcBoxKabupatenKota();
-            LoadcBoxCustomer();
-            LoadcBoxJenisProduct();
-            LoadcBoxNamaBarang();
-            LoadcBoxPackaging();
-
-            numericUpDownPPN.Value = 11;
         }
         static string connectionString = "server=localhost;uid=root;pwd=;database=Waterpedia;";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
@@ -58,6 +49,7 @@ namespace Waterpediaa
 
         private void FormBuatQuotation_Load(object sender, EventArgs e)
         {
+            sqlConnect.Open();
             LoadData();
             LoadcBoxProvinsi();
             LoadcBoxKabupatenKota();
@@ -77,12 +69,12 @@ namespace Waterpediaa
                     Nama_Barang VARCHAR(255),
                     Packaging VARCHAR(255),
                     Quantity INT,
-                    Harga_Beli BIGINT
+                    Harga_Jual BIGINT
                 );";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlCommand.ExecuteNonQuery();
 
-            sqlQuery = "select * from TempInvoice";
+            sqlQuery = "select * from TempQuotation";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlAdapter = new MySqlDataAdapter(sqlCommand);
 
@@ -176,7 +168,7 @@ namespace Waterpediaa
             cBoxPackaging.DataSource = Packaging;
             cBoxPackaging.DisplayMember = "Nama_Barang";
         }
-        private void btnAddNewCustomer_Click(object sender, EventArgs e)
+        private void btnAddNewCustomer_Click_1(object sender, EventArgs e)
         {
             Regex numberRegex = new Regex(@"^\d+$");
             if (string.IsNullOrWhiteSpace(tBoxNamaCust.Text) || string.IsNullOrWhiteSpace(tBoxPerusahaan.Text) || string.IsNullOrWhiteSpace(tBoxContact.Text) || string.IsNullOrWhiteSpace(tBoxAlamat.Text))
@@ -218,14 +210,14 @@ namespace Waterpediaa
 
             return (provinsiID, kabupatenKotaID);
         }
-        private void btnAddProduk_Click(object sender, EventArgs e)
+        private void btnAddProduk_Click_1(object sender, EventArgs e)
         {
             if (int.TryParse(tBoxHargaBeli.Text, out _) == false || string.IsNullOrWhiteSpace(tBoxHargaBeli.Text))
             {
                 MessageBox.Show("Harga Jual must not be empty and must contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            sqlQuery = "INSERT INTO TempQuotation (Nama_Barang, Packaging, Quantity, Harga_Beli) VALUES ('" + cBoxNamaProduk.Text + "', '" + cBoxPackaging.Text + "', '" + numericUpDownQTY.Text + "', '" + tBoxHargaBeli.Text + "')";
+            sqlQuery = "INSERT INTO TempQuotation (Nama_Barang, Packaging, Quantity, Harga_Jual) VALUES ('" + cBoxNamaProduk.Text + "', '" + cBoxPackaging.Text + "', '" + numericUpDownQTY.Text + "', '" + tBoxHargaBeli.Text + "')";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlCommand.ExecuteNonQuery();
             LoadData();
@@ -251,7 +243,7 @@ namespace Waterpediaa
         {
             LoadcBoxKabupatenKota();
         }
-        private void btnCreatePDF_Click(object sender, EventArgs e)
+        private void btnCreatePDF_Click_1(object sender, EventArgs e)
         {
             try
             {
@@ -346,8 +338,8 @@ namespace Waterpediaa
                     int? stockPackagingID = GetStockPackagingID(row["Packaging"].ToString());
 
                     sqlQuery = @"
-                    INSERT INTO Quotation (ParentQuoID, Stock_BakteriID ,Paket_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Masuk, Harga_Beli, PPN, Terms_Condition)
-                    VALUES (@ParentQuoID, @Stock_BakteriID, @PaketBakteriID, @Stock_FilterID, @Stock_PackagingID, @PembeliID, @Service_Order, @Due_Date, @Jumlah_Masuk, @Harga_Beli, @PPN, @Terms_Condition)";
+                    INSERT INTO Quotation (ParentQuoID, Stock_BakteriID ,Paket_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Masuk, Harga_Jual, PPN, Terms_Condition)
+                    VALUES (@ParentQuoID, @Stock_BakteriID, @PaketBakteriID, @Stock_FilterID, @Stock_PackagingID, @PembeliID, @Service_Order, @Due_Date, @Jumlah_Masuk, @Harga_Jual, @PPN, @Terms_Condition)";
                     sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
                     sqlCommand.Parameters.AddWithValue("@ParentQuoID", parentQuoteID);
                     sqlCommand.Parameters.AddWithValue("@Stock_BakteriID", stockBakteriID.HasValue ? (object)stockBakteriID.Value : DBNull.Value);
@@ -358,7 +350,7 @@ namespace Waterpediaa
                     sqlCommand.Parameters.AddWithValue("@Service_Order", dtpServiceOrder.Value.ToString("yyyy-MM-dd"));
                     sqlCommand.Parameters.AddWithValue("@Due_Date", dtpDueDate.Value.ToString("yyyy-MM-dd"));
                     sqlCommand.Parameters.AddWithValue("@Jumlah_Masuk", row["Quantity"]);
-                    sqlCommand.Parameters.AddWithValue("@Harga_Beli", row["Harga_Beli"]);
+                    sqlCommand.Parameters.AddWithValue("@Harga_Jual", row["Harga_Jual"]);
                     sqlCommand.Parameters.AddWithValue("@PPN", Convert.ToInt32(PPN));
                     sqlCommand.Parameters.AddWithValue("@Terms_Condition", TermsAndConds ?? (object)DBNull.Value);
 
