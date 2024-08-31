@@ -535,7 +535,7 @@
             btnBack.Name = "btnBack";
             btnBack.Size = new Size(97, 27);
             btnBack.TabIndex = 33;
-            btnBack.Text = "Calcel";
+            btnBack.Text = "Cancel";
             btnBack.UseVisualStyleBackColor = false;
             btnBack.Click += btnBack_Click;
             // 

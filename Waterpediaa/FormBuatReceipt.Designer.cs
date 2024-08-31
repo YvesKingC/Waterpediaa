@@ -29,16 +29,15 @@
         private void InitializeComponent()
         {
             panel4 = new Panel();
-            cBoxInvoiceID = new ComboBox();
+            btnUpdate = new Button();
+            cBoxParentInvID = new ComboBox();
             label1 = new Label();
-            dtpReceiptDate = new DateTimePicker();
-            label17 = new Label();
             panel5 = new Panel();
             label18 = new Label();
+            dtpReceiptDate = new DateTimePicker();
+            label17 = new Label();
             dataGridViewReceipt = new DataGridView();
             panel8 = new Panel();
-            label24 = new Label();
-            numericUpDownPPN = new NumericUpDown();
             lblTotal = new Label();
             lblSubTotal = new Label();
             lblPPN = new Label();
@@ -67,6 +66,7 @@
             panel2 = new Panel();
             label19 = new Label();
             panel1 = new Panel();
+            tBoxTTD = new TextBox();
             label6 = new Label();
             cBoxCustomer = new ComboBox();
             label5 = new Label();
@@ -74,12 +74,10 @@
             label7 = new Label();
             btnCreatePDF = new Button();
             btnBack = new Button();
-            tBoxTTD = new TextBox();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt).BeginInit();
             panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPPN).BeginInit();
             panel9.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
@@ -92,24 +90,35 @@
             // panel4
             // 
             panel4.BorderStyle = BorderStyle.FixedSingle;
-            panel4.Controls.Add(cBoxInvoiceID);
+            panel4.Controls.Add(btnUpdate);
+            panel4.Controls.Add(cBoxParentInvID);
             panel4.Controls.Add(label1);
-            panel4.Controls.Add(dtpReceiptDate);
-            panel4.Controls.Add(label17);
             panel4.Controls.Add(panel5);
             panel4.Location = new Point(12, 12);
             panel4.Name = "panel4";
-            panel4.Size = new Size(317, 125);
+            panel4.Size = new Size(317, 101);
             panel4.TabIndex = 33;
             // 
-            // cBoxInvoiceID
+            // btnUpdate
             // 
-            cBoxInvoiceID.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            cBoxInvoiceID.FormattingEnabled = true;
-            cBoxInvoiceID.Location = new Point(132, 37);
-            cBoxInvoiceID.Name = "cBoxInvoiceID";
-            cBoxInvoiceID.Size = new Size(179, 25);
-            cBoxInvoiceID.TabIndex = 47;
+            btnUpdate.BackColor = Color.FromArgb(192, 255, 192);
+            btnUpdate.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdate.Location = new Point(214, 68);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(97, 27);
+            btnUpdate.TabIndex = 31;
+            btnUpdate.Text = "Update";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // cBoxParentInvID
+            // 
+            cBoxParentInvID.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            cBoxParentInvID.FormattingEnabled = true;
+            cBoxParentInvID.Location = new Point(132, 37);
+            cBoxParentInvID.Name = "cBoxParentInvID";
+            cBoxParentInvID.Size = new Size(179, 25);
+            cBoxParentInvID.TabIndex = 47;
             // 
             // label1
             // 
@@ -120,24 +129,6 @@
             label1.Size = new Size(59, 19);
             label1.TabIndex = 46;
             label1.Text = "Invoice :";
-            // 
-            // dtpReceiptDate
-            // 
-            dtpReceiptDate.CalendarFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            dtpReceiptDate.Location = new Point(132, 68);
-            dtpReceiptDate.Name = "dtpReceiptDate";
-            dtpReceiptDate.Size = new Size(179, 23);
-            dtpReceiptDate.TabIndex = 27;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label17.Location = new Point(81, 68);
-            label17.Name = "label17";
-            label17.Size = new Size(45, 19);
-            label17.TabIndex = 15;
-            label17.Text = "Date :";
             // 
             // panel5
             // 
@@ -155,9 +146,27 @@
             label18.ForeColor = Color.FromArgb(224, 224, 224);
             label18.Location = new Point(11, 4);
             label18.Name = "label18";
-            label18.Size = new Size(142, 19);
+            label18.Size = new Size(118, 19);
             label18.TabIndex = 13;
-            label18.Text = "Receipt Information";
+            label18.Text = "Selected Invoice";
+            // 
+            // dtpReceiptDate
+            // 
+            dtpReceiptDate.CalendarFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            dtpReceiptDate.Location = new Point(132, 97);
+            dtpReceiptDate.Name = "dtpReceiptDate";
+            dtpReceiptDate.Size = new Size(179, 23);
+            dtpReceiptDate.TabIndex = 27;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label17.Location = new Point(81, 97);
+            label17.Name = "label17";
+            label17.Size = new Size(45, 19);
+            label17.TabIndex = 15;
+            label17.Text = "Date :";
             // 
             // dataGridViewReceipt
             // 
@@ -171,8 +180,6 @@
             // panel8
             // 
             panel8.BorderStyle = BorderStyle.FixedSingle;
-            panel8.Controls.Add(label24);
-            panel8.Controls.Add(numericUpDownPPN);
             panel8.Controls.Add(lblTotal);
             panel8.Controls.Add(lblSubTotal);
             panel8.Controls.Add(lblPPN);
@@ -181,25 +188,6 @@
             panel8.Name = "panel8";
             panel8.Size = new Size(316, 179);
             panel8.TabIndex = 44;
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label24.Location = new Point(17, 74);
-            label24.Name = "label24";
-            label24.Size = new Size(35, 19);
-            label24.TabIndex = 40;
-            label24.Text = "PPN";
-            // 
-            // numericUpDownPPN
-            // 
-            numericUpDownPPN.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            numericUpDownPPN.Location = new Point(53, 72);
-            numericUpDownPPN.Maximum = new decimal(new int[] { 1000000, 0, 0, 0 });
-            numericUpDownPPN.Name = "numericUpDownPPN";
-            numericUpDownPPN.Size = new Size(38, 25);
-            numericUpDownPPN.TabIndex = 39;
             // 
             // lblTotal
             // 
@@ -225,11 +213,11 @@
             // 
             lblPPN.AutoSize = true;
             lblPPN.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPPN.Location = new Point(93, 74);
+            lblPPN.Location = new Point(63, 75);
             lblPPN.Name = "lblPPN";
-            lblPPN.Size = new Size(12, 19);
+            lblPPN.Size = new Size(42, 19);
             lblPPN.TabIndex = 15;
-            lblPPN.Text = ":";
+            lblPPN.Text = "PPN :";
             // 
             // panel9
             // 
@@ -256,19 +244,19 @@
             panel6.BorderStyle = BorderStyle.FixedSingle;
             panel6.Controls.Add(tBoxOtherComments);
             panel6.Controls.Add(panel7);
-            panel6.Location = new Point(12, 537);
+            panel6.Location = new Point(12, 542);
             panel6.Name = "panel6";
-            panel6.Size = new Size(316, 179);
+            panel6.Size = new Size(316, 174);
             panel6.TabIndex = 45;
             // 
             // tBoxOtherComments
             // 
             tBoxOtherComments.BorderStyle = BorderStyle.FixedSingle;
             tBoxOtherComments.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxOtherComments.Location = new Point(3, 35);
+            tBoxOtherComments.Location = new Point(3, 44);
             tBoxOtherComments.Multiline = true;
             tBoxOtherComments.Name = "tBoxOtherComments";
-            tBoxOtherComments.Size = new Size(308, 139);
+            tBoxOtherComments.Size = new Size(308, 130);
             tBoxOtherComments.TabIndex = 15;
             // 
             // panel7
@@ -310,7 +298,7 @@
             panelProduk.Controls.Add(label4);
             panelProduk.Controls.Add(label12);
             panelProduk.Controls.Add(panel2);
-            panelProduk.Location = new Point(12, 143);
+            panelProduk.Location = new Point(12, 119);
             panelProduk.Name = "panelProduk";
             panelProduk.Size = new Size(316, 285);
             panelProduk.TabIndex = 46;
@@ -325,6 +313,7 @@
             btnAddNewCustomer.TabIndex = 30;
             btnAddNewCustomer.Text = "Add";
             btnAddNewCustomer.UseVisualStyleBackColor = false;
+            btnAddNewCustomer.Click += btnAddNewCustomer_Click_1;
             // 
             // label16
             // 
@@ -485,12 +474,23 @@
             panel1.Controls.Add(tBoxTTD);
             panel1.Controls.Add(label6);
             panel1.Controls.Add(cBoxCustomer);
+            panel1.Controls.Add(dtpReceiptDate);
+            panel1.Controls.Add(label17);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(panel3);
-            panel1.Location = new Point(12, 434);
+            panel1.Location = new Point(12, 410);
             panel1.Name = "panel1";
-            panel1.Size = new Size(316, 97);
+            panel1.Size = new Size(316, 127);
             panel1.TabIndex = 48;
+            // 
+            // tBoxTTD
+            // 
+            tBoxTTD.BorderStyle = BorderStyle.FixedSingle;
+            tBoxTTD.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxTTD.Location = new Point(132, 66);
+            tBoxTTD.Name = "tBoxTTD";
+            tBoxTTD.Size = new Size(179, 25);
+            tBoxTTD.TabIndex = 31;
             // 
             // label6
             // 
@@ -551,6 +551,7 @@
             btnCreatePDF.TabIndex = 49;
             btnCreatePDF.Text = "Create \r\nReceipt";
             btnCreatePDF.UseVisualStyleBackColor = false;
+            btnCreatePDF.Click += btnCreatePDF_Click_1;
             // 
             // btnBack
             // 
@@ -562,15 +563,6 @@
             btnBack.TabIndex = 50;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
-            // 
-            // tBoxTTD
-            // 
-            tBoxTTD.BorderStyle = BorderStyle.FixedSingle;
-            tBoxTTD.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxTTD.Location = new Point(132, 66);
-            tBoxTTD.Name = "tBoxTTD";
-            tBoxTTD.Size = new Size(179, 25);
-            tBoxTTD.TabIndex = 31;
             // 
             // FormBuatReceipt
             // 
@@ -595,7 +587,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt).EndInit();
             panel8.ResumeLayout(false);
             panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownPPN).EndInit();
             panel9.ResumeLayout(false);
             panel9.PerformLayout();
             panel6.ResumeLayout(false);
@@ -620,12 +611,10 @@
         private Label label17;
         private Panel panel5;
         private Label label18;
-        private ComboBox cBoxInvoiceID;
+        private ComboBox cBoxParentInvID;
         private Label label1;
         private DataGridView dataGridViewReceipt;
         private Panel panel8;
-        private Label label24;
-        private NumericUpDown numericUpDownPPN;
         private Label lblTotal;
         private Label lblSubTotal;
         private Label lblPPN;
@@ -662,5 +651,6 @@
         private Button btnBack;
         private Label label6;
         private TextBox tBoxTTD;
+        private Button btnUpdate;
     }
 }

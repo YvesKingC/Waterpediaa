@@ -181,6 +181,9 @@ namespace Waterpediaa
             sqlQuery = "INSERT INTO Customer (Nama, Perusahaan, Contact, Alamat, ProvinsiID, Kabupaten_KotaID, Zipcode) VALUES ('" + tBoxNamaCust.Text + "', '" + tBoxPerusahaan.Text + "', '" + tBoxContact.Text + "', '" + tBoxAlamat.Text + "', '" + ids.ProvinsiID + "', '" + ids.KabupatenKotaID + "', '" + tBoxZipCode.Text + "')";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlCommand.ExecuteNonQuery();
+
+            MessageBox.Show("Customer added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             LoadcBoxCustomer();
         }
         private (int ProvinsiID, int KabupatenKotaID) GetIDs(string namaProvinsi, string namaKabupatenKota)
@@ -321,8 +324,6 @@ namespace Waterpediaa
         {
             try
             {
-                sqlConnect.Open();
-
                 // Generate ParentQuoID
                 string todayDate = DateTime.Now.ToString("yyMMdd");
                 parentQuoteID = GetNextParentQuoID(todayDate);
@@ -338,8 +339,8 @@ namespace Waterpediaa
                     int? stockPackagingID = GetStockPackagingID(row["Packaging"].ToString());
 
                     sqlQuery = @"
-                    INSERT INTO Quotation (ParentQuoID, Stock_BakteriID ,Paket_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Masuk, Harga_Jual, PPN, Terms_Condition)
-                    VALUES (@ParentQuoID, @Stock_BakteriID, @PaketBakteriID, @Stock_FilterID, @Stock_PackagingID, @PembeliID, @Service_Order, @Due_Date, @Jumlah_Masuk, @Harga_Jual, @PPN, @Terms_Condition)";
+                    INSERT INTO Quotation (ParentQuoID, Stock_BakteriID ,Paket_BakteriID, Stock_FilterID, Stock_PackagingID, PembeliID, Service_Order, Due_Date, Jumlah_Masuk, Harga_Jual, PPN, Terms_Conditions)
+                    VALUES (@ParentQuoID, @Stock_BakteriID, @PaketBakteriID, @Stock_FilterID, @Stock_PackagingID, @PembeliID, @Service_Order, @Due_Date, @Jumlah_Masuk, @Harga_Jual, @PPN, @Terms_Conditions)";
                     sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
                     sqlCommand.Parameters.AddWithValue("@ParentQuoID", parentQuoteID);
                     sqlCommand.Parameters.AddWithValue("@Stock_BakteriID", stockBakteriID.HasValue ? (object)stockBakteriID.Value : DBNull.Value);
@@ -352,7 +353,7 @@ namespace Waterpediaa
                     sqlCommand.Parameters.AddWithValue("@Jumlah_Masuk", row["Quantity"]);
                     sqlCommand.Parameters.AddWithValue("@Harga_Jual", row["Harga_Jual"]);
                     sqlCommand.Parameters.AddWithValue("@PPN", Convert.ToInt32(PPN));
-                    sqlCommand.Parameters.AddWithValue("@Terms_Condition", TermsAndConds ?? (object)DBNull.Value);
+                    sqlCommand.Parameters.AddWithValue("@Terms_Conditions", TermsAndConds ?? (object)DBNull.Value);
 
                     sqlCommand.ExecuteNonQuery();
                 }
@@ -427,6 +428,11 @@ namespace Waterpediaa
             sqlCommand.Parameters.AddWithValue("@NamaBarang", namaBarang);
             var result = sqlCommand.ExecuteScalar();
             return result != null ? Convert.ToInt32(result) : (int?)null;
+        }
+
+        private void btnUpdateJenis_Click(object sender, EventArgs e)
+        {
+            LoadcBoxNamaBarang();
         }
     }
 }

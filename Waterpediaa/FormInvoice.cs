@@ -62,7 +62,7 @@ namespace Waterpediaa
         {
             try
             {
-                sqlQuery = "SELECT NoRekening FROM Metode_Pembayaran WHERE Metode = @MetodePembayaran";
+                sqlQuery = "SELECT NoRek FROM Metode_Pembayaran WHERE Metode = @MetodePembayaran";
                 sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
                 sqlCommand.Parameters.AddWithValue("@MetodePembayaran", MetodePembayaran);
 
@@ -70,7 +70,7 @@ namespace Waterpediaa
                 {
                     if (reader.Read())
                     {
-                        string noRekening = reader["NoRekening"].ToString();
+                        string noRekening = reader["NoRek"].ToString();
                         tBoxMetodePembayaran.Text = $"Metode Pembayaran: {MetodePembayaran}\r\nNo Rekening: {noRekening}";
                     }
                 }

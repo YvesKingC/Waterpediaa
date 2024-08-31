@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormBuatInvoicePenjualan));
             panel4 = new Panel();
+            tBoxConfirmPayment = new TextBox();
+            label11 = new Label();
             cBoxCustomer = new ComboBox();
             label23 = new Label();
             dtpDueDate = new DateTimePicker();
@@ -89,8 +91,7 @@
             btnBack = new Button();
             label14 = new Label();
             btnRemove = new Button();
-            label11 = new Label();
-            tBoxConfirmPayment = new TextBox();
+            btnUpdateJenis = new Button();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
@@ -124,6 +125,25 @@
             panel4.Name = "panel4";
             panel4.Size = new Size(1019, 95);
             panel4.TabIndex = 23;
+            // 
+            // tBoxConfirmPayment
+            // 
+            tBoxConfirmPayment.BorderStyle = BorderStyle.FixedSingle;
+            tBoxConfirmPayment.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxConfirmPayment.Location = new Point(497, 63);
+            tBoxConfirmPayment.Name = "tBoxConfirmPayment";
+            tBoxConfirmPayment.Size = new Size(209, 25);
+            tBoxConfirmPayment.TabIndex = 31;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(347, 65);
+            label11.Name = "label11";
+            label11.Size = new Size(144, 19);
+            label11.TabIndex = 41;
+            label11.Text = "Confirm for Payment :";
             // 
             // cBoxCustomer
             // 
@@ -222,6 +242,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(btnUpdateJenis);
             panel1.Controls.Add(btnAddProduk);
             panel1.Controls.Add(numericUpDownQTY);
             panel1.Controls.Add(tBoxHargaJual);
@@ -293,7 +314,7 @@
             cBoxJenisProduk.FormattingEnabled = true;
             cBoxJenisProduk.Location = new Point(132, 39);
             cBoxJenisProduk.Name = "cBoxJenisProduk";
-            cBoxJenisProduk.Size = new Size(179, 25);
+            cBoxJenisProduk.Size = new Size(105, 25);
             cBoxJenisProduk.TabIndex = 20;
             // 
             // label10
@@ -734,24 +755,17 @@
             btnRemove.UseVisualStyleBackColor = false;
             btnRemove.Click += btnRemove_Click;
             // 
-            // label11
+            // btnUpdateJenis
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(347, 65);
-            label11.Name = "label11";
-            label11.Size = new Size(144, 19);
-            label11.TabIndex = 41;
-            label11.Text = "Confirm for Payment :";
-            // 
-            // tBoxConfirmPayment
-            // 
-            tBoxConfirmPayment.BorderStyle = BorderStyle.FixedSingle;
-            tBoxConfirmPayment.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxConfirmPayment.Location = new Point(497, 63);
-            tBoxConfirmPayment.Name = "tBoxConfirmPayment";
-            tBoxConfirmPayment.Size = new Size(209, 25);
-            tBoxConfirmPayment.TabIndex = 31;
+            btnUpdateJenis.BackColor = Color.FromArgb(192, 255, 192);
+            btnUpdateJenis.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdateJenis.Location = new Point(243, 39);
+            btnUpdateJenis.Name = "btnUpdateJenis";
+            btnUpdateJenis.Size = new Size(68, 27);
+            btnUpdateJenis.TabIndex = 31;
+            btnUpdateJenis.Text = "Confirm";
+            btnUpdateJenis.UseVisualStyleBackColor = false;
+            btnUpdateJenis.Click += btnUpdateJenis_Click;
             // 
             // FormBuatInvoicePenjualan
             // 
@@ -862,5 +876,6 @@
         private Button btnRemove;
         private TextBox tBoxConfirmPayment;
         private Label label11;
+        private Button btnUpdateJenis;
     }
 }

@@ -24,7 +24,7 @@ namespace Waterpediaa
         public long PPN { get; set; }
         public long Total { get; set; }
         public DataTable DataTable { get; set; }
-        public string parentInvID { get; set; }
+        public int parentInvID { get; set; }
         public DateTime receiptDate { get; set; }
         public string OtherComment { get; set; }
         public string NamaTTd { get; set; }
@@ -42,7 +42,7 @@ namespace Waterpediaa
             sqlConnect.Open();
             dataGridViewReceipt.DataSource = DataTable;
             tBoxDetailCustomer.Text = $"Nama Customer: {NamaCustomer}\r\n\r\nPerusahaan: {Perusahaan}\r\n\r\nAlamat: {Alamat}";
-            tBoxInvoiceID.Text = parentInvID;
+            tBoxInvoiceID.Text = parentInvID.ToString();
             tBoxDate.Text = receiptDate.ToString("dd/MM/yyyy");
             tBoxOtherComments.Text = OtherComment;
 
@@ -80,12 +80,6 @@ namespace Waterpediaa
         }
         private void ReduceStock()
         {
-            if (string.IsNullOrEmpty(parentInvID))
-            {
-                MessageBox.Show("Invalid Invoice ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
             try
             {
                 // Start transaction
@@ -169,7 +163,8 @@ namespace Waterpediaa
                 // Start transaction
                 using (var transaction = sqlConnect.BeginTransaction())
                 {
-                    if (!string.IsNullOrEmpty(parentInvID))
+                    string invID = parentInvID.ToString();
+                    if (!string.IsNullOrEmpty(invID))
                     {
                         // Insert record for each item in Stock_Bakteri
                         InsertMutasiForEachItem("SELECT Stock_BakteriID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_BakteriID IS NOT NULL", "Stock_BakteriID", transaction);

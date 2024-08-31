@@ -37,7 +37,6 @@ namespace Waterpediaa
         DataTable Provinsi = new DataTable();
         DataTable KabupatenKota = new DataTable();
 
-
         public int provinsiID = 0;
         public int kabupatenKotaID = 0;
         public long Subtotal = 0;
@@ -203,6 +202,9 @@ namespace Waterpediaa
             sqlQuery = "INSERT INTO Customer (Nama, Perusahaan, Contact, Alamat, ProvinsiID, Kabupaten_KotaID, Zipcode) VALUES ('" + tBoxNamaCust.Text + "', '" + tBoxPerusahaan.Text + "', '" + tBoxContact.Text + "', '" + tBoxAlamat.Text + "', '" + ids.ProvinsiID + "', '" + ids.KabupatenKotaID + "', '" + tBoxZipCode.Text + "')";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlCommand.ExecuteNonQuery();
+
+            MessageBox.Show("Customer added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             LoadcBoxCustomer();
         }
         private (int ProvinsiID, int KabupatenKotaID) GetIDs(string namaProvinsi, string namaKabupatenKota)
@@ -470,6 +472,11 @@ namespace Waterpediaa
             sqlCommand.Parameters.AddWithValue("@NamaBarang", namaBarang);
             var result = sqlCommand.ExecuteScalar();
             return result != null ? Convert.ToInt32(result) : (int?)null;
+        }
+
+        private void btnUpdateJenis_Click(object sender, EventArgs e)
+        {
+            LoadcBoxNamaBarang();
         }
     }
 }

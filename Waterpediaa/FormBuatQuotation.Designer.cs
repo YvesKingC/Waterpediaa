@@ -63,6 +63,7 @@
             panel2 = new Panel();
             label19 = new Label();
             panel1 = new Panel();
+            btnUpdateJenis = new Button();
             btnAddProduk = new Button();
             numericUpDownQTY = new NumericUpDown();
             tBoxHargaBeli = new TextBox();
@@ -453,6 +454,7 @@
             // panel1
             // 
             panel1.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(btnUpdateJenis);
             panel1.Controls.Add(btnAddProduk);
             panel1.Controls.Add(numericUpDownQTY);
             panel1.Controls.Add(tBoxHargaBeli);
@@ -469,6 +471,18 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(316, 227);
             panel1.TabIndex = 42;
+            // 
+            // btnUpdateJenis
+            // 
+            btnUpdateJenis.BackColor = Color.FromArgb(192, 255, 192);
+            btnUpdateJenis.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdateJenis.Location = new Point(243, 39);
+            btnUpdateJenis.Name = "btnUpdateJenis";
+            btnUpdateJenis.Size = new Size(68, 27);
+            btnUpdateJenis.TabIndex = 39;
+            btnUpdateJenis.Text = "Confirm";
+            btnUpdateJenis.UseVisualStyleBackColor = false;
+            btnUpdateJenis.Click += btnUpdateJenis_Click;
             // 
             // btnAddProduk
             // 
@@ -524,7 +538,7 @@
             cBoxJenisProduk.FormattingEnabled = true;
             cBoxJenisProduk.Location = new Point(132, 39);
             cBoxJenisProduk.Name = "cBoxJenisProduk";
-            cBoxJenisProduk.Size = new Size(179, 25);
+            cBoxJenisProduk.Size = new Size(105, 25);
             cBoxJenisProduk.TabIndex = 20;
             // 
             // label10
@@ -779,5 +793,6 @@
         private Label label22;
         private ComboBox cBoxCustomer;
         private Label label23;
+        private Button btnUpdateJenis;
     }
 }
