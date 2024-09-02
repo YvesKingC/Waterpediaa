@@ -512,6 +512,7 @@
             btnCreatePDF.TabIndex = 32;
             btnCreatePDF.Text = "Create PDF";
             btnCreatePDF.UseVisualStyleBackColor = false;
+            btnCreatePDF.Click += btnCreatePDF_Click;
             // 
             // printDialog1
             // 

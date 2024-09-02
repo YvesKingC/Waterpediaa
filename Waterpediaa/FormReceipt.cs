@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -39,7 +40,6 @@ namespace Waterpediaa
         public string sqlQuery;
         private void FormReceipt_Load(object sender, EventArgs e)
         {
-            sqlConnect.Open();
             dataGridViewReceipt.DataSource = DataTable;
             tBoxDetailCustomer.Text = $"Nama Customer: {NamaCustomer}\r\n\r\nPerusahaan: {Perusahaan}\r\n\r\nAlamat: {Alamat}";
             tBoxInvoiceID.Text = parentInvID.ToString();
@@ -52,8 +52,10 @@ namespace Waterpediaa
 
             tBoxNamaTTD.Text = NamaTTd;
         }
+
         private void btnCreatePDF_Click(object sender, EventArgs e)
         {
+            sqlConnect.Open();
             CapturePanel(panelReceipt);
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -61,14 +63,13 @@ namespace Waterpediaa
                 panelReceipt.DrawToBitmap(panelReceiptBitmap, new Rectangle(0, 0, panelReceipt.Width, panelReceipt.Height));
                 panelReceiptBitmap.Save("Receipt.png", System.Drawing.Imaging.ImageFormat.Png);
             }
-            ReduceStock();
+            ProcessTransaction();
 
             Form FormPilihDivisi = new FormPilihDivisi();
             FormPilihDivisi.Show();
             this.Hide();
-
-            sqlConnect.Close();
         }
+
         private void CapturePanel(Panel panel)
         {
             panelReceiptBitmap = new Bitmap(panel.Width, panel.Height);
@@ -78,152 +79,115 @@ namespace Waterpediaa
         {
             e.Graphics.DrawImage(panelReceiptBitmap, 0, 0);
         }
-        private void ReduceStock()
+        private void ProcessTransaction()
         {
-            try
+            using (MySqlConnection localConnection = new MySqlConnection(connectionString))
             {
-                // Start transaction
-                using (var transaction = sqlConnect.BeginTransaction())
+                try
                 {
-                    // Reduce Stock_Bakteri
-                    ReduceStockForEachItem("SELECT Stock_BakteriID, Jumlah_Keluar FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_BakteriID IS NOT NULL", "Stock_BakteriID", "Stock_Bakteri", "Volume", transaction);
+                    localConnection.Open();
+                    using (var transaction = localConnection.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Ensure the connection is associated with the transaction
+                            ReduceStock(transaction, localConnection);
+                            UpdateMutasi(transaction, localConnection);
 
-                    // Reduce Stock_Filter
-                    ReduceStockForEachItem("SELECT Stock_FilterID, Jumlah_Keluar FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_FilterID IS NOT NULL", "Stock_FilterID", "Stock_Filter", "Jumlah", transaction);
-
-                    // Reduce Stock_Packaging
-                    ReduceStockForEachItem("SELECT Stock_PackagingID, Jumlah_Keluar FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_PackagingID IS NOT NULL", "Stock_PackagingID", "Stock_Packaging", "Jumlah", transaction);
-
-                    // Reduce Paket_Bakteri (for both Stock_Bakteri and Stock_Packaging within the package)
-                    ReduceStockForPaketBakteri(transaction);
-
-                    // Commit transaction
-                    transaction.Commit();
-                    MessageBox.Show("Stock has been successfully reduced!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    UpdateMutasi();
+                            // Commit the transaction if everything is successful
+                            transaction.Commit();
+                            MessageBox.Show("Stock and Mutasi Produk have been successfully processed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch
+                        {
+                            // Rollback the transaction in case of an error
+                            transaction.Rollback();
+                            throw; // Re-throw the exception to be caught by the outer catch block
+                        }
+                    }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while reducing the stock: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An error occurred while processing the transaction: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
-        private void ReduceStockForEachItem(string query, string stockColumn, string tableName, string quantityColumn, MySqlTransaction transaction)
+
+        private void ReduceStock(MySqlTransaction transaction, MySqlConnection localConnection)
         {
-            using (var cmd = new MySqlCommand(query, sqlConnect, transaction))
+            ExecuteStockOperation("SELECT Stock_BakteriID, Jumlah_Keluar FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_BakteriID IS NOT NULL",
+                                  "Stock_BakteriID", "Stock_Bakteri", "Volume", transaction, localConnection, true);
+
+            ExecuteStockOperation("SELECT Stock_FilterID, Jumlah_Keluar FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_FilterID IS NOT NULL",
+                                  "Stock_FilterID", "Stock_Filter", "Jumlah", transaction, localConnection, true);
+
+            ExecuteStockOperation("SELECT Stock_PackagingID, Jumlah_Keluar FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_PackagingID IS NOT NULL",
+                                  "Stock_PackagingID", "Stock_Packaging", "Jumlah", transaction, localConnection, true);
+
+            ExecuteStockOperation("SELECT PB.Stock_BakteriID, I.Jumlah_Keluar FROM Invoice I JOIN Paket_Bakteri PB ON I.Paket_BakteriID = PB.ID WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL",
+                                  "Stock_BakteriID", "Stock_Bakteri", "Volume", transaction, localConnection, true);
+
+            ExecuteStockOperation("SELECT PB.Stock_PackagingID, I.Jumlah_Keluar FROM Invoice I JOIN Paket_Bakteri PB ON I.Paket_BakteriID = PB.ID WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL",
+                                  "Stock_PackagingID", "Stock_Packaging", "Jumlah", transaction, localConnection, true);
+        }
+
+        private void UpdateMutasi(MySqlTransaction transaction, MySqlConnection localConnection)
+        {
+            ExecuteStockOperation("SELECT Stock_BakteriID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_BakteriID IS NOT NULL",
+                                  "Stock_BakteriID", "Stock_Bakteri", "Volume", transaction, localConnection, false);
+
+            ExecuteStockOperation("SELECT Stock_FilterID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_FilterID IS NOT NULL",
+                                  "Stock_FilterID", "Stock_Filter", "Jumlah", transaction, localConnection, false);
+
+            ExecuteStockOperation("SELECT Stock_PackagingID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_PackagingID IS NOT NULL",
+                                  "Stock_PackagingID", "Stock_Packaging", "Jumlah", transaction, localConnection, false);
+        }
+
+        private void ExecuteStockOperation(string selectQuery, string stockColumn, string tableName, string quantityColumn, MySqlTransaction transaction, MySqlConnection localConnection, bool isReduceStock)
+        {
+            using (var cmd = new MySqlCommand(selectQuery, localConnection, transaction))
             {
                 cmd.Parameters.AddWithValue("@ParentInvID", parentInvID);
+
                 using (var reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         string stockID = reader[stockColumn].ToString();
                         long jumlahKeluar = Convert.ToInt64(reader["Jumlah_Keluar"]);
-
-                        UpdateStock($"UPDATE {tableName} SET {quantityColumn} = {quantityColumn} - @JumlahKeluar WHERE ID = @StockID", stockID, jumlahKeluar, transaction);
+                        if (isReduceStock)
+                        {
+                            // Update Stock
+                            sqlQuery = $"UPDATE {tableName} SET {quantityColumn} = {quantityColumn} - @JumlahKeluar WHERE ID = @StockID";
+                            using (var updateCmd = new MySqlCommand(sqlQuery, localConnection, transaction))
+                            {
+                                updateCmd.Parameters.AddWithValue("@StockID", stockID);
+                                updateCmd.Parameters.AddWithValue("@JumlahKeluar", jumlahKeluar);
+                                updateCmd.ExecuteNonQuery();
+                            }
+                        }
+                        else
+                        {
+                            // Insert Mutasi
+                            sqlQuery = $"INSERT INTO Mutasi_Produk ({stockColumn}, Masuk, Keluar, Keterangan) VALUES (@StockID, 0, @JumlahKeluar, 'Sales')";
+                            using (var insertCmd = new MySqlCommand(sqlQuery, localConnection, transaction))
+                            {
+                                insertCmd.Parameters.AddWithValue("@StockID", stockID);
+                                insertCmd.Parameters.AddWithValue("@JumlahKeluar", jumlahKeluar);
+                                insertCmd.ExecuteNonQuery();
+                            }
+                        }
                     }
                 }
             }
         }
-
-        private void UpdateStock(string query, string stockID, long jumlahKeluar, MySqlTransaction transaction)
-        {
-            using (var cmd = new MySqlCommand(query, sqlConnect, transaction))
-            {
-                cmd.Parameters.AddWithValue("@StockID", stockID);
-                cmd.Parameters.AddWithValue("@JumlahKeluar", jumlahKeluar);
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        private void ReduceStockForPaketBakteri(MySqlTransaction transaction)
-        {
-            // Reduce Stock_Bakteri in Paket_Bakteri
-            ReduceStockForEachItem("SELECT PB.Stock_BakteriID, I.Jumlah_Keluar FROM Invoice I JOIN Paket_Bakteri PB ON I.Paket_BakteriID = PB.ID WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL", "Stock_BakteriID", "Stock_Bakteri", "Volume", transaction);
-
-            // Reduce Stock_Packaging in Paket_Bakteri
-            ReduceStockForEachItem("SELECT PB.Stock_PackagingID, I.Jumlah_Keluar FROM Invoice I JOIN Paket_Bakteri PB ON I.Paket_BakteriID = PB.ID WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL", "Stock_PackagingID", "Stock_Packaging", "Jumlah", transaction);
-        }
-
 
         private void btnBack_Click(object sender, EventArgs e)
         {
             Form FormPilihDivisi = new FormPilihDivisi();
             FormPilihDivisi.Show();
             this.Hide();
-
-            sqlConnect.Close();
-        }
-        private void UpdateMutasi()
-        {
-            try
-            {
-                // Start transaction
-                using (var transaction = sqlConnect.BeginTransaction())
-                {
-                    string invID = parentInvID.ToString();
-                    if (!string.IsNullOrEmpty(invID))
-                    {
-                        // Insert record for each item in Stock_Bakteri
-                        InsertMutasiForEachItem("SELECT Stock_BakteriID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_BakteriID IS NOT NULL", "Stock_BakteriID", transaction);
-
-                        // Insert record for each item in Stock_Filter
-                        InsertMutasiForEachItem("SELECT Stock_FilterID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_FilterID IS NOT NULL", "Stock_FilterID", transaction);
-
-                        // Insert record for each item in Stock_Packaging
-                        InsertMutasiForEachItem("SELECT Stock_PackagingID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_PackagingID IS NOT NULL", "Stock_PackagingID", transaction);
-
-                        // Commit transaction
-                        transaction.Commit();
-                        MessageBox.Show("Mutasi Produk has been updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid Invoice ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    sqlConnect.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred while updating Mutasi Produk: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void InsertMutasiForEachItem(string query, string stockColumn, MySqlTransaction transaction)
-        {
-            using (var cmd = new MySqlCommand(query, sqlConnect, transaction))
-            {
-                cmd.Parameters.AddWithValue("@ParentInvID", parentInvID);
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string stockID = reader[stockColumn].ToString();
-                        long jumlahKeluar = Convert.ToInt64(reader["Jumlah_Keluar"]);
-
-                        InsertMutasi($"INSERT INTO Mutasi_Produk ({stockColumn}, Masuk, Keluar, Keterangan) VALUES (@StockID, 0, @JumlahKeluar, 'Sales')", stockID, jumlahKeluar, transaction);
-                    }
-                }
-            }
-        }
-
-        private void InsertMutasi(string query, string stockID, long jumlahKeluar, MySqlTransaction transaction)
-        {
-            using (var cmd = new MySqlCommand(query, sqlConnect, transaction))
-            {
-                cmd.Parameters.AddWithValue("@StockID", stockID);
-                cmd.Parameters.AddWithValue("@JumlahKeluar", jumlahKeluar);
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        private void btnCreatePDF_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

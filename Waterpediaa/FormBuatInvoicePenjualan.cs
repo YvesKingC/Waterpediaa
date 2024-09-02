@@ -281,13 +281,18 @@ namespace Waterpediaa
 
                 sqlQuery = "SELECT Perusahaan, Alamat FROM Customer WHERE Nama = '" + NamaCustomer + "'";
                 sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                MySqlDataReader reader = sqlCommand.ExecuteReader();
-                while (reader.Read())
+                using (MySqlCommand sqlCommand = new MySqlCommand(sqlQuery, sqlConnect))
                 {
-                    Perusahaan = reader["Perusahaan"].ToString();
-                    Alamat = reader["Alamat"].ToString();
+                    sqlCommand.Parameters.AddWithValue("@NamaCustomer", NamaCustomer);
+                    using (MySqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Perusahaan = reader["Perusahaan"].ToString();
+                            Alamat = reader["Alamat"].ToString();
+                        }
+                    }
                 }
-                reader.Close();
 
                 ServiceOrder = dtpServiceOrder.Value.ToString("yyyy-MM-dd");
                 DueDate = dtpDueDate.Value.ToString("yyyy-MM-dd");
