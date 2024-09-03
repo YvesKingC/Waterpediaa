@@ -91,6 +91,7 @@ namespace Waterpediaa
         {
             FormBuatInvoicePenjualan formInvoice = new FormBuatInvoicePenjualan();
             formInvoice.Show();
+            this.Hide();
         }
     }
 }

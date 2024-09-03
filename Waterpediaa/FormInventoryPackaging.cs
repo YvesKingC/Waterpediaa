@@ -79,7 +79,7 @@ namespace Waterpediaa
                 FormEditPackaging formEditPackaging = new FormEditPackaging(id, namaBarang, jumlah, hargaPerBarang);
 
                 // Show the FormEditPackaging form as a modal dialog
-                formEditPackaging.ShowDialog();
+                formEditPackaging.Show();
 
                 // Reload data in dataGridViewPackaging if needed
                 LoadPackagingData();
@@ -97,7 +97,7 @@ namespace Waterpediaa
             FormTambahPackaging formTambahPackaging = new FormTambahPackaging(this);
 
             // Show the FormTambahPackaging form as a modal dialog
-            formTambahPackaging.ShowDialog();
+            formTambahPackaging.Show();
 
             // Reload data in dataGridViewPackaging if needed
             LoadPackagingData();
@@ -111,8 +111,7 @@ namespace Waterpediaa
         private void button7_Click(object sender, EventArgs e)
         {
             FormPilihDivisi formPilihDivisi = new FormPilihDivisi();
-            formPilihDivisi.ShowDialog();
-            this.Close();
+            formPilihDivisi.Show();
             this.Hide();
         }
     }

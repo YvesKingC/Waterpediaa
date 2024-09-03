@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace Waterpediaa
         public FormReceipt()
         {
             InitializeComponent();
+            printDocument1.PrintPage += new PrintPageEventHandler(printDocument1_PrintPage);
         }
         public long Subtotal { get; set; }
         public long PPNPercentage { get; set; }
@@ -40,6 +42,7 @@ namespace Waterpediaa
         public string sqlQuery;
         private void FormReceipt_Load(object sender, EventArgs e)
         {
+            sqlConnect.Open();
             dataGridViewReceipt.DataSource = DataTable;
             tBoxDetailCustomer.Text = $"Nama Customer: {NamaCustomer}\r\n\r\nPerusahaan: {Perusahaan}\r\n\r\nAlamat: {Alamat}";
             tBoxInvoiceID.Text = parentInvID.ToString();
@@ -55,7 +58,6 @@ namespace Waterpediaa
 
         private void btnCreatePDF_Click(object sender, EventArgs e)
         {
-            sqlConnect.Open();
             CapturePanel(panelReceipt);
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
@@ -79,115 +81,122 @@ namespace Waterpediaa
         {
             e.Graphics.DrawImage(panelReceiptBitmap, 0, 0);
         }
-        private void ProcessTransaction()
-        {
-            using (MySqlConnection localConnection = new MySqlConnection(connectionString))
-            {
-                try
-                {
-                    localConnection.Open();
-                    using (var transaction = localConnection.BeginTransaction())
-                    {
-                        try
-                        {
-                            // Ensure the connection is associated with the transaction
-                            ReduceStock(transaction, localConnection);
-                            UpdateMutasi(transaction, localConnection);
-
-                            // Commit the transaction if everything is successful
-                            transaction.Commit();
-                            MessageBox.Show("Stock and Mutasi Produk have been successfully processed!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-                        catch
-                        {
-                            // Rollback the transaction in case of an error
-                            transaction.Rollback();
-                            throw; // Re-throw the exception to be caught by the outer catch block
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("An error occurred while processing the transaction: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-        }
-
-
-        private void ReduceStock(MySqlTransaction transaction, MySqlConnection localConnection)
-        {
-            ExecuteStockOperation("SELECT Stock_BakteriID, Jumlah_Keluar FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_BakteriID IS NOT NULL",
-                                  "Stock_BakteriID", "Stock_Bakteri", "Volume", transaction, localConnection, true);
-
-            ExecuteStockOperation("SELECT Stock_FilterID, Jumlah_Keluar FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_FilterID IS NOT NULL",
-                                  "Stock_FilterID", "Stock_Filter", "Jumlah", transaction, localConnection, true);
-
-            ExecuteStockOperation("SELECT Stock_PackagingID, Jumlah_Keluar FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_PackagingID IS NOT NULL",
-                                  "Stock_PackagingID", "Stock_Packaging", "Jumlah", transaction, localConnection, true);
-
-            ExecuteStockOperation("SELECT PB.Stock_BakteriID, I.Jumlah_Keluar FROM Invoice I JOIN Paket_Bakteri PB ON I.Paket_BakteriID = PB.ID WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL",
-                                  "Stock_BakteriID", "Stock_Bakteri", "Volume", transaction, localConnection, true);
-
-            ExecuteStockOperation("SELECT PB.Stock_PackagingID, I.Jumlah_Keluar FROM Invoice I JOIN Paket_Bakteri PB ON I.Paket_BakteriID = PB.ID WHERE I.ParentInvID = @ParentInvID AND I.Paket_BakteriID IS NOT NULL",
-                                  "Stock_PackagingID", "Stock_Packaging", "Jumlah", transaction, localConnection, true);
-        }
-
-        private void UpdateMutasi(MySqlTransaction transaction, MySqlConnection localConnection)
-        {
-            ExecuteStockOperation("SELECT Stock_BakteriID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_BakteriID IS NOT NULL",
-                                  "Stock_BakteriID", "Stock_Bakteri", "Volume", transaction, localConnection, false);
-
-            ExecuteStockOperation("SELECT Stock_FilterID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_FilterID IS NOT NULL",
-                                  "Stock_FilterID", "Stock_Filter", "Jumlah", transaction, localConnection, false);
-
-            ExecuteStockOperation("SELECT Stock_PackagingID, 0, Jumlah_Keluar, 'Sales' FROM Invoice WHERE ParentInvID = @ParentInvID AND Stock_PackagingID IS NOT NULL",
-                                  "Stock_PackagingID", "Stock_Packaging", "Jumlah", transaction, localConnection, false);
-        }
-
-        private void ExecuteStockOperation(string selectQuery, string stockColumn, string tableName, string quantityColumn, MySqlTransaction transaction, MySqlConnection localConnection, bool isReduceStock)
-        {
-            using (var cmd = new MySqlCommand(selectQuery, localConnection, transaction))
-            {
-                cmd.Parameters.AddWithValue("@ParentInvID", parentInvID);
-
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        string stockID = reader[stockColumn].ToString();
-                        long jumlahKeluar = Convert.ToInt64(reader["Jumlah_Keluar"]);
-                        if (isReduceStock)
-                        {
-                            // Update Stock
-                            sqlQuery = $"UPDATE {tableName} SET {quantityColumn} = {quantityColumn} - @JumlahKeluar WHERE ID = @StockID";
-                            using (var updateCmd = new MySqlCommand(sqlQuery, localConnection, transaction))
-                            {
-                                updateCmd.Parameters.AddWithValue("@StockID", stockID);
-                                updateCmd.Parameters.AddWithValue("@JumlahKeluar", jumlahKeluar);
-                                updateCmd.ExecuteNonQuery();
-                            }
-                        }
-                        else
-                        {
-                            // Insert Mutasi
-                            sqlQuery = $"INSERT INTO Mutasi_Produk ({stockColumn}, Masuk, Keluar, Keterangan) VALUES (@StockID, 0, @JumlahKeluar, 'Sales')";
-                            using (var insertCmd = new MySqlCommand(sqlQuery, localConnection, transaction))
-                            {
-                                insertCmd.Parameters.AddWithValue("@StockID", stockID);
-                                insertCmd.Parameters.AddWithValue("@JumlahKeluar", jumlahKeluar);
-                                insertCmd.ExecuteNonQuery();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
         private void btnBack_Click(object sender, EventArgs e)
         {
             Form FormPilihDivisi = new FormPilihDivisi();
             FormPilihDivisi.Show();
             this.Hide();
+        }
+        private void ProcessTransaction()
+        {
+            using (var transactionScope = new TransactionScope())
+            {
+                try
+                {
+                    foreach (DataRow row in DataTable.Rows)
+                    {
+                        string productName = row["Product"].ToString();
+                        string packagingName = row["Packaging"].ToString();
+                        int quantity = Convert.ToInt32(row["QTY"]);
+
+                        sqlQuery = @"
+                    SELECT 
+                        sb.ID AS Stock_BakteriID,
+                        sf.ID AS Stock_FilterID,
+                        sp.ID AS Stock_PackagingID
+                    FROM 
+                        Stock_Bakteri sb
+                    LEFT JOIN 
+                        Stock_Filter sf ON sb.Jenis_Bakteri = @productName
+                    LEFT JOIN 
+                        Paket_Bakteri pb ON pb.Nama_Paket = @productName
+                    LEFT JOIN 
+                        Stock_Packaging sp ON sp.Nama_Barang = @packagingName
+                    WHERE 
+                        sb.Jenis_Bakteri = @productName OR 
+                        sf.Jenis_Filter = @productName OR 
+                        pb.Nama_Paket = @productName";
+
+                        sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                        sqlCommand.Parameters.AddWithValue("@productName", productName);
+                        sqlCommand.Parameters.AddWithValue("@packagingName", packagingName);
+
+                        MySqlDataReader reader = sqlCommand.ExecuteReader();
+
+                        int stockBakteriID = 0;
+                        int stockFilterID = 0;
+                        int stockPackagingID = 0;
+
+                        if (reader.Read())
+                        {
+                            stockBakteriID = reader["Stock_BakteriID"] != DBNull.Value ? Convert.ToInt32(reader["Stock_BakteriID"]) : 0;
+                            stockFilterID = reader["Stock_FilterID"] != DBNull.Value ? Convert.ToInt32(reader["Stock_FilterID"]) : 0;
+                            stockPackagingID = reader["Stock_PackagingID"] != DBNull.Value ? Convert.ToInt32(reader["Stock_PackagingID"]) : 0;
+                        }
+                        reader.Close();
+
+                        if (stockBakteriID > 0)
+                        {
+                            sqlQuery = $"UPDATE Stock_Bakteri SET Volume = Volume - {quantity} WHERE ID = {stockBakteriID}";
+                            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                            sqlCommand.ExecuteNonQuery();
+                        }
+
+                        if (stockFilterID > 0)
+                        {
+                            sqlQuery = $"UPDATE Stock_Filter SET Jumlah = Jumlah - {quantity} WHERE ID = {stockFilterID}";
+                            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                            sqlCommand.ExecuteNonQuery();
+                        }
+
+                        if (stockPackagingID > 0)
+                        {
+                            sqlQuery = $"UPDATE Stock_Packaging SET Jumlah = Jumlah - {quantity} WHERE ID = {stockPackagingID}";
+                            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                            sqlCommand.ExecuteNonQuery();
+                        }
+
+                        // Log the stock movement using the new UpdateMutasi function
+                        UpdateMutasi(stockBakteriID, stockFilterID, stockPackagingID, 0, quantity, "Sales");
+                    }
+
+                    transactionScope.Complete();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                finally
+                {
+                    sqlConnect.Close();
+                }
+            }
+        }
+
+        private void UpdateMutasi(int stockBakteriID, int stockFilterID, int stockPackagingID, int masuk, int keluar, string keterangan)
+        {
+            try
+            {
+                sqlQuery = @"INSERT INTO Mutasi_Produk 
+                    (Stock_BakteriID, Stock_FilterID, Stock_PackagingID, Masuk, Keluar, Keterangan) 
+                    VALUES 
+                    (@stockBakteriID, @stockFilterID, @stockPackagingID, @masuk, @keluar, @keterangan)";
+
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                sqlCommand.Parameters.AddWithValue("@stockBakteriID", stockBakteriID > 0 ? (object)stockBakteriID : DBNull.Value);
+                sqlCommand.Parameters.AddWithValue("@stockFilterID", stockFilterID > 0 ? (object)stockFilterID : DBNull.Value);
+                sqlCommand.Parameters.AddWithValue("@stockPackagingID", stockPackagingID > 0 ? (object)stockPackagingID : DBNull.Value);
+                sqlCommand.Parameters.AddWithValue("@masuk", masuk);
+                sqlCommand.Parameters.AddWithValue("@keluar", keluar);
+                sqlCommand.Parameters.AddWithValue("@keterangan", keterangan);
+
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while logging to Mutasi_Produk: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
