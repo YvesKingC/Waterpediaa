@@ -45,7 +45,7 @@ namespace Waterpediaa
         {
             sqlConnect.Open();
             dataGridViewInvoice.DataSource = DataTable;
-            tBoxDetailCustomer.Text = $"Nama Customer: {NamaCustomer}\r\n\r\nPerusahaan: {Perusahaan}\r\n\r\nAlamat: {Alamat}";
+            tBoxDetailCustomer.Text = $"{NamaCustomer}\r\n{Perusahaan}\r\n{Alamat}";
             tBoxServiceOrder.Text = ServiceOrder;
             tBoxDueDate.Text = DueDate;
             tBoxOtherComments.Text = OtherComment;

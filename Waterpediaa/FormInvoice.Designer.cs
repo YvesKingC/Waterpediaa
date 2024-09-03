@@ -276,7 +276,7 @@
             // 
             // tBoxOtherComments
             // 
-            tBoxOtherComments.BorderStyle = BorderStyle.FixedSingle;
+            tBoxOtherComments.BorderStyle = BorderStyle.None;
             tBoxOtherComments.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             tBoxOtherComments.Location = new Point(3, 35);
             tBoxOtherComments.Multiline = true;
@@ -316,6 +316,7 @@
             // 
             // dataGridViewInvoice
             // 
+            dataGridViewInvoice.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewInvoice.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewInvoice.Location = new Point(3, 35);
             dataGridViewInvoice.Name = "dataGridViewInvoice";
@@ -381,8 +382,8 @@
             // 
             // tBoxDetailCustomer
             // 
-            tBoxDetailCustomer.BorderStyle = BorderStyle.FixedSingle;
-            tBoxDetailCustomer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxDetailCustomer.BorderStyle = BorderStyle.None;
+            tBoxDetailCustomer.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             tBoxDetailCustomer.Location = new Point(75, 42);
             tBoxDetailCustomer.Multiline = true;
             tBoxDetailCustomer.Name = "tBoxDetailCustomer";

@@ -44,7 +44,7 @@ namespace Waterpediaa
         {
             sqlConnect.Open();
             dataGridViewReceipt.DataSource = DataTable;
-            tBoxDetailCustomer.Text = $"Nama Customer: {NamaCustomer}\r\n\r\nPerusahaan: {Perusahaan}\r\n\r\nAlamat: {Alamat}";
+            tBoxDetailCustomer.Text = $"{NamaCustomer}\r\n{Perusahaan}\r\n{Alamat}";
             tBoxInvoiceID.Text = parentInvID.ToString();
             tBoxDate.Text = receiptDate.ToString("dd/MM/yyyy");
             tBoxOtherComments.Text = OtherComment;
@@ -58,14 +58,18 @@ namespace Waterpediaa
 
         private void btnCreatePDF_Click(object sender, EventArgs e)
         {
+            ProcessTransaction();
+
             CapturePanel(panelReceipt);
+            // Show the print dialog
+            printDialog1.Document = printDocument1;
             if (printDialog1.ShowDialog() == DialogResult.OK)
             {
-                panelReceiptBitmap = new Bitmap(panelReceipt.Width, panelReceipt.Height);
-                panelReceipt.DrawToBitmap(panelReceiptBitmap, new Rectangle(0, 0, panelReceipt.Width, panelReceipt.Height));
-                panelReceiptBitmap.Save("Receipt.png", System.Drawing.Imaging.ImageFormat.Png);
+                // Show print preview dialog
+                printPreviewDialog1.Document = printDocument1;
+                printPreviewDialog1.WindowState = FormWindowState.Maximized;
+                printPreviewDialog1.ShowDialog();
             }
-            ProcessTransaction();
 
             Form FormPilihDivisi = new FormPilihDivisi();
             FormPilihDivisi.Show();

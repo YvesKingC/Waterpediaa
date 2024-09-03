@@ -42,7 +42,7 @@ namespace Waterpediaa
         {
             sqlConnect.Open();
             dataGridViewQuote.DataSource = DataTable;
-            tBoxDetailCustomer.Text = $"{NamaCustomer}\r\n\r\n{Perusahaan}\r\n\r\n{Alamat}";
+            tBoxDetailCustomer.Text = $"{NamaCustomer}\r\n{Perusahaan}\r\n{Alamat}";
             tBoxServiceOrder.Text = ServiceOrder;
             tBoxDueDate.Text = DueDate;
             tBoxTNC.Text = TermsConds;
