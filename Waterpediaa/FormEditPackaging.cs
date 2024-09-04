@@ -45,7 +45,7 @@ namespace Waterpediaa
 
         private void UpdatePackagingData(int id, string namaBarang, int jumlah, long hargaPerBarang)
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "UPDATE Stock_Packaging SET Nama_Barang = @namaBarang, Jumlah = @jumlah, Harga_Per_Barang = @hargaPerBarang WHERE ID = @id";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))

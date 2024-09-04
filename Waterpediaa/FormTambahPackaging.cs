@@ -37,7 +37,7 @@ namespace Waterpediaa
         private DataTable GetStockPackaging()
         {
             DataTable dataTable = new DataTable();
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "SELECT ID, Nama_Barang, Jumlah, Volume, Harga_Per_Barang FROM Stock_Packaging"; // Include ID
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))

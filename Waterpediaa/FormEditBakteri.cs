@@ -52,7 +52,7 @@ namespace Waterpediaa
         private void UpdateBakteriData()
         {
             // Your database update logic here
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
                 connection.Open();

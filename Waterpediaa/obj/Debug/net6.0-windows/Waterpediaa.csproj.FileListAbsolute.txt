@@ -9,7 +9,6 @@ C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Wate
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormInventoryWTP.resources
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormInvoice.resources
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormLogin.resources
-C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormNewSAles.resources
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormPaketBakteri.resources
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormPilihDivisi.resources
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Debug\net6.0-windows\Waterpediaa.FormSales.resources

@@ -32,7 +32,7 @@ namespace Waterpediaa
 
         private void LoadPaketData()
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = @"SELECT pb.Nama_Paket, sb.Jenis_Bakteri, sp.Nama_Barang AS 'Jenis Packaging'
                              FROM Paket_Bakteri pb
                              JOIN Stock_Bakteri sb ON pb.Stock_BakteriID = sb.ID

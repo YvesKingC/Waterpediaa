@@ -28,7 +28,7 @@ namespace Waterpediaa
 
         public void LoadWTPData()
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             connection = new MySqlConnection(connectionString);
 
             DataTable dataTable = new DataTable();

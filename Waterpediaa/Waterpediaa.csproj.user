@@ -37,9 +37,6 @@
     <Compile Update="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FormNewSAles.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="FormPaketBakteri.cs">
       <SubType>Form</SubType>
     </Compile>

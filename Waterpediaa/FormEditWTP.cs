@@ -26,7 +26,7 @@ namespace Waterpediaa
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "UPDATE Stock_Filter SET Jenis_Filter = @name, Jumlah = @jumlah, Harga_Per_Barang = @harga WHERE ID = @id";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
