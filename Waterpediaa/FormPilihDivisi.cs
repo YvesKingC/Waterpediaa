@@ -103,7 +103,7 @@ namespace Waterpediaa
 
         private void btnSales_Click(object sender, EventArgs e)
         {
-            Form FormSales = new FormSales();
+            Form FormSales = new FormDashboardSales();
             FormSales.Show();
             this.Hide();
         }

@@ -29,7 +29,7 @@ namespace Waterpediaa
 
         private void LoadStockBakteriData()
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             connection = new MySqlConnection(connectionString);
 
             DataTable dataTable = new DataTable();
@@ -74,7 +74,7 @@ namespace Waterpediaa
             FormTambahProcureBakteri formTambahBakteri = new FormTambahProcureBakteri(this);
 
             // Show the FormTambahBakteri form as a modal dialog
-            formTambahBakteri.ShowDialog();
+            formTambahBakteri.Show();
         }
 
         private void buttonEditItem_Click(object sender, EventArgs e)
@@ -91,7 +91,7 @@ namespace Waterpediaa
                 FormEditBakteri formEditBakteri = new FormEditBakteri(id, name, volume, harga);
 
                 // Show the FormEditBakteri form as a modal dialog
-                formEditBakteri.ShowDialog();
+                formEditBakteri.Show();
 
                 // Reload data in dgvInventoryBakteri if needed
                 LoadStockBakteriData();
@@ -107,14 +107,13 @@ namespace Waterpediaa
         private void buttonAddPackaging_Click(object sender, EventArgs e)
         {
             FormPaketBakteri formPaketBakteri = new FormPaketBakteri();
-            formPaketBakteri.ShowDialog();
+            formPaketBakteri.Show();
         }
 
         private void buttonInvoice_Click(object sender, EventArgs e)
         {
             FormBuatInvoicePenjualan formBuatInvoicePenjualan = new FormBuatInvoicePenjualan();
-            formBuatInvoicePenjualan.ShowDialog();
-            this.Close();
+            formBuatInvoicePenjualan.Show();
             this.Hide();
         }
         public void UpdateDataGridView()
@@ -125,16 +124,14 @@ namespace Waterpediaa
         private void btnBack_Click(object sender, EventArgs e)
         {
             FormPilihDivisi formPilihDivisi = new FormPilihDivisi();
-            formPilihDivisi.ShowDialog();
+            formPilihDivisi.Show();
             this.Hide();
-            this.Close();
         }
 
         private void buttonPackaging_Click(object sender, EventArgs e)
         {
             FormInventoryPackaging formInventoryPackaging = new FormInventoryPackaging();
-            formInventoryPackaging.ShowDialog();
-            this.Close();
+            formInventoryPackaging.Show();
             this.Hide();
         }
     }

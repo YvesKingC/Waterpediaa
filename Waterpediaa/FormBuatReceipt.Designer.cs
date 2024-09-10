@@ -74,6 +74,7 @@
             label7 = new Label();
             btnCreatePDF = new Button();
             btnBack = new Button();
+            dataGridViewReceipt2 = new DataGridView();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt).BeginInit();
@@ -85,6 +86,7 @@
             panel2.SuspendLayout();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt2).BeginInit();
             SuspendLayout();
             // 
             // panel4
@@ -171,10 +173,10 @@
             // dataGridViewReceipt
             // 
             dataGridViewReceipt.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewReceipt.Location = new Point(335, 12);
+            dataGridViewReceipt.Location = new Point(335, 344);
             dataGridViewReceipt.Name = "dataGridViewReceipt";
             dataGridViewReceipt.RowTemplate.Height = 25;
-            dataGridViewReceipt.Size = new Size(1021, 520);
+            dataGridViewReceipt.Size = new Size(1021, 188);
             dataGridViewReceipt.TabIndex = 37;
             // 
             // panel8
@@ -564,11 +566,21 @@
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
             // 
+            // dataGridViewReceipt2
+            // 
+            dataGridViewReceipt2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewReceipt2.Location = new Point(335, 13);
+            dataGridViewReceipt2.Name = "dataGridViewReceipt2";
+            dataGridViewReceipt2.RowTemplate.Height = 25;
+            dataGridViewReceipt2.Size = new Size(1021, 325);
+            dataGridViewReceipt2.TabIndex = 51;
+            // 
             // FormBuatReceipt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1368, 728);
+            Controls.Add(dataGridViewReceipt2);
             Controls.Add(btnBack);
             Controls.Add(btnCreatePDF);
             Controls.Add(panel1);
@@ -601,6 +613,7 @@
             panel1.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt2).EndInit();
             ResumeLayout(false);
         }
 
@@ -652,5 +665,6 @@
         private Label label6;
         private TextBox tBoxTTD;
         private Button btnUpdate;
+        private DataGridView dataGridViewReceipt2;
     }
 }

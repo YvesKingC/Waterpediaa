@@ -47,7 +47,7 @@ namespace Waterpediaa
         public DataTable GetStockBakteri()
         {
             DataTable dataTable = new DataTable();
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "SELECT ID, Jenis_Bakteri, Volume, Harga_Per_Liter FROM Stock_Bakteri;"; // Include ID
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))

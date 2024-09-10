@@ -19,13 +19,14 @@ namespace Waterpediaa
         {
             InitializeComponent();
         }
-        static string connectionString = "server=localhost;uid=root;pwd=;database=Waterpedia;";
+        static string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
         public MySqlCommand sqlCommand;
         public MySqlDataAdapter sqlAdapter;
         public string sqlQuery;
 
         DataTable dt = new DataTable();
+        DataTable dt2 = new DataTable();
         DataTable InvoiceID = new DataTable();
         DataTable Customer = new DataTable();
         DataTable Provinsi = new DataTable();
@@ -52,6 +53,7 @@ namespace Waterpediaa
             sqlConnect.Open();
             LoadInvoiceList();
             LoadData();
+            LoadData2();
             LoadcBoxCustomer();
             LoadcBoxProvinsi();
             LoadcBoxKabupatenKota();
@@ -71,6 +73,48 @@ namespace Waterpediaa
 
                 sqlAdapter.Fill(dt);
                 dataGridViewReceipt.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void LoadData2()
+        {
+            try
+            {
+                dt2.Clear();
+                sqlQuery = @"
+    SELECT 
+        CONCAT_WS(', ',
+            CASE WHEN sb.Jenis_Bakteri IS NOT NULL THEN sb.Jenis_Bakteri END,
+            CASE WHEN sf.Jenis_Filter IS NOT NULL THEN sf.Jenis_Filter END,
+            CASE WHEN pb.Nama_Paket IS NOT NULL THEN pb.Nama_Paket END
+        ) AS Product,
+        sp.Nama_Barang AS Packaging,
+        i.Jumlah_Keluar AS QTY,
+        i.Harga_Jual AS Harga
+    FROM 
+        Invoice i
+    LEFT JOIN 
+        Stock_Bakteri sb ON i.Stock_BakteriID = sb.ID
+    LEFT JOIN 
+        Stock_Filter sf ON i.Stock_FilterID = sf.ID
+    LEFT JOIN 
+        Paket_Bakteri pb ON i.Paket_BakteriID = pb.ID
+    LEFT JOIN 
+        Stock_Packaging sp ON i.Stock_PackagingID = sp.ID
+    WHERE 
+        i.ParentInvID = @parentInvID";
+
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+
+                parentInvID = Convert.ToInt32(cBoxParentInvID.Text);
+                sqlCommand.Parameters.AddWithValue("@parentInvID", parentInvID);
+                sqlAdapter = new MySqlDataAdapter(sqlCommand);
+
+                sqlAdapter.Fill(dt2);
+                dataGridViewReceipt2.DataSource = dt2;
             }
             catch (Exception ex)
             {
@@ -178,7 +222,7 @@ namespace Waterpediaa
             Subtotal = dt.AsEnumerable().Sum(row => row.Field<long>("Harga_Jual"));
             lblSubTotal.Text = "SubTotal  : " + Subtotal.ToString();
 
-            PPN = dt.AsEnumerable().Sum(row => Convert.ToInt64(row.Field<int>("PPN")));
+            PPN = dt.AsEnumerable().Max(row => Convert.ToInt64(row.Field<int>("PPN")));
             lblPPN.Text = "PPN : " + PPN.ToString();
 
             Total = Subtotal + PPN;
@@ -197,47 +241,18 @@ namespace Waterpediaa
         {
             try
             {
-                // Ensure there is a selected row in the DataGridView
-                if (dataGridViewReceipt.SelectedRows.Count == 0)
+                namaCustomer = cBoxCustomer.Text;
+
+                sqlQuery = "SELECT Perusahaan, Alamat FROM Customer WHERE Nama = @NamaCustomer";
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                sqlCommand.Parameters.AddWithValue("@NamaCustomer", namaCustomer);
+
+                using (MySqlDataReader reader = sqlCommand.ExecuteReader())
                 {
-                    MessageBox.Show("Please select a row in the DataGridView.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Get the selected row
-                DataGridViewRow selectedRow = dataGridViewReceipt.SelectedRows[0];
-
-                // Extract PembeliID from the selected row
-                int pembeliId;
-                if (!int.TryParse(selectedRow.Cells["PembeliID"].Value.ToString(), out pembeliId))
-                {
-                    MessageBox.Show("Invalid Customer ID.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Ensure that the connection is open
-                if (sqlConnect.State != System.Data.ConnectionState.Open)
-                {
-                    sqlConnect.Open();
-                }
-
-                string sqlQuery = "SELECT Nama, Perusahaan, Alamat FROM Customer WHERE ID = @PembeliID";
-                using (var sqlCommand = new MySqlCommand(sqlQuery, sqlConnect))
-                {
-                    sqlCommand.Parameters.AddWithValue("@PembeliID", pembeliId);
-
-                    using (var reader = sqlCommand.ExecuteReader())
+                    if (reader.Read())
                     {
-                        if (reader.Read())
-                        {
-                            namaCustomer = reader["Nama"].ToString();
-                            perusahaan = reader["Perusahaan"].ToString();
-                            alamat = reader["Alamat"].ToString();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Customer not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                        perusahaan = reader["Perusahaan"].ToString();
+                        alamat = reader["Alamat"].ToString();
                     }
                 }
             }
@@ -253,7 +268,7 @@ namespace Waterpediaa
 
         private void btnCreatePDF_Click_1(object sender, EventArgs e)
         {
-            if (dt.Rows.Count == 0)
+            if (dt2.Rows.Count == 0)
             {
                 MessageBox.Show("No data available to create a receipt.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -276,7 +291,7 @@ namespace Waterpediaa
                     PPNPercentage = PPNPercentage,
                     PPN = PPN,
                     Total = Total,
-                    DataTable = dt,
+                    DataTable = dt2,
                     parentInvID = parentID,
                     receiptDate = receiptDate,
                     OtherComment = otherComments,
@@ -285,8 +300,6 @@ namespace Waterpediaa
                     Perusahaan = perusahaan,
                     Alamat = alamat
                 };
-
-                formReceipt.Show();
                 foreach (DataRow row in dt.Rows)
                 {
                     int invoiceID = Convert.ToInt32(row["ID"]);
@@ -305,6 +318,8 @@ namespace Waterpediaa
                 }
                 MessageBox.Show("Receipt(s) saved successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                formReceipt.Show();
+
                 this.Hide();
             }
             catch (Exception ex)
@@ -315,6 +330,7 @@ namespace Waterpediaa
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             LoadData();
+            LoadData2();
             HitungTotalSubtotal();
         }
     }

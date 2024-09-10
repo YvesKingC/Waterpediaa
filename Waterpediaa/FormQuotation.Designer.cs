@@ -293,7 +293,7 @@
             // 
             // tBoxTNC
             // 
-            tBoxTNC.BorderStyle = BorderStyle.FixedSingle;
+            tBoxTNC.BorderStyle = BorderStyle.None;
             tBoxTNC.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             tBoxTNC.Location = new Point(3, 35);
             tBoxTNC.Multiline = true;
@@ -333,6 +333,7 @@
             // 
             // dataGridViewQuote
             // 
+            dataGridViewQuote.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewQuote.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewQuote.Location = new Point(3, 35);
             dataGridViewQuote.Name = "dataGridViewQuote";
@@ -373,12 +374,12 @@
             // 
             // tBoxDetailCustomer
             // 
-            tBoxDetailCustomer.BorderStyle = BorderStyle.FixedSingle;
-            tBoxDetailCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxDetailCustomer.Location = new Point(12, 35);
+            tBoxDetailCustomer.BorderStyle = BorderStyle.None;
+            tBoxDetailCustomer.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxDetailCustomer.Location = new Point(4, 35);
             tBoxDetailCustomer.Multiline = true;
             tBoxDetailCustomer.Name = "tBoxDetailCustomer";
-            tBoxDetailCustomer.Size = new Size(693, 162);
+            tBoxDetailCustomer.Size = new Size(712, 162);
             tBoxDetailCustomer.TabIndex = 20;
             // 
             // panelHeader1

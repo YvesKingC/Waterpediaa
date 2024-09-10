@@ -545,11 +545,11 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(46, 165);
+            label10.Location = new Point(73, 165);
             label10.Name = "label10";
-            label10.Size = new Size(78, 19);
+            label10.Size = new Size(53, 19);
             label10.TabIndex = 19;
-            label10.Text = "Harga Beli :";
+            label10.Text = "Harga :";
             // 
             // label4
             // 

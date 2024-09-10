@@ -32,7 +32,7 @@ namespace Waterpediaa
         public DataTable DataTable { get; set; }
         public string parentQuoteID { get; set; }
 
-        static string connectionString = "server=localhost;uid=root;pwd=;database=Waterpedia;";
+        static string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
         public MySqlCommand sqlCommand;
         public MySqlDataAdapter sqlAdapter;
@@ -42,7 +42,7 @@ namespace Waterpediaa
         {
             sqlConnect.Open();
             dataGridViewQuote.DataSource = DataTable;
-            tBoxDetailCustomer.Text = $"{NamaCustomer}\r\n\r\n{Perusahaan}\r\n\r\n{Alamat}";
+            tBoxDetailCustomer.Text = $"{NamaCustomer}\r\n{Perusahaan}\r\n{Alamat}";
             tBoxServiceOrder.Text = ServiceOrder;
             tBoxDueDate.Text = DueDate;
             tBoxTNC.Text = TermsConds;

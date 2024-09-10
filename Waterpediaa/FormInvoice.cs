@@ -35,7 +35,7 @@ namespace Waterpediaa
         public string parentInvID { get; set; }
         public string confimPayment { get; set; }
 
-        static string connectionString = "server=localhost;uid=root;pwd=;database=Waterpedia;";
+        static string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
         public MySqlCommand sqlCommand;
         public MySqlDataAdapter sqlAdapter;
@@ -45,7 +45,7 @@ namespace Waterpediaa
         {
             sqlConnect.Open();
             dataGridViewInvoice.DataSource = DataTable;
-            tBoxDetailCustomer.Text = $"Nama Customer: {NamaCustomer}\r\n\r\nPerusahaan: {Perusahaan}\r\n\r\nAlamat: {Alamat}";
+            tBoxDetailCustomer.Text = $"{NamaCustomer}\r\n{Perusahaan}\r\n{Alamat}";
             tBoxServiceOrder.Text = ServiceOrder;
             tBoxDueDate.Text = DueDate;
             tBoxOtherComments.Text = OtherComment;

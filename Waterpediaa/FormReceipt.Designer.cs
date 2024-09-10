@@ -122,10 +122,10 @@
             // 
             // tBoxNamaTTD
             // 
-            tBoxNamaTTD.BorderStyle = BorderStyle.FixedSingle;
-            tBoxNamaTTD.Location = new Point(456, 1024);
+            tBoxNamaTTD.BorderStyle = BorderStyle.None;
+            tBoxNamaTTD.Location = new Point(457, 981);
             tBoxNamaTTD.Name = "tBoxNamaTTD";
-            tBoxNamaTTD.Size = new Size(217, 25);
+            tBoxNamaTTD.Size = new Size(217, 18);
             tBoxNamaTTD.TabIndex = 55;
             // 
             // label13
@@ -134,7 +134,7 @@
             label13.BackColor = Color.White;
             label13.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
             label13.ForeColor = Color.CornflowerBlue;
-            label13.Location = new Point(456, 933);
+            label13.Location = new Point(457, 900);
             label13.Name = "label13";
             label13.Size = new Size(110, 13);
             label13.TabIndex = 54;
@@ -144,7 +144,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
-            label12.Location = new Point(456, 914);
+            label12.Location = new Point(456, 881);
             label12.Name = "label12";
             label12.Size = new Size(217, 19);
             label12.TabIndex = 53;
@@ -192,7 +192,7 @@
             panel8.Controls.Add(panel5);
             panel8.Controls.Add(panel9);
             panel8.Controls.Add(panel4);
-            panel8.Location = new Point(455, 800);
+            panel8.Location = new Point(456, 776);
             panel8.Name = "panel8";
             panel8.Size = new Size(302, 102);
             panel8.TabIndex = 46;
@@ -262,14 +262,14 @@
             panel1.BorderStyle = BorderStyle.FixedSingle;
             panel1.Controls.Add(tBoxOtherComments);
             panel1.Controls.Add(panel3);
-            panel1.Location = new Point(36, 800);
+            panel1.Location = new Point(36, 776);
             panel1.Name = "panel1";
             panel1.Size = new Size(414, 200);
             panel1.TabIndex = 45;
             // 
             // tBoxOtherComments
             // 
-            tBoxOtherComments.BorderStyle = BorderStyle.FixedSingle;
+            tBoxOtherComments.BorderStyle = BorderStyle.None;
             tBoxOtherComments.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             tBoxOtherComments.Location = new Point(3, 35);
             tBoxOtherComments.Multiline = true;
@@ -302,13 +302,14 @@
             panelProduk.BorderStyle = BorderStyle.FixedSingle;
             panelProduk.Controls.Add(dataGridViewReceipt);
             panelProduk.Controls.Add(panel2);
-            panelProduk.Location = new Point(37, 520);
+            panelProduk.Location = new Point(37, 496);
             panelProduk.Name = "panelProduk";
             panelProduk.Size = new Size(720, 274);
             panelProduk.TabIndex = 44;
             // 
             // dataGridViewReceipt
             // 
+            dataGridViewReceipt.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewReceipt.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewReceipt.Location = new Point(3, 35);
             dataGridViewReceipt.Name = "dataGridViewReceipt";
@@ -344,17 +345,17 @@
             panelBillTo.Controls.Add(panelHeader1);
             panelBillTo.Location = new Point(36, 312);
             panelBillTo.Name = "panelBillTo";
-            panelBillTo.Size = new Size(721, 202);
+            panelBillTo.Size = new Size(721, 178);
             panelBillTo.TabIndex = 42;
             // 
             // tBoxDetailCustomer
             // 
-            tBoxDetailCustomer.BorderStyle = BorderStyle.FixedSingle;
-            tBoxDetailCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxDetailCustomer.Location = new Point(3, 35);
+            tBoxDetailCustomer.BorderStyle = BorderStyle.None;
+            tBoxDetailCustomer.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            tBoxDetailCustomer.Location = new Point(4, 35);
             tBoxDetailCustomer.Multiline = true;
             tBoxDetailCustomer.Name = "tBoxDetailCustomer";
-            tBoxDetailCustomer.Size = new Size(713, 162);
+            tBoxDetailCustomer.Size = new Size(712, 138);
             tBoxDetailCustomer.TabIndex = 20;
             // 
             // panelHeader1
@@ -512,6 +513,7 @@
             btnCreatePDF.TabIndex = 32;
             btnCreatePDF.Text = "Create PDF";
             btnCreatePDF.UseVisualStyleBackColor = false;
+            btnCreatePDF.Click += btnCreatePDF_Click;
             // 
             // printDialog1
             // 

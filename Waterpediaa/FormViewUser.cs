@@ -19,7 +19,7 @@ namespace Waterpediaa
             InitializeComponent();
         }
 
-        static string connectionString = "server=localhost;uid=root;pwd=;database=Waterpedia;";
+        static string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
         public MySqlConnection sqlConnect = new MySqlConnection(connectionString);
         public MySqlCommand sqlCommand;
         public MySqlDataAdapter sqlAdapter;
