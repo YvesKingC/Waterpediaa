@@ -130,6 +130,9 @@ namespace Waterpediaa
                         int stockBakteriID = 0;
                         int stockFilterID = 0;
                         int stockPackagingID = 0;
+                        int packagingVolume = 0; // New variable to store packaging volume
+
+
 
                         if (reader.Read())
                         {
@@ -141,9 +144,12 @@ namespace Waterpediaa
 
                         if (stockBakteriID > 0)
                         {
-                            sqlQuery = $"UPDATE Stock_Bakteri SET Volume = Volume - {quantity} WHERE ID = {stockBakteriID}";
+                            int totalVolumeToDeduct = packagingVolume * quantity; // Calculate total volume to deduct based on packaging volume and quantity
+
+                            sqlQuery = $"UPDATE Stock_Bakteri SET Volume = Volume - {totalVolumeToDeduct} WHERE ID = {stockBakteriID}";
                             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
                             sqlCommand.ExecuteNonQuery();
+
                         }
 
                         if (stockFilterID > 0)

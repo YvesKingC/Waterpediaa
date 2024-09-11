@@ -24,6 +24,7 @@ namespace Waterpediaa
 
         private void FormInventoryPackaging_Load(object sender, EventArgs e)
         {
+            this.dataGridViewPackaging.Font = new Font("Sagoe UI", 12);
             LoadPackagingData();
         }
 

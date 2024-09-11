@@ -79,7 +79,8 @@ namespace Waterpediaa
                     Nama_Barang VARCHAR(255),
                     Packaging VARCHAR(255),
                     Quantity INT,
-                    Harga_Jual BIGINT
+                    Harga_Jual BIGINT,
+                    Total BIGINT
                 );";
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
             sqlCommand.ExecuteNonQuery();
@@ -241,8 +242,15 @@ namespace Waterpediaa
                 MessageBox.Show("Harga Jual must not be empty and must contain only numbers.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            sqlQuery = "INSERT INTO TempInvoice (Nama_Barang, Packaging, Quantity, Harga_Jual) VALUES ('" + cBoxNamaProduk.Text + "', '" + cBoxPackaging.Text + "', '" + numericUpDownQTY.Text + "', '" + tBoxHargaJual.Text + "')";
+            sqlQuery = @"
+        INSERT INTO TempInvoice (Nama_Barang, Packaging, Quantity, Harga_Jual, Total) 
+        VALUES (@NamaBarang, @Packaging, @Quantity, @HargaJual, (@Quantity * @HargaJual))";
+
             sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+            sqlCommand.Parameters.AddWithValue("@NamaBarang", cBoxNamaProduk.Text);
+            sqlCommand.Parameters.AddWithValue("@Packaging", cBoxPackaging.Text);
+            sqlCommand.Parameters.AddWithValue("@Quantity", numericUpDownQTY.Value);
+            sqlCommand.Parameters.AddWithValue("@HargaJual", tBoxHargaJual.Text);
             sqlCommand.ExecuteNonQuery();
             LoadData();
             HitungTotalSubtotal();
@@ -252,7 +260,7 @@ namespace Waterpediaa
             Subtotal = 0;
             foreach (DataRow row in dt.Rows)
             {
-                Subtotal += Convert.ToInt64(row["Harga_Jual"]);
+                Subtotal += Convert.ToInt64(row["Total"]);
             }
             lblSubTotal.Text = "SubTotal  : " + Subtotal.ToString();
 

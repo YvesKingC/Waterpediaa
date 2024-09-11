@@ -37,19 +37,23 @@
             // 
             // dataGridViewPackaging
             // 
+            dataGridViewPackaging.BackgroundColor = SystemColors.ScrollBar;
             dataGridViewPackaging.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPackaging.Location = new Point(1, 12);
+            dataGridViewPackaging.Location = new Point(12, 11);
+            dataGridViewPackaging.Margin = new Padding(3, 2, 3, 2);
             dataGridViewPackaging.Name = "dataGridViewPackaging";
             dataGridViewPackaging.RowHeadersWidth = 51;
             dataGridViewPackaging.RowTemplate.Height = 29;
-            dataGridViewPackaging.Size = new Size(669, 426);
+            dataGridViewPackaging.Size = new Size(1090, 639);
             dataGridViewPackaging.TabIndex = 2;
             // 
             // buttonEditInventory
             // 
-            buttonEditInventory.Location = new Point(676, 159);
+            buttonEditInventory.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonEditInventory.Location = new Point(1134, 235);
+            buttonEditInventory.Margin = new Padding(3, 2, 3, 2);
             buttonEditInventory.Name = "buttonEditInventory";
-            buttonEditInventory.Size = new Size(151, 29);
+            buttonEditInventory.Size = new Size(132, 36);
             buttonEditInventory.TabIndex = 6;
             buttonEditInventory.Text = "Edit Item";
             buttonEditInventory.UseVisualStyleBackColor = true;
@@ -57,9 +61,11 @@
             // 
             // buttonItemPack
             // 
-            buttonItemPack.Location = new Point(676, 194);
+            buttonItemPack.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonItemPack.Location = new Point(1134, 275);
+            buttonItemPack.Margin = new Padding(3, 2, 3, 2);
             buttonItemPack.Name = "buttonItemPack";
-            buttonItemPack.Size = new Size(151, 29);
+            buttonItemPack.Size = new Size(132, 36);
             buttonItemPack.TabIndex = 7;
             buttonItemPack.Text = "Item Baru";
             buttonItemPack.UseVisualStyleBackColor = true;
@@ -68,9 +74,11 @@
             // button7
             // 
             button7.BackColor = Color.Salmon;
-            button7.Location = new Point(676, 409);
+            button7.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            button7.Location = new Point(1134, 436);
+            button7.Margin = new Padding(3, 2, 3, 2);
             button7.Name = "button7";
-            button7.Size = new Size(151, 29);
+            button7.Size = new Size(132, 36);
             button7.TabIndex = 10;
             button7.Text = "Back";
             button7.UseVisualStyleBackColor = false;
@@ -78,13 +86,14 @@
             // 
             // FormInventoryPackaging
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(838, 450);
+            ClientSize = new Size(1296, 661);
             Controls.Add(button7);
             Controls.Add(buttonItemPack);
             Controls.Add(buttonEditInventory);
             Controls.Add(dataGridViewPackaging);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "FormInventoryPackaging";
             Text = "FormInventoryPackaging";
             ((System.ComponentModel.ISupportInitialize)dataGridViewPackaging).EndInit();

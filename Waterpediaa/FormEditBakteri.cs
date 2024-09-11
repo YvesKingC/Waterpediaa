@@ -76,6 +76,10 @@ namespace Waterpediaa
             // Handle the event here
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 
 }

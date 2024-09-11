@@ -93,6 +93,13 @@ namespace Waterpediaa
             formInvoice.Show();
             this.Hide();
         }
+
+        private void btnBack_Click(object sender, EventArgs e)
+        {
+            Form back = new FormPilihDivisi();
+            back.Show();
+            this.Hide();
+        }
     }
 }
 

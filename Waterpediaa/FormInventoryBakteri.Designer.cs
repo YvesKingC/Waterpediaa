@@ -42,9 +42,11 @@
             // 
             btnBack.Anchor = AnchorStyles.None;
             btnBack.BackColor = Color.FromArgb(255, 128, 128);
-            btnBack.Location = new Point(725, 425);
+            btnBack.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(1146, 477);
+            btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(143, 29);
+            btnBack.Size = new Size(125, 34);
             btnBack.TabIndex = 34;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
@@ -53,9 +55,11 @@
             // buttonAddPackaging
             // 
             buttonAddPackaging.Anchor = AnchorStyles.None;
-            buttonAddPackaging.Location = new Point(725, 222);
+            buttonAddPackaging.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonAddPackaging.Location = new Point(1146, 329);
+            buttonAddPackaging.Margin = new Padding(3, 2, 3, 2);
             buttonAddPackaging.Name = "buttonAddPackaging";
-            buttonAddPackaging.Size = new Size(143, 29);
+            buttonAddPackaging.Size = new Size(125, 32);
             buttonAddPackaging.TabIndex = 32;
             buttonAddPackaging.Text = "Paket Bakteri";
             buttonAddPackaging.UseVisualStyleBackColor = true;
@@ -64,9 +68,11 @@
             // buttonAddBakteri
             // 
             buttonAddBakteri.Anchor = AnchorStyles.None;
-            buttonAddBakteri.Location = new Point(725, 186);
+            buttonAddBakteri.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonAddBakteri.Location = new Point(1146, 292);
+            buttonAddBakteri.Margin = new Padding(3, 2, 3, 2);
             buttonAddBakteri.Name = "buttonAddBakteri";
-            buttonAddBakteri.Size = new Size(143, 29);
+            buttonAddBakteri.Size = new Size(125, 33);
             buttonAddBakteri.TabIndex = 31;
             buttonAddBakteri.Text = "Bakteri Baru";
             buttonAddBakteri.UseVisualStyleBackColor = true;
@@ -76,9 +82,11 @@
             // 
             buttonInvoice.Anchor = AnchorStyles.None;
             buttonInvoice.BackColor = Color.FromArgb(128, 255, 128);
-            buttonInvoice.Location = new Point(725, 290);
+            buttonInvoice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonInvoice.Location = new Point(1146, 365);
+            buttonInvoice.Margin = new Padding(3, 2, 3, 2);
             buttonInvoice.Name = "buttonInvoice";
-            buttonInvoice.Size = new Size(143, 29);
+            buttonInvoice.Size = new Size(125, 33);
             buttonInvoice.TabIndex = 30;
             buttonInvoice.Text = "Invoice";
             buttonInvoice.UseVisualStyleBackColor = false;
@@ -87,9 +95,11 @@
             // buttonEditItem
             // 
             buttonEditItem.Anchor = AnchorStyles.None;
-            buttonEditItem.Location = new Point(725, 152);
+            buttonEditItem.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonEditItem.Location = new Point(1146, 255);
+            buttonEditItem.Margin = new Padding(3, 2, 3, 2);
             buttonEditItem.Name = "buttonEditItem";
-            buttonEditItem.Size = new Size(143, 29);
+            buttonEditItem.Size = new Size(125, 33);
             buttonEditItem.TabIndex = 28;
             buttonEditItem.Text = "Edit Item";
             buttonEditItem.UseVisualStyleBackColor = true;
@@ -102,19 +112,22 @@
             dgvInventoryBakteri.Anchor = AnchorStyles.None;
             dgvInventoryBakteri.BackgroundColor = SystemColors.ScrollBar;
             dgvInventoryBakteri.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvInventoryBakteri.Location = new Point(12, 12);
+            dgvInventoryBakteri.Location = new Point(12, 11);
+            dgvInventoryBakteri.Margin = new Padding(3, 2, 3, 2);
             dgvInventoryBakteri.Name = "dgvInventoryBakteri";
             dgvInventoryBakteri.ReadOnly = true;
             dgvInventoryBakteri.RowHeadersWidth = 51;
             dgvInventoryBakteri.RowTemplate.Height = 29;
-            dgvInventoryBakteri.Size = new Size(679, 457);
+            dgvInventoryBakteri.Size = new Size(1108, 639);
             dgvInventoryBakteri.TabIndex = 24;
             // 
             // buttonPackaging
             // 
-            buttonPackaging.Location = new Point(725, 257);
+            buttonPackaging.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            buttonPackaging.Location = new Point(1146, 217);
+            buttonPackaging.Margin = new Padding(3, 2, 3, 2);
             buttonPackaging.Name = "buttonPackaging";
-            buttonPackaging.Size = new Size(143, 29);
+            buttonPackaging.Size = new Size(125, 34);
             buttonPackaging.TabIndex = 35;
             buttonPackaging.Text = "Packaging";
             buttonPackaging.UseVisualStyleBackColor = true;
@@ -122,9 +135,9 @@
             // 
             // FormInventoryBakteri
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 481);
+            ClientSize = new Size(1296, 661);
             Controls.Add(buttonPackaging);
             Controls.Add(btnBack);
             Controls.Add(buttonAddPackaging);
@@ -132,7 +145,6 @@
             Controls.Add(buttonInvoice);
             Controls.Add(buttonEditItem);
             Controls.Add(dgvInventoryBakteri);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FormInventoryBakteri";
             Text = "FormInventoryBakteri";
             ((System.ComponentModel.ISupportInitialize)dgvInventoryBakteri).EndInit();

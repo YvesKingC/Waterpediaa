@@ -40,6 +40,7 @@
             label5 = new Label();
             labelOmset = new Label();
             labelProfit = new Label();
+            btnBack = new Button();
             SuspendLayout();
             // 
             // button1
@@ -49,7 +50,7 @@
             button1.Location = new Point(557, 43);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(236, 180);
+            button1.Size = new Size(236, 153);
             button1.TabIndex = 0;
             button1.Text = "Sales Report";
             button1.UseVisualStyleBackColor = false;
@@ -59,10 +60,10 @@
             // 
             button2.BackColor = Color.Wheat;
             button2.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(557, 227);
+            button2.Location = new Point(557, 200);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
-            button2.Size = new Size(236, 175);
+            button2.Size = new Size(236, 161);
             button2.TabIndex = 1;
             button2.Text = "Buat Invoice";
             button2.UseVisualStyleBackColor = false;
@@ -70,36 +71,40 @@
             // 
             // dateTimePicker1
             // 
+            dateTimePicker1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker1.Location = new Point(10, 9);
             dateTimePicker1.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(219, 23);
+            dateTimePicker1.Size = new Size(270, 29);
             dateTimePicker1.TabIndex = 2;
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(253, 9);
+            dateTimePicker2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker2.Location = new Point(308, 9);
             dateTimePicker2.Margin = new Padding(3, 2, 3, 2);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(219, 23);
+            dateTimePicker2.Size = new Size(219, 29);
             dateTimePicker2.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(234, 9);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(286, 15);
             label1.Name = "label1";
-            label1.Size = new Size(12, 15);
+            label1.Size = new Size(16, 21);
             label1.TabIndex = 4;
             label1.Text = "-";
             // 
             // button3
             // 
             button3.BackColor = Color.LightGreen;
-            button3.Location = new Point(496, 9);
+            button3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button3.Location = new Point(557, 8);
             button3.Margin = new Padding(3, 2, 3, 2);
             button3.Name = "button3";
-            button3.Size = new Size(73, 23);
+            button3.Size = new Size(88, 30);
             button3.TabIndex = 5;
             button3.Text = "Apply";
             button3.UseVisualStyleBackColor = false;
@@ -163,11 +168,24 @@
             labelProfit.TabIndex = 11;
             labelProfit.Text = "0";
             // 
+            // btnBack
+            // 
+            btnBack.BackColor = Color.FromArgb(255, 128, 128);
+            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(557, 366);
+            btnBack.Name = "btnBack";
+            btnBack.Size = new Size(235, 27);
+            btnBack.TabIndex = 29;
+            btnBack.Text = "Back";
+            btnBack.UseVisualStyleBackColor = false;
+            btnBack.Click += btnBack_Click;
+            // 
             // FormDashboardSales
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(804, 411);
+            ClientSize = new Size(804, 404);
+            Controls.Add(btnBack);
             Controls.Add(labelProfit);
             Controls.Add(labelOmset);
             Controls.Add(label5);
@@ -201,5 +219,6 @@
         private Label label5;
         private Label labelOmset;
         private Label labelProfit;
+        private Button btnBack;
     }
 }

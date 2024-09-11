@@ -24,6 +24,7 @@ namespace Waterpediaa
 
         private void FormInventoryBakteri_Load(object? sender, EventArgs e)
         {
+            this.dgvInventoryBakteri.Font = new Font("Sagoe UI", 12);
             LoadStockBakteriData();
         }
 
