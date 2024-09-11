@@ -93,6 +93,7 @@ namespace Waterpediaa
             Form back = new FormPilihDivisi();
             back.Show();
             this.Hide();
+            this.Close();
         }
     }
 }

@@ -304,6 +304,7 @@ namespace Waterpediaa
             Form FormPilihDivisi = new FormPilihDivisi();
             FormPilihDivisi.Show();
             this.Hide();
+            this.Close();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
