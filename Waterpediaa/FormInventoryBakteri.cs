@@ -27,7 +27,7 @@ namespace Waterpediaa
             LoadStockBakteriData();
         }
 
-        private void LoadStockBakteriData()
+        public void LoadStockBakteriData()
         {
             string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             connection = new MySqlConnection(connectionString);

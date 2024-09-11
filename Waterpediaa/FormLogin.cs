@@ -55,33 +55,40 @@ namespace Waterpediaa
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            sqlConnect.Open();
-            sqlQuery = "SELECT * FROM main_user WHERE Username = '" + tBoxUsername.Text + "' and Password = '" + tBoxPassword.Text + "';";
-            sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-            sqlAdapter = new MySqlDataAdapter(sqlCommand);
-            sqlAdapter.Fill(Login);
-
-            if (Login.Rows.Count > 0)
+            try
             {
-                Nama = Login.Rows[0]["Nama"].ToString();
-                Izin_Akses = Login.Rows[0]["Izin_Akses"].ToString();
-                if (cBoxRememberUser.Checked)
+                sqlConnect.Open();
+                sqlQuery = "SELECT * FROM main_user WHERE Username = '" + tBoxUsername.Text + "' and Password = '" + tBoxPassword.Text + "';";
+                sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
+                sqlAdapter = new MySqlDataAdapter(sqlCommand);
+                sqlAdapter.Fill(Login);
+
+                if (Login.Rows.Count > 0)
                 {
-                    Properties.Settings.Default.RememberedUsername = tBoxUsername.Text;
-                    Properties.Settings.Default.Save();
+                    Nama = Login.Rows[0]["Nama"].ToString();
+                    Izin_Akses = Login.Rows[0]["Izin_Akses"].ToString();
+                    if (cBoxRememberUser.Checked)
+                    {
+                        Properties.Settings.Default.RememberedUsername = tBoxUsername.Text;
+                        Properties.Settings.Default.Save();
+                    }
+                    else
+                    {
+                        Properties.Settings.Default.RememberedUsername = string.Empty;
+                        Properties.Settings.Default.Save();
+                    }
+                    Form formPilihDivisi = new FormPilihDivisi();
+                    formPilihDivisi.Show();
+                    this.Hide();
                 }
                 else
                 {
-                    Properties.Settings.Default.RememberedUsername = string.Empty;
-                    Properties.Settings.Default.Save();
+                    MessageBox.Show("User / Password Salah");
                 }
-                Form formPilihDivisi = new FormPilihDivisi();
-                formPilihDivisi.Show();
-                this.Hide();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("User / Password Salah");
+                MessageBox.Show(ex.Message);
             }
         }
         private void FormLogin_KeyDown(object sender, KeyEventArgs e)

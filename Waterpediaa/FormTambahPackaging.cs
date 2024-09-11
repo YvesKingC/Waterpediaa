@@ -57,7 +57,7 @@ namespace Waterpediaa
 
         private void InsertNewPackaging(string namaBarang, int jumlah, int volume, long harga)
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "INSERT INTO Stock_Packaging (Jenis_ProdukID, Nama_Barang, Jumlah, Volume, Harga_Per_Barang) VALUES (@jenisProdukID, @namaBarang, @jumlah, @volume, @harga)";
             string insertMutasiQuery = "INSERT INTO mutasi_produk (Stock_PackagingID, Masuk, Keluar, Keterangan) VALUES (@packagingId, @masuk, @keluar, @keterangan)";
 
@@ -128,7 +128,7 @@ namespace Waterpediaa
         private void LoadMutasiPackagingData()
         {
             DataTable dataTable = new DataTable();
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = @"SELECT m.ID, p.Nama_Barang AS Produk, m.Masuk, m.Keluar, m.Keterangan 
                      FROM mutasi_produk m
                      JOIN Stock_Packaging p ON m.Stock_PackagingID = p.ID

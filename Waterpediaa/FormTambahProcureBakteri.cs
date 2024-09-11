@@ -21,7 +21,6 @@ namespace Waterpediaa
             this.Load += new EventHandler(FormTambahProcureBakteri_Load);
             mainForm = form; // Corrected assignment
         }
-
         private void FormTambahProcureBakteri_Load(object sender, EventArgs e)
         {
             LoadStockBakteriData();
@@ -47,8 +46,8 @@ namespace Waterpediaa
         public DataTable GetStockBakteri()
         {
             DataTable dataTable = new DataTable();
-            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
-            string query = "SELECT ID, Jenis_Bakteri, Volume, Harga_Per_Liter FROM Stock_Bakteri;"; // Include ID
+        string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia;";
+        string query = "SELECT ID, Jenis_Bakteri, Volume, Harga_Per_Liter FROM Stock_Bakteri;"; // Include ID
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -82,7 +81,7 @@ namespace Waterpediaa
 
         private void InsertNewBakteri(string namaBakteri, int hargaPerLiter, int stockAwal)
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "INSERT INTO Stock_Bakteri (Jenis_Bakteri, Volume, Harga_Per_Liter, Jenis_ProdukID) VALUES (@nama, @volume, @harga, @jenisProdukID)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -127,7 +126,7 @@ namespace Waterpediaa
 
         private void UpdateBakteriVolume(int bakteriId, int volumeToAdd, DateTime tanggal)
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string updateQuery = "UPDATE Stock_Bakteri SET Volume = Volume + @volumeToAdd WHERE ID = @id";
             string insertProcureQuery = "INSERT INTO Procure (Stock_BakteriID, Tanggal, Volume) VALUES (@bakteriId, @tanggal, @volumeToAdd)";
             string insertMutasiQuery = "INSERT INTO mutasi_produk (Stock_BakteriID, Masuk, Keluar, Keterangan) VALUES (@bakteriId, @masuk, @keluar, @keterangan)";
@@ -172,7 +171,7 @@ namespace Waterpediaa
         private void LoadProcureData()
         {
             DataTable dataTable = new DataTable();
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = @"SELECT p.ID, s.Jenis_Bakteri AS Nama_Bakteri, p.Tanggal, p.Volume 
                              FROM Procure p
                              JOIN Stock_Bakteri s ON p.Stock_BakteriID = s.ID";
@@ -195,7 +194,7 @@ namespace Waterpediaa
         private void LoadMutasiBakteriData()
         {
             DataTable dataTable = new DataTable();
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = @"SELECT m.ID, s.Jenis_Bakteri AS Produk, m.Masuk, m.Keluar, m.Keterangan 
                      FROM mutasi_produk m
                      JOIN Stock_Bakteri s ON m.Stock_BakteriID = s.ID

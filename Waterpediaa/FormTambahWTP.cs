@@ -57,7 +57,7 @@ namespace Waterpediaa
 
         private long InsertNewFilter(string jenisFilter, int berat, int stokAwal, long harga)
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "INSERT INTO Stock_Filter (Jenis_ProdukID, Jenis_Filter, Berat, Jumlah, Harga_Per_Barang) VALUES (@jenisProdukID, @jenisFilter, @berat, @stokAwal, @harga)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -119,7 +119,7 @@ namespace Waterpediaa
         private void LoadMutasiFilterData()
         {
             DataTable dataTable = new DataTable();
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = @"SELECT m.ID, f.Jenis_Filter AS Produk, m.Masuk, m.Keluar, m.Keterangan 
                      FROM mutasi_produk m
                      JOIN Stock_Filter f ON m.Stock_FilterID = f.ID
@@ -142,7 +142,7 @@ namespace Waterpediaa
 
         private void InsertMutasiFilter(long filterId, int stokAwal)
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string insertMutasiQuery = "INSERT INTO mutasi_produk (Stock_FilterID, Masuk, Keluar, Keterangan) VALUES (@filterId, @masuk, @keluar, @keterangan)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))

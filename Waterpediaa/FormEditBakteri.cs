@@ -47,6 +47,10 @@ namespace Waterpediaa
             // Update the database with the new values
             UpdateBakteriData();
             this.Close();
+
+            //call LoadStockBakteriData from FormInventoryBakteri
+            FormInventoryBakteri formInventoryBakteri = new FormInventoryBakteri();
+            formInventoryBakteri.LoadStockBakteriData();
         }
 
         private void UpdateBakteriData()
