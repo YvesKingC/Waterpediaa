@@ -25,10 +25,23 @@ namespace Waterpediaa
             LoadSalesData(); // Load all sales data initially
         }
 
-        private void LoadSalesData(string query = "SELECT * FROM invoice")
+        private void LoadSalesData(string query = null)
         {
             DataTable dataTable = new DataTable();
             string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
+
+            // Default query with JOINs to get names instead of IDs
+            if (query == null)
+            {
+                query = @"SELECT i.ID, i.Service_Order, c.Nama AS CustomerName, 
+                         CONCAT(IFNULL(sb.Jenis_Bakteri, ''), ' ', IFNULL(sp.Nama_Barang, ''), ' ', IFNULL(sf.Jenis_Filter, '')) AS Product,
+                         i.Jumlah_Keluar AS Quantity, i.Harga_Jual AS TotalAmount
+                  FROM Invoice i
+                  JOIN Customer c ON i.PembeliID = c.ID
+                  LEFT JOIN Stock_Bakteri sb ON i.Stock_BakteriID = sb.ID
+                  LEFT JOIN Stock_Packaging sp ON i.Stock_PackagingID = sp.ID
+                  LEFT JOIN Stock_Filter sf ON i.Stock_FilterID = sf.ID";
+            }
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
@@ -58,7 +71,18 @@ namespace Waterpediaa
         private void LoadSalesDataWithFilter(string query, DateTime startDate, DateTime endDate)
         {
             DataTable dataTable = new DataTable();
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
+
+            // Modify query to use JOINs and select the names instead of IDs
+            query = @"SELECT i.ID, i.Service_Order, c.Nama AS CustomerName, 
+                     CONCAT(IFNULL(sb.Jenis_Bakteri, ''), ' ', IFNULL(sp.Nama_Barang, ''), ' ', IFNULL(sf.Jenis_Filter, '')) AS Product,
+                     i.Jumlah_Keluar AS Quantity, i.Harga_Jual AS TotalAmount
+              FROM Invoice i
+              JOIN Customer c ON i.PembeliID = c.ID
+              LEFT JOIN Stock_Bakteri sb ON i.Stock_BakteriID = sb.ID
+              LEFT JOIN Stock_Packaging sp ON i.Stock_PackagingID = sp.ID
+              LEFT JOIN Stock_Filter sf ON i.Stock_FilterID = sf.ID
+              WHERE i.Service_Order BETWEEN @startDate AND @endDate";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
             {
