@@ -46,7 +46,7 @@
             // button1
             // 
             button1.BackColor = Color.Moccasin;
-            button1.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            button1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
             button1.Location = new Point(557, 43);
             button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
@@ -59,7 +59,7 @@
             // button2
             // 
             button2.BackColor = Color.Wheat;
-            button2.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
             button2.Location = new Point(557, 200);
             button2.Margin = new Padding(3, 2, 3, 2);
             button2.Name = "button2";
@@ -171,10 +171,10 @@
             // btnBack
             // 
             btnBack.BackColor = Color.FromArgb(255, 128, 128);
-            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Point);
             btnBack.Location = new Point(557, 366);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(235, 27);
+            btnBack.Size = new Size(235, 56);
             btnBack.TabIndex = 29;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
@@ -184,7 +184,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(804, 404);
+            ClientSize = new Size(804, 435);
             Controls.Add(btnBack);
             Controls.Add(labelProfit);
             Controls.Add(labelOmset);

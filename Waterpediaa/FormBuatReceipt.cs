@@ -54,7 +54,6 @@ namespace Waterpediaa
             LoadInvoiceList();
             LoadData();
             LoadData2();
-            LoadcBoxCustomer();
             LoadcBoxProvinsi();
             LoadcBoxKabupatenKota();
             HitungTotalSubtotal();
@@ -73,6 +72,12 @@ namespace Waterpediaa
 
                 sqlAdapter.Fill(dt);
                 dataGridViewReceipt.DataSource = dt;
+                // Assuming Invoice has a column CustomerID
+                if (dt.Rows.Count > 0)
+                {
+                    int customerID = Convert.ToInt32(dt.Rows[0]["PembeliID"]);
+                    LoadCustomerData(customerID); // Load customer data using CustomerID from Invoice
+                }
             }
             catch (Exception ex)
             {
@@ -161,6 +166,7 @@ namespace Waterpediaa
             cBoxCustomer.DataSource = Customer;
             cBoxCustomer.DisplayMember = "Nama";
         }
+
         private void LoadcBoxProvinsi()
         {
             Provinsi.Clear();
@@ -219,12 +225,15 @@ namespace Waterpediaa
         }
         public void HitungTotalSubtotal()
         {
-            Subtotal = dt.AsEnumerable().Sum(row => row.Field<long>("Harga_Jual"));
+            // Calculate Subtotal by summing (Harga_Jual * Quantity) for each row
+            Subtotal = dt.AsEnumerable().Sum(row => row.Field<long>("Harga_Jual") * row.Field<int>("Jumlah_Keluar"));
             lblSubTotal.Text = "SubTotal  : " + Subtotal.ToString();
 
+            // Get the maximum PPN value from the rows
             PPN = dt.AsEnumerable().Max(row => Convert.ToInt64(row.Field<int>("PPN")));
             lblPPN.Text = "PPN : " + PPN.ToString();
 
+            // Calculate Total as Subtotal + PPN
             Total = Subtotal + PPN;
             lblTotal.Text = "Total  : " + Total.ToString();
         }
@@ -237,20 +246,19 @@ namespace Waterpediaa
 
             sqlConnect.Close();
         }
-        private void LoadCustomerData(int customerId)
+        private void LoadCustomerData(int customerID)
         {
             try
             {
-                namaCustomer = cBoxCustomer.Text;
-
-                sqlQuery = "SELECT Perusahaan, Alamat FROM Customer WHERE Nama = @NamaCustomer";
+                sqlQuery = "SELECT Nama, Perusahaan, Alamat FROM Customer WHERE ID = @CustomerID";
                 sqlCommand = new MySqlCommand(sqlQuery, sqlConnect);
-                sqlCommand.Parameters.AddWithValue("@NamaCustomer", namaCustomer);
+                sqlCommand.Parameters.AddWithValue("@CustomerID", customerID);
 
                 using (MySqlDataReader reader = sqlCommand.ExecuteReader())
                 {
                     if (reader.Read())
                     {
+                        namaCustomer = reader["Nama"].ToString();
                         perusahaan = reader["Perusahaan"].ToString();
                         alamat = reader["Alamat"].ToString();
                     }

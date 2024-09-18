@@ -61,7 +61,7 @@ namespace Waterpediaa
 
         private void LoadBakteriNames()
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "SELECT ID, Jenis_Bakteri FROM Stock_Bakteri";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -83,7 +83,7 @@ namespace Waterpediaa
 
         private void LoadPackagingNames()
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "SELECT ID, Nama_Barang FROM Stock_Packaging";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -105,7 +105,7 @@ namespace Waterpediaa
 
         private void LoadPilihPaket()
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "SELECT ID, Nama_Paket FROM Paket_Bakteri";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -127,7 +127,7 @@ namespace Waterpediaa
 
         private void LoadDeletePaket()
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "SELECT ID, Nama_Paket FROM Paket_Bakteri";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -161,7 +161,7 @@ namespace Waterpediaa
         {
             string namaPaket = textBoxNamaPaket.Text;
 
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "INSERT INTO Paket_Bakteri (Nama_Paket) VALUES (@namaPaket)";
 
             using (MySqlConnection connection = new MySqlConnection(connectionString))
@@ -199,7 +199,7 @@ namespace Waterpediaa
 
         private void buttonNewPaket_Click(object sender, EventArgs e)
         {
-            string connectionString = "server=localhost;database=waterpedia;user=root;";
+            string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
             string query = "INSERT INTO Paket_Bakteri (Stock_BakteriID, Stock_PackagingID, Nama_Paket) " +
                            "VALUES (@stockBakteriID, @stockPackagingID, @namaPaket)";
 
@@ -231,7 +231,7 @@ namespace Waterpediaa
             if (selectedPaket != null)
             {
                 string namaPaket = selectedPaket["Nama_Paket"].ToString();
-                string connectionString = "server=localhost;database=waterpedia;user=root;";
+                string connectionString = "server=192.168.1.200;uid=Waterpedia;pwd=Waterpediaid;database=Waterpedia";
                 string query = "DELETE FROM Paket_Bakteri WHERE Nama_Paket = @namaPaket";
 
                 using (MySqlConnection connection = new MySqlConnection(connectionString))
