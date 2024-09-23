@@ -18,7 +18,7 @@ namespace Waterpediaa
         }
         private void FormPilihDivisi_Load(object sender, EventArgs e)
         {
-            lblWellcome.Text = "Wellcome " + FormLogin.Nama;
+            lblWellcome.Text = "Welcome " + FormLogin.Nama;
             if (FormLogin.Izin_Akses == "Admin")
             {
                 btnViewUser.Enabled = true;

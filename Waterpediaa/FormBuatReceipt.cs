@@ -341,5 +341,15 @@ namespace Waterpediaa
             LoadData2();
             HitungTotalSubtotal();
         }
+
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
+            this.Hide();
+            this.Close();
+
+            sqlConnect.Close();
+        }
     }
 }

@@ -83,3 +83,4 @@ C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Release\net6.0-windows\re
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Release\net6.0-windows\Waterpediaa.pdb
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Release\net6.0-windows\Waterpediaa.genruntimeconfig.cache
 C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Release\net6.0-windows\ref\Waterpediaa.dll
+C:\Users\ASUS\source\repos\Waterpediaa\Waterpediaa\obj\Release\net6.0-windows\Waterpediaa.FormLihatQuotation.resources
