@@ -107,6 +107,12 @@ namespace Waterpediaa
             cBoxKabupatenKota.DataSource = KabupatenKota;
             cBoxKabupatenKota.DisplayMember = "Nama_KabupatenKota";
         }
+        private void cboxProvinsi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadcBoxKabupatenKota();
+
+        }
+
         private void LoadcBoxCustomer()
         {
             Customer.Clear();
@@ -250,10 +256,7 @@ namespace Waterpediaa
             Total = Subtotal + PPN;
             lblTotal.Text = "Total  : " + Total.ToString();
         }
-        private void cBoxProvinsi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadcBoxKabupatenKota();
-        }
+
         private void btnCreatePDF_Click_1(object sender, EventArgs e)
         {
             try
@@ -442,6 +445,30 @@ namespace Waterpediaa
         private void btnUpdateJenis_Click(object sender, EventArgs e)
         {
             LoadcBoxNamaBarang();
+        }
+
+        private void btnBack_Click_1(object sender, EventArgs e)
+        {
+            Form FormPilihDivisi = new FormPilihDivisi();
+            FormPilihDivisi.Show();
+            this.Hide();
+        }
+
+        private void btnConfirmProvinsi_Click(object sender, EventArgs e)
+        {
+            LoadcBoxKabupatenKota();
+        }
+
+        private void btnListQuotation_Click(object sender, EventArgs e)
+        {
+            Form FormListQuo = new FormLihatQuotation();
+            FormListQuo.Show();
+            this.Hide();
+            this.Close();
+        }
+        private void FormBuatInvoice_Closed(object sender, FormClosingEventArgs e)
+        {
+            sqlConnect.Close();
         }
     }
 }
