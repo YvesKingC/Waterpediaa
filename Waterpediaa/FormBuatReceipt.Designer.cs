@@ -75,6 +75,7 @@
             btnCreatePDF = new Button();
             btnBack = new Button();
             dataGridViewReceipt2 = new DataGridView();
+            btnConfirmProvinsi = new Button();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewReceipt).BeginInit();
@@ -105,9 +106,9 @@
             // 
             btnUpdate.BackColor = Color.FromArgb(192, 255, 192);
             btnUpdate.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdate.Location = new Point(214, 68);
+            btnUpdate.Location = new Point(215, 62);
             btnUpdate.Name = "btnUpdate";
-            btnUpdate.Size = new Size(97, 27);
+            btnUpdate.Size = new Size(97, 30);
             btnUpdate.TabIndex = 31;
             btnUpdate.Text = "Update";
             btnUpdate.UseVisualStyleBackColor = false;
@@ -117,7 +118,7 @@
             // 
             cBoxParentInvID.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cBoxParentInvID.FormattingEnabled = true;
-            cBoxParentInvID.Location = new Point(132, 37);
+            cBoxParentInvID.Location = new Point(133, 35);
             cBoxParentInvID.Name = "cBoxParentInvID";
             cBoxParentInvID.Size = new Size(179, 25);
             cBoxParentInvID.TabIndex = 47;
@@ -126,7 +127,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(67, 40);
+            label1.Location = new Point(68, 38);
             label1.Name = "label1";
             label1.Size = new Size(59, 19);
             label1.TabIndex = 46;
@@ -246,19 +247,19 @@
             panel6.BorderStyle = BorderStyle.FixedSingle;
             panel6.Controls.Add(tBoxOtherComments);
             panel6.Controls.Add(panel7);
-            panel6.Location = new Point(12, 542);
+            panel6.Location = new Point(12, 557);
             panel6.Name = "panel6";
-            panel6.Size = new Size(316, 174);
+            panel6.Size = new Size(316, 159);
             panel6.TabIndex = 45;
             // 
             // tBoxOtherComments
             // 
             tBoxOtherComments.BorderStyle = BorderStyle.FixedSingle;
             tBoxOtherComments.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxOtherComments.Location = new Point(3, 44);
+            tBoxOtherComments.Location = new Point(3, 35);
             tBoxOtherComments.Multiline = true;
             tBoxOtherComments.Name = "tBoxOtherComments";
-            tBoxOtherComments.Size = new Size(308, 130);
+            tBoxOtherComments.Size = new Size(308, 119);
             tBoxOtherComments.TabIndex = 15;
             // 
             // panel7
@@ -284,6 +285,7 @@
             // panelProduk
             // 
             panelProduk.BorderStyle = BorderStyle.FixedSingle;
+            panelProduk.Controls.Add(btnConfirmProvinsi);
             panelProduk.Controls.Add(btnAddNewCustomer);
             panelProduk.Controls.Add(label16);
             panelProduk.Controls.Add(cBoxKabupatenKota);
@@ -302,14 +304,14 @@
             panelProduk.Controls.Add(panel2);
             panelProduk.Location = new Point(12, 119);
             panelProduk.Name = "panelProduk";
-            panelProduk.Size = new Size(316, 285);
+            panelProduk.Size = new Size(316, 299);
             panelProduk.TabIndex = 46;
             // 
             // btnAddNewCustomer
             // 
             btnAddNewCustomer.BackColor = Color.FromArgb(192, 255, 192);
             btnAddNewCustomer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAddNewCustomer.Location = new Point(214, 253);
+            btnAddNewCustomer.Location = new Point(214, 267);
             btnAddNewCustomer.Name = "btnAddNewCustomer";
             btnAddNewCustomer.Size = new Size(97, 27);
             btnAddNewCustomer.TabIndex = 30;
@@ -321,7 +323,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.Location = new Point(62, 166);
+            label16.Location = new Point(62, 159);
             label16.Name = "label16";
             label16.Size = new Size(64, 19);
             label16.TabIndex = 25;
@@ -331,7 +333,7 @@
             // 
             cBoxKabupatenKota.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cBoxKabupatenKota.FormattingEnabled = true;
-            cBoxKabupatenKota.Location = new Point(132, 193);
+            cBoxKabupatenKota.Location = new Point(133, 208);
             cBoxKabupatenKota.Name = "cBoxKabupatenKota";
             cBoxKabupatenKota.Size = new Size(179, 25);
             cBoxKabupatenKota.TabIndex = 27;
@@ -340,7 +342,7 @@
             // 
             cBoxProvinsi.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cBoxProvinsi.FormattingEnabled = true;
-            cBoxProvinsi.Location = new Point(132, 163);
+            cBoxProvinsi.Location = new Point(132, 156);
             cBoxProvinsi.Name = "cBoxProvinsi";
             cBoxProvinsi.Size = new Size(179, 25);
             cBoxProvinsi.TabIndex = 26;
@@ -349,7 +351,7 @@
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(55, 224);
+            label20.Location = new Point(56, 238);
             label20.Name = "label20";
             label20.Size = new Size(71, 19);
             label20.TabIndex = 26;
@@ -359,7 +361,7 @@
             // 
             tBoxZipCode.BorderStyle = BorderStyle.FixedSingle;
             tBoxZipCode.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxZipCode.Location = new Point(132, 222);
+            tBoxZipCode.Location = new Point(133, 236);
             tBoxZipCode.Name = "tBoxZipCode";
             tBoxZipCode.Size = new Size(179, 25);
             tBoxZipCode.TabIndex = 24;
@@ -368,7 +370,7 @@
             // 
             tBoxAlamat.BorderStyle = BorderStyle.FixedSingle;
             tBoxAlamat.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxAlamat.Location = new Point(132, 133);
+            tBoxAlamat.Location = new Point(132, 128);
             tBoxAlamat.Name = "tBoxAlamat";
             tBoxAlamat.Size = new Size(179, 25);
             tBoxAlamat.TabIndex = 23;
@@ -377,7 +379,7 @@
             // 
             tBoxContact.BorderStyle = BorderStyle.FixedSingle;
             tBoxContact.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxContact.Location = new Point(132, 102);
+            tBoxContact.Location = new Point(132, 97);
             tBoxContact.Name = "tBoxContact";
             tBoxContact.Size = new Size(179, 25);
             tBoxContact.TabIndex = 22;
@@ -386,7 +388,7 @@
             // 
             tBoxPerusahaan.BorderStyle = BorderStyle.FixedSingle;
             tBoxPerusahaan.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxPerusahaan.Location = new Point(132, 69);
+            tBoxPerusahaan.Location = new Point(132, 66);
             tBoxPerusahaan.Name = "tBoxPerusahaan";
             tBoxPerusahaan.Size = new Size(179, 25);
             tBoxPerusahaan.TabIndex = 21;
@@ -395,7 +397,7 @@
             // 
             tBoxNamaCust.BorderStyle = BorderStyle.FixedSingle;
             tBoxNamaCust.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxNamaCust.Location = new Point(132, 38);
+            tBoxNamaCust.Location = new Point(132, 35);
             tBoxNamaCust.Name = "tBoxNamaCust";
             tBoxNamaCust.Size = new Size(179, 25);
             tBoxNamaCust.TabIndex = 20;
@@ -404,7 +406,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(67, 135);
+            label9.Location = new Point(67, 130);
             label9.Name = "label9";
             label9.Size = new Size(59, 19);
             label9.TabIndex = 19;
@@ -414,7 +416,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(11, 196);
+            label3.Location = new Point(12, 211);
             label3.Name = "label3";
             label3.Size = new Size(115, 19);
             label3.TabIndex = 18;
@@ -424,7 +426,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(40, 71);
+            label2.Location = new Point(40, 68);
             label2.Name = "label2";
             label2.Size = new Size(86, 19);
             label2.TabIndex = 17;
@@ -434,7 +436,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(62, 104);
+            label4.Location = new Point(62, 99);
             label4.Name = "label4";
             label4.Size = new Size(64, 19);
             label4.TabIndex = 16;
@@ -444,7 +446,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(74, 40);
+            label12.Location = new Point(74, 37);
             label12.Name = "label12";
             label12.Size = new Size(52, 19);
             label12.TabIndex = 15;
@@ -480,7 +482,7 @@
             panel1.Controls.Add(label17);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(panel3);
-            panel1.Location = new Point(12, 410);
+            panel1.Location = new Point(12, 424);
             panel1.Name = "panel1";
             panel1.Size = new Size(316, 127);
             panel1.TabIndex = 48;
@@ -576,6 +578,18 @@
             dataGridViewReceipt2.Size = new Size(1021, 325);
             dataGridViewReceipt2.TabIndex = 51;
             // 
+            // btnConfirmProvinsi
+            // 
+            btnConfirmProvinsi.BackColor = Color.FromArgb(192, 255, 192);
+            btnConfirmProvinsi.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            btnConfirmProvinsi.Location = new Point(230, 185);
+            btnConfirmProvinsi.Name = "btnConfirmProvinsi";
+            btnConfirmProvinsi.Size = new Size(81, 19);
+            btnConfirmProvinsi.TabIndex = 41;
+            btnConfirmProvinsi.Text = "Refresh";
+            btnConfirmProvinsi.UseVisualStyleBackColor = false;
+            btnConfirmProvinsi.Click += btnConfirmProvinsi_Click;
+            // 
             // FormBuatReceipt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -667,5 +681,6 @@
         private TextBox tBoxTTD;
         private Button btnUpdate;
         private DataGridView dataGridViewReceipt2;
+        private Button btnConfirmProvinsi;
     }
 }

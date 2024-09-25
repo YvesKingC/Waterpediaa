@@ -107,11 +107,6 @@ namespace Waterpediaa
             cBoxKabupatenKota.DataSource = KabupatenKota;
             cBoxKabupatenKota.DisplayMember = "Nama_KabupatenKota";
         }
-        private void cboxProvinsi_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            LoadcBoxKabupatenKota();
-
-        }
 
         private void LoadcBoxCustomer()
         {
@@ -255,6 +250,10 @@ namespace Waterpediaa
 
             Total = Subtotal + PPN;
             lblTotal.Text = "Total  : " + Total.ToString();
+        }
+        private void cboxProvinsi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadcBoxKabupatenKota();
         }
 
         private void btnCreatePDF_Click_1(object sender, EventArgs e)

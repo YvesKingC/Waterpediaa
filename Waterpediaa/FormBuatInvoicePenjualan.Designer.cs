@@ -43,6 +43,7 @@
             panel5 = new Panel();
             label18 = new Label();
             panel1 = new Panel();
+            btnUpdateJenis = new Button();
             btnAddProduk = new Button();
             numericUpDownQTY = new NumericUpDown();
             tBoxHargaJual = new TextBox();
@@ -91,7 +92,6 @@
             btnBack = new Button();
             label14 = new Label();
             btnRemove = new Button();
-            btnUpdateJenis = new Button();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             panel1.SuspendLayout();
@@ -260,6 +260,18 @@
             panel1.Size = new Size(316, 227);
             panel1.TabIndex = 22;
             // 
+            // btnUpdateJenis
+            // 
+            btnUpdateJenis.BackColor = Color.FromArgb(192, 255, 192);
+            btnUpdateJenis.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnUpdateJenis.Location = new Point(243, 39);
+            btnUpdateJenis.Name = "btnUpdateJenis";
+            btnUpdateJenis.Size = new Size(68, 27);
+            btnUpdateJenis.TabIndex = 31;
+            btnUpdateJenis.Text = "Confirm";
+            btnUpdateJenis.UseVisualStyleBackColor = false;
+            btnUpdateJenis.Click += btnUpdateJenis_Click;
+            // 
             // btnAddProduk
             // 
             btnAddProduk.BackColor = Color.FromArgb(192, 255, 192);
@@ -427,7 +439,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label16.Location = new Point(62, 166);
+            label16.Location = new Point(62, 162);
             label16.Name = "label16";
             label16.Size = new Size(64, 19);
             label16.TabIndex = 25;
@@ -437,7 +449,7 @@
             // 
             cBoxKabupatenKota.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cBoxKabupatenKota.FormattingEnabled = true;
-            cBoxKabupatenKota.Location = new Point(132, 193);
+            cBoxKabupatenKota.Location = new Point(132, 190);
             cBoxKabupatenKota.Name = "cBoxKabupatenKota";
             cBoxKabupatenKota.Size = new Size(179, 25);
             cBoxKabupatenKota.TabIndex = 27;
@@ -446,7 +458,7 @@
             // 
             cBoxProvinsi.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cBoxProvinsi.FormattingEnabled = true;
-            cBoxProvinsi.Location = new Point(132, 163);
+            cBoxProvinsi.Location = new Point(132, 159);
             cBoxProvinsi.Name = "cBoxProvinsi";
             cBoxProvinsi.Size = new Size(179, 25);
             cBoxProvinsi.TabIndex = 26;
@@ -456,7 +468,7 @@
             // 
             label20.AutoSize = true;
             label20.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(55, 224);
+            label20.Location = new Point(55, 223);
             label20.Name = "label20";
             label20.Size = new Size(71, 19);
             label20.TabIndex = 26;
@@ -466,7 +478,7 @@
             // 
             tBoxZipCode.BorderStyle = BorderStyle.FixedSingle;
             tBoxZipCode.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxZipCode.Location = new Point(132, 222);
+            tBoxZipCode.Location = new Point(132, 221);
             tBoxZipCode.Name = "tBoxZipCode";
             tBoxZipCode.Size = new Size(179, 25);
             tBoxZipCode.TabIndex = 24;
@@ -475,7 +487,7 @@
             // 
             tBoxAlamat.BorderStyle = BorderStyle.FixedSingle;
             tBoxAlamat.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxAlamat.Location = new Point(132, 133);
+            tBoxAlamat.Location = new Point(132, 128);
             tBoxAlamat.Name = "tBoxAlamat";
             tBoxAlamat.Size = new Size(179, 25);
             tBoxAlamat.TabIndex = 23;
@@ -484,7 +496,7 @@
             // 
             tBoxContact.BorderStyle = BorderStyle.FixedSingle;
             tBoxContact.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxContact.Location = new Point(132, 102);
+            tBoxContact.Location = new Point(132, 97);
             tBoxContact.Name = "tBoxContact";
             tBoxContact.Size = new Size(179, 25);
             tBoxContact.TabIndex = 22;
@@ -493,7 +505,7 @@
             // 
             tBoxPerusahaan.BorderStyle = BorderStyle.FixedSingle;
             tBoxPerusahaan.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxPerusahaan.Location = new Point(132, 69);
+            tBoxPerusahaan.Location = new Point(132, 66);
             tBoxPerusahaan.Name = "tBoxPerusahaan";
             tBoxPerusahaan.Size = new Size(179, 25);
             tBoxPerusahaan.TabIndex = 21;
@@ -502,7 +514,7 @@
             // 
             tBoxNamaCust.BorderStyle = BorderStyle.FixedSingle;
             tBoxNamaCust.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            tBoxNamaCust.Location = new Point(132, 38);
+            tBoxNamaCust.Location = new Point(132, 35);
             tBoxNamaCust.Name = "tBoxNamaCust";
             tBoxNamaCust.Size = new Size(179, 25);
             tBoxNamaCust.TabIndex = 20;
@@ -511,7 +523,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(67, 135);
+            label9.Location = new Point(67, 130);
             label9.Name = "label9";
             label9.Size = new Size(59, 19);
             label9.TabIndex = 19;
@@ -521,7 +533,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(11, 196);
+            label3.Location = new Point(11, 193);
             label3.Name = "label3";
             label3.Size = new Size(115, 19);
             label3.TabIndex = 18;
@@ -531,7 +543,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(40, 71);
+            label2.Location = new Point(40, 68);
             label2.Name = "label2";
             label2.Size = new Size(86, 19);
             label2.TabIndex = 17;
@@ -541,7 +553,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(62, 104);
+            label1.Location = new Point(62, 99);
             label1.Name = "label1";
             label1.Size = new Size(64, 19);
             label1.TabIndex = 16;
@@ -551,7 +563,7 @@
             // 
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(74, 40);
+            label12.Location = new Point(74, 37);
             label12.Name = "label12";
             label12.Size = new Size(52, 19);
             label12.TabIndex = 15;
@@ -754,18 +766,6 @@
             btnRemove.Text = "Remove";
             btnRemove.UseVisualStyleBackColor = false;
             btnRemove.Click += btnRemove_Click;
-            // 
-            // btnUpdateJenis
-            // 
-            btnUpdateJenis.BackColor = Color.FromArgb(192, 255, 192);
-            btnUpdateJenis.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdateJenis.Location = new Point(243, 39);
-            btnUpdateJenis.Name = "btnUpdateJenis";
-            btnUpdateJenis.Size = new Size(68, 27);
-            btnUpdateJenis.TabIndex = 31;
-            btnUpdateJenis.Text = "Confirm";
-            btnUpdateJenis.UseVisualStyleBackColor = false;
-            btnUpdateJenis.Click += btnUpdateJenis_Click;
             // 
             // FormBuatInvoicePenjualan
             // 

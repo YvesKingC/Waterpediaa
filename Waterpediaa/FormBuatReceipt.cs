@@ -351,5 +351,10 @@ namespace Waterpediaa
 
             sqlConnect.Close();
         }
+
+        private void btnConfirmProvinsi_Click(object sender, EventArgs e)
+        {
+            LoadcBoxKabupatenKota();
+        }
     }
 }

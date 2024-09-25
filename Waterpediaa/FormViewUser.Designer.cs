@@ -68,10 +68,11 @@
             // 
             btnBack.Anchor = AnchorStyles.None;
             btnBack.BackColor = Color.FromArgb(255, 128, 128);
-            btnBack.Location = new Point(763, 342);
+            btnBack.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            btnBack.Location = new Point(763, 335);
             btnBack.Margin = new Padding(3, 2, 3, 2);
             btnBack.Name = "btnBack";
-            btnBack.Size = new Size(115, 22);
+            btnBack.Size = new Size(115, 29);
             btnBack.TabIndex = 35;
             btnBack.Text = "Back";
             btnBack.UseVisualStyleBackColor = false;
